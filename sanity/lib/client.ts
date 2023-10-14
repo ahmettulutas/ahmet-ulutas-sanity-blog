@@ -8,3 +8,4 @@ export const client = createClient({
   projectId,
   useCdn,
 })
+export const getClient = ()  => client
