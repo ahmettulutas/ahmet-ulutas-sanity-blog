@@ -1,7 +1,7 @@
 import { client } from '@/sanity/lib/client'
 import { useTranslation } from '../../../../i18n';
 import { PageProps } from '../layout';
-
+import Link from 'next/link';
 
 async function fetchArticles () {
   const query = `*[_type == "article"]`
@@ -19,9 +19,8 @@ export default async function Page({ params }: PageProps) {
       <div>{t("h1")}</div>
       <div>{t("pageTitle")}</div>
       {articles?.map((item: any) => 
-        <h1 className='border-2 border-black p-2' key={item.id}> {item.pageTitle}</h1>
+        <Link key={item._id} className='border-2 border-black p-2 rounded-xl' href={item._id}>{item.pageTitle}</Link>
       )}
     </main>
   )
 }
-

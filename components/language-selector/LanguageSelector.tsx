@@ -1,27 +1,21 @@
 
-import { useRouter } from 'next/router';
-
+"use client"
 import { LanguageSelectorDesktop } from './LanguageSelectorDesktop';
 import { LanguageSelectorMobile } from './LanguageSelectorMobile';
+import { languages } from '@/i18n/settings';
 
-const localeName = (locale: string) => locale.split('-')[0];
+export type LanguageSelectorType = { currentLocale: string }
 
-const displayName = (locale: string) =>
-  new Intl.DisplayNames([locale], {
-    type: 'language',
-  });
 
-export const LanguageSelector = () => {
-  const { locales } = useRouter();
-
-  return locales && locales.length > 1 ? (
+export const LanguageSelector = ({ currentLocale }: {currentLocale: string}) => {
+  return languages && languages.length > 1 ? (
     <>
       <div className="hidden md:block">
-        <LanguageSelectorDesktop displayName={displayName} localeName={localeName} />
+        <LanguageSelectorDesktop currentLocale={currentLocale} />
       </div>
 
       <div className="block md:hidden">
-        <LanguageSelectorMobile displayName={displayName} localeName={localeName} />
+        <LanguageSelectorMobile currentLocale={currentLocale} />
       </div>
     </>
   ) : null;

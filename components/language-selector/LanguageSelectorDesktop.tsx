@@ -1,20 +1,22 @@
+
 import { useClickOutside } from '@/hooks';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+
 import React, { KeyboardEvent, useRef, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import {GrLanguage} from "react-icons/gr"
-import {BiUpArrowAlt, BiDownArrowAlt} from "react-icons/bi"
+import {AiOutlineDown ,AiOutlineUp} from "react-icons/ai"
 
-type Props = { localeName: (name:string) => string, 
-  displayName: (locale: string) => Intl.DisplayNames }
+import { LanguageSelectorType } from '.';
+import { languages } from '@/i18n/settings';
+import { usePathname } from 'next/navigation';
+import { generatePathName } from '@/helpers/helpers';
 
-export const LanguageSelectorDesktop = ({ localeName, displayName }: Props) => {
-  const router = useRouter();
+export const LanguageSelectorDesktop = ({ currentLocale }: LanguageSelectorType) => {
+
   const menuRef = useRef<HTMLUListElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const localesToShow = router.locales?.filter(locale => locale !== router.locale);
-
+  const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false);
 
   useClickOutside(containerRef, setIsOpen);
@@ -80,14 +82,13 @@ export const LanguageSelectorDesktop = ({ localeName, displayName }: Props) => {
         onClick={() => setIsOpen(currentState => !currentState)}
       >
         <GrLanguage width="18px" height="18px" className="mr-1 ml-1" />
-        {localeName(router.locale as string)} {/* todo */}
+        {currentLocale} {/* todo */}
         {isOpen ? (
-          <BiUpArrowAlt className="pl-1" />
+          <AiOutlineDown className="pl-1" width="18px" height="18px"/>
         ) : (
-          <BiDownArrowAlt className="pl-1" />
+          <AiOutlineUp className="pl-1" width="18px" height="18px"/>
         )}
       </button>
-      {/* <FocusLock disabled={!isOpen} returnFocus={true}> */}
         <ul
           ref={menuRef}
           className={twMerge(
@@ -98,26 +99,21 @@ export const LanguageSelectorDesktop = ({ localeName, displayName }: Props) => {
           role="menu"
           onKeyDown={handleMenuKeyDown}
         >
-          {localesToShow?.map((availableLocale, index) => (
-            <li key={availableLocale} role="none">
+          {languages?.map((lang, index) => (
+            <li key={lang} role="none">
               <Link
                 onKeyDown={e => handleMenuItemKeydown(e, index)}
                 role="menuitem"
                 className="block py-2"
-                href={{
-                  pathname: router.pathname,
-                  query: router.query,
-                }}
-                as={router.asPath}
-                locale={availableLocale}
+                href={`/${lang}/${generatePathName(pathname)}`}
+                locale={lang}
                 onClick={() => setIsOpen(false)}
               >
-                {displayName(availableLocale).of(localeName(availableLocale))}
+                {lang.toUpperCase()}
               </Link>
             </li>
           ))}
         </ul>
-{/*       </FocusLock> */}
     </div>
   );
 };

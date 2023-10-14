@@ -1,4 +1,6 @@
 {
-  "h1": "English Header",
-  "pageTitle": "English Page Title"
+  "appSettings": "App-Einstellungen",
+  "language": "Sprache",
+  "h1": "Deutscher Überschrift",
+  "pageTitle": "Deutscher Seitentitel"
 }

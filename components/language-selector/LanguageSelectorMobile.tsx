@@ -1,20 +1,22 @@
 
-import { useTranslation } from 'next-i18next';
-import { useRouter } from 'next/router';
+"use client"
+import { useTranslation } from '@/i18n/client';
+import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import {GrLanguage} from "react-icons/gr"
 import {AiOutlineClose } from "react-icons/ai"
+import { LanguageSelectorType } from '.';
+import { languages } from '@/i18n/settings';
+import { generatePathName } from '@/helpers/helpers';
 
-type Props = { localeName: (name:string) => string, 
-  displayName: (locale: string) => Intl.DisplayNames }
 
-export const LanguageSelectorMobile = ({ localeName, displayName }: Props) => {
-  const { locale, locales } = useRouter();
+export const LanguageSelectorMobile = ({ currentLocale }: LanguageSelectorType) => {
+
   const router = useRouter();
-  const { t } = useTranslation();
+  const pathname = usePathname()
   const [showDrawer, setShowDrawer] = useState(false);
-
+  const {t} = useTranslation(currentLocale, "translation")
   useEffect(() => {
     const close = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -43,7 +45,7 @@ export const LanguageSelectorMobile = ({ localeName, displayName }: Props) => {
             role="presentation"
             tabIndex={-1}
             className={twMerge(
-              'fixed top-0 left-0 h-full w-full bg-colorBlack/[0.4] transition-opacity duration-150',
+              'fixed top-0 left-0 h-full w-full bg-black/[0.4] transition-opacity duration-150',
               showDrawer ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0',
             )}
             onClick={() => setShowDrawer(false)}
@@ -53,35 +55,30 @@ export const LanguageSelectorMobile = ({ localeName, displayName }: Props) => {
             aria-modal="true"
             aria-hidden={!showDrawer}
             className={twMerge(
-              `fixed top-0 right-0 z-40 h-full w-[80vw] bg-colorWhite py-8 px-5 duration-300 ease-in-out `,
+              `fixed top-0 right-0 z-40 h-full w-[80vw] bg-white py-8 px-5 duration-300 ease-in-out `,
               showDrawer ? 'translate-x-0' : 'translate-x-full',
             )}
           >
             <div className="flex items-center">
-              <h2 className="text-xl font-semibold">{t('common.regionalSettings')}</h2>
+              <h2 className="text-xl font-semibold">{t('appSettings')}</h2>
               <button className="ml-auto pl-2" onClick={() => setShowDrawer(false)}>
                 <AiOutlineClose width="18px" height="18px" variant="secondary" />
               </button>
             </div>
-            <p className="mt-8 text-base font-semibold text-colorBlack"> {t('common.language')}</p>
+            <p className="mt-8 text-base font-semibold text-colorBlack"> {t('language')}</p>
             <select
               className="mt-2 block w-full rounded-md border border-gray300 py-2 px-2 text-sm"
-              defaultValue={locale}
-              onChange={event => {
-                router.push({ pathname: router.pathname, query: router.query }, router.asPath, {
-                  locale: String(event.target.value),
-                });
-                setShowDrawer(!showDrawer);
+              defaultValue={currentLocale}
+              onChange={event => {router.push(`/${String(event.target.value)}/${generatePathName(pathname)}`)
               }}
             >
-              {locales?.map(availableLocale => (
-                <option key={availableLocale} value={availableLocale}>
-                  {displayName(availableLocale).of(localeName(availableLocale))}
+              {languages?.map(lang => (
+                <option key={lang} value={lang}>
+                  {lang}
                 </option>
               ))}
             </select>
           </div>
-{/*         </FocusLock> */}
 
     </>
   );
