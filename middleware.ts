@@ -5,7 +5,7 @@ import { fallbackLng, languages, cookieName } from './i18n/settings'
 
 export const config = {
   // matcher: '/:lng*'
-  matcher: ['/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js).*)']
+  matcher: ['/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js|en/studio).*)']
 }
 
 acceptLanguage.languages(languages)
@@ -15,12 +15,6 @@ export function middleware(req: NextRequest) {
 
   if (nextUrl.pathname.indexOf('icon') > -1 || nextUrl.pathname.indexOf('chrome') > -1) return NextResponse.next()
 
-  // const SANITY_URL = "/en/studio"
-  // const defaultLocale = "en"
-  // const defaultSanityUrl = nextUrl.pathname.startsWith(SANITY_URL);
-  // const sanityUrlWithLocale = nextUrl.pathname.split("/")[1] === SANITY_URL.split("/")[2]
-  // if(defaultSanityUrl  || sanityUrlWithLocale) return NextResponse.redirect(new URL(`/${defaultLocale}${req.nextUrl.pathname}`, req.url))
-  
   let lng;
   if (cookies.has(cookieName)) lng = acceptLanguage.get(cookies.get(cookieName)?.value)
   if (!lng) lng = acceptLanguage.get(req.headers.get('Accept-Language'))

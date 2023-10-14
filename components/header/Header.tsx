@@ -3,13 +3,15 @@ import Link from 'next/link'
 /* import { Trans } from 'react-i18next/TransWithoutContext' */
 import { useTranslation } from '@/i18n'
 import { LanguageSelector } from '../language-selector'
+import { SANITY_URL } from '@/constants/constants'
+
 
 export default async function Header ({ lng }: {lng: string}) {
   const { t } = await useTranslation(lng, "translation")
 
   return (
     <header className='p-10 flex justify-between items-center'>
-      <Link className="border-2 border-black p-1 rounded-xl" href={'/studio'}>GO TO STUDIO</Link>
+      <Link className="border-2 border-black p-1 rounded-xl" href={SANITY_URL}>{t("gotoStudio")}</Link>
       <div> 
        {/* <Trans i18nKey="languageSwitcher" t={t}>
         Switch from <strong>{lng}</strong> to:{' '}

@@ -2,5 +2,6 @@
   "appSettings": "App-Einstellungen",
   "language": "Sprache",
   "h1": "Deutscher Überschrift",
-  "pageTitle": "Deutscher Seitentitel"
+  "pageTitle": "Deutscher Seitentitel",
+  "gotoStudio": "Go to Studio"
 }

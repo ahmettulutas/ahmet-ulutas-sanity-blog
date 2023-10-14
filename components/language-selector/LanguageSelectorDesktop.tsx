@@ -1,4 +1,4 @@
-
+"use client"
 import { useClickOutside } from '@/hooks';
 import Link from 'next/link';
 
