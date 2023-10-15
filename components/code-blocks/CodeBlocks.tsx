@@ -1,44 +1,46 @@
-
 import { changeLanguage } from 'i18next';
 import { Highlight, themes } from 'prism-react-renderer';
 
-const theme = "light"
+const theme = 'light';
 
 type CodeProps = {
   code: string;
   filename: string;
   language: string;
-}
+};
 const RenderCodeBlock: React.FC<CodeProps> = ({ code, filename, language }) => {
-  const defaultLanguage = "tsx"
-
-if(!code) return <></> 
+  if (!code) return <></>;
+  const defaultLanguage = 'tsx';
   return (
-    <div>
-      <div className="flex justify-between">
-        <p className="opacity-70">{filename}</p>
+    <div className='rounded-2xl p-4 bg-gray-100 my-4'>
+      <div className='flex justify-between my-1'>
+        <p className='opacity-70'>{filename}</p>
         <p>
-          language: <span className="opacity-70">{language}</span>
+          Language:{' '}
+          <span className='opacity-70'>{language ?? defaultLanguage}</span>
         </p>
       </div>
-  <Highlight
-    theme={/* themes.oneDark : */ themes.oceanicNext} /* TODO */
-    code={code}
-    language={language ?? defaultLanguage}
-  >
-    {({ className, style, tokens, getLineProps, getTokenProps }) => (
-      <pre style={style} className={`${className} overflow-x-auto`}>
-        {tokens.map((line, i) => (
-          <div key={i} {...getLineProps({ line })}>
-            <span className='mr-4'>{i + 1}</span>
-            {line.map((token, key) => (
-              <span key={key} {...getTokenProps({ token })} />
+      <Highlight
+        theme={/* themes.oneDark : */ themes.oneLight} /* TODO */
+        code={code}
+        language={language ?? defaultLanguage}
+      >
+        {({ className, style, tokens, getLineProps, getTokenProps }) => (
+          <pre
+            style={style}
+            className={`${className} overflow-x-auto p-4 rounded-2xl`}
+          >
+            {tokens.map((line, i) => (
+              <div key={i} {...getLineProps({ line })} className='m-1'>
+                <span className='mx-2'>{i + 1}</span>
+                {line.map((token, key) => (
+                  <span key={key} {...getTokenProps({ token })} />
+                ))}
+              </div>
             ))}
-          </div>
-        ))}
-      </pre>
-    )}
-  </Highlight>
+          </pre>
+        )}
+      </Highlight>
     </div>
   );
 };
