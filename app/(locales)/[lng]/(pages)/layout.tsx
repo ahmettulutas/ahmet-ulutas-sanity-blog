@@ -19,7 +19,7 @@ export default function PageLayout({
 }) {
 
   return (
-   <main>
+   <main className='mx-auto max-w-6xl px-4'>
       <Header lng={lng} />
       {children}
    </main>

@@ -5,7 +5,7 @@ import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export type PageProps = {
+export type SharedPageProps = {
   params: { lng: string }
 }
 

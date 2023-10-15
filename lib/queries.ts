@@ -43,11 +43,11 @@ export const blogSlugsQuery = groq`
 `
 export const blogAndMoreBlogsQuery = groq`
 {
-  "post": *[_type == "blog" && slug.current == $slug] | order(_updatedAt desc) [0] {
+  "blog": *[_type == "blog" && slug.current == $slug] | order(_updatedAt desc) [0] {
     content,
     ${postFields}
   },
-  "morePosts": *[_type == "blog" && slug.current != $slug] | order(date desc, _updatedAt desc) [0...2] {
+  "moreBlogs": *[_type == "blog" && slug.current != $slug] | order(date desc, _updatedAt desc) [0...2] {
     content,
     ${postFields}
   }

@@ -10,7 +10,9 @@ export async function getAllBlogs(): Promise<Blog[]> {
 
 export async function getAllBlogsSlugs(): Promise<Pick<Blog, 'slug'>[]> {
   const slugs = (await client.fetch<string[]>(blogSlugsQuery)) || []
+  console.log({"SLUG":slugs})
   return slugs.map((slug) => ({ slug }))
+  
 }
 
 export async function getBlogBySlug(slug: string): Promise<Blog> {
@@ -19,6 +21,6 @@ export async function getBlogBySlug(slug: string): Promise<Blog> {
 
 export async function getBlogsAndMoreStories(
   slug: string,
-): Promise<{ Blog: Blog; moreBlogs: Blog[] }> {
+): Promise<{ blog: Blog; moreBlogs: Blog[] }> {
   return await client.fetch(blogAndMoreBlogsQuery, { slug })
 }

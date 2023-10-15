@@ -52,6 +52,21 @@ export default defineType({
             },
           ],
         },
+        {
+          name: "code",
+          title: "Code Block",
+          type: "code",
+          options: {    
+            language: 'javascript',
+            languageAlternatives: [
+              { title: "Javascript", value: "javascript" },
+              { title: "TypeScript", value: "typescript" },
+              { title: "tsx", value: "tsx" },
+            ],
+            withFilename: true, // optional
+            highlightedLines: true, // optional
+          },
+        }
       ],
     }),
     defineField({

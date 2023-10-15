@@ -1,5 +1,3 @@
-import { client } from '@/sanity/lib/client'
-
 
 import Link from 'next/link';
 import { getAllBlogs } from '@/lib/sanity-client-fns';
@@ -15,7 +13,7 @@ export default async function Page({ params }: SharedPageProps) {
     <main className="flex min-h-screen flex-col items-center gap-2 p-24">
       <h1>{t("blogs")}</h1>
       {allBlogs?.map((item) => 
-        <Link key={item._id} className='underline p-2 rounded-xl' href={item._id}>{item.title}</Link>
+        <Link key={item._id} className='underline p-2 rounded-xl' href={`/${params.lng}/blogs/${item.slug}`}>{item.title}</Link>
       )}
     </main>
   )
