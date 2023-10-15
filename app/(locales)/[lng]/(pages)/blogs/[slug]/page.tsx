@@ -28,7 +28,7 @@ type Params = SharedPageProps & {
 };
 
 export default async function Page({ params }: Params & SharedPageProps) {
-  const { blog, moreBlogs } = await getPageData(params.slug);
+  const { blog, /* moreBlogs */ } = await getPageData(params.slug);
   return (
     <div>
       {JSON.stringify(blog?.content, null, 2)}

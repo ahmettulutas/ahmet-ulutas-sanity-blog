@@ -1,7 +1,4 @@
-import { changeLanguage } from 'i18next';
 import { Highlight, themes } from 'prism-react-renderer';
-
-const theme = 'light';
 
 type CodeProps = {
   code: string;
@@ -9,8 +6,10 @@ type CodeProps = {
   language: string;
 };
 const RenderCodeBlock: React.FC<CodeProps> = ({ code, filename, language }) => {
+
   if (!code) return <></>;
   const defaultLanguage = 'tsx';
+  
   return (
     <div className='rounded-2xl p-4 bg-gray-100 my-4'>
       <div className='flex justify-between my-1'>

@@ -1,9 +1,11 @@
 import React, { MutableRefObject } from 'react';
 
+// eslint-disable-next-line no-unused-vars
 type ClickOutsideHandler = (event: MouseEvent) => void;
 
 export const useClickOutside = (
   ref: MutableRefObject<HTMLElement | null>,
+  // eslint-disable-next-line no-unused-vars
   setIsOpen: (isOpen: boolean) => void
 ) => {
   React.useEffect(() => {

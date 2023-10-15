@@ -24,20 +24,20 @@ export const LanguageSelectorDesktop = ({
 
   const handleMenuKeyDown = (e: KeyboardEvent<HTMLUListElement>) => {
     switch (e.key) {
-      case ' ':
-      case 'SpaceBar':
-      case 'Enter':
-        e.preventDefault();
+    case ' ':
+    case 'SpaceBar':
+    case 'Enter':
+      e.preventDefault();
 
-        setIsOpen((currentState) => !currentState);
-        break;
-      case 'Escape':
-        e.preventDefault();
+      setIsOpen((currentState) => !currentState);
+      break;
+    case 'Escape':
+      e.preventDefault();
 
-        setIsOpen(false);
-        break;
-      default:
-        break;
+      setIsOpen(false);
+      break;
+    default:
+      break;
     }
   };
 
@@ -46,35 +46,35 @@ export const LanguageSelectorDesktop = ({
     index: number
   ) => {
     switch (e.key) {
-      case ' ':
-      case 'SpaceBar':
-      case 'Enter':
-        e.stopPropagation();
-        e.preventDefault();
+    case ' ':
+    case 'SpaceBar':
+    case 'Enter':
+      e.stopPropagation();
+      e.preventDefault();
 
-        e.currentTarget?.click();
+      e.currentTarget?.click();
 
-        break;
-      case 'ArrowUp':
-      case 'ArrowDown':
-        e.stopPropagation();
-        e.preventDefault();
+      break;
+    case 'ArrowUp':
+    case 'ArrowDown':
+      e.stopPropagation();
+      e.preventDefault();
 
-        const items = [...(menuRef.current?.children || [])];
+      const items = [...(menuRef.current?.children || [])];
 
-        if (e.key === 'ArrowUp') {
-          (items?.[index - 1] || items?.[items.length - 1])
-            ?.querySelector('a')
-            ?.focus();
-        }
+      if (e.key === 'ArrowUp') {
+        (items?.[index - 1] || items?.[items.length - 1])
+          ?.querySelector('a')
+          ?.focus();
+      }
 
-        if (e.key === 'ArrowDown') {
-          (items?.[index + 1] || items?.[0])?.querySelector('a')?.focus();
-        }
+      if (e.key === 'ArrowDown') {
+        (items?.[index + 1] || items?.[0])?.querySelector('a')?.focus();
+      }
 
-        break;
-      default:
-        break;
+      break;
+    default:
+      break;
     }
   };
 
