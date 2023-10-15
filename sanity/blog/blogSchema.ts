@@ -1,7 +1,7 @@
-import { BookIcon } from '@sanity/icons'
-import { format, parseISO } from 'date-fns'
-import { defineField, defineType } from 'sanity'
-import authorSchema from '../author/authorSchema'
+import { BookIcon } from '@sanity/icons';
+import { format, parseISO } from 'date-fns';
+import { defineField, defineType } from 'sanity';
+import authorSchema from '../author/authorSchema';
 
 export default defineType({
   name: 'blog',
@@ -53,20 +53,20 @@ export default defineType({
           ],
         },
         {
-          name: "code",
-          title: "Code Block",
-          type: "code",
-          options: {    
+          name: 'code',
+          title: 'Code Block',
+          type: 'code',
+          options: {
             language: 'javascript',
             languageAlternatives: [
-              { title: "Javascript", value: "javascript" },
-              { title: "TypeScript", value: "typescript" },
-              { title: "tsx", value: "tsx" },
+              { title: 'Javascript', value: 'javascript' },
+              { title: 'TypeScript', value: 'typescript' },
+              { title: 'tsx', value: 'tsx' },
             ],
             withFilename: true, // optional
             highlightedLines: true, // optional
           },
-        }
+        },
       ],
     }),
     defineField({
@@ -106,9 +106,9 @@ export default defineType({
       const subtitles = [
         author && `by ${author}`,
         date && `on ${format(parseISO(date), 'LLL d, yyyy')}`,
-      ].filter(Boolean)
+      ].filter(Boolean);
 
-      return { title, media, subtitle: subtitles.join(' ') }
+      return { title, media, subtitle: subtitles.join(' ') };
     },
   },
-})
+});

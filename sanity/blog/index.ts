@@ -1,1 +1,1 @@
-export * from "./blogSchema"
+export * from './blogSchema';

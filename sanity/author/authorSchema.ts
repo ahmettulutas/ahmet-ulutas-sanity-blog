@@ -1,5 +1,5 @@
-import { UserIcon } from '@sanity/icons'
-import { defineField, defineType } from 'sanity'
+import { UserIcon } from '@sanity/icons';
+import { defineField, defineType } from 'sanity';
 
 export default defineType({
   name: 'author',
@@ -29,4 +29,4 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
   ],
-})
+});

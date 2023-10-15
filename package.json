@@ -9,7 +9,9 @@
     "lint": "next lint",
     "type-check": "tsc --noEmit",
     "lint-staged": "lint-staged",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "format": "prettier --check --ignore-path .gitignore .",
+    "format:fix": "prettier --write --ignore-path .gitignore ."
   },
   "dependencies": {
     "@portabletext/react": "^3.0.11",
@@ -41,9 +43,11 @@
     "autoprefixer": "^10",
     "eslint": "^8",
     "eslint-config-next": "13.5.4",
+    "eslint-config-prettier": "^9.0.0",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
     "postcss": "^8",
+    "prettier": "^2.8.8",
     "tailwindcss": "^3",
     "typescript": "^5"
   }
