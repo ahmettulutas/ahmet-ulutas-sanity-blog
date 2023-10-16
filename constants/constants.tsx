@@ -1,1 +1,1 @@
-export const SANITY_URL = '/en/studio'
+export const SANITY_URL = '/en/studio';

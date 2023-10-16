@@ -1,1 +1,2 @@
-export * from "./hooks"
+export * from './useClickOutside';
+export * from './useCopytoClipboard';
