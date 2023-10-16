@@ -3,7 +3,7 @@ import { useTranslation } from '@/i18n/client';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { GrLanguage } from 'react-icons/gr';
+import { MdLanguage } from 'react-icons/md';
 import { AiOutlineClose } from 'react-icons/ai';
 import { LanguageSelectorType } from '.';
 import { languages } from '@/i18n/settings';
@@ -35,7 +35,7 @@ export const LanguageSelectorMobile = ({
         aria-expanded={showDrawer}
         aria-controls='locale-drawer'
       >
-        <GrLanguage width='18px' height='18px' variant='secondary' />
+        <MdLanguage width='18px' height='18px' />
       </button>
 
       {/*      <FocusLock disabled={!showDrawer} returnFocus={true}> */}
@@ -55,7 +55,7 @@ export const LanguageSelectorMobile = ({
         aria-modal='true'
         aria-hidden={!showDrawer}
         className={twMerge(
-          'fixed top-0 right-0 z-40 h-full w-[80vw] bg-white py-8 px-5 duration-300 ease-in-out ',
+          'fixed top-0 right-0 z-40 h-full w-[80vw] bg-white dark:bg-black py-8 px-5 duration-300 ease-in-out ',
           showDrawer ? 'translate-x-0' : 'translate-x-full'
         )}
       >

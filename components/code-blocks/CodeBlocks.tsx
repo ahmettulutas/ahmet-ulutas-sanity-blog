@@ -1,17 +1,31 @@
 import { useCopyToClipboard } from '@/hooks';
 import { Highlight, themes } from 'prism-react-renderer';
 import { BiCopy, BiCopyAlt } from 'react-icons/bi';
+import { useTheme } from 'next-themes';
 type CodeProps = {
   code: string;
   filename: string;
   language: string;
 };
+const getTheme = (theme: string) => {
+  switch (theme) {
+    case 'light':
+      return themes.github;
+    case 'dark':
+      return themes.oneDark;
+    case 'system':
+      return themes.github;
+    default:
+      return;
+  }
+};
 const RenderCodeBlock: React.FC<CodeProps> = ({ code, filename, language }) => {
   const { isCopied, copy } = useCopyToClipboard();
+  const { theme } = useTheme();
   if (!code) return <></>;
   const defaultLanguage = 'tsx';
   return (
-    <div className='rounded-2xl p-4 bg-gray-100 my-4 relative'>
+    <div className='rounded-2xl p-4 dark:bg-gray-700 bg-gray-100 my-4 relative'>
       <div className='flex justify-between my-1'>
         <p className='opacity-70'>{filename}</p>
         <p>
@@ -21,7 +35,7 @@ const RenderCodeBlock: React.FC<CodeProps> = ({ code, filename, language }) => {
       </div>
 
       <Highlight
-        theme={/* themes.oneDark : */ themes.oneLight} /* TODO */
+        theme={theme ? getTheme(theme) : themes.github}
         code={code}
         language={language ?? defaultLanguage}
       >

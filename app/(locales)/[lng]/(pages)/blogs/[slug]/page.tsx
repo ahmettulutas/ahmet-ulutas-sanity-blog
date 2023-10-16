@@ -5,7 +5,7 @@ import {
 import { SharedPageProps } from '../../../layout';
 import { notFound } from 'next/navigation';
 import { languages } from '@/i18n/settings';
-import PostContent from '@/components/PostContent/PostContent';
+import PostContent from '@/components/post-content/PostContent';
 import { Container } from '@/components/container';
 
 async function getPageData(

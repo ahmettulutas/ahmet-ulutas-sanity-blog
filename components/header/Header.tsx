@@ -5,6 +5,7 @@ import { LanguageSelector } from '../language-selector';
 import { SANITY_URL } from '@/constants/constants';
 import { FiBook } from 'react-icons/fi';
 import { SiSanity } from 'react-icons/si';
+import ThemeSwitcher from '@/themes/ThemeSwitcher';
 export default async function Header({ lng }: { lng: string }) {
   const { t } = await useTranslation(lng, 'translation');
 
@@ -32,6 +33,7 @@ export default async function Header({ lng }: { lng: string }) {
         Switch from <strong>{lng}</strong> to:{' '}
       </Trans>  */}
       </div>
+      <ThemeSwitcher />
       <LanguageSelector currentLocale={lng} />
     </header>
   );
