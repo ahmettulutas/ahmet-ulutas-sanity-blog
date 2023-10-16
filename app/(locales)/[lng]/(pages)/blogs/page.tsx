@@ -9,7 +9,7 @@ export default async function Page({ params }: SharedPageProps) {
 
   return (
     <main className='flex min-h-screen flex-col items-center gap-2 p-24'>
-      <h1>{t('blogs')}</h1>
+      <h1 className='mb-4 text-4xl font-bold text-center'>{t('blogs')}</h1>
       {allBlogs?.map((item) => (
         <Link
           key={item._id}

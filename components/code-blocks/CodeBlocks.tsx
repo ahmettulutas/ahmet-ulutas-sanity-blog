@@ -1,11 +1,13 @@
 import { useCopyToClipboard } from '@/hooks';
 import { Highlight, themes } from 'prism-react-renderer';
 import { BiCopy, BiCopyAlt } from 'react-icons/bi';
+
 type CodeProps = {
   code: string;
   filename: string;
   language: string;
 };
+
 const RenderCodeBlock: React.FC<CodeProps> = ({ code, filename, language }) => {
   const { isCopied, copy } = useCopyToClipboard();
   if (!code) return <></>;

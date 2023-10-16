@@ -14,9 +14,9 @@ export default function PageLayout({
   params: { lng: string };
 }) {
   return (
-    <main>
+    <div>
       <Header lng={lng} />
       {children}
-    </main>
+    </div>
   );
 }

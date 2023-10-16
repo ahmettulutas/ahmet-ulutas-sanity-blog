@@ -5,6 +5,7 @@ import { LanguageSelector } from '../language-selector';
 import { SANITY_URL } from '@/constants/constants';
 import { FiBook } from 'react-icons/fi';
 import { SiSanity } from 'react-icons/si';
+
 export default async function Header({ lng }: { lng: string }) {
   const { t } = await useTranslation(lng, 'translation');
 
