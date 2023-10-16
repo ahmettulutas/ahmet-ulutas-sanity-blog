@@ -15,7 +15,6 @@ export async function getAllBlogs(): Promise<Blog[]> {
 
 export async function getAllBlogsSlugs(): Promise<Pick<Blog, 'slug'>[]> {
   const slugs = (await client.fetch<string[]>(blogSlugsQuery)) || [];
-  console.log({ SLUG: slugs });
   return slugs.map((slug) => ({ slug }));
 }
 

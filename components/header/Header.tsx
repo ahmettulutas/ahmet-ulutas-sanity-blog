@@ -3,7 +3,8 @@ import Link from 'next/link';
 import { useTranslation } from '@/i18n';
 import { LanguageSelector } from '../language-selector';
 import { SANITY_URL } from '@/constants/constants';
-
+import { FiBook } from 'react-icons/fi';
+import { SiSanity } from 'react-icons/si';
 export default async function Header({ lng }: { lng: string }) {
   const { t } = await useTranslation(lng, 'translation');
 
@@ -12,16 +13,18 @@ export default async function Header({ lng }: { lng: string }) {
       <div>
         <Link
           target='_blank'
-          className='border-2 border-black p-1 rounded-xl m-1'
+          className='border-2 border-black p-1 rounded-xl m-1 flex items-center gap-2 text-lg'
           href={SANITY_URL}
         >
-          {t('gotoStudio')}
+          <SiSanity />
+          <span>{t('gotoStudio')}</span>
         </Link>
         <Link
-          className='border-2 border-black p-1 rounded-xl m-1'
+          className='border-2 border-black p-1 rounded-xl m-1 flex items-center gap-2 text-lg'
           href='/blogs'
         >
-          {t('blogs')}
+          <FiBook />
+          <p>{t('blogs')}</p>
         </Link>
       </div>
       <div>

@@ -10,7 +10,6 @@ const myPortableTextComponents = {
       <h1 className='text-2xl '> {value?.imageUrl}</h1>
     ),
     text: ({ value }: any) => {
-      console.log({ value });
       return <u>{value}</u>;
     },
     code: ({ value }: any) => <CodeBlock {...{ ...value }} />,

@@ -6,6 +6,7 @@ import { SharedPageProps } from '../../../layout';
 import { notFound } from 'next/navigation';
 import { languages } from '@/i18n/settings';
 import PostContent from '@/components/PostContent/PostContent';
+import { Container } from '@/components/container';
 
 async function getPageData(
   slug: string
@@ -28,13 +29,13 @@ type Params = SharedPageProps & {
 };
 
 export default async function Page({ params }: Params & SharedPageProps) {
-  const { blog, /* moreBlogs */ } = await getPageData(params.slug);
+  const { blog /* moreBlogs */ } = await getPageData(params.slug);
   return (
-    <div>
-      {JSON.stringify(blog?.content, null, 2)}
+    <Container>
+      <h1 className='mb-4 text-4xl font-bold text-center'>{blog.title}</h1>
       <PostContent content={blog?.content} />
       {/* {blog && <PostContent content={blog}/>  } */}
-    </div>
+    </Container>
   );
 }
 
