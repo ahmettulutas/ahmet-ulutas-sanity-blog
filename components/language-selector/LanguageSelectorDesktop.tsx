@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import React, { KeyboardEvent, useRef, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { GrLanguage } from 'react-icons/gr';
+import { BsGlobeAmericas } from 'react-icons/bs';
 import { AiOutlineDown, AiOutlineUp } from 'react-icons/ai';
 
 import { LanguageSelectorType } from '.';
@@ -85,11 +85,11 @@ export const LanguageSelectorDesktop = ({
         aria-haspopup='true'
         aria-expanded={isOpen}
         aria-controls='menu-locale'
-        className='flex items-center font-normal uppercase'
+        className='flex items-center font-normal uppercase shadow dark:border-2 dark:border-white rounded-md'
         onClick={() => setIsOpen((currentState) => !currentState)}
       >
-        <GrLanguage width='18px' height='18px' className='mr-1 ml-1' />
-        {currentLocale} {/* todo */}
+        <BsGlobeAmericas width='18px' height='18px' className='mr-1 ml-1' />
+        {currentLocale}
         {isOpen ? (
           <AiOutlineDown className='pl-1' width='18px' height='18px' />
         ) : (
@@ -99,7 +99,7 @@ export const LanguageSelectorDesktop = ({
       <ul
         ref={menuRef}
         className={twMerge(
-          'top-100 absolute right-0 z-10 w-24 translate-y-3 cursor-pointer rounded-md bg-white text-center text-base shadow',
+          'top-100 absolute right-0 z-10 w-24 translate-y-3 cursor-pointer rounded-md bg-white dark:bg-black dark:border-2 dark:border-white text-center text-base shadow',
           isOpen ? 'block' : 'hidden'
         )}
         id='menu-locale'

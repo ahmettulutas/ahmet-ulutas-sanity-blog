@@ -29,7 +29,7 @@ export default function RootLayout({
   params: { lng: string };
 }) {
   return (
-    <html lang={lng} dir={dir(lng)}>
+    <html lang={lng} dir={dir(lng)} suppressHydrationWarning>
       <head />
       <body
         className={`${inter.className} dark:bg-dark-bg dark:text-dark-text text-light-text`}
