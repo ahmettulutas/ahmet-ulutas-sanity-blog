@@ -29,11 +29,10 @@ export default async function Header({ lng }: { lng: string }) {
           <p>{t('blogs')}</p>
         </Link>
       </div>
-      <div>
-        {/* <Trans i18nKey="languageSwitcher" t={t}>
+      {/* <Trans i18nKey="languageSwitcher" t={t}>
         Switch from <strong>{lng}</strong> to:{' '}
       </Trans>  */}
-      </div>
+
       <div>
         <ThemeSwitcher />
         <LanguageSelector currentLocale={lng} />
