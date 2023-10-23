@@ -1,10 +1,10 @@
 import Link from 'next/link';
-import { getAllBlogs } from '@/lib/sanity-client-fns';
+import { getAllBlogs } from '@/sanity/lib/sanity-client-fns';
 import { useTranslation } from '@/i18n';
 import { SharedPageProps } from '../../layout';
 
 export default async function Page({ params }: SharedPageProps) {
-  const allBlogs = await getAllBlogs();
+  const allBlogs = await getAllBlogs(params.lng);
   const { t } = await useTranslation(params.lng, 'translation');
 
   return (

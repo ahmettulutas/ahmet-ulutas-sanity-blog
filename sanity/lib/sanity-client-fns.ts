@@ -9,8 +9,8 @@ import { getClient } from '@/sanity/lib/client';
 
 const client = getClient();
 
-export async function getAllBlogs(): Promise<Blog[]> {
-  return (await client.fetch(allBlogsQuery)) || [];
+export async function getAllBlogs(lang: string): Promise<Blog[]> {
+  return (await client.fetch(allBlogsQuery, { language: lang })) || [];
 }
 
 export async function getAllBlogsSlugs(): Promise<Pick<Blog, 'slug'>[]> {

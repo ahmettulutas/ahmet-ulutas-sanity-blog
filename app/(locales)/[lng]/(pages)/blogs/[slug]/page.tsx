@@ -1,7 +1,7 @@
 import {
   getAllBlogsSlugs,
   getBlogsAndMoreStories,
-} from '@/lib/sanity-client-fns';
+} from '@/sanity/lib/sanity-client-fns';
 import { SharedPageProps } from '../../../layout';
 import { notFound } from 'next/navigation';
 import { languages } from '@/i18n/settings';

@@ -4,8 +4,8 @@ import { defineField, defineType } from 'sanity';
 import authorSchema from '../author/authorSchema';
 
 export default defineType({
-  name: 'blog',
-  title: 'Blog',
+  name: 'blogs',
+  title: 'blogs',
   icon: BookIcon,
   type: 'document',
   fields: [
@@ -93,6 +93,11 @@ export default defineType({
       title: 'Author',
       type: 'reference',
       to: [{ type: authorSchema.name }],
+    }),
+    defineField({
+      name: 'language',
+      type: 'string',
+      readOnly: true,
     }),
   ],
   preview: {
