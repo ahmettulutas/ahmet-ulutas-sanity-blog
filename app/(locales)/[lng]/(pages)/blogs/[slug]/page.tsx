@@ -1,12 +1,12 @@
-import {
-  getAllBlogsSlugs,
-  getBlogsAndMoreStories,
-} from '@/lib/sanity-client-fns';
 import { SharedPageProps } from '../../../layout';
 import { notFound } from 'next/navigation';
 import { languages } from '@/i18n/settings';
 import PostContent from '@/components/post-content/PostContent';
 import { Container } from '@/components/container';
+import {
+  getAllBlogsSlugs,
+  getBlogsAndMoreStories,
+} from '@/sanity/lib/sanity-client-fns';
 
 async function getPageData(
   slug: string

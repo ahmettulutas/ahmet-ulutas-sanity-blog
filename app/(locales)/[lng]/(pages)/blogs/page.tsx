@@ -1,7 +1,8 @@
 import Link from 'next/link';
-import { getAllBlogs } from '@/lib/sanity-client-fns';
+
 import { useTranslation } from '@/i18n';
 import { SharedPageProps } from '../../layout';
+import { getAllBlogs } from '@/sanity/lib/sanity-client-fns';
 
 export default async function Page({ params }: SharedPageProps) {
   const allBlogs = await getAllBlogs();
