@@ -9,10 +9,11 @@ import PostContent from '@/components/post-content/PostContent';
 import { Container } from '@/components/container';
 
 async function getPageData(
-  slug: string
+  slug: string,
+  language: string
 ): Promise<ReturnType<typeof getBlogsAndMoreStories>> {
   try {
-    const { blog, moreBlogs } = await getBlogsAndMoreStories(slug);
+    const { blog, moreBlogs } = await getBlogsAndMoreStories(slug, language);
     return {
       blog,
       moreBlogs,
@@ -29,12 +30,13 @@ type Params = SharedPageProps & {
 };
 
 export default async function Page({ params }: Params & SharedPageProps) {
-  const { blog /* moreBlogs */ } = await getPageData(params.slug);
+  const { blog, moreBlogs } = await getPageData(params.slug, params.lng);
   return (
     <Container>
       <h1 className='mb-4 text-4xl font-bold text-center'>{blog.title}</h1>
       <PostContent content={blog?.content} />
       {/* {blog && <PostContent content={blog}/>  } */}
+      <h1>{JSON.stringify(moreBlogs)}</h1>
     </Container>
   );
 }

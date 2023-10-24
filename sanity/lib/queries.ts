@@ -5,6 +5,7 @@ const postFields = groq`
   title,
   date,
   _updatedAt,
+  content,
   excerpt,
   coverImage,
   "slug": slug.current,
@@ -22,8 +23,8 @@ export type Blog = {
   coverImage?: any;
   date?: string;
   _updatedAt?: string;
-  excerpt?: string;
-  author?: Author;
+  excerpt: string;
+  author: Author;
   content?: any;
 };
 
@@ -40,14 +41,13 @@ export const blogBySlugQuery = groq`
 export const blogSlugsQuery = groq`
 *[_type == "blogs" && defined(slug.current)][].slug.current
 `;
+
 export const blogAndMoreBlogsQuery = groq`
 {
-  "blog": *[_type == "blogs" && slug.current == $slug] | order(_updatedAt desc) [0] {
-    content,
+  "blog": *[_type == "blogs" && slug.current == $slug && language == $language] | order(_updatedAt desc) [0] {
     ${postFields}
   },
-  "moreBlogs": *[_type == "blogs" && slug.current != $slug] | order(date desc, _updatedAt desc) [0...2] {
-    content,
+  "moreBlogs": *[_type == "blogs" && slug.current != $slug && language == $language] | order(date desc, _updatedAt desc) [0...2] {
     ${postFields}
   }
 }`;
