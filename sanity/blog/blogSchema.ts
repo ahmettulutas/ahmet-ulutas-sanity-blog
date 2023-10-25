@@ -2,10 +2,11 @@ import { BookIcon } from '@sanity/icons';
 import { format, parseISO } from 'date-fns';
 import { defineField, defineType } from 'sanity';
 import authorSchema from '../author/authorSchema';
+import { isUniqueOtherThanLanguage } from '../lib/helpers';
 
 export default defineType({
-  name: 'blog',
-  title: 'Blog',
+  name: 'blogs',
+  title: 'blogs',
   icon: BookIcon,
   type: 'document',
   fields: [
@@ -22,7 +23,7 @@ export default defineType({
       options: {
         source: 'title',
         maxLength: 96,
-        isUnique: (value, context) => context.defaultIsUnique(value, context),
+        isUnique: isUniqueOtherThanLanguage,
       },
       validation: (rule) => rule.required(),
     }),
@@ -93,6 +94,12 @@ export default defineType({
       title: 'Author',
       type: 'reference',
       to: [{ type: authorSchema.name }],
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'language',
+      type: 'string',
+      readOnly: true,
     }),
   ],
   preview: {

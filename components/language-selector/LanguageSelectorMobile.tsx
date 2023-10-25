@@ -3,11 +3,11 @@ import { useTranslation } from '@/i18n/client';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { MdLanguage } from 'react-icons/md';
 import { AiOutlineClose } from 'react-icons/ai';
 import { LanguageSelectorType } from '.';
 import { languages } from '@/i18n/settings';
 import { generatePathName } from '@/helpers/helpers';
+import { BsGlobeAmericas } from 'react-icons/bs';
 
 export const LanguageSelectorMobile = ({
   currentLocale,
@@ -35,7 +35,7 @@ export const LanguageSelectorMobile = ({
         aria-expanded={showDrawer}
         aria-controls='locale-drawer'
       >
-        <MdLanguage width='18px' height='18px' />
+        <BsGlobeAmericas width='18px' height='18px' className='mr-1 ml-1' />
       </button>
 
       {/*      <FocusLock disabled={!showDrawer} returnFocus={true}> */}

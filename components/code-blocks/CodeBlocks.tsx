@@ -10,19 +10,11 @@ type CodeProps = {
 };
 const defaultCodeLanguage = 'tsx';
 
-const getCodeTheme = (theme: string | undefined) => {
-  switch (theme) {
-    case 'light':
-      return themes.github;
-    case 'dark':
-      return themes.oneDark;
-    case 'system':
-      return themes.github;
-    default:
-      return;
-  }
+const codeTheme = {
+  light: themes.github,
+  dark: themes.oneDark,
+  system: themes.github,
 };
-
 const RenderCodeBlock: React.FC<CodeProps> = ({ code, filename, language }) => {
   const { isCopied, copy } = useCopyToClipboard();
   const { theme } = useTheme();
@@ -39,7 +31,7 @@ const RenderCodeBlock: React.FC<CodeProps> = ({ code, filename, language }) => {
       </div>
 
       <Highlight
-        theme={getCodeTheme(theme)}
+        theme={codeTheme[theme as keyof typeof codeTheme]}
         code={code}
         language={language ?? defaultCodeLanguage}
       >

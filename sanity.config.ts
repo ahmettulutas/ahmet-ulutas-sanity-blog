@@ -11,7 +11,7 @@ import { apiVersion, dataset, projectId } from './sanity/env';
 import { schema } from './sanity/schema';
 import { SANITY_URL } from './constants/constants';
 import { codeInput } from '@sanity/code-input';
-
+import { documentInternationalization } from '@sanity/document-internationalization';
 export default defineConfig({
   basePath: SANITY_URL,
   projectId,
@@ -24,5 +24,14 @@ export default defineConfig({
     // Vision is a tool that lets you query your content with GROQ in the studio
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
+    documentInternationalization({
+      // Required configuration
+      supportedLanguages: [
+        { id: 'en', title: 'English' },
+        { id: 'tr', title: 'Turkish' },
+        { id: 'de', title: 'German' },
+      ],
+      schemaTypes: ['blogs'],
+    }),
   ],
 });
