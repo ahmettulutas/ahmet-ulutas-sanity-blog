@@ -1,10 +1,9 @@
 import {
-  getAllBlogsSlugs,
   getBlogsAndMoreStories,
+  getAllBlogsSlugs,
 } from '@/sanity/lib/sanity-client-fns';
 import { SharedPageProps } from '../../../layout';
 import { notFound } from 'next/navigation';
-import { languages } from '@/i18n/settings';
 import PostContent from '@/components/post-content/PostContent';
 import { Container } from '@/components/container';
 
@@ -23,13 +22,13 @@ async function getPageData(
   }
 }
 
-type Params = SharedPageProps & {
+type PageProps = SharedPageProps & {
   params: {
     slug: string;
   };
 };
 
-export default async function Page({ params }: Params & SharedPageProps) {
+export default async function Page({ params }: PageProps & SharedPageProps) {
   const { blog, moreBlogs } = await getPageData(params.slug, params.lng);
   return (
     <Container>
@@ -43,16 +42,7 @@ export default async function Page({ params }: Params & SharedPageProps) {
 
 export async function generateStaticParams() {
   const allSlugs = await getAllBlogsSlugs();
-  const paths: Array<string> = [];
-
-  allSlugs.forEach(({ slug }) => {
-    languages.forEach((locale) => {
-      paths.push(`/${locale}/blogs/${slug}`);
-    });
-  });
-
-  return {
-    paths,
-    fallback: 'blocking',
-  };
-};
+  return allSlugs.map((post) => ({
+    slug: post.slug,
+  }));
+}
