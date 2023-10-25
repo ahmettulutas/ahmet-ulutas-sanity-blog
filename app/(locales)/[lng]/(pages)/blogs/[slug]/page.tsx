@@ -41,7 +41,7 @@ export default async function Page({ params }: Params & SharedPageProps) {
   );
 }
 
-export const getStaticPaths = async () => {
+export async function generateStaticParams() {
   const allSlugs = await getAllBlogsSlugs();
   const paths: Array<string> = [];
 

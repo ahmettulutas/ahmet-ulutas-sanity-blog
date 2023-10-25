@@ -2,7 +2,7 @@ import { BookIcon } from '@sanity/icons';
 import { format, parseISO } from 'date-fns';
 import { defineField, defineType } from 'sanity';
 import authorSchema from '../author/authorSchema';
-import { isUniqueOtherThanLanguage } from '../lib/sanity-client-fns';
+import { isUniqueOtherThanLanguage } from '../lib/helpers';
 
 export default defineType({
   name: 'blogs',
@@ -94,6 +94,7 @@ export default defineType({
       title: 'Author',
       type: 'reference',
       to: [{ type: authorSchema.name }],
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'language',
