@@ -30,12 +30,13 @@ type PageProps = SharedPageProps & {
 
 export default async function Page({ params }: PageProps & SharedPageProps) {
   const { blog, moreBlogs } = await getPageData(params.slug, params.lng);
+  console.log(blog);
   return (
     <Container>
-      <h1 className='mb-4 text-4xl font-bold text-center'>{blog.title}</h1>
+      <h1 className='mb-4 text-4xl font-bold text-center'>{blog?.title}</h1>
       <PostContent content={blog?.content} />
       {/* {blog && <PostContent content={blog}/>  } */}
-      <h1>{JSON.stringify(moreBlogs)}</h1>
+      {/* <h1>{JSON.stringify(moreBlogs)}</h1> */}
     </Container>
   );
 }
