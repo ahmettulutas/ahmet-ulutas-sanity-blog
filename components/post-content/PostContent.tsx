@@ -3,6 +3,7 @@ import { PortableText } from '@portabletext/react';
 import React from 'react';
 import CodeBlock from '../code-blocks/CodeBlocks';
 import { TypedObject } from 'sanity';
+import HydrateWrapper from '../hydrate-wrapper/HydrateWrapper';
 
 const myPortableTextComponents = {
   types: {
@@ -12,7 +13,11 @@ const myPortableTextComponents = {
     text: ({ value }: any) => {
       return <u>{value}</u>;
     },
-    code: ({ value }: any) => <CodeBlock {...{ ...value }} />,
+    code: ({ value }: any) => (
+      <HydrateWrapper>
+        <CodeBlock {...{ ...value }} />
+      </HydrateWrapper>
+    ),
   },
 };
 

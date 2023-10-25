@@ -5,20 +5,21 @@ const postFields = groq`
   title,
   date,
   _updatedAt,
-  content,
   excerpt,
+  content,
+  language,
   coverImage,
   "slug": slug.current,
   "author": author->{name, picture},
 `;
 export type Author = {
-  name?: string;
-  picture?: any;
+  name: string;
+  picture: any;
 };
 
 export type Blog = {
   _id: string;
-  title?: string;
+  title: string;
   slug: string;
   coverImage?: any;
   date?: string;
@@ -26,10 +27,12 @@ export type Blog = {
   excerpt: string;
   author: Author;
   content?: any;
+  language: string;
+  _translations: Array<Blog>;
 };
 
 export const allBlogsQuery = groq`
-*[_type == "blogs" && language == $language] | order(date desc, _updatedAt desc) {
+*[_type == "blogs" && language == $language] | order(date desc, _updatedAt desc){
   ${postFields}
 }`;
 
