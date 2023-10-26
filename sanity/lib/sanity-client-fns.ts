@@ -27,5 +27,17 @@ export async function getBlogsAndMoreStories(
   slug: string,
   language: string
 ): Promise<{ blog: Blog; moreBlogs: Blog[] }> {
-  return await client.fetch(blogAndMoreBlogsQuery, { slug, language });
+  return await client.fetch(
+    blogAndMoreBlogsQuery,
+    {
+      slug,
+      language,
+    },
+    {
+      cache: 'force-cache',
+      next: {
+        revalidate: 30,
+      },
+    } /* todo - add a reusable sanity fetch component. ref = https://www.sanity.io/plugins/next-sanity */
+  );
 }
