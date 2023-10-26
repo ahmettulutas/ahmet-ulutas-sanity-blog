@@ -36,7 +36,7 @@ export async function getBlogsAndMoreStories(
     {
       cache: 'force-cache',
       next: {
-        revalidate: 30,
+        revalidate: 3,
       },
     } /* todo - add a reusable sanity fetch component. ref = https://www.sanity.io/plugins/next-sanity */
   );
