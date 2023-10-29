@@ -23,7 +23,7 @@ export default function SanityImage({
 }: SanityImageProps) {
   const imageUrl =
     image && urlForImage(image)?.height(height).width(width).fit('crop').url();
-  const blurUrl = urlForImage(image).width(20).quality(20).url();
+  /* const blurUrl = urlForImage(image).width(20).quality(20).url(); */
 
   return (
     <div
@@ -40,8 +40,8 @@ export default function SanityImage({
           sizes={sizes}
           src={imageUrl}
           priority={priority}
-          placeholder='blur'
-          blurDataURL={blurUrl}
+          /* placeholder='blur'
+          blurDataURL={blurUrl} */
         />
       )}
     </div>
