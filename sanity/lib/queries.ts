@@ -26,7 +26,7 @@ export type Blog = {
   _id: string;
   title: string;
   slug: string;
-  coverImage?: any;
+  coverImage: any;
   date?: string;
   _updatedAt?: string;
   excerpt: string;
