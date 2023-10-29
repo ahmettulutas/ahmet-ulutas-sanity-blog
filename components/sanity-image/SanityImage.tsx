@@ -19,16 +19,16 @@ export default function SanityImage({
   height = 2000,
   sizes = '(max-width: 600px) 90vw, (max-width: 1200px) 60vw, 500px',
   classesWrapper,
-  priority = true,
+  priority = false,
 }: SanityImageProps) {
   const imageUrl =
     image && urlForImage(image)?.height(height).width(width).fit('crop').url();
-  /* const blurUrl = urlForImage(image).width(20).quality(20).url(); */
+  /*   const blurUrl = urlForImage(image).width(20).quality(20).url(); todo - bugfix here for deployment. */
 
   return (
     <div
       className={twMerge(
-        'w-full overflow-hidden rounded-[3px] bg-gray-50 relative aspect-[16/9]',
+        'w-full overflow-hidden rounded-[3px] bg-gray-50 relative aspect-[16/9] h-full',
         classesWrapper
       )}
     >

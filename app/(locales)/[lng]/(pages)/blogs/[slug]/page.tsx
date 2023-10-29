@@ -6,8 +6,8 @@ import { SharedPageProps } from '../../../layout';
 import { notFound } from 'next/navigation';
 import RichTextContent from '@/components/rich-text-content/RichTextContent';
 import { Container } from '@/components/container';
-import Link from 'next/link';
 import SanityImage from '@/components/sanity-image/SanityImage';
+import MoreBlogs from '@/components/more-blogs/MoreBlogs';
 
 async function getPageData(
   slug: string,
@@ -36,16 +36,9 @@ export default async function Page({ params }: PageProps & SharedPageProps) {
   return (
     <Container>
       <h1 className='mb-4 text-4xl font-bold text-center'>{blog?.title}</h1>
-      <SanityImage image={blog?.coverImage} classesWrapper='my-10' />
+      <SanityImage image={blog?.coverImage} classesWrapper='my-10' priority />
       <RichTextContent content={blog?.content} />
-      <section className='grid grid-cols-1 md:grid-cols-2 gap-6'>
-        {moreBlogs.map((item) => (
-          <Link href={item?.slug} key={item._id}>
-            <SanityImage image={item?.coverImage} />
-            <h1>{item.title}</h1>
-          </Link>
-        ))}
-      </section>
+      <MoreBlogs moreBlogs={moreBlogs} currentLanguage={params.lng} />
     </Container>
   );
 }

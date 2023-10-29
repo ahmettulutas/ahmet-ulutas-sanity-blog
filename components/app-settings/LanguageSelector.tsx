@@ -10,22 +10,21 @@ export const LanguageSelector = ({ currentLocale }: AppSettings) => {
   const router = useRouter();
 
   return (
-    <div>
-      <select
-        className='mb-2 w-full cursor-pointer p-1 rounded-md dark:border-2 dark:border-white text-center shadow dark:bg-dark-bg'
-        defaultValue={currentLocale}
-        onChange={(event) => {
-          router.push(
-            `/${String(event.target.value)}/${generatePathName(pathname)}`
-          );
-        }}
-      >
-        {languages?.map((lang) => (
-          <option key={lang} value={lang}>
-            {lang.toUpperCase()}
-          </option>
-        ))}
-      </select>
-    </div>
+    <select
+      aria-label='select-language'
+      className='mb-2 w-full cursor-pointer p-1 rounded-md dark:border-2 dark:border-white text-center shadow dark:bg-dark-bg'
+      defaultValue={currentLocale}
+      onChange={(event) => {
+        router.push(
+          `/${String(event.target.value)}/${generatePathName(pathname)}`
+        );
+      }}
+    >
+      {languages?.map((lang) => (
+        <option key={lang} value={lang}>
+          {lang.toUpperCase()}
+        </option>
+      ))}
+    </select>
   );
 };

@@ -1,18 +1,16 @@
 'use client';
 import { useTranslation } from '@/i18n/client';
-import { usePathname, useRouter } from 'next/navigation';
+
 import { useEffect, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { AiOutlineClose } from 'react-icons/ai';
 import { AppSettings } from '.';
-import { languages } from '@/i18n/settings';
-import { generatePathName } from '@/helpers/helpers';
-import { MdOutlineSettingsSuggest } from 'react-icons/md';
+
+import { FiSettings } from 'react-icons/fi';
 import ThemeSwitcher from '@/themes/ThemeSwitcher';
+import { LanguageSelector } from './LanguageSelector';
 
 export const AppSettingsMobile = ({ currentLocale }: AppSettings) => {
-  const router = useRouter();
-  const pathname = usePathname();
   const [showDrawer, setShowDrawer] = useState(false);
   const { t } = useTranslation(currentLocale, 'translation');
   useEffect(() => {
@@ -35,7 +33,7 @@ export const AppSettingsMobile = ({ currentLocale }: AppSettings) => {
         aria-expanded={showDrawer}
         aria-controls='locale-drawer'
       >
-        <MdOutlineSettingsSuggest className='mr-1 ml-1 w-6 h-6' />
+        <FiSettings className='mr-1 ml-1 w-6 h-6 animate-spin-slow' />
       </button>
 
       {/*      <FocusLock disabled={!showDrawer} returnFocus={true}> */}
@@ -66,21 +64,7 @@ export const AppSettingsMobile = ({ currentLocale }: AppSettings) => {
           </button>
         </div>
         <p className='mt-8 text-base font-semibold'> {t('language')}</p>
-        <select
-          className='mb-2 w-full cursor-pointer p-2 rounded-md dark:border-2 dark:border-white text-center shadow dark:bg-dark-bg'
-          defaultValue={currentLocale}
-          onChange={(event) => {
-            router.push(
-              `/${String(event.target.value)}/${generatePathName(pathname)}`
-            );
-          }}
-        >
-          {languages?.map((lang) => (
-            <option key={lang} value={lang}>
-              {lang}
-            </option>
-          ))}
-        </select>
+        <LanguageSelector currentLocale={currentLocale} />
         <p className='text-base font-semibold'> {t('theme')}</p>
         <ThemeSwitcher />
       </div>

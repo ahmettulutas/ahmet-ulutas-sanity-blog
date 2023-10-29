@@ -22,6 +22,9 @@ const config: Config = {
           secondary: '#EE1B1B',
         },
       },
+      animation: {
+        'spin-slow': 'spin 9s linear infinite',
+      },
     },
   },
   darkMode: 'class',

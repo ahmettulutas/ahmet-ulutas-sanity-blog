@@ -9,14 +9,16 @@ import SanityImage from '../sanity-image/SanityImage';
 const myPortableTextComponents = {
   types: {
     image: ({ value }: any) => (
-      <figure className='my-4'>
+      <figure className='my-4 p-2 shadow-md'>
         <SanityImage
           image={value}
           alt={value.alt}
           classesWrapper='relative aspect-[16/9]'
         />
         {value?.caption && (
-          <figcaption className='font-sans text-xs'>{value.caption}</figcaption>
+          <figcaption className='text-xs text-right'>
+            {value.caption}
+          </figcaption>
         )}
       </figure>
     ),
