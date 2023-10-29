@@ -1,0 +1,61 @@
+#!/bin/sh
+red='\033[0;31m'
+green='\033[0;32m'
+yellow='\033[0;33m'
+no_color='\033[0m'
+
+FILES_PATTERN='\.(js|jsx|ts|tsx)(\..+)?$'
+FORBIDDENCONSOLE='console\.[clear|dir|log|info|warn|error|table]'
+FORBIDDENDEBUGGER='debugger'
+
+echo -e "\n${yellow}Executing pre-commit hook...${no_color}\n"
+
+if [ -z "$husky_skip_init" ]; then
+  debug () {
+    if [ "$HUSKY_DEBUG" = "1" ]; then
+      echo "husky (debug) - $1"
+
+    fi
+    #check for console. references in code
+    if git diff --cached --name-only | \
+      grep -E $FILES_PATTERN | \
+      xargs grep --with-filename -n $FORBIDDENCONSOLE | \
+      grep -v '//';
+    then
+      echo -e "\n${red}COMMIT REJECTED!  Found 'console.' references. Please remove them before committing.\n${no_color}"
+      exit 1;
+    fi
+    #check for debugger references in code
+    if git diff --cached --name-only | \
+      grep -E $FILES_PATTERN | \
+      xargs grep --with-filename -n $FORBIDDENDEBUGGER | \
+      grep -v '//';
+    then  
+      echo -e "\n${red}COMMIT REJECTED!  Found 'debugger' references. Please remove them before committing.\n${no_color}"
+      exit 1;
+    fi
+  }
+
+  readonly hook_name="$(basename "$0")"
+  debug "starting $hook_name..."
+  if [ "$HUSKY" = "0" ]; then
+    debug "HUSKY env variable is set to 0, skipping hook"
+    exit 0
+  fi
+  if [ -f ~/.huskyrc ]; then
+    debug "sourcing ~/.huskyrc"
+    . ~/.huskyrc
+  fi
+  export readonly husky_skip_init=1
+  sh -e "$0" "$@"
+  exitCode="$?"
+  if [ $exitCode != 0 ]; then
+    echo "${red} COMMIT REJECTED! husky - $hook_name hook exited with code $exitCode (error)"
+
+  else
+    echo "${green}Good!  Git successfully committed! 👍 ${no_color}\n"
+  fi
+  exit $exitCode
+fi
+
+npm run type-check && npm run lint-staged

@@ -2,13 +2,17 @@
   "name": "ahmet-sanity-blog",
   "version": "0.1.0",
   "private": true,
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "eslint --fix"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --max-warnings 0 --fix",
+    "lint-staged": "lint-staged",
     "type-check": "tsc --noEmit",
-    "postinstall": "husky install",
+    "postinstall": "husky install | chmod ug+x .husky/*",
     "format": "prettier --check --ignore-path .gitignore .",
     "format:fix": "prettier --write --ignore-path .gitignore ."
   },
