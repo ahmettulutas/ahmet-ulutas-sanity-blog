@@ -1,8 +1,11 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  locales: ['en-US', 'tr', 'de'],
-  defaultLocale: 'en',
+  images: {
+    remotePatterns: [
+      { hostname: 'cdn.sanity.io' },
+    ]
+  }
 };
 
 module.exports = nextConfig;

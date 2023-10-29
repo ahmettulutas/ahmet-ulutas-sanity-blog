@@ -1,6 +1,7 @@
 import { useCopyToClipboard } from '@/hooks';
 import { Highlight, themes } from 'prism-react-renderer';
-import { BiCopy, BiCopyAlt } from 'react-icons/bi';
+import { BiCopyAlt } from 'react-icons/bi';
+import { MdOutlineFileDownloadDone } from 'react-icons/md';
 import { useTheme } from 'next-themes';
 
 type CodeProps = {
@@ -41,10 +42,11 @@ const RenderCodeBlock: React.FC<CodeProps> = ({ code, filename, language }) => {
             className={`${className} overflow-x-auto p-4 rounded-2xl relative`}
           >
             <button
+              aria-label='copy-to-clipboard'
               className='absolute right-4 top-2 text-2xl'
               onClick={() => copy(code)}
             >
-              {isCopied ? <BiCopyAlt /> : <BiCopy />}
+              {isCopied ? <MdOutlineFileDownloadDone /> : <BiCopyAlt />}
             </button>
             {tokens.map((line, i) => (
               <div key={i} {...getLineProps({ line })} className='m-1'>

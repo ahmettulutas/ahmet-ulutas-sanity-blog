@@ -4,15 +4,22 @@ import React from 'react';
 import CodeBlock from '../code-blocks/CodeBlocks';
 import { TypedObject } from 'sanity';
 import HydrateWrapper from '../hydrate-wrapper/HydrateWrapper';
+import SanityImage from '../sanity-image/SanityImage';
 
 const myPortableTextComponents = {
   types: {
     image: ({ value }: any) => (
-      <h1 className='text-2xl '> {value?.imageUrl}</h1>
+      <div>
+        <SanityImage
+          image={value}
+          alt={value.alt}
+          classesWrapper='relative aspect-[16/9]'
+        />
+        {value?.caption && (
+          <div className='font-sans text-sm text-gray-600'>{value.caption}</div>
+        )}
+      </div>
     ),
-    text: ({ value }: any) => {
-      return <u>{value}</u>;
-    },
     code: ({ value }: any) => (
       <HydrateWrapper>
         <CodeBlock {...{ ...value }} />
@@ -21,8 +28,8 @@ const myPortableTextComponents = {
   },
 };
 
-const PostContent = ({ content }: { content: TypedObject }) => {
+const RichTextContent = ({ content }: { content: TypedObject }) => {
   return <PortableText value={content} components={myPortableTextComponents} />;
 };
 
-export default PostContent;
+export default RichTextContent;
