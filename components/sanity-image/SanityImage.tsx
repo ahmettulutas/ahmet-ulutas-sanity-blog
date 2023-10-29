@@ -7,7 +7,7 @@ interface SanityImageProps {
   alt?: string;
   width?: number;
   height?: number;
-  size?: string;
+  sizes?: string;
   classesWrapper?: string;
   priority?: boolean;
 }
@@ -17,12 +17,14 @@ export default function SanityImage({
   alt = 'Cover image',
   width = 3500,
   height = 2000,
-  size = '100vw',
+  sizes = '(max-width: 600px) 90vw, (max-width: 1200px) 60vw, 500px',
   classesWrapper,
   priority = true,
 }: SanityImageProps) {
   const imageUrl =
     image && urlForImage(image)?.height(height).width(width).fit('crop').url();
+  const blurUrl = urlForImage(image).width(20).quality(20).url();
+
   return (
     <div
       className={twMerge(
@@ -35,9 +37,11 @@ export default function SanityImage({
           alt={alt}
           width={width}
           height={height}
-          sizes={size}
+          sizes={sizes}
           src={imageUrl}
           priority={priority}
+          placeholder='blur'
+          blurDataURL={blurUrl}
         />
       )}
     </div>

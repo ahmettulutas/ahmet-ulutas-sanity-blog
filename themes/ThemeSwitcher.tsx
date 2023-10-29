@@ -19,7 +19,7 @@ const ThemeSwitcher = () => {
       aria-label='toggle theme'
       value={theme}
       onChange={(e) => setTheme(e.target.value)}
-      className='cursor-pointer rounded-md dark:border-2 dark:border-white text-center shadow'
+      className='w-full cursor-pointer p-1 rounded-md dark:border-2 dark:border-white text-center shadow dark:bg-dark-bg'
     >
       <option value='system'>System</option>
       <option value='dark'>Dark</option>
