@@ -8,7 +8,12 @@ const postFields = groq`
   excerpt,
   content,
   language,
-  coverImage,
+  coverImage {
+      asset->{
+    ...,
+    metadata
+  }
+  },
   "slug": slug.current,
   "author": author->{name, picture},
 `;

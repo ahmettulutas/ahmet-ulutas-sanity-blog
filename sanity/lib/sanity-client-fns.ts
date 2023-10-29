@@ -34,9 +34,8 @@ export async function getBlogsAndMoreStories(
       language,
     },
     {
-      cache: 'force-cache',
       next: {
-        revalidate: 3,
+        revalidate: 60 * 60,
       },
     } /* todo - add a reusable sanity fetch component. ref = https://www.sanity.io/plugins/next-sanity */
   );
