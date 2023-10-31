@@ -3,7 +3,7 @@ import React from 'react';
 import { AppSettings } from '.';
 import { languages } from '@/i18n/settings';
 import { usePathname, useRouter } from 'next/navigation';
-import { generatePathName } from '@/helpers/helpers';
+import { generatePathName } from '@/lib/helpers';
 
 export const LanguageSelector = ({ currentLocale }: AppSettings) => {
   const pathname = usePathname();
@@ -12,7 +12,7 @@ export const LanguageSelector = ({ currentLocale }: AppSettings) => {
   return (
     <select
       aria-label='select-language'
-      className='mb-2 w-full cursor-pointer p-1 rounded-md dark:border-2 dark:border-white text-center shadow dark:bg-dark-bg'
+      className='mb-2 w-full cursor-pointer p-1 rounded-md text-center shadow-sm hover:shadow-md dark:shadow-white dark:bg-dark-bg'
       defaultValue={currentLocale}
       onChange={(event) => {
         router.push(

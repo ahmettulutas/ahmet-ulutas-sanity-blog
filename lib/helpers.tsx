@@ -9,6 +9,13 @@ export const generatePathName = (path: string): string => {
   if (splittedPath.length === 1) return '';
   return splittedPath.slice(1, splittedPath.length).join('/');
 };
+export const generateLocalesForMeta = (languages: Array<string>) => {
+  const locales: Record<string, string> = {};
+  for (const key of languages) {
+    locales[key] = key;
+  }
+  return locales;
+};
 
 /*   const handleMenuKeyDown = (e: KeyboardEvent<HTMLUListElement>) => {
     switch (e.key) {
