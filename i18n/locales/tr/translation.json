@@ -5,5 +5,11 @@
   "pageTitle": "Türkçe Sayfa Başlığı",
   "gotoStudio": "Stüdyoya Git",
   "theme": "Tema",
-  "moreBlogs": "Daha Fazla Gönderi"
+  "moreBlogs": "Daha Fazla Gönderi",
+  "metaData": {
+    "pageTitle": "Ahmet Ulutaş'ın Blog Sayfası",
+    "pageDescription": "Ahmet Ulutaş'ın frontend blogu.",
+    "applicationName": "Frontend Geliştirici Blog",
+    "category": "frontend geliştirme | yazılım | blog"
+  }
 }

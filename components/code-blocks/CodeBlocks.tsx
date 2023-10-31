@@ -23,7 +23,7 @@ const RenderCodeBlock: React.FC<CodeProps> = ({ code, filename, language }) => {
   if (!code) return <></>;
   return (
     <div className='rounded-2xl p-4 dark:bg-gray-700 bg-gray-100 my-4 relative'>
-      <div className='flex justify-between my-1'>
+      <div className='flex justify-between my-1 flex-wrap'>
         <p className='opacity-70'>{filename}</p>
         <p>
           Language:{' '}
@@ -39,11 +39,11 @@ const RenderCodeBlock: React.FC<CodeProps> = ({ code, filename, language }) => {
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <pre
             style={style}
-            className={`${className} overflow-x-auto p-4 rounded-2xl relative`}
+            className={`${className} overflow-x-auto p-4 pt-8 md:pt-4 rounded-2xl`}
           >
             <button
               aria-label='copy-to-clipboard'
-              className='absolute right-4 top-2 text-2xl'
+              className='absolute right-6 top-14 text-2xl'
               onClick={() => copy(code)}
             >
               {isCopied ? <MdOutlineFileDownloadDone /> : <BiCopyAlt />}

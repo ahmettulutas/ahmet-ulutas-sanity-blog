@@ -4,5 +4,11 @@
   "h1": "Deutsch Header",
   "pageTitle": "Deutsch Page Title",
   "gotoStudio": "Geh ins Studio",
-  "moreBlogs": "Weitere Blogs"
+  "moreBlogs": "Weitere Blogs",
+  "metaData": {
+    "pageTitle": "Ahmet Ulutaş Blog-Seite",
+    "pageDescription": "Dies ist Ahmet Ulutaş' Blog für Frontend-Entwicklung.",
+    "applicationName": "Frontend-Entwickler-Blog",
+    "category": "Frontend-Entwicklung | Software | Blog"
+  }
 }

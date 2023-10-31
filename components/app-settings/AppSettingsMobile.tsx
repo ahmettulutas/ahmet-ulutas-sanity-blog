@@ -63,9 +63,9 @@ export const AppSettingsMobile = ({ currentLocale }: AppSettings) => {
             <AiOutlineClose width='18px' height='18px' variant='secondary' />
           </button>
         </div>
-        <p className='mt-8 text-base font-semibold'> {t('language')}</p>
+        <p className='mt-8'> {t('language')}</p>
         <LanguageSelector currentLocale={currentLocale} />
-        <p className='text-base font-semibold'> {t('theme')}</p>
+        <p> {t('theme')}</p>
         <ThemeSwitcher />
       </div>
     </>
