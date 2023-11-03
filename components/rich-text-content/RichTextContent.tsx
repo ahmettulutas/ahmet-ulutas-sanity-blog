@@ -9,7 +9,7 @@ import SanityImage from '../sanity-image/SanityImage';
 const myPortableTextComponents = {
   types: {
     image: ({ value }: any) => (
-      <figure className='my-4 p-2 shadow-md'>
+      <figure className='my-4 p-2 shadow-md dark:shadow-none'>
         <SanityImage
           image={value}
           alt={value.alt}

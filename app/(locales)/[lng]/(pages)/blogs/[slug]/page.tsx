@@ -44,6 +44,7 @@ export default async function Page({ params }: PageProps & SharedPageProps) {
 }
 
 export async function generateStaticParams() {
+  /* todo map over all locales and get pageData accordingly */
   const allSlugs = await getAllBlogsSlugs();
   return allSlugs.map((post) => ({
     slug: post.slug,

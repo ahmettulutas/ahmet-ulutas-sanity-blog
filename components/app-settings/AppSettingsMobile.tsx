@@ -66,7 +66,7 @@ export const AppSettingsMobile = ({ currentLocale }: AppSettings) => {
         <p className='mt-8'> {t('language')}</p>
         <LanguageSelector currentLocale={currentLocale} />
         <p> {t('theme')}</p>
-        <ThemeSwitcher />
+        <ThemeSwitcher currentLocale={currentLocale} />
       </div>
     </>
   );

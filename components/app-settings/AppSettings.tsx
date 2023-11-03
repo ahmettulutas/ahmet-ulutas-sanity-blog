@@ -11,7 +11,7 @@ export const AppSettings = ({ currentLocale }: { currentLocale: string }) => {
     <>
       <div className='hidden md:block'>
         <LanguageSelector currentLocale={currentLocale} />
-        <ThemeSwitcher />
+        <ThemeSwitcher currentLocale={currentLocale} />
       </div>
 
       <div className='block md:hidden'>

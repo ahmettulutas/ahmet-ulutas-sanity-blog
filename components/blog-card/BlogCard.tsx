@@ -11,7 +11,7 @@ type BlogCardProps = {
 const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
   return (
     <article className='h-full'>
-      <Link href={blog.slug} className='grid gap-4'>
+      <Link href={blog.slug} className='flex justify-between flex-col gap-4'>
         <div className='shadow-md transition-shadow duration-200 hover:shadow-lg'>
           <SanityImage image={blog.coverImage} />
         </div>

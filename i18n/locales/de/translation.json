@@ -1,7 +1,12 @@
 {
   "appSettings": "App Settings",
   "language": "Language",
+  "homePageTitle": "Titel der Startseite",
   "h1": "Deutsch Header",
+  "welcome": "Wilkommen",
+  "dark": "Dunkel",
+  "light": "Licht",
+  "system": "System",
   "pageTitle": "Deutsch Page Title",
   "gotoStudio": "Geh ins Studio",
   "moreBlogs": "Weitere Blogs",

@@ -46,7 +46,7 @@ export async function generateMetadata(
           url: '/images/og-image.webp',
           width: 1800,
           height: 1600,
-          alt: 'Ahmet Ulutaş Blog OG Image Alt',
+          alt: 'Ahmet Ulutaş Blog OG Image Alt' /* todo */,
         },
         ...previousImages,
       ],
@@ -57,8 +57,14 @@ export async function generateMetadata(
       card: 'summary_large_image',
       title: t('metaData.pageTitle'),
       description: t('metaData.pageDescription'),
-
-      images: ['/images/og-image.webp'],
+      images: [
+        {
+          url: '/images/og-image.webp',
+          alt: 'Ahmet Ulutaş Blog OG Image Alt' /* todo */,
+          width: 1200,
+          height: 675,
+        },
+      ],
     },
     formatDetection: {
       email: false,
@@ -87,7 +93,7 @@ export default function RootLayout({
     <html lang={lng} dir={dir(lng)} suppressHydrationWarning>
       <head />
       <body
-        className={`${inter.className} dark:bg-dark-bg dark:text-dark-text text-light-text`}
+        className={`${inter.className} dark:bg-dark-bg dark:text-dark-text text-light-text transition-all duration-150 ease-in`}
       >
         <Provider>{children}</Provider>
       </body>
