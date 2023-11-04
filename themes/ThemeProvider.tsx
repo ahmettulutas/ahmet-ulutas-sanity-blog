@@ -2,7 +2,7 @@
 import React from 'react';
 import { ThemeProvider } from 'next-themes';
 
-const Provider = ({ children }: { children: React.ReactNode }) => {
+const NextThemeProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <ThemeProvider attribute='class' defaultTheme='light'>
       {children}
@@ -10,4 +10,4 @@ const Provider = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default Provider;
+export default NextThemeProvider;

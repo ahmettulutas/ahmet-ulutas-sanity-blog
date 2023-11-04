@@ -16,6 +16,8 @@
     "pageTitle": "Ahmet Ulutaş's Blog Page",
     "pageDescription": "This is Ahmet Ulutaş Blog for frontend development.",
     "applicationName": "Frontend Developer Blog",
-    "category": "frontend development | software | blog"
+    "category": "frontend development | software | blog",
+    "twitterImageAlt": "Twitter Image Alt",
+    "ogImageAlt": "OG Image Alt"
   }
 }

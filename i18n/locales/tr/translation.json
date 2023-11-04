@@ -15,6 +15,8 @@
     "pageTitle": "Ahmet Ulutaş'ın Blog Sayfası",
     "pageDescription": "Ahmet Ulutaş'ın frontend blogu.",
     "applicationName": "Frontend Geliştirici Blog",
-    "category": "frontend geliştirme | yazılım | blog"
+    "category": "frontend geliştirme | yazılım | blog",
+    "twitterImageAlt": "Twitter Görüntü Açıklaması",
+    "ogImageAlt": "OG Görüntü Açıklaması"
   }
 }

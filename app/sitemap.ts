@@ -2,19 +2,6 @@ import { MetadataRoute } from 'next';
 /* return type must be Sitemap
 Reference link : https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap */
 
-type Sitemap = Array<{
-  url: string;
-  lastModified?: string | Date;
-  changeFrequency?:
-    | 'always'
-    | 'hourly'
-    | 'daily'
-    | 'weekly'
-    | 'monthly'
-    | 'yearly'
-    | 'never';
-  priority?: number;
-}>;
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {

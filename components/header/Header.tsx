@@ -2,10 +2,11 @@ import Link from 'next/link';
 /* import { Trans } from 'react-i18next/TransWithoutContext' */
 import { useServerSideTranslation } from '@/i18n';
 import { AppSettings } from '../app-settings';
-import { SANITY_URL } from '@/constants/constants';
+
 import { FiBook } from 'react-icons/fi';
 import { SiSanity } from 'react-icons/si';
 import { Container } from '../container';
+import { SANITY_URL } from '@/lib/constants';
 
 export default async function Header({ lng }: { lng: string }) {
   const { t } = await useServerSideTranslation(lng, 'translation');

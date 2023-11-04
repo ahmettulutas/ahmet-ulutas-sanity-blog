@@ -9,9 +9,10 @@ import { deskTool } from 'sanity/desk';
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import { apiVersion, dataset, projectId } from './sanity/env';
 import { schema } from './sanity/schema';
-import { SANITY_URL } from './constants/constants';
+import { SANITY_URL } from './lib/constants';
 import { codeInput } from '@sanity/code-input';
 import { documentInternationalization } from '@sanity/document-internationalization';
+
 export default defineConfig({
   basePath: SANITY_URL,
   projectId,
