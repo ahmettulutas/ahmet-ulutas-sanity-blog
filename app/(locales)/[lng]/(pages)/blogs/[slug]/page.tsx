@@ -12,8 +12,8 @@ import type { Metadata, ResolvingMetadata } from 'next';
 import { languages } from '@/i18n/settings';
 import SanityImage from '@/components/sanity-image/SanityImage';
 import MoreBlogs from '@/components/more-blogs/MoreBlogs';
-import { generateOgImages, getDefaultMetaData } from '@/lib/helpers';
-import { urlForImage } from '@/sanity/lib/image';
+import { generateMetaImages, getDefaultMetaData } from '@/lib/helpers';
+import { ogImageSizes, twitterImageSizes } from '@/lib/constants';
 
 async function getPageData(
   slug: string,
@@ -45,21 +45,40 @@ export async function generateMetadata(
   if (!blogPost) return getDefaultMetaData(params.lng, parent);
 
   const previousImages = (await parent).openGraph?.images || [];
-  const blogMetaTitle = blogPost?.metaFields?.title || blogPost.title;
+  const blogMetaTitle = blogPost.metaFields?.title || blogPost.title;
   const blogMetaDescription =
-    blogPost?.metaFields?.description || blogPost.excerpt;
+    blogPost.metaFields?.description || blogPost.excerpt;
+  const generatedOGImages = generateMetaImages({
+    sanityImage: blogPost.metaFields?.shareImage,
+    sizes: ogImageSizes,
+  });
+  const generatedTwitterImages = generateMetaImages({
+    sanityImage: blogPost.metaFields?.shareImage,
+    sizes: twitterImageSizes,
+  });
+
   return {
     title: blogMetaTitle,
     description: blogMetaDescription,
     openGraph: {
       images:
-        generateOgImages(blogPost?.metaFields?.shareImage).length > 0
-          ? [
-              ...generateOgImages(blogPost?.metaFields?.shareImage),
-              ...previousImages,
-            ]
+        generatedOGImages.length > 0
+          ? [...generatedOGImages, ...previousImages]
           : previousImages,
+    },
+    twitter: {
+      card: 'summary_large_image',
       title: blogMetaTitle,
+      description: blogMetaDescription,
+      images:
+        generatedTwitterImages.length > 0
+          ? [...generatedTwitterImages, ...previousImages]
+          : previousImages,
+    },
+    alternates: {
+      canonical: `${new URL(process.env.NEXT_PUBLIC_BASE_URL as string)}/${
+        params.lng
+      }/blogs/${slug}`,
     },
   };
 }

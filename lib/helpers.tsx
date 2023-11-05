@@ -2,6 +2,8 @@ import { useServerSideTranslation } from '@/i18n';
 import { languages } from '@/i18n/settings';
 import { urlForImage } from '@/sanity/lib/image';
 import { Metadata, ResolvingMetadata } from 'next';
+import opengraphImage from '../public/images/opengraph-image.webp';
+import { ogImageSizes, twitterImageSizes } from './constants';
 
 /**
  * Generates path name by omitting the locale from the current path
@@ -49,10 +51,7 @@ export const getDefaultMetaData = async (
   const { t } = await useServerSideTranslation(currentLanguage, 'translation'); // This is not actually a hook, so you I intentionally ignored it here.
   const previousImages = (await parent).openGraph?.images || [];
   return {
-    title: {
-      template: `'%s | ${t('metaData.pageTitle')}`,
-      default: t('metaData.pageTitle'),
-    },
+    title: t('metaData.pageTitle'),
     description: t('metaData.pageDescription'),
     applicationName: t('metaData.applicationName'),
     category: t('metaData.category'),
@@ -63,22 +62,15 @@ export const getDefaultMetaData = async (
     referrer: 'origin-when-cross-origin',
     keywords: ['Typescript', 'React', 'JavaScript', 'Frontend Development'],
     openGraph: {
-      title: {
-        template: `'%s | ${t('metaData.pageTitle')}`,
-        default: t('metaData.pageTitle'),
-      },
+      title: t('metaData.pageTitle'),
       images: [
-        {
-          url: '/images/og-image.webp',
-          width: 800,
-          height: 600,
-        },
-        {
-          url: '/images/og-2.jpeg',
-          width: 1800,
-          height: 1600,
-          alt: t('metaData.ogImageAlt'),
-        },
+        ...generateMetaImages({
+          staticImage: {
+            url: opengraphImage.src,
+            alt: t('metaData.twitterImageAlt'),
+          },
+          sizes: ogImageSizes,
+        }),
         ...previousImages,
       ],
       locale: currentLanguage,
@@ -86,18 +78,17 @@ export const getDefaultMetaData = async (
     },
     twitter: {
       card: 'summary_large_image',
-      title: {
-        template: `'%s | ${t('metaData.pageTitle')}`,
-        default: t('metaData.pageTitle'),
-      },
+      title: t('metaData.pageTitle'),
       description: t('metaData.pageDescription'),
       images: [
-        {
-          url: '/images/og-2.jpeg',
-          alt: t('metaData.twitterImageAlt'),
-          width: 1200,
-          height: 675,
-        },
+        ...generateMetaImages({
+          staticImage: {
+            url: opengraphImage.src,
+            alt: t('metaData.twitterImageAlt'),
+          },
+          sizes: twitterImageSizes,
+        }),
+        ...previousImages,
       ],
     },
     formatDetection: {
@@ -106,7 +97,7 @@ export const getDefaultMetaData = async (
       telephone: false,
     },
     alternates: {
-      canonical: '/',
+      canonical: new URL(process.env.NEXT_PUBLIC_BASE_URL as string),
       languages: generateLocalesForMetaData(languages),
     },
   };
@@ -120,22 +111,43 @@ export type ImageType = {
   };
 };
 
-export const generateOgImages = (image: ImageType): Array<any> => {
-  if (!image) return [];
-  let ogImageSizes = [
-    { width: 800, height: 600 },
-    { width: 1800, height: 1600 },
-  ];
-  const sanityImages = [];
-  for (let { width, height } of ogImageSizes) {
-    sanityImages.push({
-      width,
-      height,
-      alt: image?.alt || '',
-      url: urlForImage(image)?.height(height).width(width).fit('crop').url(),
-    });
+type GenerateMetaImageProps = {
+  sanityImage?: ImageType;
+  sizes: Array<{ width: number; height: number }>;
+  staticImage?: { url: string | URL; alt?: string };
+};
+export const generateMetaImages = ({
+  sanityImage,
+  sizes,
+  staticImage,
+}: GenerateMetaImageProps): Array<any> => {
+  if (!sanityImage || !staticImage?.url) return [];
+  const metaImages = [];
+  if (sanityImage) {
+    for (let { width, height } of sizes) {
+      metaImages.push({
+        width,
+        height,
+        alt: sanityImage?.alt || '',
+        url: urlForImage(sanityImage)
+          ?.height(height)
+          .width(width)
+          .fit('crop')
+          .url(),
+      });
+    }
   }
-  return sanityImages;
+  if (staticImage) {
+    for (let { width, height } of sizes) {
+      metaImages.push({
+        width,
+        height,
+        alt: staticImage?.alt || '',
+        url: staticImage.url,
+      });
+    }
+  }
+  return metaImages;
 };
 
 /*   const handleMenuKeyDown = (e: KeyboardEvent<HTMLUListElement>) => {
