@@ -1,10 +1,10 @@
-import { Blog } from '@/sanity/lib/queries';
+import { BlogPost } from '@/sanity/lib/queries';
 import React from 'react';
 import BlogCard from '../blog-card/BlogCard';
 import { useServerSideTranslation } from '@/i18n';
 
 type MoreBlogsProps = {
-  moreBlogs: Array<Blog>;
+  moreBlogs: Array<BlogPost>;
   currentLanguage: string;
 };
 const MoreBlogs: React.FC<MoreBlogsProps> = async ({

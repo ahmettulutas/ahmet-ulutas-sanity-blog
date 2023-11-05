@@ -1,11 +1,11 @@
-import { Blog } from '@/sanity/lib/queries';
+import { BlogPost } from '@/sanity/lib/queries';
 import SanityImage from '../sanity-image/SanityImage';
 import Link from 'next/link';
 import PostDate from '../post-date/PostDate';
 import AuthorAvatar from '../author-avatar/AuthorAvatar';
 
 type BlogCardProps = {
-  blog: Blog;
+  blog: BlogPost;
 };
 
 const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {

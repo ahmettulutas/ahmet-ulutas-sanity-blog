@@ -23,7 +23,7 @@ export default defineType({
       options: {
         source: 'title',
         maxLength: 96,
-        isUnique: isUniqueOtherThanLanguage,
+        isUnique: isUniqueOtherThanLanguage, // I connected same blogs with different locales with the same slugs.
       },
       validation: (rule) => rule.required(),
     }),
@@ -101,6 +101,24 @@ export default defineType({
       name: 'language',
       type: 'string',
       readOnly: true,
+    }),
+    defineField({
+      name: 'metaFields',
+      title: 'Meta Fields',
+      type: 'object',
+      fields: [
+        { name: 'title', title: 'Meta Title', type: 'string' },
+        { name: 'description', title: 'Meta Description', type: 'string' },
+        {
+          name: 'shareImage',
+          title: '   Image',
+          type: 'image',
+          validation: (rule) => rule.required(),
+          options: {
+            hotspot: true,
+          },
+        },
+      ],
     }),
   ],
   preview: {

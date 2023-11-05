@@ -1,5 +1,5 @@
 import {
-  Blog,
+  BlogPost,
   allBlogsQuery,
   blogAndMoreBlogsQuery,
   blogBySlugQuery,
@@ -9,34 +9,34 @@ import { getClient } from '@/sanity/lib/client';
 
 const client = getClient();
 
-export async function getAllBlogs(language: string): Promise<Blog[]> {
+export async function getAllBlogs(language: string): Promise<BlogPost[]> {
   const res = await client.fetch(allBlogsQuery, { language });
   return res || [];
 }
 
-export async function getAllBlogsSlugs(): Promise<Pick<Blog, 'slug'>[]> {
+export async function getAllBlogsSlugs(): Promise<Pick<BlogPost, 'slug'>[]> {
   const slugs = (await client.fetch<string[]>(blogSlugsQuery)) || [];
   return slugs.map((slug) => ({ slug }));
 }
 
-export async function getBlogBySlug(slug: string): Promise<Blog> {
-  return (await client.fetch(blogBySlugQuery, { slug })) || ({} as any);
+export async function getBlogBySlug(
+  slug: string,
+  language: string
+): Promise<BlogPost> {
+  return await client.fetch<BlogPost>(
+    blogBySlugQuery,
+    { slug, language },
+    { next: { revalidate: 60 * 60 } }
+  );
 }
 
 export async function getBlogsAndMoreStories(
   slug: string,
   language: string
-): Promise<{ blog: Blog; moreBlogs: Blog[] }> {
+): Promise<{ blog: BlogPost; moreBlogs: BlogPost[] }> {
   return await client.fetch(
     blogAndMoreBlogsQuery,
-    {
-      slug,
-      language,
-    },
-    {
-      next: {
-        revalidate: 60 * 60,
-      },
-    } /* todo - add a reusable sanity fetch component. ref = https://www.sanity.io/plugins/next-sanity */
+    { slug, language },
+    { next: { revalidate: 60 * 60 } }
   );
 }

@@ -1,6 +1,6 @@
 import { groq } from 'next-sanity';
 
-const postFields = groq`
+const blogPostFields = groq`
   _id,
   title,
   date,
@@ -8,6 +8,7 @@ const postFields = groq`
   excerpt,
   content,
   language,
+  metaFields,
   coverImage {
       asset->{
     ...,
@@ -22,28 +23,33 @@ export type Author = {
   picture: any;
 };
 
-export type Blog = {
+export type BlogPost = {
   _id: string;
   title: string;
   slug: string;
-  coverImage: any;
+  coverImage: any /* todo. change any here */;
   date?: string;
   _updatedAt?: string;
   excerpt: string;
   author: Author;
   content?: any;
   language: string;
-  _translations: Array<Blog>;
+  _translations: Array<BlogPost>;
+  metaFields?: {
+    shareImage: any /* todo. change any here */;
+    description: string;
+    title: string;
+  };
 };
 
 export const allBlogsQuery = groq`
-*[_type == "blogs" && language == $language] | order(date desc, _updatedAt desc){
-  ${postFields}
+*[_type == "blogs" && language == $language] | order(date desc, _updatedAt desc) {
+  ${blogPostFields}
 }`;
 
 export const blogBySlugQuery = groq`
-*[_type == "blogs" && slug.current == $slug][0] {
-  ${postFields}
+*[_type == "blogs" && slug.current == $slug && language == $language] [0] {
+  ${blogPostFields}
 }
 `;
 export const blogSlugsQuery = groq`
@@ -53,9 +59,9 @@ export const blogSlugsQuery = groq`
 export const blogAndMoreBlogsQuery = groq`
 {
   "blog": *[_type == "blogs" && slug.current == $slug && language == $language] | order(_updatedAt desc) [0] {
-    ${postFields}
+    ${blogPostFields}
   },
   "moreBlogs": *[_type == "blogs" && slug.current != $slug && language == $language] | order(date desc, _updatedAt desc) [0...2] {
-    ${postFields}
+    ${blogPostFields}
   }
 }`;
