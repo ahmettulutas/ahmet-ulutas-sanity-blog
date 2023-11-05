@@ -117,6 +117,14 @@ export default defineType({
           options: {
             hotspot: true,
           },
+          fields: [
+            {
+              name: 'alt',
+              type: 'string',
+              title: 'Alternative text',
+              description: 'Important for SEO and accessiblity.',
+            },
+          ],
         },
       ],
     }),

@@ -1,5 +1,6 @@
 import { useServerSideTranslation } from '@/i18n';
 import { languages } from '@/i18n/settings';
+import { urlForImage } from '@/sanity/lib/image';
 import { Metadata, ResolvingMetadata } from 'next';
 
 /**
@@ -109,6 +110,32 @@ export const getDefaultMetaData = async (
       languages: generateLocalesForMetaData(languages),
     },
   };
+};
+export type ImageType = {
+  _type: 'image';
+  alt?: string;
+  asset: {
+    _ref: string;
+    _type: string;
+  };
+};
+
+export const generateOgImages = (image: ImageType): Array<any> => {
+  if (!image) return [];
+  let ogImageSizes = [
+    { width: 800, height: 600 },
+    { width: 1800, height: 1600 },
+  ];
+  const sanityImages = [];
+  for (let { width, height } of ogImageSizes) {
+    sanityImages.push({
+      width,
+      height,
+      alt: image?.alt || '',
+      url: urlForImage(image)?.height(height).width(width).fit('crop').url(),
+    });
+  }
+  return sanityImages;
 };
 
 /*   const handleMenuKeyDown = (e: KeyboardEvent<HTMLUListElement>) => {

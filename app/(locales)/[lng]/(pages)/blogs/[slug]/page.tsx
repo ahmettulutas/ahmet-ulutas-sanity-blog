@@ -12,6 +12,8 @@ import type { Metadata, ResolvingMetadata } from 'next';
 import { languages } from '@/i18n/settings';
 import SanityImage from '@/components/sanity-image/SanityImage';
 import MoreBlogs from '@/components/more-blogs/MoreBlogs';
+import { generateOgImages, getDefaultMetaData } from '@/lib/helpers';
+import { urlForImage } from '@/sanity/lib/image';
 
 async function getPageData(
   slug: string,
@@ -40,13 +42,24 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const slug = params.slug;
   const blogPost = await getBlogBySlug(slug, params.lng);
-  const previousImages = (await parent).openGraph?.images || [];
+  if (!blogPost) return getDefaultMetaData(params.lng, parent);
 
+  const previousImages = (await parent).openGraph?.images || [];
+  const blogMetaTitle = blogPost?.metaFields?.title || blogPost.title;
+  const blogMetaDescription =
+    blogPost?.metaFields?.description || blogPost.excerpt;
   return {
-    title: blogPost.metaFields?.title || blogPost.title,
-    description: blogPost.metaFields?.description || blogPost.excerpt,
+    title: blogMetaTitle,
+    description: blogMetaDescription,
     openGraph: {
-      images: [blogPost.metaFields?.shareImage, ...previousImages],
+      images:
+        generateOgImages(blogPost?.metaFields?.shareImage).length > 0
+          ? [
+              ...generateOgImages(blogPost?.metaFields?.shareImage),
+              ...previousImages,
+            ]
+          : previousImages,
+      title: blogMetaTitle,
     },
   };
 }

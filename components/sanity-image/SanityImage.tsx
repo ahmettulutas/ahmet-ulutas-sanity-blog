@@ -2,7 +2,7 @@ import { urlForImage } from '@/sanity/lib/sanity-image-fns';
 import Image from 'next/image';
 import { twMerge } from 'tailwind-merge';
 
-interface SanityImageProps {
+type SanityImageProps = {
   image?: { asset?: any };
   alt?: string;
   width?: number;
@@ -10,7 +10,7 @@ interface SanityImageProps {
   sizes?: string;
   classesWrapper?: string;
   priority?: boolean;
-}
+};
 
 export default function SanityImage({
   image,
