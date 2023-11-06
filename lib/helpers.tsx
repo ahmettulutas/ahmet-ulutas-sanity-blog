@@ -35,7 +35,7 @@ export const generateLocalesForMetaData = (languages: Array<string>) => {
 /**
  *
  * generates default meta tags by using translation files.
- * @param currentLanguage
+ * @param currntLocale
  * @param parent
  * @returns {MetaData<Promise>}
  * @example {
@@ -44,11 +44,11 @@ export const generateLocalesForMetaData = (languages: Array<string>) => {
   }
  */
 export const getDefaultMetaData = async (
-  currentLanguage: string,
+  currntLocale: string,
   parent: ResolvingMetadata
 ): Promise<Metadata> => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t } = await useServerSideTranslation(currentLanguage, 'translation'); // This is not actually a hook, so I intentionally ignored it here.
+  const { t } = await useServerSideTranslation(currntLocale, 'translation'); // This is not actually a hook, so I intentionally ignored it here.
   const previousImages = (await parent).openGraph?.images || [];
 
   return {
@@ -74,7 +74,7 @@ export const getDefaultMetaData = async (
         }),
         ...previousImages,
       ],
-      locale: currentLanguage,
+      locale: currntLocale,
       type: 'website',
     },
     twitter: {

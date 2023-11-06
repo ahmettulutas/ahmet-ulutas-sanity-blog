@@ -43,7 +43,7 @@ export default async function Page({ params }: PageProps & SharedPageProps) {
       <h1 className='mb-4 text-4xl font-bold text-center'>{blog?.title}</h1>
       <SanityImage image={blog?.coverImage} classesWrapper='my-10' priority />
       <RichTextContent content={blog?.content} />
-      <MoreBlogs moreBlogs={moreBlogs} currentLanguage={params.lng} />
+      <MoreBlogs moreBlogs={moreBlogs} currntLocale={params.lng} />
     </Container>
   );
 }

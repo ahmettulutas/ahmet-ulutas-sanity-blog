@@ -6,12 +6,16 @@ import AuthorAvatar from '../author-avatar/AuthorAvatar';
 
 type BlogCardProps = {
   blog: BlogPost;
+  currntLocale: string;
 };
 
-const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
+const BlogCard: React.FC<BlogCardProps> = ({ blog, currntLocale }) => {
   return (
     <article className='h-full'>
-      <Link href={blog.slug} className='flex justify-between flex-col gap-4'>
+      <Link
+        href={`/${currntLocale}/blogs/${blog.slug}`}
+        className='flex justify-between flex-col gap-4'
+      >
         <div className='shadow-md transition-shadow duration-200 hover:shadow-lg'>
           <SanityImage image={blog.coverImage} />
         </div>
