@@ -48,8 +48,9 @@ export const getDefaultMetaData = async (
   parent: ResolvingMetadata
 ): Promise<Metadata> => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t } = await useServerSideTranslation(currentLanguage, 'translation'); // This is not actually a hook, so you I intentionally ignored it here.
+  const { t } = await useServerSideTranslation(currentLanguage, 'translation'); // This is not actually a hook, so I intentionally ignored it here.
   const previousImages = (await parent).openGraph?.images || [];
+
   return {
     title: t('metaData.pageTitle'),
     description: t('metaData.pageDescription'),
@@ -116,12 +117,13 @@ type GenerateMetaImageProps = {
   sizes: Array<{ width: number; height: number }>;
   staticImage?: { url: string | URL; alt?: string };
 };
+
 export const generateMetaImages = ({
   sanityImage,
   sizes,
   staticImage,
 }: GenerateMetaImageProps): Array<any> => {
-  if (!sanityImage || !staticImage?.url) return [];
+  if (!sanityImage && !staticImage?.url) return [];
   const metaImages = [];
   if (sanityImage) {
     for (let { width, height } of sizes) {
@@ -137,7 +139,8 @@ export const generateMetaImages = ({
       });
     }
   }
-  if (staticImage) {
+
+  if (staticImage?.url) {
     for (let { width, height } of sizes) {
       metaImages.push({
         width,
