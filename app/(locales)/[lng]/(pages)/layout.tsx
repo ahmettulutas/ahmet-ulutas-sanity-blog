@@ -10,7 +10,7 @@ export default function PageLayout({
 }) {
   return (
     <>
-      <Header lng={lng} />
+      <Header currentLocale={lng} />
       {children}
     </>
   );

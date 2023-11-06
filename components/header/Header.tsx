@@ -8,8 +8,11 @@ import { SiSanity } from 'react-icons/si';
 import { Container } from '../container';
 import { SANITY_URL } from '@/lib/constants';
 
-export default async function Header({ lng }: { lng: string }) {
-  const { t } = await useServerSideTranslation(lng, 'translation');
+type HeaderProps = {
+  currentLocale: string;
+};
+export default async function Header({ currentLocale }: HeaderProps) {
+  const { t } = await useServerSideTranslation(currentLocale, 'translation');
 
   return (
     <header>
@@ -21,20 +24,20 @@ export default async function Header({ lng }: { lng: string }) {
             href={SANITY_URL}
           >
             <SiSanity />
-            <span>{t('gotoStudio')}</span>
+            <p>{t('gotoStudio')}</p>
           </Link>
           <Link
             className='shadow-sm hover:shadow-md dark:shadow-white p-1 rounded-xl m-1 flex items-center gap-2 text-lg'
-            href='/blogs'
+            href={`/${currentLocale}/blogs`}
           >
             <FiBook />
-            <p>{t('blogs')}</p>
+            <p>{t('blogPosts')}</p>
           </Link>
         </div>
         {/* <Trans i18nKey='languageSwitcher' t={t}>
           Switch from <strong>{lng}</strong> to:{' '}
         </Trans> */}
-        <AppSettings currentLocale={lng} />
+        <AppSettings currentLocale={currentLocale} />
       </Container>
     </header>
   );
