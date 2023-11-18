@@ -9,6 +9,7 @@ type SanityImageProps = {
   height?: number;
   sizes?: string;
   classesWrapper?: string;
+  imageClasses?: string;
   priority?: boolean;
 };
 
@@ -19,10 +20,11 @@ export default function SanityImage({
   height = 2000,
   sizes = '(max-width: 600px) 90vw, (max-width: 1200px) 60vw, 500px',
   classesWrapper,
+  imageClasses,
   priority = false,
 }: SanityImageProps) {
   const imageUrl =
-    image && urlForImage(image)?.height(height).width(width).fit('crop').url();
+    image && urlForImage(image)?.height(height).width(width).fit('fill').url();
   /*   const blurUrl = urlForImage(image).width(20).quality(20).url(); todo - bugfix here for deployment. */
 
   return (
@@ -34,6 +36,7 @@ export default function SanityImage({
     >
       {imageUrl && (
         <Image
+          className={twMerge('h-auto w-full rounded-[3px]', imageClasses)}
           alt={alt}
           width={width}
           height={height}

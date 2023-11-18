@@ -1,3 +1,4 @@
+import { ImageType } from '@/lib/helpers';
 import { groq } from 'next-sanity';
 
 const blogPostFields = groq`
@@ -9,25 +10,20 @@ const blogPostFields = groq`
   content,
   language,
   metaFields,
-  coverImage {
-      asset->{
-    ...,
-    metadata
-  }
-  },
+  coverImage,
   "slug": slug.current,
   "author": author->{name, picture},
 `;
 export type Author = {
-  name: string;
-  picture: any;
+  name?: any;
+  picture?: any;
 };
 
 export type BlogPost = {
   _id: string;
   title: string;
   slug: string;
-  coverImage: any /* todo. change any here */;
+  coverImage: ImageType;
   date?: string;
   _updatedAt?: string;
   excerpt: string;

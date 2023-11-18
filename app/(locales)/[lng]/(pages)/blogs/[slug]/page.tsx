@@ -10,10 +10,11 @@ import { Container } from '@/components/container';
 
 import type { Metadata, ResolvingMetadata } from 'next';
 import { languages } from '@/i18n/settings';
-import SanityImage from '@/components/sanity-image/SanityImage';
 import MoreBlogs from '@/components/more-blogs/MoreBlogs';
 import { generateMetaImages, getDefaultMetaData } from '@/lib/helpers';
 import { ogImageSizes, twitterImageSizes } from '@/lib/constants';
+import AuthorAvatar from '@/components/author-avatar/AuthorAvatar';
+import CoverImage from '@/components/sanity-image/CoverImage';
 
 async function getPageData(
   slug: string,
@@ -40,8 +41,9 @@ export default async function Page({ params }: PageProps & SharedPageProps) {
   const { blog, moreBlogs } = await getPageData(params.slug, params.lng);
   return (
     <Container>
-      <h1 className='mb-4 text-4xl font-bold text-center'>{blog?.title}</h1>
-      <SanityImage image={blog?.coverImage} classesWrapper='my-10' priority />
+      <h1 className='mb-4 text-3xl md:text-6xl font-bold'>{blog?.title}</h1>
+      <AuthorAvatar {...{ ...blog.author }} />
+      <CoverImage width={600} height={1000} image={blog?.coverImage} />
       <RichTextContent content={blog?.content} />
       <MoreBlogs moreBlogs={moreBlogs} currntLocale={params.lng} />
     </Container>
@@ -97,6 +99,7 @@ export async function generateMetadata(
   return {
     title: blogMetaTitle,
     description: blogMetaDescription,
+
     openGraph: {
       images:
         generatedOGImages.length > 0

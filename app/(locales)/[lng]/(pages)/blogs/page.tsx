@@ -3,7 +3,6 @@ import { useServerSideTranslation } from '@/i18n';
 import { SharedPageProps } from '../../layout';
 import { Container } from '@/components/container';
 import BlogCard from '@/components/blog-card/BlogCard';
-import Link from 'next/link';
 
 export default async function Page({ params }: SharedPageProps) {
   const allBlogs = await getAllBlogs(params.lng);
@@ -16,6 +15,9 @@ export default async function Page({ params }: SharedPageProps) {
           {t('blogPosts')}
         </h1>
         <section className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+          {allBlogs?.map((item) => (
+            <BlogCard currntLocale={params.lng} key={item._id} blog={item} />
+          ))}
           {allBlogs?.map((item) => (
             <BlogCard currntLocale={params.lng} key={item._id} blog={item} />
           ))}

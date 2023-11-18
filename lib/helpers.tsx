@@ -1,12 +1,13 @@
 import { useServerSideTranslation } from '@/i18n';
 import { languages } from '@/i18n/settings';
-import { urlForImage } from '@/sanity/lib/image';
 import { Metadata, ResolvingMetadata } from 'next';
 import opengraphImage from '../public/images/opengraph-image.webp';
 import { ogImageSizes, twitterImageSizes } from './constants';
+import { urlForImage } from '@/sanity/lib/sanity-image-fns';
+import { SanityAsset } from '@sanity/image-url/lib/types/types';
 
 /**
- * Generates path name by omitting the locale from the current path
+ * Regenerates the current path name with new locale
  * @param pathname
  * @returns string
  */
@@ -18,7 +19,6 @@ export const generatePathName = (path: string): string => {
 };
 
 /**
- *
  * generates locale object from languages array
  * @param languages
  * @returns Record<string, string>
@@ -33,7 +33,6 @@ export const generateLocalesForMetaData = (languages: Array<string>) => {
 };
 
 /**
- *
  * generates default meta tags by using translation files.
  * @param currntLocale
  * @param parent
@@ -106,10 +105,7 @@ export const getDefaultMetaData = async (
 export type ImageType = {
   _type: 'image';
   alt?: string;
-  asset: {
-    _ref: string;
-    _type: string;
-  };
+  asset: SanityAsset;
 };
 
 type GenerateMetaImageProps = {

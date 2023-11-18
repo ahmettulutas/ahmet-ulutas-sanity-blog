@@ -4,17 +4,18 @@ import { Author } from '@/sanity/lib/queries';
 const AuthorAvatar = (props: Author) => {
   const { name, picture } = props;
   return (
-    <div className='flex items-center'>
-      <div className='relative mr-4 h-12 w-12'>
+    <div className='flex items-center my-6'>
+      {picture?.asset?._ref && (
         <SanityImage
+          classesWrapper='mr-2 h-12 w-12'
+          imageClasses='rounded-full'
           image={picture}
-          classesWrapper='rounded-full'
-          height={48}
-          width={48}
+          width={96}
+          height={96}
           alt={picture?.alt ?? name}
         />
-      </div>
-      <div className='font-bold'>{name}</div>
+      )}
+      <p className='font-bold'>{name}</p>
     </div>
   );
 };

@@ -29,14 +29,11 @@ const myPortableTextComponents = {
     ),
   },
   block: {
-    // Ex. 1: customizing common block types
     h1: ({ children }: any) => <h1 className='text-2xl'>{children}</h1>,
     blockquote: ({ children }: any) => (
       <blockquote className='border-l-purple-500'>{children}</blockquote>
     ),
-    normal: ({ children }: any) => (
-      <p className='leading-7 font-light my-2'>{children}</p>
-    ),
+    normal: ({ children }: any) => <p className='my-2'>{children}</p>,
   },
   marks: {
     em: ({ children }: any) => <em className='font-semibold'>{children}</em>,
@@ -49,12 +46,18 @@ const myPortableTextComponents = {
         <a
           href={value?.href}
           target={target}
+          className=' text-blue-700 dark:text-blue-600'
           rel={target === '_blank' ? 'noindex nofollow' : ''}
         >
           {children}
         </a>
       );
     },
+    code: ({ children }: any) => (
+      <code className='bg-gray-100 dark:bg-gray-600 rounded-md p-1'>
+        {children}
+      </code>
+    ),
   },
   list: {
     bullet: ({ children }: any) => <ul className='my-6 ml-6'>{children}</ul>,
@@ -68,7 +71,11 @@ const myPortableTextComponents = {
 
 const RichTextContent = ({ content }: { content: TypedObject }) => {
   // check the npm package for more details. https://www.npmjs.com/package/@portabletext/react
-  return <PortableText value={content} components={myPortableTextComponents} />;
+  return (
+    <article className='leading-7 font-light'>
+      <PortableText value={content} components={myPortableTextComponents} />
+    </article>
+  );
 };
 
 export default RichTextContent;
