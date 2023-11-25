@@ -42,7 +42,7 @@ export default async function Page({ params }: PageProps & SharedPageProps) {
   return (
     <Container>
       <h1 className='mb-4 text-3xl md:text-6xl font-bold'>{blog?.title}</h1>
-      <AuthorAvatar {...{ ...blog.author }} />
+      <AuthorAvatar {...{ ...blog?.author }} />
       <CoverImage width={600} height={1000} image={blog?.coverImage} />
       <RichTextContent content={blog?.content} />
       <MoreBlogs moreBlogs={moreBlogs} currntLocale={params.lng} />
