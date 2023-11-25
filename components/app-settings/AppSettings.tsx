@@ -1,6 +1,6 @@
 import ThemeSwitcher from '@/themes/ThemeSwitcher';
-
 import { languages } from '@/i18n/settings';
+
 import { AppSettingsMobile } from './AppSettingsMobile';
 import { LanguageSelector } from './LanguageSelector';
 

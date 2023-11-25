@@ -1,4 +1,3 @@
-import { SharedPageProps } from '../../../layout';
 import {
   getAllBlogsSlugs,
   getBlogBySlug,
@@ -7,7 +6,6 @@ import {
 import { notFound } from 'next/navigation';
 import RichTextContent from '@/components/rich-text-content/RichTextContent';
 import { Container } from '@/components/container';
-
 import type { Metadata, ResolvingMetadata } from 'next';
 import { languages } from '@/i18n/settings';
 import MoreBlogs from '@/components/more-blogs/MoreBlogs';
@@ -16,12 +14,17 @@ import { ogImageSizes, twitterImageSizes } from '@/lib/constants';
 import AuthorAvatar from '@/components/author-avatar/AuthorAvatar';
 import CoverImage from '@/components/sanity-image/CoverImage';
 
+import { SharedPageProps } from '../../../layout';
+
 async function getPageData(
   slug: string,
   language: string
 ): Promise<ReturnType<typeof getBlogsAndMoreStories>> {
   try {
     const { blog, moreBlogs } = await getBlogsAndMoreStories(slug, language);
+    if (!blog) {
+      return notFound();
+    }
     return {
       blog,
       moreBlogs,
@@ -43,7 +46,7 @@ export default async function Page({ params }: PageProps & SharedPageProps) {
     <Container>
       <h1 className='mb-4 text-3xl md:text-6xl font-bold'>{blog?.title}</h1>
       <AuthorAvatar {...{ ...blog?.author }} />
-      <CoverImage width={600} height={1000} image={blog?.coverImage} />
+      <CoverImage width={1200} height={1000} image={blog?.coverImage} />
       <RichTextContent content={blog?.content} />
       <MoreBlogs moreBlogs={moreBlogs} currntLocale={params.lng} />
     </Container>

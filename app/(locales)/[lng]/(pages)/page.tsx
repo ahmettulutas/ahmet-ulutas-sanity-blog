@@ -1,6 +1,7 @@
 import { useServerSideTranslation } from '@/i18n';
-import { SharedPageProps } from '../layout';
 import { Container } from '@/components/container';
+
+import { SharedPageProps } from '../layout';
 
 export default async function Page({ params }: SharedPageProps) {
   const { t } = await useServerSideTranslation(params.lng, 'translation');

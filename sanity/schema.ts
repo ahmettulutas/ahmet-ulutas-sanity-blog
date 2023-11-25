@@ -1,4 +1,5 @@
 import { type SchemaTypeDefinition } from 'sanity';
+
 import blogSchema from './blog/blogSchema';
 import authorSchema from './author/authorSchema';
 

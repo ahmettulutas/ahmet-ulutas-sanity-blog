@@ -1,3 +1,5 @@
+import { getClient } from '@/sanity/lib/client';
+
 import {
   BlogPost,
   allBlogsQuery,
@@ -5,7 +7,6 @@ import {
   blogBySlugQuery,
   blogSlugsQuery,
 } from './queries';
-import { getClient } from '@/sanity/lib/client';
 
 const client = getClient();
 

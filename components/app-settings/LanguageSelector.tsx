@@ -1,9 +1,10 @@
 'use client';
 import React from 'react';
-import { AppSettings } from '.';
 import { languages } from '@/i18n/settings';
 import { usePathname, useRouter } from 'next/navigation';
 import { generatePathName } from '@/lib/helpers';
+
+import { AppSettings } from '.';
 
 export const LanguageSelector = ({ currentLocale }: AppSettings) => {
   const pathname = usePathname();

@@ -36,6 +36,19 @@
         "args": "after-used",
         "ignoreRestSiblings": false
       }
+    ],
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          [
+            "builtin",
+            "external",
+            "internal"
+          ]
+        ],
+        "newlines-between": "always"
+      }
     ]
   }
 }

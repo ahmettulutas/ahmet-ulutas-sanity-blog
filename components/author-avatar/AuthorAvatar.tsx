@@ -1,5 +1,6 @@
-import SanityImage from '../sanity-image/SanityImage';
 import { Author } from '@/sanity/lib/queries';
+
+import SanityImage from '../sanity-image/SanityImage';
 
 const AuthorAvatar = (props: Author) => {
   const { name, picture } = props;

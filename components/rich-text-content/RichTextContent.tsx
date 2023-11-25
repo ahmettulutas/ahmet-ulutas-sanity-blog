@@ -1,8 +1,9 @@
 'use client';
 import { PortableText } from '@portabletext/react';
 import React from 'react';
-import CodeBlock from '../code-blocks/CodeBlocks';
 import { TypedObject } from 'sanity';
+
+import CodeBlock from '../code-blocks/CodeBlocks';
 import HydrateWrapper from '../hydrate-wrapper/HydrateWrapper';
 import SanityImage from '../sanity-image/SanityImage';
 

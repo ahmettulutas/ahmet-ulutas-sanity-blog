@@ -5,13 +5,13 @@
 import { visionTool } from '@sanity/vision';
 import { defineConfig } from 'sanity';
 import { deskTool } from 'sanity/desk';
-
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
+import { codeInput } from '@sanity/code-input';
+import { documentInternationalization } from '@sanity/document-internationalization';
+
 import { apiVersion, dataset, projectId } from './sanity/env';
 import { schema } from './sanity/schema';
 import { SANITY_URL } from './lib/constants';
-import { codeInput } from '@sanity/code-input';
-import { documentInternationalization } from '@sanity/document-internationalization';
 
 export default defineConfig({
   basePath: SANITY_URL,

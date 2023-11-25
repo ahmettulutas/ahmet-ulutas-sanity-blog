@@ -1,7 +1,8 @@
 import { BlogPost } from '@/sanity/lib/queries';
 import React from 'react';
-import BlogCard from '../blog-card/BlogCard';
 import { useServerSideTranslation } from '@/i18n';
+
+import BlogCard from '../blog-card/BlogCard';
 
 type MoreBlogsProps = {
   moreBlogs: Array<BlogPost>;

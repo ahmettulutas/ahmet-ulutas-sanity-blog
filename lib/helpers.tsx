@@ -1,10 +1,11 @@
 import { useServerSideTranslation } from '@/i18n';
 import { languages } from '@/i18n/settings';
 import { Metadata, ResolvingMetadata } from 'next';
-import opengraphImage from '../public/images/opengraph-image.webp';
-import { ogImageSizes, twitterImageSizes } from './constants';
 import { urlForImage } from '@/sanity/lib/sanity-image-fns';
 import { SanityAsset } from '@sanity/image-url/lib/types/types';
+
+import opengraphImage from '../public/images/opengraph-image.webp';
+import { ogImageSizes, twitterImageSizes } from './constants';
 
 /**
  * Regenerates the current path name with new locale

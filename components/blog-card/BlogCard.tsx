@@ -1,5 +1,6 @@
 import { BlogPost } from '@/sanity/lib/queries';
 import Link from 'next/link';
+
 import PostDate from '../post-date/PostDate';
 import CoverImage from '../sanity-image/CoverImage';
 
@@ -12,7 +13,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog, currntLocale }) => {
   return (
     <article className='h-full'>
       <Link
-        href={`/${currntLocale}/blogs/${blog.slug}`} /* currentlocale is needed to be added to prevent previous locale page caching */
+        href={`/${currntLocale}/blogs/${blog.slug}`} /* you need to ad currentlocale to prevent previous locale page caching */
         className='flex justify-between flex-col gap-4'
       >
         <CoverImage height={300} width={600} image={blog.coverImage} />

@@ -1,13 +1,12 @@
 'use client';
 import { useTranslation } from '@/i18n/client';
-
 import { useEffect, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { AiOutlineClose } from 'react-icons/ai';
-import { AppSettings } from '.';
-
 import { FiSettings } from 'react-icons/fi';
 import ThemeSwitcher from '@/themes/ThemeSwitcher';
+
+import { AppSettings } from '.';
 import { LanguageSelector } from './LanguageSelector';
 
 export const AppSettingsMobile = ({ currentLocale }: AppSettings) => {
