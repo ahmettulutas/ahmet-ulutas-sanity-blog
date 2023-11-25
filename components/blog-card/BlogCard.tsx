@@ -2,6 +2,7 @@ import { BlogPost } from '@/sanity/lib/queries';
 import Link from 'next/link';
 import PostDate from '../post-date/PostDate';
 import CoverImage from '../sanity-image/CoverImage';
+
 type BlogCardProps = {
   blog: BlogPost;
   currntLocale: string;
