@@ -1,5 +1,4 @@
 import Header from '@/components/header/Header';
-// todo -- Add meta export here.
 
 export default function PageLayout({
   children,

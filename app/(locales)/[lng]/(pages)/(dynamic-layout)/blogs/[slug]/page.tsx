@@ -2,7 +2,6 @@ import {
   getAllBlogsSlugs,
   getBlogBySlug,
   getBlogsAndMoreStories,
-  extractLocaleFieldsFromBlog,
 } from '@/sanity/lib/sanity-client-fns';
 import { notFound } from 'next/navigation';
 import RichTextContent from '@/components/rich-text-content/RichTextContent';
@@ -26,7 +25,7 @@ async function getPageData(slug: string, language: string) {
       slug,
     }));
     return {
-      blog: extractLocaleFieldsFromBlog(blog, language),
+      blog,
       headerLinks,
       moreBlogs,
     };
@@ -46,20 +45,17 @@ export type DynamicLink = {
 };
 
 export default async function Page({ params }: PageProps & SharedPageProps) {
-  const { blog, moreBlogs, headerLinks } = await getPageData(
-    params.slug,
-    params.lng
-  );
-
+  const { slug, lng } = params;
+  const { blog, moreBlogs, headerLinks } = await getPageData(slug, lng);
   return (
     <main>
       <Container>
-        <Header currentLocale={params.lng} dynamicLinks={headerLinks} />
+        <Header currentLocale={lng} dynamicLinks={headerLinks} />
         <h1 className='mb-4 text-3xl md:text-6xl font-bold'>{blog?.title}</h1>
         <AuthorAvatar {...{ ...blog?.author }} />
         <CoverImage height={300} width={600} image={blog?.coverImage} />
         <RichTextContent content={blog?.content} />
-        <MoreBlogs moreBlogs={moreBlogs} currntLocale={params.lng} />
+        <MoreBlogs moreBlogs={moreBlogs} currntLocale={lng} />
       </Container>
     </main>
   );
@@ -78,9 +74,9 @@ export async function generateMetadata(
   { params }: PageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const slug = params.slug;
-  const blogPost = await getBlogBySlug(slug, params.lng);
-  if (!blogPost) return getDefaultMetaData(params.lng, parent);
+  const { slug, lng } = params;
+  const blogPost = await getBlogBySlug(slug, lng);
+  if (!blogPost) return getDefaultMetaData(lng, parent);
 
   const previousImages = (await parent).openGraph?.images || [];
   const blogMetaTitle = blogPost.metaFields?.title || blogPost.title;
@@ -115,9 +111,9 @@ export async function generateMetadata(
           : previousImages,
     },
     alternates: {
-      canonical: `${new URL(process.env.NEXT_PUBLIC_BASE_URL as string)}/${
-        params.lng
-      }/blogs/${slug}`,
+      canonical: `${new URL(
+        process.env.NEXT_PUBLIC_BASE_URL as string
+      )}/${lng}/blogs/${slug}`,
     },
   };
 }

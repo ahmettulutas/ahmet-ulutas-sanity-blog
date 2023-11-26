@@ -29,31 +29,23 @@ export async function getBlogBySlug(
   slug: string,
   language: string
 ): Promise<BlogPost> {
-  return await client.fetch<BlogPost>(
-    blogBySlugQuery,
-    { slug, language },
-    { next: { revalidate: 60 * 60 } }
-  );
+  return await client.fetch<BlogPost>(blogBySlugQuery, { slug, language });
 }
 
 export async function getBlogsAndMoreStories(
   slug: string,
   language: string
 ): Promise<{ blog: BlogPost; moreBlogs: BlogPost[] }> {
-  return await client.fetch(
-    blogAndMoreBlogsQuery,
-    { slug, language },
-    { next: { revalidate: 60 * 60 } }
-  );
+  return await client.fetch(blogAndMoreBlogsQuery, { slug, language });
 }
 
-export const extractLocaleFieldsFromBlog = (
-  blog: BlogPost,
-  language: string
-): BlogPost => {
-  const blogTranslation = blog._translations.find(
-    (item) => item.language === language
-  );
-  if (!language || !blogTranslation) return blog;
-  return blogTranslation;
-};
+// export const extractLocaleFieldsFromBlog = (
+//   blog: BlogPost,
+//   language: string
+// ): BlogPost => {
+//   const blogTranslation = blog._translations.find(
+//     (item) => item.language === language
+//   );
+//   if (!language || !blogTranslation) return blog;
+//   return blogTranslation;
+// };
