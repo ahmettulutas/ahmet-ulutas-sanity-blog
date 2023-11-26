@@ -24,7 +24,8 @@ export default function SanityImage({
   priority = false,
 }: SanityImageProps) {
   const imageUrl =
-    image && urlForImage(image)?.height(height).width(width).fit('fill').url();
+    image?.asset &&
+    urlForImage(image?.asset)?.height(height).width(width).fit('fill').url();
   /*   const blurUrl = urlForImage(image).width(20).quality(20).url(); todo - bugfix here for deployment. */
 
   return (
