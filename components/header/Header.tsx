@@ -6,12 +6,13 @@ import { SiSanity } from 'react-icons/si';
 import { SANITY_URL } from '@/lib/constants';
 
 import { Container } from '../container';
-import { AppSettings } from '../app-settings';
+import { AppSettings, AppSettingsProps } from '../app-settings';
 
-type HeaderProps = {
-  currentLocale: string;
-};
-export default async function Header({ currentLocale }: HeaderProps) {
+type HeaderProps = AppSettingsProps;
+export default async function Header({
+  currentLocale,
+  dynamicLinks,
+}: HeaderProps) {
   const { t } = await useServerSideTranslation(currentLocale, 'translation');
 
   return (
@@ -34,10 +35,10 @@ export default async function Header({ currentLocale }: HeaderProps) {
             <p>{t('blogPosts')}</p>
           </Link>
         </div>
-        {/* <Trans i18nKey='languageSwitcher' t={t}>
-          Switch from <strong>{lng}</strong> to:{' '}
-        </Trans> */}
-        <AppSettings currentLocale={currentLocale} />
+        <AppSettings
+          dynamicLinks={dynamicLinks}
+          currentLocale={currentLocale}
+        />
       </Container>
     </header>
   );

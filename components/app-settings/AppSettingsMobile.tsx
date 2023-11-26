@@ -6,10 +6,10 @@ import { AiOutlineClose } from 'react-icons/ai';
 import { FiSettings } from 'react-icons/fi';
 import ThemeSwitcher from '@/themes/ThemeSwitcher';
 
-import { AppSettings } from '.';
+import { AppSettingsProps } from '.';
 import { LanguageSelector } from './LanguageSelector';
 
-export const AppSettingsMobile = ({ currentLocale }: AppSettings) => {
+export const AppSettingsMobile = ({ currentLocale }: AppSettingsProps) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const { t } = useTranslation(currentLocale, 'translation');
   useEffect(() => {

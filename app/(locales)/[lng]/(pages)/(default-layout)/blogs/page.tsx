@@ -3,7 +3,7 @@ import { useServerSideTranslation } from '@/i18n';
 import { Container } from '@/components/container';
 import BlogCard from '@/components/blog-card/BlogCard';
 
-import { SharedPageProps } from '../../layout';
+import { SharedPageProps } from '../../../layout';
 
 export default async function Page({ params }: SharedPageProps) {
   const allBlogs = await getAllBlogs(params.lng);
@@ -19,7 +19,7 @@ export default async function Page({ params }: SharedPageProps) {
           {allBlogs?.map((item) => (
             <BlogCard currntLocale={params.lng} key={item._id} blog={item} />
           ))}
-          {allBlogs?.map((item) => (
+          {allBlogs?.reverse().map((item) => (
             <BlogCard currntLocale={params.lng} key={item._id} blog={item} />
           ))}
         </section>

@@ -15,9 +15,14 @@ export async function getAllBlogs(language: string): Promise<BlogPost[]> {
   return res || [];
 }
 
-export async function getAllBlogsSlugs(): Promise<Pick<BlogPost, 'slug'>[]> {
-  const slugs = (await client.fetch<string[]>(blogSlugsQuery)) || [];
-  return slugs.map((slug) => ({ slug }));
+export async function getAllBlogsSlugs(): Promise<
+  Pick<BlogPost, 'slug' | 'language'>[]
+> {
+  const slugs =
+    (await client.fetch<{ slug: string; language: string }[]>(
+      blogSlugsQuery
+    )) || [];
+  return slugs.map(({ slug, language }) => ({ slug, language }));
 }
 
 export async function getBlogBySlug(
@@ -41,3 +46,14 @@ export async function getBlogsAndMoreStories(
     { next: { revalidate: 60 * 60 } }
   );
 }
+
+export const extractLocaleFieldsFromBlog = (
+  blog: BlogPost,
+  language: string
+): BlogPost => {
+  const blogTranslation = blog._translations.find(
+    (item) => item.language === language
+  );
+  if (!language || !blogTranslation) return blog;
+  return blogTranslation;
+};

@@ -2,31 +2,32 @@ import {
   getAllBlogsSlugs,
   getBlogBySlug,
   getBlogsAndMoreStories,
+  extractLocaleFieldsFromBlog,
 } from '@/sanity/lib/sanity-client-fns';
 import { notFound } from 'next/navigation';
 import RichTextContent from '@/components/rich-text-content/RichTextContent';
 import { Container } from '@/components/container';
 import type { Metadata, ResolvingMetadata } from 'next';
-import { languages } from '@/i18n/settings';
 import MoreBlogs from '@/components/more-blogs/MoreBlogs';
 import { generateMetaImages, getDefaultMetaData } from '@/lib/helpers';
 import { ogImageSizes, twitterImageSizes } from '@/lib/constants';
 import AuthorAvatar from '@/components/author-avatar/AuthorAvatar';
 import CoverImage from '@/components/sanity-image/CoverImage';
+import Header from '@/components/header/Header';
 
-import { SharedPageProps } from '../../../layout';
+import { SharedPageProps } from '../../../../layout';
 
-async function getPageData(
-  slug: string,
-  language: string
-): Promise<ReturnType<typeof getBlogsAndMoreStories>> {
+async function getPageData(slug: string, language: string) {
   try {
     const { blog, moreBlogs } = await getBlogsAndMoreStories(slug, language);
-    if (!blog) {
-      return notFound();
-    }
+    if (!blog) return notFound();
+    const headerLinks = blog._translations?.map(({ language, slug }) => ({
+      language,
+      slug,
+    }));
     return {
-      blog,
+      blog: extractLocaleFieldsFromBlog(blog, language),
+      headerLinks,
       moreBlogs,
     };
   } catch (error) {
@@ -39,43 +40,38 @@ type PageProps = SharedPageProps & {
     slug: string;
   };
 };
+export type DynamicLink = {
+  language: string;
+  slug: string;
+};
 
 export default async function Page({ params }: PageProps & SharedPageProps) {
-  const { blog, moreBlogs } = await getPageData(params.slug, params.lng);
+  const { blog, moreBlogs, headerLinks } = await getPageData(
+    params.slug,
+    params.lng
+  );
+
   return (
-    <Container>
-      <h1 className='mb-4 text-3xl md:text-6xl font-bold'>{blog?.title}</h1>
-      <AuthorAvatar {...{ ...blog?.author }} />
-      <CoverImage width={1200} height={1000} image={blog?.coverImage} />
-      <RichTextContent content={blog?.content} />
-      <MoreBlogs moreBlogs={moreBlogs} currntLocale={params.lng} />
-    </Container>
+    <main>
+      <Container>
+        <Header currentLocale={params.lng} dynamicLinks={headerLinks} />
+        <h1 className='mb-4 text-3xl md:text-6xl font-bold'>{blog?.title}</h1>
+        <AuthorAvatar {...{ ...blog?.author }} />
+        <CoverImage height={300} width={600} image={blog?.coverImage} />
+        <RichTextContent content={blog?.content} />
+        <MoreBlogs moreBlogs={moreBlogs} currntLocale={params.lng} />
+      </Container>
+    </main>
   );
 }
 
-/**
- * generates individual localized slugs from all blog posts slugs
- * 
- * @returns Array 
- * @example [{ slug: 'en/how-to-add-meta-tags-in-nextjs-13-s-new-app-router' },
-  { slug: 'tr/how-to-add-meta-tags-in-nextjs-13-s-new-app-router' },
-  { slug: 'de/how-to-add-meta-tags-in-nextjs-13-s-new-app-router' }]
- * @
- */
 export async function generateStaticParams() {
-  /* todo map over all locales and get pageData accordingly */
   const allSlugs = await getAllBlogsSlugs();
-  const allSlugsPerLocale: Array<Record<'slug', string>> = [];
-
-  for (const language of languages) {
-    /* I need to remove duplicates using a Set because I'm using the same slug for each localized document. */
-    const uniqueSlugs = new Set<string>();
-    for (const { slug } of allSlugs) {
-      uniqueSlugs.add(`${language}/${slug}`);
-    }
-    allSlugsPerLocale.push(...[...uniqueSlugs].map((slug) => ({ slug })));
-  }
-  return allSlugsPerLocale;
+  const params = allSlugs.filter(Boolean).map(({ slug, language }) => ({
+    lng: language,
+    slug: `${slug}`,
+  }));
+  return params;
 }
 
 export async function generateMetadata(
