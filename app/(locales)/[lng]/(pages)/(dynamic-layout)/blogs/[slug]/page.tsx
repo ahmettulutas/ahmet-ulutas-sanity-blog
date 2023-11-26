@@ -20,13 +20,13 @@ async function getPageData(slug: string, language: string) {
   try {
     const { blog, moreBlogs } = await getBlogsAndMoreStories(slug, language);
     if (!blog) return notFound();
-    const headerLinks = blog._translations?.map(({ language, slug }) => ({
+    const headerLinks = blog?._translations?.map(({ language, slug }) => ({
       language,
       slug,
     }));
     return {
       blog,
-      headerLinks,
+      headerLinks: headerLinks || undefined,
       moreBlogs,
     };
   } catch (error) {

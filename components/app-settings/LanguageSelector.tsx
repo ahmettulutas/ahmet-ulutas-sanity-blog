@@ -29,7 +29,7 @@ export const LanguageSelector = ({
       ({ language }) => language === locale
     )?.slug;
     if (!dynamicSlug) return router.push(`/${String(locale)}`);
-    router.push(`/${String(locale)}/blogs/${dynamicSlug}`);
+    return router.push(`/${String(locale)}/blogs/${dynamicSlug}`);
   };
 
   return (
