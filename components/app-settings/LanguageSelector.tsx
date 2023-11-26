@@ -2,30 +2,50 @@
 import React from 'react';
 import { languages } from '@/i18n/settings';
 import { usePathname, useRouter } from 'next/navigation';
-import { generatePathName } from '@/lib/helpers';
+import { omitLocaleFromPath } from '@/lib/helpers';
 
-import { AppSettings } from '.';
+import { AppSettingsProps } from '.';
 
-export const LanguageSelector = ({ currentLocale }: AppSettings) => {
+export const LanguageSelector = ({
+  currentLocale,
+  dynamicLinks,
+}: AppSettingsProps) => {
   const pathname = usePathname();
   const router = useRouter();
+
+  const defaultLocaleRoutes = languages.map((lang) => (
+    <option key={lang} value={lang}>
+      {lang.toUpperCase()}
+    </option>
+  ));
+  const dynamicLocaleRoutes = dynamicLinks?.map(({ language }) => (
+    <option key={language} value={language}>
+      {language.toUpperCase()}
+    </option>
+  ));
+  const handleDynamicNavigation = (locale: string) => {
+    // This function is used to n avigate the user to the related slug of a blog post when language is changed.
+    const dynamicSlug = dynamicLinks?.find(
+      ({ language }) => language === locale
+    )?.slug;
+    if (!dynamicSlug) return router.push(`/${String(locale)}`);
+    router.push(`/${String(locale)}/blogs/${dynamicSlug}`);
+  };
 
   return (
     <select
       aria-label='select-language'
       className='mb-2 w-full cursor-pointer p-1 rounded-md text-center shadow-sm hover:shadow-md dark:shadow-white dark:bg-dark-bg'
       defaultValue={currentLocale}
-      onChange={(event) => {
-        router.push(
-          `/${String(event.target.value)}/${generatePathName(pathname)}`
-        );
+      onChange={({ target }) => {
+        dynamicLocaleRoutes
+          ? handleDynamicNavigation(target.value)
+          : router.push(
+              `/${String(target.value)}/${omitLocaleFromPath(pathname)}`
+            );
       }}
     >
-      {languages?.map((lang) => (
-        <option key={lang} value={lang}>
-          {lang.toUpperCase()}
-        </option>
-      ))}
+      {dynamicLocaleRoutes ?? defaultLocaleRoutes}
     </select>
   );
 };

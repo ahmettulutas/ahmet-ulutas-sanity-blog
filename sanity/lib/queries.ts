@@ -13,7 +13,21 @@ const blogPostFields = groq`
   coverImage,
   "slug": slug.current,
   "author": author->{name, picture},
+  "_translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{
+    _id,
+    title,
+    date,
+    _updatedAt,
+    excerpt,
+    content,
+    language,
+    metaFields,
+    coverImage,
+    "slug": slug.current,
+    "author": author->{name, picture},
+},
 `;
+
 export type Author = {
   name?: any;
   picture?: any;
@@ -30,12 +44,12 @@ export type BlogPost = {
   author: Author;
   content?: any;
   language: string;
-  _translations: Array<BlogPost>;
   metaFields?: {
     shareImage: any /* todo. change any here */;
     description: string;
     title: string;
   };
+  _translations: Array<BlogPost>;
 };
 
 export const allBlogsQuery = groq`
@@ -49,8 +63,10 @@ export const blogBySlugQuery = groq`
 }
 `;
 export const blogSlugsQuery = groq`
-*[_type == "blogs" && defined(slug.current)][].slug.current
-`;
+*[_type == "blogs"] | order(date desc, _updatedAt desc) {
+  "slug": slug.current,
+  language
+}`;
 
 export const blogAndMoreBlogsQuery = groq`
 {

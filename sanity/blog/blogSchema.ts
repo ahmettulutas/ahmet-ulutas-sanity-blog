@@ -3,7 +3,6 @@ import { format, parseISO } from 'date-fns';
 import { defineField, defineType } from 'sanity';
 
 import authorSchema from '../author/authorSchema';
-import { isUniqueOtherThanLanguage } from '../lib/helpers';
 
 export default defineType({
   name: 'blogs',
@@ -24,9 +23,11 @@ export default defineType({
       options: {
         source: 'title',
         maxLength: 96,
-        isUnique: isUniqueOtherThanLanguage, // I connected same blogs with different locales with the same slugs.
       },
-      validation: (rule) => rule.required(),
+      validation: (rule) =>
+        rule
+          .required()
+          .error('A slug is required to generate a page on the website'),
     }),
     defineField({
       name: 'content',

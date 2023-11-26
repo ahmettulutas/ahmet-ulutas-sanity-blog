@@ -6,7 +6,7 @@ import { fallbackLng, languages, cookieName } from './i18n/settings';
 export const config = {
   // matcher: '/:lng*'
   matcher: [
-    '/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js|en/studio).*)',
+    '/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js|en/studio|sitemap.xml).*)', // This regular expression captures any string that does not start with one of the specified patterns (api, _next/static, _next/image, assets, favicon.ico, sw.js, en/studio).
   ],
 };
 
@@ -14,7 +14,6 @@ acceptLanguage.languages(languages);
 
 export function middleware(req: NextRequest) {
   const { cookies, headers, nextUrl } = req;
-
   if (
     nextUrl.pathname.indexOf('icon') > -1 ||
     nextUrl.pathname.indexOf('chrome') > -1
@@ -26,7 +25,7 @@ export function middleware(req: NextRequest) {
     lng = acceptLanguage.get(cookies.get(cookieName)?.value);
   if (!lng) lng = acceptLanguage.get(headers.get('Accept-Language'));
   if (!lng) lng = fallbackLng;
-  if (!languages.some((loc) => nextUrl.pathname.startsWith(`/${loc}`))) {
+  if (!languages.some((locale) => nextUrl.pathname.startsWith(`/${locale}`))) {
     // Redirect if lng in path is not supported
     return NextResponse.redirect(
       new URL(`/${lng}${nextUrl.pathname}`, req.url)

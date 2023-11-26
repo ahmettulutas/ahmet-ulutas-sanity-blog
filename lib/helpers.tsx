@@ -12,7 +12,7 @@ import { ogImageSizes, twitterImageSizes } from './constants';
  * @param pathname
  * @returns string
  */
-export const generatePathName = (path: string): string => {
+export const omitLocaleFromPath = (path: string): string => {
   if (!path) return '';
   const splittedPath = path.split('/').filter((item) => !!item);
   if (splittedPath.length === 1) return '';
