@@ -15,8 +15,6 @@ const myPortableTextComponents = {
           image={value}
           alt={value.alt}
           classesWrapper='relative aspect-[16/9]'
-          width={600}
-          height={500}
         />
         {value?.caption && (
           <figcaption className='text-xs text-right'>

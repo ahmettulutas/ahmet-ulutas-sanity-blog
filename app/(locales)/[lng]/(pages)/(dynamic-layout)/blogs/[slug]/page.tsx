@@ -20,13 +20,17 @@ async function getPageData(slug: string, language: string) {
   try {
     const { blog, moreBlogs } = await getBlogsAndMoreStories(slug, language);
     if (!blog) return notFound();
-    const headerLinks = blog?._translations?.map(({ language, slug }) => ({
-      language,
-      slug,
-    }));
+    const availableBlogLanguages = blog?._translations?.map(
+      ({ language, slug }) => ({
+        language,
+        slug,
+      })
+    );
     return {
       blog,
-      headerLinks: headerLinks || undefined,
+      headerLinks: availableBlogLanguages.length
+        ? availableBlogLanguages
+        : [{ language: blog.language, slug: blog.slug }],
       moreBlogs,
     };
   } catch (error) {
@@ -49,8 +53,8 @@ export default async function Page({ params }: PageProps & SharedPageProps) {
   const { blog, moreBlogs, headerLinks } = await getPageData(slug, lng);
   return (
     <main>
+      <Header currentLocale={lng} dynamicLinks={headerLinks} />
       <Container>
-        <Header currentLocale={lng} dynamicLinks={headerLinks} />
         <h1 className='mb-4 text-3xl md:text-6xl font-bold'>{blog?.title}</h1>
         <AuthorAvatar {...{ ...blog?.author }} />
         <CoverImage height={300} width={600} image={blog?.coverImage} />

@@ -9,7 +9,10 @@ import ThemeSwitcher from '@/themes/ThemeSwitcher';
 import { AppSettingsProps } from '.';
 import { LanguageSelector } from './LanguageSelector';
 
-export const AppSettingsMobile = ({ currentLocale }: AppSettingsProps) => {
+export const AppSettingsMobile = ({
+  currentLocale,
+  dynamicLinks,
+}: AppSettingsProps) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const { t } = useTranslation(currentLocale, 'translation');
   useEffect(() => {
@@ -34,8 +37,6 @@ export const AppSettingsMobile = ({ currentLocale }: AppSettingsProps) => {
       >
         <FiSettings className='mr-1 ml-1 w-6 h-6 animate-spin-slow' />
       </button>
-
-      {/*      <FocusLock disabled={!showDrawer} returnFocus={true}> */}
       <div
         role='presentation'
         tabIndex={-1}
@@ -62,9 +63,12 @@ export const AppSettingsMobile = ({ currentLocale }: AppSettingsProps) => {
             <AiOutlineClose width='18px' height='18px' variant='secondary' />
           </button>
         </div>
-        <p className='mt-8'> {t('language')}</p>
-        <LanguageSelector currentLocale={currentLocale} />
-        <p> {t('theme')}</p>
+        <p className='mt-8'>{t('language')}</p>
+        <LanguageSelector
+          dynamicLinks={dynamicLinks}
+          currentLocale={currentLocale}
+        />
+        <p>{t('theme')}</p>
         <ThemeSwitcher currentLocale={currentLocale} />
       </div>
     </>
