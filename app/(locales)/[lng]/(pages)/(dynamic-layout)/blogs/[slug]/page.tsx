@@ -82,7 +82,6 @@ export async function generateMetadata(
   const blogPost = await getBlogBySlug(slug, lng);
   if (!blogPost) return getDefaultMetaData(lng, parent);
 
-  const previousImages = (await parent).openGraph?.images || [];
   const blogMetaTitle = blogPost.metaFields?.title || blogPost.title;
   const blogMetaDescription =
     blogPost.metaFields?.description || blogPost.excerpt;
@@ -100,19 +99,14 @@ export async function generateMetadata(
     description: blogMetaDescription,
 
     openGraph: {
-      images:
-        generatedOGImages.length > 0
-          ? [...generatedOGImages, ...previousImages]
-          : previousImages,
+      images: generatedOGImages.length > 0 ? [...generatedOGImages] : [],
     },
     twitter: {
       card: 'summary_large_image',
       title: blogMetaTitle,
       description: blogMetaDescription,
       images:
-        generatedTwitterImages.length > 0
-          ? [...generatedTwitterImages, ...previousImages]
-          : previousImages,
+        generatedTwitterImages.length > 0 ? [...generatedTwitterImages] : [],
     },
     alternates: {
       canonical: `${new URL(

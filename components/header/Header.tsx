@@ -19,20 +19,22 @@ export default async function Header({
     <header>
       <Container className='py-10 flex justify-between items-center'>
         <div>
-          <Link
-            target='_blank'
-            className='shadow-sm hover:shadow-md dark:shadow-white p-1 rounded-xl m-1 flex items-center gap-2 text-lg'
-            href={SANITY_URL}
-          >
-            <SiSanity />
-            <p>{t('gotoStudio')}</p>
-          </Link>
+          {process.env.NODE_ENV === 'development' && (
+            <Link
+              target='_blank'
+              className='shadow-sm hover:shadow-md dark:shadow-white p-1 rounded-xl m-1 flex items-center gap-2 text-lg'
+              href={SANITY_URL}
+            >
+              <SiSanity />
+              <p>{t('gotoStudio')}</p>
+            </Link>
+          )}
           <Link
             className='shadow-sm hover:shadow-md dark:shadow-white p-1 rounded-xl m-1 flex items-center gap-2 text-lg'
             href={`/${currentLocale}/blogs`}
           >
             <FiBook />
-            <p>{t('blogPosts')}</p>
+            <p>{t('home')}</p>
           </Link>
         </div>
         <AppSettings

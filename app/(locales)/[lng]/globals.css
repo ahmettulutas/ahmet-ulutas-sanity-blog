@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.comment {
+  /* I needed to override the color of the comment for better accessibility. */
+  color: green !important;
+}
