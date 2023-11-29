@@ -10,25 +10,16 @@ export type AppSettingsProps = {
   dynamicLinks?: Array<DynamicLink>;
 };
 
-export const AppSettings = ({
-  currentLocale,
-  dynamicLinks,
-}: AppSettingsProps) => {
+export const AppSettings = ({ currentLocale, dynamicLinks }: AppSettingsProps) => {
   return languages && languages.length > 1 ? (
     <>
       <div className='hidden md:block'>
-        <LanguageSelector
-          dynamicLinks={dynamicLinks}
-          currentLocale={currentLocale}
-        />
+        <LanguageSelector dynamicLinks={dynamicLinks} currentLocale={currentLocale} />
         <ThemeSwitcher currentLocale={currentLocale} />
       </div>
 
       <div className='block md:hidden'>
-        <AppSettingsMobile
-          dynamicLinks={dynamicLinks}
-          currentLocale={currentLocale}
-        />
+        <AppSettingsMobile dynamicLinks={dynamicLinks} currentLocale={currentLocale} />
       </div>
     </>
   ) : null;

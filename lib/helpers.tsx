@@ -3,6 +3,7 @@ import { languages } from '@/i18n/settings';
 import { Metadata, ResolvingMetadata } from 'next';
 import { urlForImage } from '@/sanity/lib/sanity-image-fns';
 import { SanityAsset } from '@sanity/image-url/lib/types/types';
+import { formatDistanceToNowStrict, parseISO } from 'date-fns';
 
 import opengraphImage from '../public/images/opengraph-image.webp';
 import { ogImageSizes, twitterImageSizes } from './constants';
@@ -128,11 +129,7 @@ export const generateMetaImages = ({
         width,
         height,
         alt: sanityImage?.alt || '',
-        url: urlForImage(sanityImage)
-          ?.height(height)
-          .width(width)
-          .fit('crop')
-          .url(),
+        url: urlForImage(sanityImage)?.height(height).width(width).fit('crop').url(),
       });
     }
   }
@@ -205,3 +202,9 @@ export const generateMetaImages = ({
         break;
     }
   }; */
+export const agoFromNow = (dateTime: number | Date | string) => {
+  const date = typeof dateTime === 'string' ? parseISO(dateTime) : dateTime;
+  return formatDistanceToNowStrict(date, {
+    addSuffix: true,
+  });
+};

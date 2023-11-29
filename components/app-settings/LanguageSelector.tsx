@@ -6,10 +6,7 @@ import { omitLocaleFromPath } from '@/lib/helpers';
 
 import { AppSettingsProps } from '.';
 
-export const LanguageSelector = ({
-  currentLocale,
-  dynamicLinks,
-}: AppSettingsProps) => {
+export const LanguageSelector = ({ currentLocale, dynamicLinks }: AppSettingsProps) => {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -25,9 +22,7 @@ export const LanguageSelector = ({
   ));
   const handleDynamicNavigation = (locale: string) => {
     // This function is used to n avigate the user to the related slug of a blog post when language is changed.
-    const dynamicSlug = dynamicLinks?.find(
-      ({ language }) => language === locale
-    )?.slug;
+    const dynamicSlug = dynamicLinks?.find(({ language }) => language === locale)?.slug;
     if (!dynamicSlug) return router.push(`/${String(locale)}`);
     return router.push(`/${String(locale)}/blogs/${dynamicSlug}`);
   };
@@ -35,14 +30,12 @@ export const LanguageSelector = ({
   return (
     <select
       aria-label='select-language'
-      className='mb-2 w-full cursor-pointer p-1 rounded-md text-center shadow-sm hover:shadow-md dark:shadow-white dark:bg-dark-bg'
+      className='btn-primary cursor-pointer px-4'
       defaultValue={currentLocale}
       onChange={({ target }) => {
         dynamicLocaleRoutes
           ? handleDynamicNavigation(target.value)
-          : router.push(
-              `/${String(target.value)}/${omitLocaleFromPath(pathname)}`
-            );
+          : router.push(`/${String(target.value)}/${omitLocaleFromPath(pathname)}`);
       }}
     >
       {dynamicLocaleRoutes ?? defaultLocaleRoutes}

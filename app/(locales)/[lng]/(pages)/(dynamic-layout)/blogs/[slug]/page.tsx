@@ -13,7 +13,8 @@ import { ogImageSizes, twitterImageSizes } from '@/lib/constants';
 import AuthorAvatar from '@/components/author-avatar/AuthorAvatar';
 import CoverImage from '@/components/sanity-image/CoverImage';
 import Header from '@/components/header/Header';
-import SignInButton from '@/components/sign-in-button/SignInButton';
+import CommentsContainer from '@/components/comments/CommentsContainer';
+import { Suspense } from 'react';
 
 import { SharedPageProps } from '../../../../layout';
 
@@ -21,12 +22,10 @@ async function getPageData(slug: string, language: string) {
   try {
     const { blog, moreBlogs } = await getBlogsAndMoreStories(slug, language);
     if (!blog) return notFound();
-    const availableBlogLanguages = blog?._translations?.map(
-      ({ language, slug }) => ({
-        language,
-        slug,
-      })
-    );
+    const availableBlogLanguages = blog?._translations?.map(({ language, slug }) => ({
+      language,
+      slug,
+    }));
     return {
       blog,
       headerLinks: availableBlogLanguages.length
@@ -58,14 +57,11 @@ export default async function Page({ params }: PageProps & SharedPageProps) {
       <Container>
         <h1 className='mb-4 text-3xl md:text-6xl font-bold'>{blog?.title}</h1>
         <AuthorAvatar {...{ ...blog?.author }} />
-        <CoverImage
-          priority
-          height={300}
-          width={600}
-          image={blog?.coverImage}
-        />
+        <CoverImage priority height={300} width={600} image={blog?.coverImage} />
         <RichTextContent content={blog?.content} />
-        <SignInButton />
+        <Suspense fallback={<p>Loading comments...</p>}>
+          <CommentsContainer />
+        </Suspense>
         <MoreBlogs moreBlogs={moreBlogs} currntLocale={lng} />
       </Container>
     </main>
@@ -90,8 +86,7 @@ export async function generateMetadata(
   if (!blogPost) return getDefaultMetaData(lng, parent);
 
   const blogMetaTitle = blogPost.metaFields?.title || blogPost.title;
-  const blogMetaDescription =
-    blogPost.metaFields?.description || blogPost.excerpt;
+  const blogMetaDescription = blogPost.metaFields?.description || blogPost.excerpt;
   const generatedOGImages = generateMetaImages({
     sanityImage: blogPost.metaFields?.shareImage,
     sizes: ogImageSizes,
@@ -112,13 +107,10 @@ export async function generateMetadata(
       card: 'summary_large_image',
       title: blogMetaTitle,
       description: blogMetaDescription,
-      images:
-        generatedTwitterImages.length > 0 ? [...generatedTwitterImages] : [],
+      images: generatedTwitterImages.length > 0 ? [...generatedTwitterImages] : [],
     },
     alternates: {
-      canonical: `${new URL(
-        process.env.NEXT_PUBLIC_BASE_URL as string
-      )}/${lng}/blogs/${slug}`,
+      canonical: `${new URL(process.env.NEXT_PUBLIC_BASE_URL as string)}/${lng}/blogs/${slug}`,
     },
   };
 }

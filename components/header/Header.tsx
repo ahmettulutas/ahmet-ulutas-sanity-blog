@@ -9,10 +9,7 @@ import { Container } from '../container';
 import { AppSettings, AppSettingsProps } from '../app-settings';
 
 type HeaderProps = AppSettingsProps;
-export default async function Header({
-  currentLocale,
-  dynamicLinks,
-}: HeaderProps) {
+export default async function Header({ currentLocale, dynamicLinks }: HeaderProps) {
   const { t } = await useServerSideTranslation(currentLocale, 'translation');
 
   return (
@@ -20,27 +17,17 @@ export default async function Header({
       <Container className='py-10 flex justify-between items-center'>
         <div>
           {process.env.NODE_ENV === 'development' && (
-            <Link
-              target='_blank'
-              className='shadow-sm hover:shadow-md dark:shadow-white p-1 rounded-xl m-1 flex items-center gap-2 text-lg'
-              href={SANITY_URL}
-            >
+            <Link target='_blank' className='btn-primary flex items-center gap-2' href={SANITY_URL}>
               <SiSanity />
               <p>{t('gotoStudio')}</p>
             </Link>
           )}
-          <Link
-            className='shadow-sm hover:shadow-md dark:shadow-white p-1 rounded-xl m-1 flex items-center gap-2 text-lg'
-            href={`/${currentLocale}/blogs`}
-          >
+          <Link className='btn-primary flex items-center gap-2' href={`/${currentLocale}/blogs`}>
             <FiBook />
             <p>{t('blogPosts')}</p>
           </Link>
         </div>
-        <AppSettings
-          dynamicLinks={dynamicLinks}
-          currentLocale={currentLocale}
-        />
+        <AppSettings dynamicLinks={dynamicLinks} currentLocale={currentLocale} />
       </Container>
     </header>
   );
