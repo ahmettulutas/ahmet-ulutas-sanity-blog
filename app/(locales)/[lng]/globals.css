@@ -9,6 +9,6 @@
 
 @layer components {
   .btn-primary {
-    @apply inline-block py-1.5 md:py-2 px-6 md:px-10 rounded-full border-2 border-black dark:border-white hover:scale-105 transition-all ease-in duration-200 m-2 bg-white text-black dark:bg-dark-bg dark:text-white;
+    @apply inline-block py-1 md:py-2 rounded-full border-2 border-black dark:border-white hover:scale-105 transition-all ease-in duration-200 m-2 bg-white text-black dark:bg-dark-bg dark:text-white;
   }
 }
