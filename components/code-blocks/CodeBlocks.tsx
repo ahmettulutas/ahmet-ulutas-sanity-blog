@@ -3,36 +3,42 @@ import { Highlight, themes } from 'prism-react-renderer';
 import { BiCopyAlt } from 'react-icons/bi';
 import { MdOutlineFileDownloadDone } from 'react-icons/md';
 import { useTheme } from 'next-themes';
+import { BiLogoTypescript, BiLogoJavascript } from 'react-icons/bi';
 
 type CodeProps = {
   code: string;
   filename: string;
   language: string;
 };
-const defaultCodeLanguage = 'tsx';
+const defaultCodeLanguage = 'typescript';
 
 const codeTheme = {
-  light: themes.github,
+  light: themes.oceanicNext,
   dark: themes.oneDark,
   system: themes.github,
 };
-const RenderCodeBlock: React.FC<CodeProps> = ({
-  code,
-  filename,
-  language: codeLanguage,
-}) => {
+
+const LanguageIcons: Record<string, React.ReactNode> = {
+  typescript: <BiLogoTypescript />,
+  javascript: <BiLogoJavascript />,
+};
+
+const RenderCodeBlock: React.FC<CodeProps> = ({ code, filename, language: codeLanguage }) => {
   const { isCopied, copy } = useCopyToClipboard();
   const { theme } = useTheme();
 
   if (!code) return <></>;
+
   return (
     <div className='rounded-2xl p-4 dark:bg-gray-700 bg-gray-100 my-4 relative'>
       <div className='flex justify-between my-1 flex-wrap align-middle'>
-        <p className='opacity-70'>{filename}</p>
-        <p>
+        <div className='flex gap-2 items-center'>
           <span className='opacity-70'>
-            {codeLanguage ?? defaultCodeLanguage}
+            {codeLanguage ? LanguageIcons[codeLanguage] : LanguageIcons[defaultCodeLanguage]}
           </span>
+          <p className='opacity-70'>{filename}</p>
+        </div>
+        <p>
           <button
             aria-label='copy-to-clipboard'
             className='text-xl ml-2'

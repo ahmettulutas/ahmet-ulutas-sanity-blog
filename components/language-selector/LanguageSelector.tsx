@@ -4,7 +4,7 @@ import { languages } from '@/i18n/settings';
 import { usePathname, useRouter } from 'next/navigation';
 import { omitLocaleFromPath } from '@/lib/helpers';
 
-import { AppSettingsProps } from '.';
+import { AppSettingsProps } from '../app-settings';
 
 export const LanguageSelector = ({ currentLocale, dynamicLinks }: AppSettingsProps) => {
   const pathname = usePathname();

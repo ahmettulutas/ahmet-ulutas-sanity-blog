@@ -7,12 +7,9 @@ import { FiSettings } from 'react-icons/fi';
 import ThemeSwitcher from '@/components/providers/themes/ThemeSwitcher';
 
 import { AppSettingsProps } from '.';
-import { LanguageSelector } from './LanguageSelector';
+import { LanguageSelector } from '../language-selector';
 
-export const AppSettingsMobile = ({
-  currentLocale,
-  dynamicLinks,
-}: AppSettingsProps) => {
+export const AppSettingsMobile = ({ currentLocale, dynamicLinks }: AppSettingsProps) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const { t } = useTranslation(currentLocale, 'translation');
   useEffect(() => {
@@ -42,9 +39,7 @@ export const AppSettingsMobile = ({
         tabIndex={-1}
         className={twMerge(
           'fixed top-0 left-0 h-full w-full bg-black/[0.4] transition-opacity duration-150',
-          showDrawer
-            ? 'pointer-events-auto opacity-100'
-            : 'pointer-events-none opacity-0'
+          showDrawer ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
         )}
         onClick={() => setShowDrawer(false)}
       />
@@ -64,10 +59,7 @@ export const AppSettingsMobile = ({
           </button>
         </div>
         <p className='mt-8'>{t('language')}</p>
-        <LanguageSelector
-          dynamicLinks={dynamicLinks}
-          currentLocale={currentLocale}
-        />
+        <LanguageSelector dynamicLinks={dynamicLinks} currentLocale={currentLocale} />
         <p>{t('theme')}</p>
         <ThemeSwitcher currentLocale={currentLocale} />
       </div>

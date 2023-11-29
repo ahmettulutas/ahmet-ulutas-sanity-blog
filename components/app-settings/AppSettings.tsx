@@ -3,7 +3,7 @@ import { languages } from '@/i18n/settings';
 import { DynamicLink } from '@/app/(locales)/[lng]/(pages)/(dynamic-layout)/blogs/[slug]/page';
 
 import { AppSettingsMobile } from './AppSettingsMobile';
-import { LanguageSelector } from './LanguageSelector';
+import { LanguageSelector } from '../language-selector';
 
 export type AppSettingsProps = {
   currentLocale: string;
