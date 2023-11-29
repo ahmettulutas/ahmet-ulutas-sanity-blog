@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { AiOutlineClose } from 'react-icons/ai';
 import { FiSettings } from 'react-icons/fi';
-import ThemeSwitcher from '@/themes/ThemeSwitcher';
+import ThemeSwitcher from '@/components/providers/themes/ThemeSwitcher';
 
 import { AppSettingsProps } from '.';
 import { LanguageSelector } from './LanguageSelector';

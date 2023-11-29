@@ -13,6 +13,7 @@ import { ogImageSizes, twitterImageSizes } from '@/lib/constants';
 import AuthorAvatar from '@/components/author-avatar/AuthorAvatar';
 import CoverImage from '@/components/sanity-image/CoverImage';
 import Header from '@/components/header/Header';
+import SignInButton from '@/components/sign-in-button/SignInButton';
 
 import { SharedPageProps } from '../../../../layout';
 
@@ -57,8 +58,14 @@ export default async function Page({ params }: PageProps & SharedPageProps) {
       <Container>
         <h1 className='mb-4 text-3xl md:text-6xl font-bold'>{blog?.title}</h1>
         <AuthorAvatar {...{ ...blog?.author }} />
-        <CoverImage height={300} width={600} image={blog?.coverImage} />
+        <CoverImage
+          priority
+          height={300}
+          width={600}
+          image={blog?.coverImage}
+        />
         <RichTextContent content={blog?.content} />
+        <SignInButton />
         <MoreBlogs moreBlogs={moreBlogs} currntLocale={lng} />
       </Container>
     </main>
