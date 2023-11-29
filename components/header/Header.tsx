@@ -34,7 +34,7 @@ export default async function Header({
             href={`/${currentLocale}/blogs`}
           >
             <FiBook />
-            <p>{t('home')}</p>
+            <p>{t('blogPosts')}</p>
           </Link>
         </div>
         <AppSettings

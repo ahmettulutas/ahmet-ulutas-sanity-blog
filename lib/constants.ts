@@ -35,3 +35,4 @@ export const twitterImageSizes = [
   { width: 800, height: 418 },
   { width: 1600, height: 900 },
 ];
+export const isAuthenticated = 'authenticated';

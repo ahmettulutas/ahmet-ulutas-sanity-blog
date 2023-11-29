@@ -2,9 +2,10 @@ import { dir } from 'i18next';
 import './globals.css';
 import type { ResolvingMetadata } from 'next';
 import { Inter } from 'next/font/google';
-import NextThemeProvider from '@/themes/ThemeProvider';
+import NextThemeProvider from '@/components/providers/themes/ThemeProvider';
 import { languages } from '@/i18n/settings';
 import { getDefaultMetaData } from '@/lib/helpers';
+import AuthProvider from '@/components/providers/auth/AuthProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -37,7 +38,9 @@ export default function RootLayout({
       <body
         className={`${inter.className} dark:bg-dark-bg dark:text-dark-text text-light-text transition-all duration-150 ease-in`}
       >
-        <NextThemeProvider>{children}</NextThemeProvider>
+        <AuthProvider>
+          <NextThemeProvider>{children}</NextThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   );
