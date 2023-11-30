@@ -64,7 +64,7 @@ export const getDefaultMetaData = async (
     referrer: 'origin-when-cross-origin',
     keywords: ['Typescript', 'React', 'JavaScript', 'Frontend Development'],
     verification: {
-      google: 'TuZFznP70RvAIX',
+      google: 'TuZFznP70RvAIXp',
     },
     openGraph: {
       title: t('metaData.pageTitle'),
