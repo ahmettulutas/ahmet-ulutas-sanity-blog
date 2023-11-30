@@ -63,6 +63,9 @@ export const getDefaultMetaData = async (
     metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL as string),
     referrer: 'origin-when-cross-origin',
     keywords: ['Typescript', 'React', 'JavaScript', 'Frontend Development'],
+    verification: {
+      google: 'TuZFznP70RvAIX',
+    },
     openGraph: {
       title: t('metaData.pageTitle'),
       images: [
