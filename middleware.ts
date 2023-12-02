@@ -14,29 +14,21 @@ acceptLanguage.languages(languages);
 
 export function middleware(req: NextRequest) {
   const { cookies, headers, nextUrl } = req;
-  if (
-    nextUrl.pathname.indexOf('icon') > -1 ||
-    nextUrl.pathname.indexOf('chrome') > -1
-  )
+  if (nextUrl.pathname.indexOf('icon') > -1 || nextUrl.pathname.indexOf('chrome') > -1)
     return NextResponse.next();
 
   let lng;
-  if (cookies.has(cookieName))
-    lng = acceptLanguage.get(cookies.get(cookieName)?.value);
+  if (cookies.has(cookieName)) lng = acceptLanguage.get(cookies.get(cookieName)?.value);
   if (!lng) lng = acceptLanguage.get(headers.get('Accept-Language'));
   if (!lng) lng = fallbackLng;
   if (!languages.some((locale) => nextUrl.pathname.startsWith(`/${locale}`))) {
     // Redirect if lng in path is not supported
-    return NextResponse.redirect(
-      new URL(`/${lng}${nextUrl.pathname}`, req.url)
-    );
+    return NextResponse.redirect(new URL(`/${lng}${nextUrl.pathname}`, req.url));
   }
 
   if (headers.has('referer')) {
     const refererUrl = new URL(headers.get('referer') as string);
-    const lngInReferer = languages.find((l) =>
-      refererUrl.pathname.startsWith(`/${l}`)
-    );
+    const lngInReferer = languages.find((l) => refererUrl.pathname.startsWith(`/${l}`));
     const response = NextResponse.next();
     if (lngInReferer) response.cookies.set(cookieName, lngInReferer);
     return response;

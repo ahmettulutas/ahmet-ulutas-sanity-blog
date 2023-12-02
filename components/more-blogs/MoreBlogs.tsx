@@ -8,10 +8,7 @@ type MoreBlogsProps = {
   moreBlogs: Array<BlogPost>;
   currntLocale: string;
 };
-const MoreBlogs: React.FC<MoreBlogsProps> = async ({
-  moreBlogs,
-  currntLocale,
-}) => {
+const MoreBlogs: React.FC<MoreBlogsProps> = async ({ moreBlogs, currntLocale }) => {
   const { t } = await useServerSideTranslation(currntLocale, 'translation');
   return (
     <section className='my-10 grid'>

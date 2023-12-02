@@ -28,7 +28,7 @@ async function getPageData(slug: string, language: string) {
     }));
     return {
       blog,
-      headerLinks: availableBlogLanguages.length
+      relatedSlugs: availableBlogLanguages.length
         ? availableBlogLanguages
         : [{ language: blog.language, slug: blog.slug }],
       moreBlogs,
@@ -50,17 +50,21 @@ export type DynamicLink = {
 
 export default async function Page({ params }: PageProps & SharedPageProps) {
   const { slug, lng } = params;
-  const { blog, moreBlogs, headerLinks } = await getPageData(slug, lng);
+  const { blog, moreBlogs, relatedSlugs } = await getPageData(slug, lng);
   return (
     <main>
-      <Header currentLocale={lng} dynamicLinks={headerLinks} />
+      <Header currentLocale={lng} dynamicLinks={relatedSlugs} />
       <Container>
         <h1 className='mb-4 text-3xl md:text-6xl font-bold'>{blog?.title}</h1>
         <AuthorAvatar {...{ ...blog?.author }} />
         <CoverImage priority height={300} width={600} image={blog?.coverImage} />
         <RichTextContent content={blog?.content} />
         <Suspense fallback={<p>Loading comments...</p>}>
-          <CommentsContainer />
+          <CommentsContainer
+            currentLocale={lng}
+            currentSlug={blog.slug}
+            relatedSlugs={relatedSlugs.map((item) => item.slug)}
+          />
         </Suspense>
         <MoreBlogs moreBlogs={moreBlogs} currntLocale={lng} />
       </Container>

@@ -1,1 +1,2 @@
-export * from './';
+export * from './CommentsContainer';
+export * from './CommentsList';

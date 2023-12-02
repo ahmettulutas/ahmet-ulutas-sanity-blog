@@ -7,17 +7,21 @@ import { authOptions } from '../auth/[...nextauth]/options';
 
 export async function POST(req: Request) {
   const body = await req.json();
-  const { message } = body;
-  if (!message) return NextResponse.json({ message: 'Missing message!' }, { status: 400 });
+  const { message, relatedSlugs } = body;
+  if (!message || !relatedSlugs)
+    return NextResponse.json(
+      { message: 'Missing message and/or relatedSlugs parameters!' },
+      { status: 400 }
+    );
   const session = await getServerSession(authOptions);
   if (!session) return NextResponse.json({ message: 'Unauthorized!' }, { status: 401 });
   const { user } = session;
-
   try {
     const newComment = new Comment({
       message,
       name: user?.name,
       image: user?.image,
+      relatedSlugs: relatedSlugs,
     });
     await connectToMongo();
     await newComment.save();
@@ -27,10 +31,15 @@ export async function POST(req: Request) {
   }
 }
 
-export const GET = async () => {
+export const GET = async (req: Request) => {
+  const url = new URL(req.url);
+  const currentSlug = url.searchParams.get('currentSlug');
+
   try {
     await connectToMongo();
-    const comments = await Comment.collection.find({}).toArray();
+    const comments = await Comment.collection
+      .find({ relatedSlugs: { $in: [currentSlug] } }) // $in brings all documents that has current slug inside its realtedSlugs array
+      .toArray();
     return NextResponse.json(comments, { status: 201 });
   } catch (err) {
     return NextResponse.json({ error: err }, { status: 500 });

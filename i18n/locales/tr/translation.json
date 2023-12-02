@@ -13,6 +13,10 @@
   "dark": "Karanlık",
   "light": "Aydınlık",
   "system": "Sistem",
+  "submitComment": "Gönder",
+  "signOut": "Çıkış Yap",
+  "signIn": "Giriş Yap",
+  "comments": "Yorumlar",
   "metaData": {
     "pageTitle": "Ahmet Ulutaş'ın Blog Sayfası",
     "pageDescription": "Ahmet Ulutaş'ın frontend blogu.",

@@ -4,10 +4,20 @@ import { Comment } from '@/lib/db/models/comments';
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-export default function useComments() {
+export default function useComments({
+  relatedSlugs,
+  currentSlug,
+}: {
+  relatedSlugs: Array<string>;
+  currentSlug: string;
+}) {
   const [message, setMessage] = useState<string>('');
 
-  const { data: comments, mutate } = useSWR<Comment[]>('/api/comments', fetcher, {
+  const {
+    data: comments,
+    mutate,
+    isLoading,
+  } = useSWR<Comment[]>(`/api/comments?currentSlug=${currentSlug}`, fetcher, {
     fallbackData: [],
   });
 
@@ -16,12 +26,12 @@ export default function useComments() {
     try {
       await fetch('/api/comments', {
         method: 'POST',
-        body: JSON.stringify({ message }),
+        body: JSON.stringify({ message, relatedSlugs }),
       });
       setMessage('');
       await mutate();
     } catch (err: any) {
-      throw new Error(JSON.stringify(err)); // todo
+      throw new Error(JSON.stringify(err));
     }
   };
 
@@ -37,5 +47,5 @@ export default function useComments() {
     }
   };
 
-  return { message, setMessage, comments, handleSubmit, handleDelete };
+  return { message, setMessage, comments, handleSubmit, handleDelete, isLoading };
 }
