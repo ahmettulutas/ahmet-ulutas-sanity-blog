@@ -16,19 +16,16 @@ export async function getAllBlogs(language: string): Promise<BlogPost[]> {
 }
 
 export async function getAllBlogsSlugs(): Promise<
-  Pick<BlogPost, 'slug' | 'language'>[]
+  Pick<BlogPost, 'slug' | 'language' | '_updatedAt'>[]
 > {
   const slugs =
-    (await client.fetch<{ slug: string; language: string }[]>(
+    (await client.fetch<{ slug: string; language: string; _updatedAt: string }[]>(
       blogSlugsQuery
     )) || [];
-  return slugs.map(({ slug, language }) => ({ slug, language }));
+  return slugs.map(({ slug, language, _updatedAt }) => ({ slug, language, _updatedAt }));
 }
 
-export async function getBlogBySlug(
-  slug: string,
-  language: string
-): Promise<BlogPost> {
+export async function getBlogBySlug(slug: string, language: string): Promise<BlogPost> {
   return await client.fetch<BlogPost>(blogBySlugQuery, { slug, language });
 }
 

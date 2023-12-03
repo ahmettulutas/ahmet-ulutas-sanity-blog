@@ -65,7 +65,8 @@ export const blogBySlugQuery = groq`
 export const blogSlugsQuery = groq`
 *[_type == "blogs"] | order(date desc, _updatedAt desc) {
   "slug": slug.current,
-  language
+  language,
+  _updatedAt,
 }`;
 
 export const blogAndMoreBlogsQuery = groq`

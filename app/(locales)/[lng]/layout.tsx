@@ -27,7 +27,7 @@ export async function generateStaticParams() {
 
 export default function RootLayout({ children, params: { lng } }: RootLayoutProps) {
   return (
-    <html lang={lng} dir={dir(lng)} suppressHydrationWarning>
+    <html lang={lng} dir={dir(lng)} suppressHydrationWarning className='scroll-smooth'>
       <head />
       <body
         className={`${inter.className} dark:bg-dark-bg dark:text-dark-text text-light-text transition-all duration-150 ease-in`}
