@@ -34,13 +34,12 @@ export async function POST(req: Request) {
 export const GET = async (req: Request) => {
   const url = new URL(req.url);
   const currentSlug = url.searchParams.get('currentSlug');
-
   try {
     await connectToMongo();
     const comments = await Comment.collection
       .find({ relatedSlugs: { $in: [currentSlug] } }) // $in brings all documents that has current slug inside its realtedSlugs array
       .toArray();
-    return NextResponse.json(comments, { status: 201 });
+    return NextResponse.json(comments, { status: 200 });
   } catch (err) {
     return NextResponse.json({ error: err }, { status: 500 });
   }
