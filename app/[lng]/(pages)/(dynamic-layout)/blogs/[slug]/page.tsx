@@ -15,8 +15,7 @@ import CoverImage from '@/components/sanity-image/CoverImage';
 import Header from '@/components/header/Header';
 import CommentsContainer from '@/components/comments/CommentsContainer';
 import { Suspense } from 'react';
-
-import { SharedPageProps } from '../../../../layout';
+import { SharedPageProps } from '@/app/[lng]/layout';
 
 async function getPageData(slug: string, language: string) {
   try {
@@ -57,7 +56,14 @@ export default async function Page({ params }: PageProps & SharedPageProps) {
       <Container>
         <h1 className='mb-4 text-3xl md:text-6xl font-bold'>{blog?.title}</h1>
         <AuthorAvatar {...{ ...blog?.author }} />
-        <CoverImage priority height={300} width={600} image={blog?.coverImage} />
+        <CoverImage
+          priority
+          height={300}
+          width={600}
+          image={blog?.coverImage}
+          imageStyles='rounded-3xl'
+          wrapperStyles='mb-8'
+        />
         <RichTextContent content={blog?.content} />
         <Suspense fallback={<p>Loading comments...</p>}>
           <CommentsContainer

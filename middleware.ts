@@ -6,7 +6,7 @@ import { fallbackLng, languages, cookieName } from './i18n/settings';
 export const config = {
   // matcher: '/:lng*'
   matcher: [
-    '/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js|en/studio|sitemap.xml).*)', // This regular expression captures any string that does not start with one of the specified patterns (api, _next/static, _next/image, assets, favicon.ico, sw.js, en/studio).
+    '/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js|en/studio|sitemap.xml).*)', // Captures any string that does not start with one of the specified patterns (api, _next/static, _next/image, assets, favicon.ico, sw.js, en/studio).
   ],
 };
 

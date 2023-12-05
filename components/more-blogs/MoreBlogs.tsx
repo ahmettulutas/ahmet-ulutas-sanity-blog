@@ -1,6 +1,7 @@
+'use client';
 import { BlogPost } from '@/sanity/lib/queries';
 import React from 'react';
-import { useServerSideTranslation } from '@/i18n';
+import { useTranslation } from '@/i18n/client';
 
 import BlogCard from '../blog-card/BlogCard';
 
@@ -8,8 +9,8 @@ type MoreBlogsProps = {
   moreBlogs: Array<BlogPost>;
   currntLocale: string;
 };
-const MoreBlogs: React.FC<MoreBlogsProps> = async ({ moreBlogs, currntLocale }) => {
-  const { t } = await useServerSideTranslation(currntLocale, 'translation');
+export default function MoreBlogs({ moreBlogs, currntLocale }: MoreBlogsProps) {
+  const { t } = useTranslation(currntLocale, 'translation');
   return (
     <section className='my-6 grid'>
       <h2 className='text-3xl font-bold my-6'>{t('moreBlogs')}</h2>
@@ -20,6 +21,4 @@ const MoreBlogs: React.FC<MoreBlogsProps> = async ({ moreBlogs, currntLocale }) 
       </div>
     </section>
   );
-};
-
-export default MoreBlogs;
+}

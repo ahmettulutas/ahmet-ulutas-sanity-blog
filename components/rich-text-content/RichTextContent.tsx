@@ -11,16 +11,8 @@ const myPortableTextComponents = {
   types: {
     image: ({ value }: any) => (
       <figure className='my-4 p-2 shadow-md dark:shadow-none'>
-        <SanityImage
-          image={value}
-          alt={value.alt}
-          classesWrapper='relative aspect-[16/9]'
-        />
-        {value?.caption && (
-          <figcaption className='text-xs text-right'>
-            {value.caption}
-          </figcaption>
-        )}
+        <SanityImage image={value} alt={value.alt} wrapperStyles='relative aspect-[16/9]' />
+        {value?.caption && <figcaption className='text-xs text-right'>{value.caption}</figcaption>}
       </figure>
     ),
     code: ({ value }: any) => (
@@ -34,15 +26,13 @@ const myPortableTextComponents = {
     blockquote: ({ children }: any) => (
       <blockquote className='border-l-purple-500'>{children}</blockquote>
     ),
-    normal: ({ children }: any) => <p className='my-2'>{children}</p>,
+    normal: ({ children }: any) => <p className='my-2 text-lg leading-8'>{children}</p>,
   },
   marks: {
     em: ({ children }: any) => <em className='font-semibold'>{children}</em>,
     link: ({ value, children }: any) => {
       /*  todo */
-      const target = (value?.href || '').startsWith('http')
-        ? '_blank'
-        : undefined;
+      const target = (value?.href || '').startsWith('http') ? '_blank' : undefined;
       return (
         <a
           href={value?.href}
@@ -55,17 +45,13 @@ const myPortableTextComponents = {
       );
     },
     code: ({ children }: any) => (
-      <code className='bg-gray-100 dark:bg-gray-600 rounded-md p-1'>
-        {children}
-      </code>
+      <code className='bg-gray-100 dark:bg-gray-600 rounded-md p-1 leading-4'>{children}</code>
     ),
   },
   list: {
     bullet: ({ children }: any) => <ul className='my-6 ml-6'>{children}</ul>,
     number: ({ children }: any) => <ol className='my-4 ml-6'>{children}</ol>,
-    checkmarks: ({ children }: any) => (
-      <ol className='m-auto text-lg'>{children}</ol>
-    ),
+    checkmarks: ({ children }: any) => <ol className='m-auto text-lg'>{children}</ol>,
     p: ({ children }: any) => <p className='text-2xl'>{children}</p>,
   },
 };

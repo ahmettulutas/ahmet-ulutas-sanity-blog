@@ -8,7 +8,7 @@ const AuthorAvatar = (props: Author) => {
     <div className='flex items-center my-6'>
       {picture?.asset?._ref && (
         <SanityImage
-          classesWrapper='mr-2 h-12 w-12 rounded-full'
+          wrapperStyles='mr-2 h-12 w-12 rounded-full'
           image={picture}
           width={96}
           height={96}

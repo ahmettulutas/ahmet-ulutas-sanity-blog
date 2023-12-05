@@ -1,17 +1,17 @@
+'use client';
 import Link from 'next/link';
-/* import { Trans } from 'react-i18next/TransWithoutContext' */
-import { useServerSideTranslation } from '@/i18n';
 import { FiBook } from 'react-icons/fi';
 import { SiSanity } from 'react-icons/si';
 import { SANITY_URL } from '@/lib/constants';
+import { useTranslation } from '@/i18n/client';
 
 import { Container } from '../container';
 import { AppSettings, AppSettingsProps } from '../app-settings';
 
 type HeaderProps = AppSettingsProps;
-export default async function Header({ currentLocale, dynamicLinks }: HeaderProps) {
-  const { t } = await useServerSideTranslation(currentLocale, 'translation');
 
+export default function Header({ currentLocale, dynamicLinks }: HeaderProps) {
+  const { t } = useTranslation(currentLocale, 'translation');
   return (
     <header>
       <Container className='py-10 flex justify-between items-center'>
@@ -22,9 +22,9 @@ export default async function Header({ currentLocale, dynamicLinks }: HeaderProp
               <p>{t('gotoStudio')}</p>
             </Link>
           )}
-          <Link className='btn-primary flex items-center gap-2' href={`/${currentLocale}/blogs`}>
+          <Link className='btn-primary flex items-center gap-2' href={'/'}>
             <FiBook />
-            <p>{t('blogPosts')}</p>
+            <p>{t('home')}</p>
           </Link>
         </div>
         <AppSettings dynamicLinks={dynamicLinks} currentLocale={currentLocale} />

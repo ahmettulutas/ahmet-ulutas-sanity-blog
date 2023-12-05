@@ -14,9 +14,15 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog, currntLocale }) => {
     <article className='h-full'>
       <Link
         href={`/${currntLocale}/blogs/${blog.slug}`} /* you need to ad currentlocale to prevent previous locale page caching */
-        className='flex justify-between flex-col gap-4'
+        className='group flex justify-between flex-col gap-4 rounded-xl'
       >
-        <CoverImage height={300} width={600} image={blog.coverImage} />
+        <CoverImage
+          height={300}
+          width={500}
+          image={blog.coverImage}
+          wrapperStyles='rounded-xl overflow-hidden'
+          imageStyles='group-hover:scale-105 object-cover object-center transition-all ease duration-300'
+        />
         <h3 className='hover:underline text-2xl font-semibold'>{blog.title}</h3>
         <PostDate dateString={blog.date} />
         <p className='leading-7 font-light'>{blog.excerpt}</p>

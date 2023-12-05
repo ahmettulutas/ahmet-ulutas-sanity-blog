@@ -1,5 +1,5 @@
 import { dir } from 'i18next';
-import './globals.css';
+import '../globals.css';
 import type { ResolvingMetadata } from 'next';
 import { Inter } from 'next/font/google';
 import NextThemeProvider from '@/components/providers/themes/ThemeProvider';

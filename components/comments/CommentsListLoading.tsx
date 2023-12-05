@@ -11,7 +11,7 @@ const CommentsListLoading = () => {
               <div className='bg-gray-200 rounded-md dark:bg-gray-700 text-gray-400 h-4' />
               <div className='bg-gray-200 rounded-md dark:bg-gray-700 text-gray-400 h-4' />
             </div>
-            <div className='rounded-md dark:bg-gray-700 max-w-[95%] text-gray-400 h-4' />
+            <div className='rounded-md bg-gray-200 dark:bg-gray-700 max-w-[95%] text-gray-400 h-4' />
           </div>
           <span className='sr-only'>Loading...</span>
         </div>

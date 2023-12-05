@@ -9,6 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        overlaydark: '#1b1b1b',
         dark: {
           bg: '#1f2937',
           text: '#FFFFFF',

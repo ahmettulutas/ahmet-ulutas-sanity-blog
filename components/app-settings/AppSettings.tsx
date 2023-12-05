@@ -1,6 +1,6 @@
 import ThemeSwitcher from '@/components/providers/themes/ThemeSwitcher';
 import { languages } from '@/i18n/settings';
-import { DynamicLink } from '@/app/(locales)/[lng]/(pages)/(dynamic-layout)/blogs/[slug]/page';
+import { DynamicLink } from '@/app/[lng]/(pages)/(dynamic-layout)/blogs/[slug]/page';
 
 import { AppSettingsMobile } from './AppSettingsMobile';
 import { LanguageSelector } from '../language-selector';
