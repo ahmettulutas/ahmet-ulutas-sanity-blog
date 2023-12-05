@@ -22,7 +22,7 @@ export default function Header({ currentLocale, dynamicLinks }: HeaderProps) {
               <p>{t('gotoStudio')}</p>
             </Link>
           )}
-          <Link className='btn-primary flex items-center gap-2' href={'/'}>
+          <Link className='btn-primary flex items-center gap-2' href={`/${currentLocale}`}>
             <FiBook />
             <p>{t('home')}</p>
           </Link>
