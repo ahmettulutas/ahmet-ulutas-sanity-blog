@@ -4,6 +4,7 @@ import { FiBook } from 'react-icons/fi';
 import { SiSanity } from 'react-icons/si';
 import { SANITY_URL } from '@/lib/constants';
 import { useTranslation } from '@/i18n/client';
+import { MdOutlinePerson3 } from 'react-icons/md';
 
 import { Container } from '../container';
 import { AppSettings, AppSettingsProps } from '../app-settings';
@@ -15,7 +16,7 @@ export default function Header({ currentLocale, dynamicLinks }: HeaderProps) {
   return (
     <header>
       <Container className='py-10 flex justify-between items-center'>
-        <div>
+        <div className='flex gap-2'>
           {process.env.NODE_ENV === 'development' && (
             <Link target='_blank' className='btn-primary flex items-center gap-2' href={SANITY_URL}>
               <SiSanity />
@@ -25,6 +26,10 @@ export default function Header({ currentLocale, dynamicLinks }: HeaderProps) {
           <Link className='btn-primary flex items-center gap-2' href={`/${currentLocale}`}>
             <FiBook />
             <p>{t('home')}</p>
+          </Link>
+          <Link className='btn-primary flex items-center gap-2' href={`/${currentLocale}/about`}>
+            <MdOutlinePerson3 />
+            <p>{t('about')}</p>
           </Link>
         </div>
         <AppSettings dynamicLinks={dynamicLinks} currentLocale={currentLocale} />
