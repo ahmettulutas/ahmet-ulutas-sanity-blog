@@ -7,9 +7,8 @@ export default async function Page({ params }: SharedPageProps) {
   return (
     <Container>
       <section className='flex min-h-screen flex-col items-center gap-2'>
-        <h1 className='mb-4 text-4xl font-bold text-center'>{t('homePageTitle')}</h1>
-        <div>{t('welcome')}</div>
-        <p>{t('lorem')}</p>
+        <h1 className='mb-4 text-3xl md:text-6xl font-bold'>{t('aboutMe')}</h1>
+        <p>{t('about')}</p>
       </section>
     </Container>
   );

@@ -17,7 +17,8 @@
   "signOut": "Çıkış Yap",
   "signIn": "Giriş Yap",
   "comments": "Yorumlar",
-  "about": "Hakkımda",
+  "aboutMe": "Hakkımda",
+  "about": "Merhaba, Ben birinci sınıf bir ön yüz geliştiriciyim ve hem donanım hem de yazılım geliştirmede bir geçmişe sahibim. Başarılı projeleri içeren bir finansal teknoloji yazılım şirketinde çalışıyorum ve hem takım ortamlarında hem de bireysel çalışmalarda üst düzey performans sergiliyorum. Şu anda bilgi ve becerilerimi daha da geliştirmek amacıyla Bilgisayar Bilimi derecesi alıyorum. Tasarım ve programlamayı birleştirerek kullanıcı dostu web çözümleri sunmaktan gurur duyuyorum ve dürüstlük ile kalite konusunda iyi bir itibara sahibim. Çalışmalarımı yakından görmek için portföyümü inceleyebilirsiniz.",
   "metaData": {
     "pageTitle": "Ahmet Ulutaş'ın Blog Sayfası",
     "pageDescription": "Ahmet Ulutaş'ın frontend blogu.",

@@ -16,7 +16,7 @@ export default function Header({ currentLocale, dynamicLinks }: HeaderProps) {
   return (
     <header>
       <Container className='py-10 flex justify-between items-center'>
-        <div className='flex gap-2'>
+        <div className='flex gap-1'>
           {process.env.NODE_ENV === 'development' && (
             <Link target='_blank' className='btn-primary flex items-center gap-2' href={SANITY_URL}>
               <SiSanity />
@@ -29,7 +29,7 @@ export default function Header({ currentLocale, dynamicLinks }: HeaderProps) {
           </Link>
           <Link className='btn-primary flex items-center gap-2' href={`/${currentLocale}/about`}>
             <MdOutlinePerson3 />
-            <p>{t('about')}</p>
+            <p>{t('aboutMe')}</p>
           </Link>
         </div>
         <AppSettings dynamicLinks={dynamicLinks} currentLocale={currentLocale} />
