@@ -4,7 +4,7 @@ import React from 'react';
 const Loading = () => {
   return (
     <Container>
-      <main className='py-16 flex flex-col items-center gap-2'>
+      <main className='py-8 flex flex-col items-center gap-2'>
         <h1 className='mb-4 text-4xl font-bold text-center bg-gray-200 dark:bg-gray-700 animate-pulse' />
         <section className='grid grid-cols-1 md:grid-cols-2 gap-4'>
           <div role='status' className='grid gap-4 animate-pulse'>

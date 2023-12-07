@@ -10,6 +10,8 @@ const config: Config = {
     extend: {
       colors: {
         overlaydark: '#1b1b1b',
+        brandDark: '#ffdb4d',
+        brand: '#7B00D3',
         dark: {
           bg: '#1f2937',
           text: '#FFFFFF',

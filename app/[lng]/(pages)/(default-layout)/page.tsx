@@ -11,10 +11,10 @@ export default async function Page({ params }: SharedPageProps) {
 
   return (
     <Container>
-      <main className='py-16 flex flex-col items-center gap-2'>
+      <main className='py-8 flex flex-col items-center gap-2'>
         <BlogCoverSection blog={allBlogs[0]} />
         <h1 className='mb-4 text-4xl font-bold text-center'>{t('blogPosts')}</h1>
-        <section className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+        <section className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
           {allBlogs?.map((item) => (
             <BlogCard currntLocale={params.lng} key={item._id} blog={item} />
           ))}

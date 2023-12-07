@@ -4,7 +4,6 @@ import React from 'react';
 import { TypedObject } from 'sanity';
 
 import CodeBlock from '../code-blocks/CodeBlocks';
-import HydrateWrapper from '../hydrate-wrapper/HydrateWrapper';
 import SanityImage from '../sanity-image/SanityImage';
 
 const myPortableTextComponents = {
@@ -15,18 +14,14 @@ const myPortableTextComponents = {
         {value?.caption && <figcaption className='text-xs text-right'>{value.caption}</figcaption>}
       </figure>
     ),
-    code: ({ value }: any) => (
-      <HydrateWrapper>
-        <CodeBlock {...{ ...value }} />
-      </HydrateWrapper>
-    ),
+    code: ({ value }: any) => <CodeBlock {...{ ...value }} />,
   },
   block: {
     h1: ({ children }: any) => <h1 className='text-2xl'>{children}</h1>,
     blockquote: ({ children }: any) => (
       <blockquote className='border-l-purple-500'>{children}</blockquote>
     ),
-    normal: ({ children }: any) => <p className='my-2 text-lg leading-8'>{children}</p>,
+    normal: ({ children }: any) => <p className='my-2 text-lg leading-8 prose-big'>{children}</p>,
   },
   marks: {
     em: ({ children }: any) => <em className='font-semibold'>{children}</em>,
@@ -50,7 +45,15 @@ const myPortableTextComponents = {
   },
   list: {
     bullet: ({ children }: any) => <ul className='my-6 ml-6'>{children}</ul>,
-    number: ({ children }: any) => <ol className='my-4 ml-6'>{children}</ol>,
+    number: ({ children }: any) => {
+      return (
+        <ol className='my-4 ml-6'>
+          {children.map((child: React.ReactElement) => (
+            <li key={child.key}>{child.props.children}</li>
+          ))}
+        </ol>
+      );
+    },
     checkmarks: ({ children }: any) => <ol className='m-auto text-lg'>{children}</ol>,
     p: ({ children }: any) => <p className='text-2xl'>{children}</p>,
   },
@@ -59,7 +62,7 @@ const myPortableTextComponents = {
 const RichTextContent = ({ content }: { content: TypedObject }) => {
   // check the npm package for more details. https://www.npmjs.com/package/@portabletext/react
   return (
-    <article className='leading-7 font-light'>
+    <article className='leading-7 font-normal'>
       <PortableText value={content} components={myPortableTextComponents} />
     </article>
   );
