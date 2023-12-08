@@ -1,7 +1,7 @@
 import { useServerSideTranslation } from '@/i18n';
 import { languages } from '@/i18n/settings';
 import { Metadata, ResolvingMetadata } from 'next';
-import { urlForImage } from '@/sanity/lib/sanity-image-fns';
+import { urlForImage } from '@/sanity/sanity-lib/sanity-image-fns';
 import { SanityAsset } from '@sanity/image-url/lib/types/types';
 import { formatDistanceToNowStrict, parseISO } from 'date-fns';
 

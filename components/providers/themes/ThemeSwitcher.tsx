@@ -1,25 +1,29 @@
 'use client';
 import { useTheme } from 'next-themes';
-import { useTranslation } from '@/i18n/client';
+import { MoonIcon, SunIcon } from '@/components/icons/Icons.js';
+import { twMerge } from 'tailwind-merge';
+import HydrateWrapper from '@/components/hydrate-wrapper/HydrateWrapper';
+import ThemeSkeleton from '@/components/loading-skeletons/ThemeLoader';
 
-type ThemeSwitcherProps = {
-  currentLocale: string;
-};
-const ThemeSwitcher = ({ currentLocale }: ThemeSwitcherProps) => {
+const ThemeSwitcher = () => {
   const { theme, setTheme } = useTheme();
-  const { t } = useTranslation(currentLocale, 'common');
-
   return (
-    <select
-      aria-label='toggle theme'
-      value={theme}
-      onChange={(e) => setTheme(e.target.value)}
-      className='btn-primary cursor-pointer px-4'
-    >
-      <option value='system'>{t('system')}</option>
-      <option value='dark'>{t('dark')}</option>
-      <option value='light'>{t('light')}</option>
-    </select>
+    <HydrateWrapper loader={<ThemeSkeleton />}>
+      <button
+        onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+        className={twMerge(
+          'w-6 h-6 ease flex items-center justify-center rounded-full p-1',
+          theme === 'light' ? 'bg-dark-bg text-dark-text' : 'bg-light-bg text-light-text'
+        )}
+        aria-label='theme-switcher'
+      >
+        {theme === 'light' ? (
+          <MoonIcon className={'fill-dark-bg'} />
+        ) : (
+          <SunIcon className={'fill-dark-bg'} />
+        )}
+      </button>
+    </HydrateWrapper>
   );
 };
 

@@ -1,13 +1,16 @@
 import { dir } from 'i18next';
 import '../globals.css';
 import type { ResolvingMetadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Manrope } from 'next/font/google';
 import NextThemeProvider from '@/components/providers/themes/ThemeProvider';
 import { languages } from '@/i18n/settings';
 import { getDefaultMetaData } from '@/lib/helpers';
 import AuthProvider from '@/components/providers/auth/AuthProvider';
 
-const inter = Inter({ subsets: ['latin'] });
+const manrope = Manrope({
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 export type SharedPageProps = {
   params: { lng: string };
@@ -30,7 +33,7 @@ export default function RootLayout({ children, params: { lng } }: RootLayoutProp
     <html lang={lng} dir={dir(lng)} suppressHydrationWarning className='scroll-smooth'>
       <head />
       <body
-        className={`${inter.className} dark:bg-dark-bg dark:text-dark-text text-light-text transition-all duration-150 ease-in`}
+        className={`${manrope.className} dark:bg-dark-bg dark:text-dark-text text-light-text transition-all duration-150 ease-in`}
       >
         <AuthProvider>
           <NextThemeProvider>{children}</NextThemeProvider>

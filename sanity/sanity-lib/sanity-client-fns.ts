@@ -1,4 +1,4 @@
-import { getClient } from '@/sanity/lib/client';
+import { getClient } from '@/sanity/sanity-lib/client';
 
 import {
   BlogPost,

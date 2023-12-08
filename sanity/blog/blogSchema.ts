@@ -1,6 +1,7 @@
 import { BookIcon } from '@sanity/icons';
 import { format, parseISO } from 'date-fns';
 import { defineField, defineType } from 'sanity';
+import { blogCategories } from '@/lib/constants';
 
 import authorSchema from '../author/authorSchema';
 
@@ -25,9 +26,17 @@ export default defineType({
         maxLength: 96,
       },
       validation: (rule) =>
-        rule
-          .required()
-          .error('A slug is required to generate a page on the website'),
+        rule.required().error('A slug is required to generate a page on the website'),
+    }),
+    defineField({
+      title: 'Category',
+      name: 'category',
+      type: 'array',
+      of: [{ type: 'string' }],
+      validation: (Rule) => Rule.max(1),
+      options: {
+        list: blogCategories,
+      },
     }),
     defineField({
       name: 'content',

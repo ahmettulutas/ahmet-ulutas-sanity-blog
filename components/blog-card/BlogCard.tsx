@@ -1,4 +1,4 @@
-import { BlogPost } from '@/sanity/lib/queries';
+import { BlogPost } from '@/sanity/sanity-lib/queries';
 import Link from 'next/link';
 
 import PostDate from '../post-date/PostDate';
@@ -9,7 +9,7 @@ type BlogCardProps = {
   currntLocale: string;
 };
 
-const BlogCard: React.FC<BlogCardProps> = ({ blog, currntLocale }) => {
+export default function BlogCard({ blog, currntLocale }: BlogCardProps) {
   return (
     <article className='h-full'>
       <Link
@@ -34,10 +34,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog, currntLocale }) => {
           </span>
         </h2>
         <PostDate dateString={blog.date} />
-        <p className='leading-7 font-light'>{blog.excerpt}</p>
       </Link>
     </article>
   );
-};
-
-export default BlogCard;
+}

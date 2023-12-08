@@ -1,4 +1,4 @@
-import { Author } from '@/sanity/lib/queries';
+import { Author } from '@/sanity/sanity-lib/queries';
 
 import SanityImage from '../sanity-image/SanityImage';
 
@@ -8,7 +8,7 @@ const AuthorAvatar = (props: Author) => {
     <div className='flex items-center my-6'>
       {picture?.asset?._ref && (
         <SanityImage
-          wrapperStyles='mr-2 h-12 w-12 rounded-full'
+          wrapperStyles='mr-2 h-12 w-12 rounded-full border border-solid border-dark-bg dark:border-gray-400'
           image={picture}
           width={96}
           height={96}

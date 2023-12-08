@@ -4,15 +4,15 @@ import { languages } from '@/i18n/settings';
 import { usePathname, useRouter } from 'next/navigation';
 import { omitLocaleFromPath } from '@/lib/helpers';
 
-import { AppSettingsProps } from '../app-settings';
+import { HeaderProps } from '../header';
 
-export const LanguageSelector = ({ currentLocale, dynamicLinks }: AppSettingsProps) => {
+export const LanguageSelector = ({ currentLocale, dynamicLinks }: HeaderProps) => {
   const pathname = usePathname();
   const router = useRouter();
 
   const defaultLocaleRoutes = languages.map((lang) => (
     <option key={lang} value={lang}>
-      {lang.toUpperCase()}
+      {lang}
     </option>
   ));
   const dynamicLocaleRoutes = dynamicLinks?.map(({ language }) => (
@@ -30,7 +30,7 @@ export const LanguageSelector = ({ currentLocale, dynamicLinks }: AppSettingsPro
   return (
     <select
       aria-label='select-language'
-      className='btn-primary cursor-pointer px-4'
+      className='cursor-pointer px-2 bg-transparent'
       defaultValue={currentLocale}
       onChange={({ target }) => {
         dynamicLocaleRoutes

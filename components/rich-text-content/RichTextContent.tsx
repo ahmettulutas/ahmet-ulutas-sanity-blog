@@ -62,7 +62,7 @@ const myPortableTextComponents = {
 const RichTextContent = ({ content }: { content: TypedObject }) => {
   // check the npm package for more details. https://www.npmjs.com/package/@portabletext/react
   return (
-    <article className='leading-7 font-normal'>
+    <article className='leading-7 font-500'>
       <PortableText value={content} components={myPortableTextComponents} />
     </article>
   );

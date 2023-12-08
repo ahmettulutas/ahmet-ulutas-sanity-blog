@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CommentsListLoading = () => {
+const CommentsSkeleton = () => {
   return (
     <div role='status' className='grid gap-4 animate-pulse my-4'>
       {Array.from({ length: 3 }).map((item, idx) => (
@@ -20,4 +20,4 @@ const CommentsListLoading = () => {
   );
 };
 
-export default CommentsListLoading;
+export default CommentsSkeleton;

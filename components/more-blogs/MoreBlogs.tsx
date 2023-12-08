@@ -1,5 +1,5 @@
 'use client';
-import { BlogPost } from '@/sanity/lib/queries';
+import { BlogPost } from '@/sanity/sanity-lib/queries';
 import React from 'react';
 import { useTranslation } from '@/i18n/client';
 

@@ -39,7 +39,6 @@
     "react-cookie": "^6.1.1",
     "react-dom": "^18",
     "react-i18next": "^13.2.2",
-    "react-icons": "^4.11.0",
     "sanity": "^3.16.7",
     "styled-components": "^5.2",
     "swr": "^2.2.4",

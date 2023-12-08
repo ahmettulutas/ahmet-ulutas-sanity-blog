@@ -35,3 +35,9 @@ export const twitterImageSizes = [
   { width: 800, height: 418 },
   { width: 1600, height: 900 },
 ];
+
+export const blogCategories = [
+  { title: 'Javascript', value: 'javascript' },
+  { title: 'Css', value: 'css' },
+  { title: 'Web Development', value: 'web-development' },
+];

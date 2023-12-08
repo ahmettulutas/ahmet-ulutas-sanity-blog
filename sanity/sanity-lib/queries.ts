@@ -11,20 +11,13 @@ const blogPostFields = groq`
   language,
   metaFields,
   coverImage,
+  category,
   "slug": slug.current,
   "author": author->{name, picture},
   "_translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{
     _id,
-    title,
-    date,
-    _updatedAt,
-    excerpt,
-    content,
     language,
-    metaFields,
-    coverImage,
     "slug": slug.current,
-    "author": author->{name, picture},
 },
 `;
 
@@ -43,6 +36,7 @@ export type BlogPost = {
   excerpt: string;
   author: Author;
   content?: any;
+  category: string;
   language: string;
   metaFields?: {
     shareImage: any /* todo. change any here */;

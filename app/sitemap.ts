@@ -1,4 +1,4 @@
-import { getAllBlogsSlugs } from '@/sanity/lib/sanity-client-fns';
+import { getAllBlogsSlugs } from '@/sanity/sanity-lib/sanity-client-fns';
 import { MetadataRoute } from 'next';
 /* return type must be Sitemap
 Reference link : https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap */
