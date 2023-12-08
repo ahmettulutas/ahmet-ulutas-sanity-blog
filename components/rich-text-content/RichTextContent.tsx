@@ -2,9 +2,29 @@
 import { PortableText } from '@portabletext/react';
 import React from 'react';
 import { TypedObject } from 'sanity';
+import Link from 'next/link';
 
 import CodeBlock from '../code-blocks/CodeBlocks';
 import SanityImage from '../sanity-image/SanityImage';
+
+const tableOfContents = {
+  block: ({ node, children }: any) => {
+    if (/^h\d/.test(node?.style)) {
+      return (
+        <li>
+          <Link className='underline' href={`#${node._key}`}>
+            {children}{' '}
+          </Link>
+        </li>
+      );
+    }
+    return null;
+  },
+  list: {
+    bullet: () => null,
+    number: () => null,
+  },
+};
 
 const myPortableTextComponents = {
   types: {
@@ -16,12 +36,25 @@ const myPortableTextComponents = {
     ),
     code: ({ value }: any) => <CodeBlock {...{ ...value }} />,
   },
-  block: {
-    h1: ({ children }: any) => <h1 className='text-2xl'>{children}</h1>,
-    blockquote: ({ children }: any) => (
-      <blockquote className='border-l-purple-500'>{children}</blockquote>
-    ),
-    normal: ({ children }: any) => <p className='my-2 text-lg leading-8 prose-big'>{children}</p>,
+  block: (props: any) => {
+    const { node, children } = props;
+    // Protect against a blank node.style property
+    const style = node?.style || 'normal';
+    // find the heading blocks (style == h1,h2,h3 etc)
+    if (/^h\d/.test(style)) {
+      // set the heading tag (h1,h2,h3,etc)
+      const HeadingTag = style;
+      return (
+        // use the node key as the id, it's guaranteed unique
+        // one can also slugify the children spans if one want
+        // nicer URLs
+        <HeadingTag id={node._key}>
+          {children} <Link href={`#${node._key}`}>#</Link>
+        </HeadingTag>
+      );
+    }
+    if (style === 'blockquote') return <blockquote>{children}</blockquote>;
+    if (style === 'normal') return <p className='my-2 text-lg leading-8 prose-big'>{children}</p>;
   },
   marks: {
     em: ({ children }: any) => <em className='font-semibold'>{children}</em>,
@@ -63,6 +96,14 @@ const RichTextContent = ({ content }: { content: TypedObject }) => {
   // check the npm package for more details. https://www.npmjs.com/package/@portabletext/react
   return (
     <article className='leading-7 font-500'>
+      <ul className='border p-4 border-dark-bg'>
+        Table of Contents:
+        <PortableText
+          value={content}
+          components={tableOfContents}
+          onMissingComponent={() => null}
+        />
+      </ul>
       <PortableText value={content} components={myPortableTextComponents} />
     </article>
   );

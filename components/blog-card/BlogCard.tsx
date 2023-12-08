@@ -20,7 +20,7 @@ export default function BlogCard({ blog, currntLocale }: BlogCardProps) {
           height={300}
           width={500}
           image={blog.coverImage}
-          wrapperStyles='rounded-xl overflow-hidden'
+          wrapperStyles='rounded-xl overflow-hidden relative'
           imageStyles='group-hover:scale-105 object-cover object-center transition-all ease duration-300'
         />
         <h2 className='font-semibold capitalize  text-base sm:text-lg'>

@@ -15,11 +15,13 @@ export const LanguageSelector = ({ currentLocale, dynamicLinks }: HeaderProps) =
       {lang}
     </option>
   ));
+
   const dynamicLocaleRoutes = dynamicLinks?.map(({ language }) => (
     <option key={language} value={language}>
-      {language.toUpperCase()}
+      {language}
     </option>
   ));
+
   const handleDynamicNavigation = (locale: string) => {
     // This function is used to n avigate the user to the related slug of a blog post when language is changed.
     const dynamicSlug = dynamicLinks?.find(({ language }) => language === locale)?.slug;

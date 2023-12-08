@@ -17,6 +17,7 @@ import CommentsContainer from '@/components/comments/CommentsContainer';
 import { Suspense } from 'react';
 import { SharedPageProps } from '@/app/[lng]/layout';
 import Tag from '@/components/tags/Tags';
+import CommentsSkeleton from '@/components/loading-skeletons/CommentsList';
 
 async function getPageData(slug: string, language: string) {
   try {
@@ -54,7 +55,6 @@ export default async function Page({ params }: PageProps & SharedPageProps) {
   return (
     <main>
       <Header currentLocale={lng} dynamicLinks={relatedSlugs} />
-
       <div className='mb-8 text-center relative w-full h-[70vh]'>
         <div className='w-full z-20 flex flex-col items-center justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
           <Tag name={blog.category} className='px-6 text-sm py-2' />
@@ -76,7 +76,7 @@ export default async function Page({ params }: PageProps & SharedPageProps) {
       <Container>
         <AuthorAvatar {...{ ...blog?.author }} />
         <RichTextContent content={blog?.content} />
-        <Suspense fallback={<p>Loading comments...</p>}>
+        <Suspense fallback={<CommentsSkeleton />}>
           <CommentsContainer
             currentLocale={lng}
             currentSlug={blog.slug}

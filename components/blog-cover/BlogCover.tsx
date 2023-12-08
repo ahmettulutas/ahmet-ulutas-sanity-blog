@@ -17,8 +17,8 @@ const BlogCoverSection = ({ blog }: BlogCoverSection) => {
           height={500}
           width={1000}
           priority
-          imageStyles='w-full h-full object-center object-cover rounded-3xl -z-10'
-          wrapperStyles='-z-10'
+          imageStyles='object-center object-cover rounded-3xl -z-10'
+          wrapperStyles='-z-10 absolute w-full h-full'
           image={blog.coverImage}
         />
 

@@ -5,7 +5,7 @@ import profileImg from '@/public/images/profile2.png';
 const Logo = () => {
   return (
     <Link href='/' className='flex items-center text-dark dark:text-light'>
-      <div className=' w-12 md:w-16 rounded-full overflow-hidden border border-solid border-dark-bg dark:border-gray-400  mr-2 md:mr-4'>
+      <div className='w-12 rounded-full overflow-hidden border border-solid border-dark-bg dark:border-gray-400  mr-2 md:mr-4'>
         <Image
           src={profileImg}
           alt='Page Logo'
