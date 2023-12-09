@@ -59,7 +59,7 @@ export default async function Page({ params }: PageProps & SharedPageProps) {
   return (
     <main>
       <Header currentLocale={lng} dynamicLinks={relatedSlugs} />
-      <div className='mb-8 text-center relative w-full h-[70vh]'>
+      <div className='mb-8 text-center relative w-full h-[85vh]'>
         <div className='w-full z-20 flex flex-col items-center justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
           <Tag name={blog.category} className='px-6 text-sm py-2' />
           <h1 className='inline-block mt-6 font-semibold capitalize text-dark-text text-2xl md:text-3xl lg:text-5xl !leading-normal relative w-5/6'>
@@ -69,7 +69,7 @@ export default async function Page({ params }: PageProps & SharedPageProps) {
         <div className='absolute top-0 left-0 right-0 bottom-0 h-full bg-dark-bg/60 dark:bg-dark-bg/40 z-10' />
         <CoverImage
           fill
-          height={500}
+          height={1000}
           width={1000}
           priority
           imageStyles='object-center object-cover w-full'

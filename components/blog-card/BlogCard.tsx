@@ -17,8 +17,8 @@ export default function BlogCard({ blog, currntLocale }: BlogCardProps) {
         className='group flex justify-between flex-col gap-2 rounded-xl'
       >
         <CoverImage
-          height={300}
-          width={500}
+          height={1000}
+          width={1000}
           image={blog.coverImage}
           wrapperStyles='rounded-xl overflow-hidden relative'
           imageStyles='group-hover:scale-105 object-cover object-center transition-all ease duration-300'
