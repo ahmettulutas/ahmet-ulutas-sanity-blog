@@ -80,7 +80,7 @@ export default async function Page({ params }: PageProps & SharedPageProps) {
       <Container>
         <AuthorAvatar {...{ ...blog?.author }} />
         <div className='gap-x-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
-          <div className='col-span-2'>
+          <div className='col-span-2 order-2 md:order-1'>
             <RichTextContent content={blog?.content} />
             <Suspense fallback={<CommentsSkeleton />}>
               <CommentsContainer
@@ -90,7 +90,7 @@ export default async function Page({ params }: PageProps & SharedPageProps) {
               />
             </Suspense>
           </div>
-          <div className='col-span-1 '>
+          <div className='col-span-1 order-1 md:order-2'>
             {/* <TableOfContent content={blog?.content} language={lng} /> */}
             <details
               className='border-[1px] border-solid border-dark-bg dark:border-light-bg text-dark dark:text-light rounded-lg p-4 sticky top-6 max-h-[80vh] overflow-hidden overflow-y-auto'
