@@ -15,7 +15,7 @@ type CodeProps = {
 const defaultCodeLanguage = 'typescript';
 
 const codeTheme = {
-  light: themes.oceanicNext,
+  light: themes.github,
   dark: themes.oneDark,
 };
 

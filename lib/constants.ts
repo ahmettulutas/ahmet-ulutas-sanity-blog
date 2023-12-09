@@ -1,32 +1,147 @@
-// export const metadata: Metadata = {
-//   title: {
-//     template: '%s | Ahmet Ulutaş Blog Site',
-//     default: 'Ahmet Ulutaş Blog Site', // a default is required when creating a template
-//   },
-//   description: 'This is Ahmet Ulutaş Blog for frontend development.',
-//   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL as string),
-//   generator: 'Next.js',
-//   applicationName: 'Frontend Developer Blog',
-//   referrer: 'origin-when-cross-origin',
-//   keywords: ['Typescript', 'React', 'JavaScript', 'Frontend Development'],
-//   authors: [{ name: 'Ahmet Ulutaş' }],
-//   creator: 'Ahmet Ulutaş',
-//   publisher: 'Ahmet Ulutaş',
+// export default function manifest() {
+//   return {
+//     name: 'Next.js App',
+//     short_name: 'Next.js App',
+//     description: 'Next.js App',
+//     start_url: '/',
+//     display: 'standalone',
+//     background_color: '#fff',
+//     theme_color: '#7B00D3',
+//     icons: [
+//       {
+//         src: 'android/android-launchericon-512-512.png',
+//         sizes: '512x512',
+//       },
+//       {
+//         src: 'android/android-launchericon-192-192.png',
+//         sizes: '192x192',
+//       },
+//       {
+//         src: 'android/android-launchericon-144-144.png',
+//         sizes: '144x144',
+//       },
+//       {
+//         src: 'android/android-launchericon-96-96.png',
+//         sizes: '96x96',
+//       },
+//       {
+//         src: 'android/android-launchericon-72-72.png',
+//         sizes: '72x72',
+//       },
+//       {
+//         src: 'android/android-launchericon-48-48.png',
+//         sizes: '48x48',
+//       },
+//       {
+//         src: 'ios/16.png',
+//         sizes: '16x16',
+//       },
+//       {
+//         src: 'ios/20.png',
+//         sizes: '20x20',
+//       },
+//       {
+//         src: 'ios/29.png',
+//         sizes: '29x29',
+//       },
+//       {
+//         src: 'ios/32.png',
+//         sizes: '32x32',
+//       },
+//       {
+//         src: 'ios/40.png',
+//         sizes: '40x40',
+//       },
+//       {
+//         src: 'ios/50.png',
+//         sizes: '50x50',
+//       },
+//       {
+//         src: 'ios/57.png',
+//         sizes: '57x57',
+//       },
+//       {
+//         src: 'ios/58.png',
+//         sizes: '58x58',
+//       },
+//       {
+//         src: 'ios/60.png',
+//         sizes: '60x60',
+//       },
+//       {
+//         src: 'ios/64.png',
+//         sizes: '64x64',
+//       },
+//       {
+//         src: 'ios/72.png',
+//         sizes: '72x72',
+//       },
+//       {
+//         src: 'ios/76.png',
+//         sizes: '76x76',
+//       },
+//       {
+//         src: 'ios/80.png',
+//         sizes: '80x80',
+//       },
+//       {
+//         src: 'ios/87.png',
+//         sizes: '87x87',
+//       },
+//       {
+//         src: 'ios/100.png',
+//         sizes: '100x100',
+//       },
+//       {
+//         src: 'ios/114.png',
+//         sizes: '114x114',
+//       },
+//       {
+//         src: 'ios/120.png',
+//         sizes: '120x120',
+//       },
+//       {
+//         src: 'ios/128.png',
+//         sizes: '128x128',
+//       },
+//       {
+//         src: 'ios/144.png',
+//         sizes: '144x144',
+//       },
+//       {
+//         src: 'ios/152.png',
+//         sizes: '152x152',
+//       },
+//       {
+//         src: 'ios/167.png',
+//         sizes: '167x167',
+//       },
+//       {
+//         src: 'ios/180.png',
+//         sizes: '180x180',
+//       },
+//       {
+//         src: 'ios/192.png',
+//         sizes: '192x192',
+//       },
+//       {
+//         src: 'ios/256.png',
+//         sizes: '256x256',
+//       },
+//       {
+//         src: 'ios/512.png',
+//         sizes: '512x512',
+//       },
+//       {
+//         src: 'ios/1024.png',
+//         sizes: '1024x1024',
+//       },
+//     ],
+//   };
+// }
 
-//   formatDetection: {
-//     email: false,
-//     address: false,
-//     telephone: false,
-//   },
-//   alternates: {
-//     canonical: '/',
-//     languages: {
-//       'en-US': '/en-US',
-//       'de-DE': '/de-DE',
-//     },
-//   },
-// };
 export const SANITY_URL = '/en/studio';
+export const baseUrl = process.env.NEXT_PUBLIC_BASE_URL as string;
 export const ogImageSizes = [
   { width: 800, height: 600 },
   { width: 1800, height: 1600 },

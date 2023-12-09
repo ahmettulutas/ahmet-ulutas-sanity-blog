@@ -15,7 +15,7 @@ export default function ConnectLinks() {
         aria-label='Check my profile on Github'
         target='_blank'
       >
-        <GithubIcon className='hover:scale-125 transition-all ease duration-200 dark:fill-dark-text' />
+        <GithubIcon className='hover:scale-125 transition-all ease duration-200 dark:fill-dark-text w-full h-auto' />
       </a>
       <a
         href={personalLinks.linkedin}
@@ -23,7 +23,7 @@ export default function ConnectLinks() {
         aria-label='Reach out to me via LinkedIn'
         target='_blank'
       >
-        <LinkedinIcon className='hover:scale-125 transition-all ease duration-200' />
+        <LinkedinIcon className='hover:scale-125 transition-all ease duration-200 w-full h-auto' />
       </a>
       <a
         href={personalLinks.twitter}
@@ -31,7 +31,7 @@ export default function ConnectLinks() {
         aria-label='Reach out to me via Twitter'
         target='_blank'
       >
-        <TwitterIcon className='hover:scale-125 transition-all ease duration-200' />
+        <TwitterIcon className='hover:scale-125 transition-all ease duration-200 w-full h-auto' />
       </a>
     </div>
   );

@@ -1,12 +1,12 @@
 import { Container } from '@/components/container';
 import Header from '@/components/header/Header';
-import { getOptions } from '@/i18n/settings';
+import { fallbackLng } from '@/i18n/settings';
 import React from 'react';
 
 const Loading = () => {
   return (
     <Container>
-      <Header currentLocale={getOptions().fallbackLng} />
+      <Header currentLocale={fallbackLng} />
       <div role='status' className='grid gap-4 animate-pulse'>
         <div className='h-10 bg-gray-200 rounded-md dark:bg-gray-700 max-w-[95%]' />
         <div className='h-10 bg-gray-200 rounded-md dark:bg-gray-700 max-w-[88%]' />

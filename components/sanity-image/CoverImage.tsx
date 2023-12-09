@@ -18,7 +18,7 @@ export default function CoverImage(props: CoverImageProps) {
   const image = source?.asset?._ref ? (
     <div
       className={twMerge(
-        'shadow-small transition-shadow duration-200 hover:shadow-medium',
+        'shadow-small transition-shadow duration-200 hover:shadow-medium relative w-full h-full',
         wrapperStyles
       )}
     >

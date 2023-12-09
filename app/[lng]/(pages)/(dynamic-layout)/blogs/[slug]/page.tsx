@@ -18,6 +18,8 @@ import { Suspense } from 'react';
 import { SharedPageProps } from '@/app/[lng]/layout';
 import Tag from '@/components/tags/Tags';
 import CommentsSkeleton from '@/components/loading-skeletons/CommentsList';
+import TableOfContent from '@/components/table-of-content/TableOfContent';
+import { useServerSideTranslation } from '@/i18n';
 
 async function getPageData(slug: string, language: string) {
   try {
@@ -52,6 +54,8 @@ export type DynamicLink = {
 export default async function Page({ params }: PageProps & SharedPageProps) {
   const { slug, lng } = params;
   const { blog, moreBlogs, relatedSlugs } = await getPageData(slug, lng);
+  const { t } = await useServerSideTranslation(lng, 'translation');
+
   return (
     <main>
       <Header currentLocale={lng} dynamicLinks={relatedSlugs} />
@@ -68,21 +72,38 @@ export default async function Page({ params }: PageProps & SharedPageProps) {
           height={500}
           width={1000}
           priority
-          imageStyles='w-full h-full object-center object-cover'
+          imageStyles='object-center object-cover w-full'
           wrapperStyles='-z-10'
           image={blog.coverImage}
         />
       </div>
       <Container>
         <AuthorAvatar {...{ ...blog?.author }} />
-        <RichTextContent content={blog?.content} />
-        <Suspense fallback={<CommentsSkeleton />}>
-          <CommentsContainer
-            currentLocale={lng}
-            currentSlug={blog.slug}
-            relatedSlugs={relatedSlugs.map((item) => item.slug)}
-          />
-        </Suspense>
+        <div className='gap-x-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+          <div className='col-span-2'>
+            <RichTextContent content={blog?.content} />
+            <Suspense fallback={<CommentsSkeleton />}>
+              <CommentsContainer
+                currentLocale={lng}
+                currentSlug={blog.slug}
+                relatedSlugs={relatedSlugs.map((item) => item.slug)}
+              />
+            </Suspense>
+          </div>
+          <div className='col-span-1 '>
+            {/* <TableOfContent content={blog?.content} language={lng} /> */}
+            <details
+              className='border-[1px] border-solid border-dark-bg dark:border-light-bg text-dark dark:text-light rounded-lg p-4 sticky top-6 max-h-[80vh] overflow-hidden overflow-y-auto'
+              open
+            >
+              <summary className='text-lg font-semibold capitalize cursor-pointer'>
+                {t('tableOfContent')}
+              </summary>
+              <TableOfContent headings={blog?.headings} language={'lng'} />
+            </details>
+          </div>
+        </div>
+
         <MoreBlogs moreBlogs={moreBlogs} currntLocale={lng} />
       </Container>
     </main>

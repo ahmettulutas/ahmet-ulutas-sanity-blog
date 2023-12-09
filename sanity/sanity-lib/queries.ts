@@ -12,6 +12,7 @@ const blogPostFields = groq`
   metaFields,
   coverImage,
   category,
+  "headings": content[length(style) == 2 && string::startsWith(style, "h")],
   "slug": slug.current,
   "author": author->{name, picture},
   "_translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{
@@ -35,6 +36,7 @@ export type BlogPost = {
   _updatedAt?: string;
   excerpt: string;
   author: Author;
+  headings: any;
   content?: any;
   category: string;
   language: string;

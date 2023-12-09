@@ -10,7 +10,7 @@ import { LanguageSelector } from '../language-selector';
 import ThemeSwitcher from '../providers/themes/ThemeSwitcher';
 import Logo from './Logo';
 import { Container } from '../container';
-import ConnectLinks from './MobileNavigation';
+import ConnectLinks from '../connect-links/ConnectLinks';
 
 export type HeaderProps = {
   currentLocale: string;
@@ -42,17 +42,13 @@ export default function Header({ currentLocale, dynamicLinks }: HeaderProps) {
                     ? 'rotate(-45deg) translateY(0)'
                     : 'rotate(0deg) translateY(6px)',
                 }}
-              >
-                &nbsp;
-              </span>
+              />
               <span
                 className='absolute top-0 inline-block w-full h-0.5 bg-dark-bg dark:bg-light-bg rounded transition-all ease duration-200'
                 style={{
                   opacity: isOpen ? 0 : 1,
                 }}
-              >
-                &nbsp;
-              </span>
+              />
               <span
                 className='absolute top-0 inline-block w-full h-0.5 bg-dark-bg dark:bg-light-bg rounded transition-all ease duration-200'
                 style={{
@@ -60,9 +56,7 @@ export default function Header({ currentLocale, dynamicLinks }: HeaderProps) {
                     ? 'rotate(45deg) translateY(0)'
                     : 'rotate(0deg) translateY(-6px)',
                 }}
-              >
-                &nbsp;
-              </span>
+              />
             </div>
           </div>
         </button>
@@ -88,8 +82,8 @@ export default function Header({ currentLocale, dynamicLinks }: HeaderProps) {
           <Link href={`/${currentLocale}/about`}>
             <p>{t('aboutMe')}</p>
           </Link>
-          <ThemeSwitcher />
           <LanguageSelector dynamicLinks={dynamicLinks} currentLocale={currentLocale} />
+          <ThemeSwitcher />
         </nav>
         <ConnectLinks />
       </header>

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 
-//  This Page is created to catch all not found routes, since my not found route
+//  This Page is created to catch all not found routes, since my not-found route
 // is inside [lng] I needed this
 
 const NotFound = () => {

@@ -6,6 +6,7 @@ import NextThemeProvider from '@/components/providers/themes/ThemeProvider';
 import { languages } from '@/i18n/settings';
 import { getDefaultMetaData } from '@/lib/helpers';
 import AuthProvider from '@/components/providers/auth/AuthProvider';
+import Footer from '@/components/footer/Footer';
 
 const manrope = Manrope({
   subsets: ['latin'],
@@ -36,7 +37,10 @@ export default function RootLayout({ children, params: { lng } }: RootLayoutProp
         className={`${manrope.className} dark:bg-dark-bg dark:text-dark-text text-light-text transition-all duration-150 ease-in`}
       >
         <AuthProvider>
-          <NextThemeProvider>{children}</NextThemeProvider>
+          <NextThemeProvider>
+            {children}
+            <Footer />
+          </NextThemeProvider>
         </AuthProvider>
       </body>
     </html>

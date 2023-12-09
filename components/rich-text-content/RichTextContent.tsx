@@ -6,25 +6,7 @@ import Link from 'next/link';
 
 import CodeBlock from '../code-blocks/CodeBlocks';
 import SanityImage from '../sanity-image/SanityImage';
-
-const tableOfContents = {
-  block: ({ node, children }: any) => {
-    if (/^h\d/.test(node?.style)) {
-      return (
-        <li>
-          <Link className='underline' href={`#${node._key}`}>
-            {children}{' '}
-          </Link>
-        </li>
-      );
-    }
-    return null;
-  },
-  list: {
-    bullet: () => null,
-    number: () => null,
-  },
-};
+import { LinkArrowIcon } from '../icons/Icons';
 
 const myPortableTextComponents = {
   types: {
@@ -59,7 +41,6 @@ const myPortableTextComponents = {
   marks: {
     em: ({ children }: any) => <em className='font-semibold'>{children}</em>,
     link: ({ value, children }: any) => {
-      /*  todo */
       const target = (value?.href || '').startsWith('http') ? '_blank' : undefined;
       return (
         <a
@@ -68,12 +49,15 @@ const myPortableTextComponents = {
           className=' text-blue-700 dark:text-blue-600'
           rel={target === '_blank' ? 'noindex nofollow' : ''}
         >
-          {children}
+          <span className='inline-flex items-center'>
+            {children}
+            <LinkArrowIcon className={'inline-block'} />
+          </span>
         </a>
       );
     },
     code: ({ children }: any) => (
-      <code className='bg-gray-100 dark:bg-gray-600 rounded-md p-1 leading-4'>{children}</code>
+      <code className='bg-gray-100 dark:bg-gray-600 rounded-md px-1 m-1 leading-2'>{children}</code>
     ),
   },
   list: {
@@ -82,7 +66,9 @@ const myPortableTextComponents = {
       return (
         <ol className='my-4 ml-6'>
           {children.map((child: React.ReactElement) => (
-            <li key={child.key}>{child.props.children}</li>
+            <li key={child.key} className='list-decimal-reset'>
+              {child.props.children}
+            </li>
           ))}
         </ol>
       );
@@ -96,14 +82,6 @@ const RichTextContent = ({ content }: { content: TypedObject }) => {
   // check the npm package for more details. https://www.npmjs.com/package/@portabletext/react
   return (
     <article className='leading-7 font-500'>
-      <ul className='border p-4 border-dark-bg'>
-        Table of Contents:
-        <PortableText
-          value={content}
-          components={tableOfContents}
-          onMissingComponent={() => null}
-        />
-      </ul>
       <PortableText value={content} components={myPortableTextComponents} />
     </article>
   );
