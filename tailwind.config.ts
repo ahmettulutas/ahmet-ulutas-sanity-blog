@@ -25,6 +25,9 @@ const config: Config = {
           secondary: '#EE1B1B',
         },
       },
+      gridTemplateColumns: {
+        twoIcons: 'auto 1fr auto',
+      },
       animation: {
         'spin-slow': 'spin 9s linear infinite',
       },

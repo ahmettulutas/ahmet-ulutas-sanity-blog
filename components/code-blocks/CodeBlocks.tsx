@@ -32,22 +32,18 @@ export default function RenderCodeBlock({ code, filename, language: codeLanguage
   return (
     <HydrateWrapper loader={<CodeBlockSkeleton />}>
       <div className='rounded-2xl p-4 dark:bg-gray-700 bg-gray-100 my-4 relative'>
-        <div className='flex justify-between my-1 flex-wrap align-middle'>
-          <div className='flex gap-2 items-center'>
-            <span className='opacity-70'>
-              {codeLanguage ? LanguageIcons[codeLanguage] : LanguageIcons[defaultCodeLanguage]}
-            </span>
-            <p className='opacity-70'>{filename}</p>
-          </div>
-          <p>
-            <button
-              aria-label='copy-to-clipboard'
-              className='text-xl ml-2'
-              onClick={() => copy(code)}
-            >
-              {isCopied ? <CopiedIcon className={''} /> : <CopyIcon className={''} />}
-            </button>
-          </p>
+        <div className='w-full grid gap-1 grid-cols-twoIcons my-1 items-center text-sm md:text-lg'>
+          <span className='opacity-70'>
+            {codeLanguage ? LanguageIcons[codeLanguage] : LanguageIcons[defaultCodeLanguage]}
+          </span>
+          <p className='opacity-70 leading-4'>{filename}</p>
+          <button
+            aria-label='copy-to-clipboard'
+            className='text-xl ml-2'
+            onClick={() => copy(code)}
+          >
+            {isCopied ? <CopiedIcon className={''} /> : <CopyIcon className={''} />}
+          </button>
         </div>
 
         <Highlight
