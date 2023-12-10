@@ -27,7 +27,7 @@ const BlogCoverSection = ({ blog }: BlogCoverSection) => {
           <Link href={`blogs/${blog.slug}`} className='mt-6'>
             <h1 className='font-bold capitalize text-lg sm:text-xl md:text-3xl lg:text-4xl'>
               <span
-                className='bg-gradient-to-r from-brand to-brand dark:from-brandDark/50 
+                className='bg-gradient-to-r from-brand to-brand dark:from-brandDark/90 
                 dark:to-brandDark/50 bg-[length:0px_6px]
                 hover:bg-[length:100%_6px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 '
               >

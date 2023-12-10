@@ -10,9 +10,9 @@ const HydrateWrapper = ({
 }) => {
   const [hydrated, setHydrated] = React.useState(false);
 
-  React.useEffect(() => {
+  /*   React.useEffect(() => {
     setHydrated(true);
-  }, []);
+  }, []); */
 
   if (!hydrated) return loader; // Returns null on first render, so the client and server match to prevent hydration error caused by ui updates.
   return <>{children}</>;

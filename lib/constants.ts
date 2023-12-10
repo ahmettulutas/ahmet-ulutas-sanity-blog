@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 // export default function manifest() {
 //   return {
 //     name: 'Next.js App',
@@ -156,3 +157,181 @@ export const blogCategories = [
   { title: 'Css', value: 'css' },
   { title: 'Web Development', value: 'web-development' },
 ];
+export const experiences = [
+  {
+    tr: {
+      companyName: 'Paramtech',
+      title: 'Frontend Developer',
+      date: '2022-05 - Bugün',
+      responsibilities: [
+        {
+          id: 0,
+          tag: "Akbank ile işbirliği yaparak akbank platformlarından kullanıcıların şirketimin kendi ürünü olan Kredim ile ödemesine olanak sağlayan 'Kredim ile Öde' uygulaması geliştirdim.",
+        },
+        {
+          id: 1,
+          tag: "Şirketimize başvuran adaylara gönderdiğimiz frontend case'i için tüketebilecekleri bir api geliştirdim. Uygulama cross-origin çalışabilen nextjs apiları içeriyor ve adaylar girip kendileri apiları swagger gibi bir önyüzden test edip kendi case projelerinde tüketebiliyor.",
+        },
+        {
+          id: 2,
+          tag: "Flagship uygulamalarımız olan Kredim, Param ve Finrota'da müşteri ihtiyaçlarına uygun geliştirmeler yaptım.",
+        },
+        {
+          id: 3,
+          tag: 'Şirketin back office projesinin geliştirilmesinde etkin rol aldım.',
+        },
+        {
+          id: 4,
+          tag: 'Şirketin inhouse kullanabileceği bir e-fatura uygulamasının geliştirilmesini tamamladım ve şirket muhasebecilerinin faturaları etkili bir şekilde yönetmelerine, izlemelerine ve raporlamalarına olanak tanıdım.',
+        },
+        {
+          id: 5,
+          tag: "Next.js ve Contentful CMS ile şirketimizin yepyeni web sitesini oluşturmada liderlik yaptım. Sonucu https://www.paramtech.com.tr/ Websitesi'nde keşfedin.",
+        },
+        {
+          id: 6,
+          tag: 'Bankacılık web uygulamalarından birinin (İşube) mobil-responsive dönüşümünü gerçekleştirdim.',
+        },
+        {
+          id: 7,
+          tag: 'Next.js ve Typescript kullanarak çeşitli şirket web sitelerini tasarladım ve geliştirdim, modern ve etkili bir web varlığı sağladım. Örnekler arasında https://param.eu/ bulunmaktadır.',
+        },
+      ],
+    },
+    en: {
+      companyName: 'Paramtech',
+      title: 'Frontend Developer',
+      date: '2022-05 - Present',
+      responsibilities: [
+        {
+          id: 0,
+          tag: "Developed the 'Pay with Kredim' application in collaboration with Akbank, enabling users to make payments using my company's own product, Kredim, through Akbank platforms.",
+        },
+        {
+          id: 1,
+          tag: 'Created an API for the frontend case we send to applicants at our company. The application contains Next.js APIs that can work across origins, allowing candidates to test and consume the APIs in their case projects through a frontend interface similar to Swagger.',
+        },
+        {
+          id: 2,
+          tag: 'Played a pivotal role in identifying and addressing customer needs within our flagship apps, including Kredim, Param, and Finrota.',
+        },
+        {
+          id: 3,
+          tag: "Played an active role in the development of the company's back-office project.",
+        },
+        {
+          id: 4,
+          tag: 'Spearheaded the development of an e-billing application (RTQ) using React.js and Redux, empowering company accountants to efficiently manage, track, and report bills.',
+        },
+        {
+          id: 5,
+          tag: "Took the lead in crafting our company's brand-new website using Next.js in conjunction with Contentful CMS. Explore the result at https://www.paramtech.com.tr/.",
+        },
+        {
+          id: 6,
+          tag: 'Successfully transformed one of our banking web applications into a fully mobile-responsive platform. Experience the mobile-friendly interface at Isube Banking.',
+        },
+        {
+          id: 7,
+          tag: 'Designed and developed various company websites using Next.js and Typescript, ensuring a modern and efficient web presence. Examples include https://param.eu/ .',
+        },
+      ],
+    },
+    de: {
+      companyName: 'Paramtech',
+      title: 'Frontend Developer',
+      date: '2022-05 - Present',
+      responsibilities: [
+        {
+          id: 0,
+          tag: "In Zusammenarbeit mit Akbank habe ich die Anwendung 'Mit meinem Kredit bezahlen' entwickelt, die es Benutzern ermöglicht, Zahlungen über die Akbank-Plattformen mit meinem eigenen Produkt, Kredim, vorzunehmen.",
+        },
+        {
+          id: 1,
+          tag: 'Ich habe eine API für den Frontend-Case erstellt, den wir an Bewerber in unserem Unternehmen senden. Die Anwendung enthält Next.js-APIs, die über Ursprünge hinweg arbeiten können, sodass Kandidaten die APIs über eine Benutzeroberfläche ähnlich wie Swagger testen und in ihren Case-Projekten verbrauchen können.',
+        },
+
+        {
+          id: 2,
+          tag: 'Spielte eine entscheidende Rolle bei der Identifizierung und Ansprache von Kundenbedürfnissen in unseren Flaggschiff-Apps, einschließlich Kredim, Param und Finrota.',
+        },
+        {
+          id: 3,
+          tag: 'Ich habe eine aktive Rolle in der Entwicklung des Backoffice-Projekts des Unternehmens gespielt.',
+        },
+        {
+          id: 4,
+          tag: 'Leitete die Entwicklung einer E-Rechnungsanwendung (RTQ) mit React.js und Redux, um den Unternehmensbuchhaltern die effiziente Verwaltung, Verfolgung und Berichterstattung von Rechnungen zu ermöglichen.',
+        },
+        {
+          id: 5,
+          tag: 'Führte die Entwicklung unserer brandneuen Website des Unternehmens mit Next.js in Verbindung mit Contentful CMS an. Erkunden Sie das Ergebnis unter https://www.paramtech.com.tr/.',
+        },
+        {
+          id: 6,
+          tag: 'Verwandelte erfolgreich eine unserer Banken-Webanwendungen in eine vollständig mobil reaktionsfähige Plattform. Erleben Sie die mobile Benutzeroberfläche unter Isube Banking.',
+        },
+        {
+          id: 7,
+          tag: 'Entwickelte verschiedene Unternehmenswebsites mit Next.js und Typescript, um eine moderne und effiziente Webpräsenz sicherzustellen. Beispiele sind https://param.eu/ .',
+        },
+      ],
+    },
+  },
+  {
+    tr: {
+      companyName: 'Vektora Software',
+      date: '2021-06 - 2022-05',
+      title: 'İş Analisti',
+      responsibilities: [
+        {
+          id: 0,
+          tag: 'PM (Üretim Bakım) modülünde projelere destek oldum.',
+        },
+        {
+          id: 1,
+          tag: "Türkiye'nin en büyük SAP projelerinden biri olan Sanko'da etkin bir rol aldım.",
+        },
+      ],
+    },
+    en: {
+      companyName: 'Vektora Software',
+      date: '2021-06 - 2022-05',
+      title: 'Business Analyst',
+      responsibilities: [
+        {
+          id: 0,
+          tag: 'Responsible for PM (Plant Maintenance) module.',
+        },
+        {
+          id: 1,
+          tag: "Taken an active role in Turkey's one of the biggest SAP projects (Sanko).",
+        },
+      ],
+    },
+    de: {
+      companyName: 'Vektora Software',
+      date: '2021-06 - 2022-05',
+      title: 'Business-Analyst',
+      responsibilities: [
+        {
+          id: 0,
+          tag: 'Verantwortlich für das PM (Anlagenwartung) Modul.',
+        },
+        {
+          id: 1,
+          tag: 'Habe eine aktive Rolle in einem der größten SAP-Projekte der Türkei (Sanko) übernommen.',
+        },
+      ],
+    },
+  },
+];
+// • Developing features for the company's super app, with a focus on the lump sum payment and reporting module.
+// • Creating a reusable component library to streamline development across different projects.
+// • Collaborating with UI/UX designers to provide a technical perspective and ensure a seamless user experience.
+// • Translating design wireframes into functional code using tools like Figma and Ant Design.
+// • Designing and building large-scale projects that meet project standards for JavaScript development.
+// • Working closely with UI/UX designers to bridge the gap between design and technical implementation.
+// • Building and maintaining landing pages for the company's websites, including one built from scratch.
+// • Integrating CMS systems like Contentful and Netlify CMS to improve content management and delivery.
+// • Improving continuous deployment and integration pipelines to ensure seamless and efficient development processes.

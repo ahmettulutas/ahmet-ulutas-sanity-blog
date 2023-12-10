@@ -25,7 +25,7 @@ export default function BlogCard({ blog, currntLocale }: BlogCardProps) {
         />
         <h2 className='font-semibold capitalize  text-base sm:text-lg'>
           <span
-            className='bg-gradient-to-r from-brand/50 to-brand/50  dark:from-brandDark/50
+            className='bg-gradient-to-r from-brand/50 to-brand/50  dark:from-brandDark/90
               dark:to-brandDark/50
               bg-[length:0px_6px]
               group-hover:bg-[length:100%_6px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 '

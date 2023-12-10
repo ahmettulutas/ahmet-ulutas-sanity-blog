@@ -6,7 +6,7 @@ export default function PostDate({ dateString }: { dateString?: string }) {
   const date = parseISO(dateString);
   return (
     <time
-      className='capitalize text-gray dark:text-dark-text/50 font-semibold text-sm sm:text-base'
+      className='capitalize text-gray-600 dark:text-dark-text/50 font-semibold text-sm sm:text-base'
       dateTime={dateString}
     >
       {format(date, 'LLLL	d, yyyy')}

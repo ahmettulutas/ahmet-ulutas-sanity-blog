@@ -39,7 +39,7 @@ export default function RootLayout({ children, params: { lng } }: RootLayoutProp
         <AuthProvider>
           <NextThemeProvider>
             {children}
-            <Footer />
+            <Footer language={lng} />
           </NextThemeProvider>
         </AuthProvider>
       </body>

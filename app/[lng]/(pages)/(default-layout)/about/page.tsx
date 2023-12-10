@@ -1,6 +1,7 @@
 import { useServerSideTranslation } from '@/i18n';
 import { Container } from '@/components/container';
 import { SharedPageProps } from '@/app/[lng]/layout';
+import Experiences from '@/components/experiences/Experiences';
 
 export default async function Page({ params }: SharedPageProps) {
   const { t } = await useServerSideTranslation(params.lng, 'translation');
@@ -9,6 +10,7 @@ export default async function Page({ params }: SharedPageProps) {
       <Container className='flex flex-col items-center gap-2 py-10'>
         <h1 className='mb-4 text-3xl md:text-6xl font-bold'>{t('aboutMe')}</h1>
         <p>{t('about')}</p>
+        <Experiences language={params.lng} />
       </Container>
     </main>
   );

@@ -1,23 +1,24 @@
 'use client';
 import React, { FormEvent } from 'react';
 import Link from 'next/link';
+import { useTranslation } from '@/i18n/client';
 
 import ConnectLinks from '../connect-links/ConnectLinks';
 import { Container } from '../container';
 
-const Footer = () => {
+const Footer = ({ language }: { language: string }) => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
   };
+  const { t } = useTranslation(language, 'translation');
   return (
     <Container>
       <footer className='mt-16 rounded-2xl bg-dark-bg dark:bg-brandDark/90 flex flex-col items-center text-dark-text dark:text-light-text'>
         <h3 className='mt-16 font-medium dark:font-bold text-center capitalize text-2xl sm:text-3xl lg:text-4xl px-4'>
-          Interesting Stories | Updates | Guides
+          {t('footerHeading')}
         </h3>
         <p className='mt-5 px-4 text-center w-full sm:w-3/5 font-light dark:font-medium text-sm sm:text-base'>
-          Subscribe to learn about new technology and updates. Join over 5000+ members community to
-          stay up to date with latest news.
+          {t('footerDescription')}
         </p>
 
         <form

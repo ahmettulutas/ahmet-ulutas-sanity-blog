@@ -30,7 +30,7 @@ export default function Header({ currentLocale, dynamicLinks }: HeaderProps) {
         <Logo />
         <button
           className='inline-block sm:hidden z-50'
-          onClick={toggle}
+          onClick={() => toggle()}
           aria-label='Hamburger Menu'
         >
           <div className='w-6 cursor-pointer transition-all ease duration-300'>

@@ -31,7 +31,7 @@ export default function RenderCodeBlock({ code, filename, language: codeLanguage
 
   return (
     <HydrateWrapper loader={<CodeBlockSkeleton />}>
-      <div className='rounded-2xl p-4 dark:bg-gray-700 bg-gray-100 my-4 relative'>
+      <div className='rounded-2xl p-2 md:p-4 dark:bg-gray-700 bg-gray-100 my-4 relative'>
         <div className='w-full grid gap-1 grid-cols-twoIcons my-1 items-center text-sm md:text-lg'>
           <span className='opacity-70'>
             {codeLanguage ? LanguageIcons[codeLanguage] : LanguageIcons[defaultCodeLanguage]}
