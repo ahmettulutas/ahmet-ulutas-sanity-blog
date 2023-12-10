@@ -166,7 +166,7 @@ export const experiences = [
       responsibilities: [
         {
           id: 0,
-          tag: "Akbank ile işbirliği yaparak akbank platformlarından kullanıcıların şirketimin kendi ürünü olan Kredim ile ödemesine olanak sağlayan 'Kredim ile Öde' uygulaması geliştirdim.",
+          tag: "Akbank ile işbirliği yaparak bankanın platformlarından kullanıcıların şirketin Kredim hizmeti ile ödemesine olanak sağlayan 'Kredim ile Öde' uygulaması geliştirdim.",
         },
         {
           id: 1,
@@ -174,7 +174,7 @@ export const experiences = [
         },
         {
           id: 2,
-          tag: "Flagship uygulamalarımız olan Kredim, Param ve Finrota'da müşteri ihtiyaçlarına uygun geliştirmeler yaptım.",
+          tag: "Şirketin yüksek trafikli uygulamaları olan Kredim, Param ve Finrota'da müşteri ihtiyaçlarına uygun geliştirmeler yaptım.",
         },
         {
           id: 3,
@@ -186,7 +186,7 @@ export const experiences = [
         },
         {
           id: 5,
-          tag: "Next.js ve Contentful CMS ile şirketimizin yepyeni web sitesini oluşturmada liderlik yaptım. Sonucu https://www.paramtech.com.tr/ Websitesi'nde keşfedin.",
+          tag: 'Next.js ve Contentful CMS ile şirketin yeni web sitesini geliştirdim. https://www.paramtech.com.tr/ ',
         },
         {
           id: 6,
@@ -194,7 +194,7 @@ export const experiences = [
         },
         {
           id: 7,
-          tag: 'Next.js ve Typescript kullanarak çeşitli şirket web sitelerini tasarladım ve geliştirdim, modern ve etkili bir web varlığı sağladım. Örnekler arasında https://param.eu/ bulunmaktadır.',
+          tag: 'Next.js ve Typescript kullanarak çeşitli şirket web sitelerini geliştirdim. Örnek https://param.eu/ .',
         },
       ],
     },
@@ -326,12 +326,24 @@ export const experiences = [
     },
   },
 ];
-// • Developing features for the company's super app, with a focus on the lump sum payment and reporting module.
-// • Creating a reusable component library to streamline development across different projects.
-// • Collaborating with UI/UX designers to provide a technical perspective and ensure a seamless user experience.
-// • Translating design wireframes into functional code using tools like Figma and Ant Design.
-// • Designing and building large-scale projects that meet project standards for JavaScript development.
-// • Working closely with UI/UX designers to bridge the gap between design and technical implementation.
-// • Building and maintaining landing pages for the company's websites, including one built from scratch.
-// • Integrating CMS systems like Contentful and Netlify CMS to improve content management and delivery.
-// • Improving continuous deployment and integration pipelines to ensure seamless and efficient development processes.
+type AboutPageData = {
+  aboutMe: string;
+};
+export const staticAboutData = {
+  name: 'Ahmet Ulutaş',
+  currentCompany: 'Paramtech',
+};
+export const aboutPageData: Record<string, AboutPageData> = {
+  en: {
+    aboutMe:
+      "Welcome to my personal blog. I am currently working as a Software Developer at a fintech company. Additionally, I am pursuing a bachelor's degree in Computer Programming. Currently, I am learning the T3 Stack and taking an algorithms course. I am actively developing web applications, mostly using Next.js. To assist others and deepen my knowledge, I share what I have learned and my experiences in software here. I can help you in delivering user-friendly web solutions by combining design and programming.",
+  },
+  tr: {
+    aboutMe:
+      'Kişisel bloguma hoş geldiniz. Şu anda bir fintech şirketinde Software Developer olarak çalışıyorum. Aynı zamanda Bilgisayar Programcılığı ön lisan okuyorum. Şu sıralar T3 Stack öğreniyorum ve algoritma kursu alıyorum. Aynı zamanda çoğunlukla Next.js kullanarak web uygulamaları geliştiriyorum. Yardımcı olmak ve bilgimi derinleştirmek amacıyla burada yazılımda öğrendiklerimi ve deneyimlerimi paylaşıyorum. Tasarımı ve programlamayı birleştirerek kullanıcı dostu web çözümleri sunma konusunda size yardımcı olabilirim. ',
+  },
+  de: {
+    aboutMe:
+      'Herzlich willkommen auf meinem persönlichen Blog. Derzeit arbeite ich als Softwareentwickler in einem Fintech-Unternehmen. Zusätzlich absolviere ich ein Bachelorstudium in Informatik. Zurzeit lerne ich den T3 Stack und nehme an einem Algorithmenkurs teil. Aktiv entwickle ich Webanwendungen, hauptsächlich mit Next.js. Um anderen zu helfen und mein Wissen zu vertiefen, teile ich hier meine Erfahrungen und Erkenntnisse in der Softwareentwicklung. Ich kann Ihnen helfen, benutzerfreundliche Web-Lösungen zu entwickeln, indem ich Design und Programmierung kombiniere.',
+  },
+};

@@ -12,7 +12,7 @@ export default function Experiences({ language }: { language: string }) {
         {experiences.map((item) => {
           const translated = item[language as keyof typeof item];
           return (
-            <div key={translated.companyName} className='mt-6 mx-2 md:mx-4'>
+            <div key={translated.companyName} className='mt-6 mx-2 md:mx-4 leading-8'>
               <div className='flex gap-1 text-xl'>
                 <p className='text-brand dark:text-brandDark'>{translated.title}</p>
                 <span>@</span>

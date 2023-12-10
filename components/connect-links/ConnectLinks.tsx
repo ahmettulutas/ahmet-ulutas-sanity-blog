@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { GithubIcon, LinkedinIcon, TwitterIcon } from '../icons/Icons';
+import { GithubIcon, GmailIcon, LinkedinIcon } from '../icons/Icons';
 const personalLinks = {
   linkedin: 'https://www.linkedin.com/in/ahmet-ulutas/',
-  twitter: 'https://www.linkedin.com/in/ahmet-ulutas/',
+  gmail: 'mailto:ahmetulutas93@gmail.com',
   github: 'https://github.com/ahmettulutas/',
 };
 export default function ConnectLinks() {
@@ -26,12 +26,12 @@ export default function ConnectLinks() {
         <LinkedinIcon className='hover:scale-125 transition-all ease duration-200 w-full h-auto' />
       </a>
       <a
-        href={personalLinks.twitter}
+        href={personalLinks.gmail}
         className='inline-block w-6 h-6 mr-4'
         aria-label='Reach out to me via Twitter'
         target='_blank'
       >
-        <TwitterIcon className='hover:scale-125 transition-all ease duration-200 w-full h-auto' />
+        <GmailIcon className='hover:scale-125 transition-all ease duration-200 w-full h-auto' />
       </a>
     </div>
   );

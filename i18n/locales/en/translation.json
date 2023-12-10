@@ -7,7 +7,6 @@
   "gotoStudio": "Go to Studio",
   "blogPosts": "Blog Posts",
   "welcome": "Welcome",
-  "about": "I'm a passionate Frontend Developer with a background in both hardware and software development. My journey includes successful projects at a fintech software company, where I excel in both team and solo environments. I'm currently pursuing a Computer Science degree to further enhance my skills. I take pride in combining design and programming to deliver user-friendly web solutions and have a reputation for integrity and quality. Explore my portfolio to see my work firsthand.",
   "theme": "Theme",
   "dark": "Dark",
   "light": "Light",
@@ -21,7 +20,7 @@
   "tableOfContent": "Table of Content",
   "experiences": "Experiences",
   "softwareDev": "Software Developer",
-  "footerHeading": "Interesting Stories | Updates | Guides",
+  "footerHeading": "News in Software | Updates | Guides",
   "footerDescription": "Subscribe to learn about new technology and updates. Stay up to date with latest news.",
   "metaData": {
     "pageTitle": "Ahmet Ulutaş's Blog Page",
