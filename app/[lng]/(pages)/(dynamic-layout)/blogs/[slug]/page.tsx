@@ -58,7 +58,7 @@ export default async function Page({ params }: PageProps & SharedPageProps) {
 
   return (
     <main>
-      <Header currentLocale={lng} dynamicLinks={relatedSlugs} />
+      {/*     <Header currentLocale={lng} dynamicLinks={relatedSlugs} /> */}
       <div className='mb-8 text-center relative w-full h-[85vh]'>
         <div className='w-full z-20 flex flex-col items-center justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
           <Tag name={blog.category} className='px-6 text-sm py-2' />

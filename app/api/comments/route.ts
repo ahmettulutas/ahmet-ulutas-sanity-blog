@@ -55,7 +55,6 @@ export const DELETE = async (req: Request) => {
   const authorizedToDelete =
     user?.email === comment.email || user?.email === process.env.NEXT_PUBLIC_SITE_ADMIN_EMAIL;
   if (!authorizedToDelete) return NextResponse.json({ message: 'Unauthorized!' }, { status: 401 });
-
   try {
     await connectToMongo();
     await Comment.findByIdAndDelete(comment._id);

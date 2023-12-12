@@ -4,8 +4,9 @@ import React from 'react';
 const NotFound = () => {
   return (
     <div className='h-screen w-screen grid place-items-center'>
-      <div className='flex align-middle flex-col gap-2'>
-        <h1 className='text-4xl'>Not Found!</h1>
+      <div className='flex flex-col gap-4'>
+        <h1 className='text-2xl md:text-4xl'>This page may not exist</h1>
+        <h2 className='text-xl md:text-2xl text-center'>Apologies :/</h2>
         <Link href='/' className='btn-primary m-auto'>
           Go Back
         </Link>
