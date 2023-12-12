@@ -30,7 +30,7 @@ const myPortableTextComponents = {
         // use the node key as the id, it's guaranteed unique
         // one can also slugify the children spans if one want
         // nicer URLs
-        <HeadingTag id={node._key}>
+        <HeadingTag id={node._key} className='text-2xl lg:text-3xl font-bold my-6'>
           {children} <Link href={`#${node._key}`}>#</Link>
         </HeadingTag>
       );
@@ -61,12 +61,12 @@ const myPortableTextComponents = {
     ),
   },
   list: {
-    bullet: ({ children }: any) => <ul className='my-6 ml-6'>{children}</ul>,
+    bullet: ({ children }: any) => <ul className='my-6 ml-6 leading-8 text-lg'>{children}</ul>,
     number: ({ children }: any) => {
       return (
         <ol className='my-4 ml-6'>
-          {children.map((child: React.ReactElement) => (
-            <li key={child.key} className='list-decimal-reset'>
+          {children.map((child: any) => (
+            <li key={child.key} className='list-decimal-reset leading-8 text-lg ml-2'>
               {child.props.children}
             </li>
           ))}
@@ -74,7 +74,7 @@ const myPortableTextComponents = {
       );
     },
     checkmarks: ({ children }: any) => <ol className='m-auto text-lg'>{children}</ol>,
-    p: ({ children }: any) => <p className='text-2xl'>{children}</p>,
+    p: ({ children }: any) => <p className='text-lg'>{children}</p>,
   },
 };
 
