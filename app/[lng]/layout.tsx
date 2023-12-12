@@ -29,7 +29,7 @@ export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }));
 }
 
-export default function RootLayout({ children, params: { lng } }: RootLayoutProps) {
+export default function Layout({ children, params: { lng } }: RootLayoutProps) {
   return (
     <html lang={lng} dir={dir(lng)} suppressHydrationWarning className='scroll-smooth'>
       <head />

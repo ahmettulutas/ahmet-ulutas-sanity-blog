@@ -6,14 +6,14 @@ import CoverImage from '../sanity-image/CoverImage';
 
 type BlogCardProps = {
   blog: BlogPost;
-  currntLocale: string;
+  locale: string;
 };
 
-export default function BlogCard({ blog, currntLocale }: BlogCardProps) {
+export default function BlogCard({ blog, locale }: BlogCardProps) {
   return (
     <article className='h-full'>
       <Link
-        href={`/${currntLocale}/blogs/${blog.slug}`} /* you need to ad currentlocale to prevent previous locale page caching */
+        href={`/${locale}/blogs/${blog.slug}`} /* you need to ad currentlocale to prevent previous locale page caching */
         className='group flex justify-between flex-col gap-2 rounded-xl'
       >
         <CoverImage

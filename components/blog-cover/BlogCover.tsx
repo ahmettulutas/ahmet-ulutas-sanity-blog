@@ -6,8 +6,9 @@ import CoverImage from '../sanity-image/CoverImage';
 import Tag from '../tags/Tags';
 type BlogCoverSection = {
   blog: BlogPost;
+  locale: string;
 };
-const BlogCoverSection = ({ blog }: BlogCoverSection) => {
+const BlogCoverSection = ({ blog, locale }: BlogCoverSection) => {
   return (
     <div className='w-full inline-block text-white'>
       <article className='flex flex-col items-start justify-end relative h-[50vh] md:h-[85vh]'>
@@ -24,7 +25,7 @@ const BlogCoverSection = ({ blog }: BlogCoverSection) => {
 
         <div className='w-full lg:w-3/4 p-6 sm:p-8 md:p-12 lg:p-16 flex flex-col items-start justify-center z-0 text-light overflow-hidden'>
           <Tag name={blog.category} className='px-6 text-sm py-2' />
-          <Link href={`blogs/${blog.slug}`} className='mt-6'>
+          <Link className='mt-6' href={`/${locale}/blogs/${blog.slug}`}>
             <h1 className='font-bold capitalize text-lg sm:text-xl md:text-3xl lg:text-4xl'>
               <span
                 className='bg-gradient-to-r from-brand to-brand dark:from-brandDark/90 

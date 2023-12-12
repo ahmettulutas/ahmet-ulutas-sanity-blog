@@ -3,7 +3,7 @@ import {
   getBlogBySlug,
   getBlogsAndMoreStories,
 } from '@/sanity/sanity-lib/sanity-client-fns';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import RichTextContent from '@/components/rich-text-content/RichTextContent';
 import { Container } from '@/components/container';
 import type { Metadata, ResolvingMetadata } from 'next';
@@ -25,10 +25,12 @@ async function getPageData(slug: string, language: string) {
   try {
     const { blog, moreBlogs } = await getBlogsAndMoreStories(slug, language);
     if (!blog) return notFound();
-    const availableBlogLanguages = blog?._translations?.map(({ language, slug }) => ({
-      language,
-      slug,
-    }));
+    const availableBlogLanguages = blog?._translations?.map((item) => {
+      return {
+        language: item?.language,
+        slug: item?.slug,
+      };
+    });
     return {
       blog,
       relatedSlugs: availableBlogLanguages.length
@@ -37,7 +39,7 @@ async function getPageData(slug: string, language: string) {
       moreBlogs,
     };
   } catch (error) {
-    return notFound();
+    return redirect('/error');
   }
 }
 
@@ -58,7 +60,7 @@ export default async function Page({ params }: PageProps & SharedPageProps) {
 
   return (
     <main>
-      {/*     <Header currentLocale={lng} dynamicLinks={relatedSlugs} /> */}
+      <Header currentLocale={lng} dynamicLinks={relatedSlugs} />
       <div className='mb-8 text-center relative w-full h-[85vh]'>
         <div className='w-full z-20 flex flex-col items-center justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
           <Tag name={blog.category} className='px-6 text-sm py-2' />
@@ -86,12 +88,11 @@ export default async function Page({ params }: PageProps & SharedPageProps) {
               <CommentsContainer
                 currentLocale={lng}
                 currentSlug={blog.slug}
-                relatedSlugs={relatedSlugs.map((item) => item.slug)}
+                relatedSlugs={relatedSlugs.map((item) => item?.slug)}
               />
             </Suspense>
           </div>
           <div className='col-span-1 order-1 md:order-2'>
-            {/* <TableOfContent content={blog?.content} language={lng} /> */}
             <details
               className='border-[1px] border-solid border-dark-bg dark:border-light-bg text-dark dark:text-light rounded-lg p-4 sticky top-6 max-h-[80vh] overflow-hidden overflow-y-auto'
               open
@@ -104,7 +105,7 @@ export default async function Page({ params }: PageProps & SharedPageProps) {
           </div>
         </div>
 
-        <MoreBlogs moreBlogs={moreBlogs} currntLocale={lng} />
+        <MoreBlogs moreBlogs={moreBlogs} locale={lng} />
       </Container>
     </main>
   );
