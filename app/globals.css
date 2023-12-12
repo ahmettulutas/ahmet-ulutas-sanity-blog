@@ -12,6 +12,6 @@
     @apply inline-block p-1 md:p-2 m-1 rounded-full border-2 border-black dark:border-white hover:scale-105 transition-all ease-in duration-200 bg-transparent text-black dark:text-white;
   }
 }
-.list-decimal-reset {
-  list-style: decimal;
+.list-disc-reset {
+  list-style: disc;
 }

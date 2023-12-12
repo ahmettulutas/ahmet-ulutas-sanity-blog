@@ -1,11 +1,11 @@
+'use client';
 import Link from 'next/link';
-import React from 'react';
 
-const NotFound = () => {
+const Error = () => {
   return (
     <div className='h-screen w-screen grid place-items-center'>
       <div className='flex flex-col gap-4'>
-        <h1 className='text-2xl md:text-4xl'>This page may not exist!!!!!!</h1>
+        <h1 className='text-2xl md:text-4xl'>Looks like some things are not correct.</h1>
         <h2 className='text-xl md:text-2xl text-center'>Apologies :/</h2>
         <Link href='/' className='btn-primary m-auto'>
           Go Back
@@ -15,4 +15,4 @@ const NotFound = () => {
   );
 };
 
-export default NotFound;
+export default Error;

@@ -22,11 +22,12 @@ export async function POST(req: Request) {
       name: user?.name,
       image: user?.image,
       relatedSlugs: relatedSlugs,
+      email: user?.email,
     });
     await connectToMongo();
     await newComment.save();
     return NextResponse.json({ message: 'Comment has been posted.' }, { status: 201 });
-  } catch (err: any) {
+  } catch (err) {
     return NextResponse.json({ message: err }, { status: 500 });
   }
 }

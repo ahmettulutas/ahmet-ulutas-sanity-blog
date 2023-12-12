@@ -17,13 +17,13 @@ const getChildrenText = (props: { children: (string | { text?: string })[] }) =>
 
 export default function TableOfContent({ headings }: TableOfContentsProps) {
   return (
-    <ol className='ml-6'>
+    <ul className='ml-6'>
       {headings?.map((heading: any) => (
-        <li className='list-decimal-reset' key={heading._key}>
+        <li className='list-disc-reset' key={heading._key}>
           <a href={'#' + heading._key}>{getChildrenText(heading)}</a>
           {heading?.children?.length > 0 && <TableOfContent headings={heading.subheadings} />}
         </li>
       ))}
-    </ol>
+    </ul>
   );
 }

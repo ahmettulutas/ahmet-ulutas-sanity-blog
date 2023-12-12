@@ -7,6 +7,8 @@ import { languages } from '@/i18n/settings';
 import { getDefaultMetaData } from '@/lib/helpers';
 import AuthProvider from '@/components/providers/auth/AuthProvider';
 import Footer from '@/components/footer/Footer';
+import { Suspense } from 'react';
+import HomePageSkeleton from '@/components/loading-skeletons/HomePage';
 
 const manrope = Manrope({
   subsets: ['latin'],
@@ -38,7 +40,7 @@ export default function Layout({ children, params: { lng } }: RootLayoutProps) {
       >
         <AuthProvider>
           <NextThemeProvider>
-            {children}
+            <Suspense fallback={<HomePageSkeleton />}>{children}</Suspense>
             <Footer language={lng} />
           </NextThemeProvider>
         </AuthProvider>

@@ -8,6 +8,7 @@ export type Comment = {
   createdAt: string;
   updatedAt: string;
   relatedSlugs: Array<string>;
+  email: string;
 };
 const { Schema } = mongoose;
 const comments = new Schema<Comment>(
@@ -16,6 +17,7 @@ const comments = new Schema<Comment>(
     message: { type: String, required: true },
     name: { type: String, required: true },
     relatedSlugs: { type: [String], required: true },
+    email: { type: String, required: true },
   },
   { timestamps: true }
 );

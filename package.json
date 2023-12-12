@@ -19,7 +19,7 @@
   "dependencies": {
     "@portabletext/react": "^3.0.11",
     "@sanity/code-input": "^4.1.1",
-    "@sanity/document-internationalization": "^2.0.1",
+    "@sanity/document-internationalization": "^2.0.2",
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.16.7",
     "accept-language": "^3.0.18",
@@ -39,7 +39,7 @@
     "react-cookie": "^6.1.1",
     "react-dom": "^18",
     "react-i18next": "^13.2.2",
-    "sanity": "^3.16.7",
+    "sanity": "^3.21.1",
     "styled-components": "^5.2",
     "swr": "^2.2.4",
     "tailwind-merge": "^1.14.0"
