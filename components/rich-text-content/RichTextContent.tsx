@@ -12,7 +12,7 @@ const myPortableTextComponents = {
   types: {
     image: ({ value }: any) => (
       <figure className='my-4 p-2 shadow-md dark:shadow-none'>
-        <SanityImage image={value} alt={value.alt} wrapperStyles='relative aspect-[16/9]' />
+        <SanityImage image={value} alt={value.alt} wrapperStyles='relative h-auto' />
         {value?.caption && <figcaption className='text-xs text-right'>{value.caption}</figcaption>}
       </figure>
     ),

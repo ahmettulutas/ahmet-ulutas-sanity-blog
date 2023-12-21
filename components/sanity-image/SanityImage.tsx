@@ -30,7 +30,7 @@ export default function SanityImage({
   return (
     <div
       className={twMerge(
-        'w-full overflow-hidden rounded-[3px] bg-gray-50 dark:bg-dark-bg relative aspect-[16/9] h-full',
+        'w-full overflow-hidden rounded-[3px] bg-gray-50 dark:bg-dark-bg relative h-full',
         wrapperStyles
       )}
     >
