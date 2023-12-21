@@ -52,7 +52,7 @@ export function useTranslation(lng: string, ns?: string, options?: any) {
       if (cookies.i18next === lng) return;
       setCookie(cookieName, lng, { path: '/' });
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [cookies.i18next]);
+    }, [lng, cookies.i18next]);
   }
   return ret;
 }

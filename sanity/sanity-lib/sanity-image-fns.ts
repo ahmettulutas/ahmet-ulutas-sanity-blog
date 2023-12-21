@@ -6,5 +6,4 @@ const imageBuilder = createImageUrlBuilder({ projectId, dataset });
 
 export const getSanityImageConfig = () => getClient();
 
-export const urlForImage = (source: any) =>
-  imageBuilder.image(source).auto('format').fit('max');
+export const urlForImage = (source: any) => imageBuilder.image(source).auto('format').fit('max');
