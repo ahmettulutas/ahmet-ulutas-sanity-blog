@@ -27,14 +27,16 @@ const Footer = ({ language }: { language: string }) => {
         >
           <input
             type='email'
-            placeholder='Enter your email'
+            placeholder={t('enterYourEmail')}
             className='px-2 w-full bg-transparent pl-2 sm:pl-0 text-dark-text focus:border-dark focus:ring-0 border-0 border-b mr-2 pb-1'
           />
 
-          <input
+          <button
             type='submit'
             className='bg-dark-bg cursor-pointer font-medium rounded px-3 sm:px-5 py-1 text-dark-text'
-          />
+          >
+            {t('submit')}
+          </button>
         </form>
         <ConnectLinks />
 

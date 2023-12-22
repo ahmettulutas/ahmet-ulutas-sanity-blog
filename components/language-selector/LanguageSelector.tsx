@@ -28,8 +28,8 @@ export const LanguageSelector = ({ currentLocale, dynamicLinks }: HeaderProps) =
   const handleDynamicNavigation = (locale: string) => {
     // This function is used to navigate the user to the related slug of a blog post when language is changed.
     const dynamicSlug = dynamicLinks?.find(({ language }) => language === locale)?.slug;
-    if (!dynamicSlug) return router.push(`/${String(locale)}`);
-    return router.push(`/${String(locale)}/blogs/${dynamicSlug}`);
+    if (!dynamicSlug) return router.push(`/${locale}`);
+    return router.push(`/${locale}/blogs/${dynamicSlug}`);
   };
 
   return (
@@ -40,7 +40,7 @@ export const LanguageSelector = ({ currentLocale, dynamicLinks }: HeaderProps) =
       onChange={({ target }) => {
         dynamicLocaleRoutes
           ? handleDynamicNavigation(target.value)
-          : router.push(`/${String(target.value)}/${omitLocaleFromPath(pathname)}`);
+          : router.push(`/${target.value}/${omitLocaleFromPath(pathname)}`);
       }}
     >
       {dynamicLocaleRoutes ?? defaultLocaleRoutes}

@@ -21,8 +21,10 @@
   "experiences": "Deneyimler",
   "softwareDev": "Software Developer",
   "footerHeading": "Yazılım Haberleri | Güncellemeler | Rehberler",
-  "footerDescription": "Yeni teknolojiler ve güncellemeler hakkında bilgi almak için abone olun ve en son haberlerden haberdar olun.",
+  "footerDescription": "Yeni teknolojiler ve güncellemeler hakkında bilgi almak için bloguma abone olun ve en son haberlerden haberdar olun.",
   "tableOfContent": "İçindekiler",
+  "enterYourEmail": "E-posta adresinizi girin",
+  "submit": "Gönder",
   "metaData": {
     "pageTitle": "Ahmet Ulutaş'ın Blog Sayfası",
     "pageDescription": "Ahmet Ulutaş'ın frontend blogu.",
