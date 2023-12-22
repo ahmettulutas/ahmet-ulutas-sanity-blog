@@ -23,19 +23,19 @@ export const staticMapItems: MetadataRoute.Sitemap = [
     priority: 1,
   },
   {
-    url: `${baseUrl}/en/blogs`,
+    url: `${baseUrl}/en/about`,
     lastModified: new Date(),
     changeFrequency: 'weekly',
     priority: 0.8,
   },
   {
-    url: `${baseUrl}/tr/blogs`,
+    url: `${baseUrl}/tr/about`,
     lastModified: new Date(),
     changeFrequency: 'weekly',
     priority: 0.8,
   },
   {
-    url: `${baseUrl}/de/blogs`,
+    url: `${baseUrl}/de/about`,
     lastModified: new Date(),
     changeFrequency: 'weekly',
     priority: 0.8,
