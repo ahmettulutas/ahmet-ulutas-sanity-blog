@@ -42,13 +42,15 @@ export const staticMapItems: MetadataRoute.Sitemap = [
   },
 ];
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const allBlogs = await getAllBlogsSlugs();
-  const dynamicMapItems: MetadataRoute.Sitemap = allBlogs.map(({ language, _updatedAt, slug }) => ({
-    url: `${baseUrl}/${language}/${slug}`,
-    lastModified: _updatedAt,
-    changeFrequency: 'weekly',
-    priority: 0.7,
-  }));
+  const allBlogsSlugs = await getAllBlogsSlugs();
+  const dynamicMapItems: MetadataRoute.Sitemap = allBlogsSlugs.map(
+    ({ language, _updatedAt, slug }) => ({
+      url: `${baseUrl}/${language}/${slug}`,
+      lastModified: _updatedAt,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    })
+  );
 
   return [...staticMapItems, ...dynamicMapItems];
 }

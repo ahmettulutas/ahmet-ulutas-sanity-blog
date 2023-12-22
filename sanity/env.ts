@@ -1,4 +1,7 @@
-export const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2023-10-03';
+import { format } from 'date-fns';
+
+const currentDate = new Date();
+export const apiVersion = format(currentDate, 'yyyy-MM-dd') || '2023-10-03';
 
 export const dataset = assertValue(
   process.env.NEXT_PUBLIC_SANITY_DATASET,
