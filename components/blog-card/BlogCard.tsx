@@ -23,12 +23,12 @@ export default function BlogCard({ blog, locale }: BlogCardProps) {
           wrapperStyles='rounded-xl overflow-hidden relative'
           imageStyles='group-hover:scale-105 object-cover object-center transition-all ease duration-300'
         />
-        <h2 className='font-semibold capitalize  text-base sm:text-lg'>
+        <h2 className='font-semibold text-base sm:text-lg'>
           <span
             className='bg-gradient-to-r from-brand/50 to-brand/50  dark:from-brandDark/90
               dark:to-brandDark/50
               bg-[length:0px_6px]
-              group-hover:bg-[length:100%_6px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 '
+              group-hover:bg-[length:100%_6px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500'
           >
             {blog.title}
           </span>

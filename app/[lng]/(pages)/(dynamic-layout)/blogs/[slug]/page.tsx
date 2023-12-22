@@ -18,7 +18,7 @@ import { Suspense } from 'react';
 import { SharedPageProps } from '@/app/[lng]/layout';
 import Tag from '@/components/tags/Tags';
 import CommentsSkeleton from '@/components/loading-skeletons/CommentsList';
-import TableOfContent from '@/components/table-of-content/TableOfContent';
+import TableOfContents from '@/components/table-of-content/TableOfContent';
 import { useServerSideTranslation } from '@/i18n';
 
 async function getPageData(slug: string, language: string) {
@@ -97,10 +97,10 @@ export default async function Page({ params }: PageProps & SharedPageProps) {
               className='border-[1px] border-solid border-dark-bg dark:border-light-bg text-dark dark:text-light rounded-lg p-4 sticky top-6 max-h-[80vh] overflow-hidden overflow-y-auto'
               open
             >
-              <summary className='text-lg font-semibold capitalize cursor-pointer'>
-                {t('tableOfContent')}
+              <summary className='text-lg font-semibold cursor-pointer'>
+                {t('tableOfContents')}
               </summary>
-              <TableOfContent headings={blog?.headings} language={'lng'} />
+              <TableOfContents headings={blog?.headings} language={'lng'} />
             </details>
           </div>
         </div>
