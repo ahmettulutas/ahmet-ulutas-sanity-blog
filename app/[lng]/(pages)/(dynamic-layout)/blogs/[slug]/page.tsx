@@ -20,6 +20,7 @@ import Tag from '@/components/tags/Tags';
 import CommentsSkeleton from '@/components/loading-skeletons/CommentsList';
 import TableOfContents from '@/components/table-of-content/TableOfContent';
 import { useServerSideTranslation } from '@/i18n';
+import PostDate from '@/components/post-date/PostDate';
 
 async function getPageData(slug: string, language: string) {
   try {
@@ -80,7 +81,10 @@ export default async function Page({ params }: PageProps & SharedPageProps) {
         />
       </div>
       <Container>
-        <AuthorAvatar {...{ ...blog?.author }} />
+        <section className='grid mb-2'>
+          <AuthorAvatar {...{ ...blog?.author }} />
+          <PostDate dateString={blog.date} />
+        </section>
         <div className='gap-x-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
           <div className='col-span-2 order-2 md:order-1'>
             <RichTextContent content={blog?.content} />

@@ -13,7 +13,7 @@ const Footer = ({ language }: { language: string }) => {
   const { t } = useTranslation(language, 'translation');
   return (
     <Container>
-      <footer className='mt-16 rounded-2xl bg-dark-bg dark:bg-brandDark/90 flex flex-col items-center text-dark-text dark:text-light-text'>
+      <footer className='mt-16 rounded-2xl bg-dark-bg dark:bg-brandDark/90 flex flex-col items-center text-dark-text dark:text-light-text mb-2'>
         <h3 className='mt-16 font-medium dark:font-bold text-center capitalize text-2xl sm:text-3xl lg:text-4xl px-4'>
           {t('footerHeading')}
         </h3>

@@ -25,6 +25,8 @@
   "tableOfContents": "İçindekiler",
   "enterYourEmail": "E-posta adresinizi girin",
   "submit": "Gönder",
+  "thoughtsAboutPost": "Bu gönderi hakkında düşünceleriniz nelerdir?",
+  "signInToShareThoughts": "Düşüncelerinizi paylaşmak için lütfen giriş yapın",
   "metaData": {
     "pageTitle": "Ahmet Ulutaş'ın Blog Sayfası",
     "pageDescription": "Ahmet Ulutaş'ın frontend blogu.",
