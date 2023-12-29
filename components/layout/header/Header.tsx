@@ -87,7 +87,9 @@ export default function Header({ currentLocale, dynamicLinks }: HeaderProps) {
             <p>{t('aboutMe')}</p>
           </Link>
           <LanguageSelector dynamicLinks={dynamicLinks} currentLocale={currentLocale} />
-          <ThemeSwitcher />
+          <HydrateWrapper loader={<ThemeSkeleton />}>
+            <ThemeSwitcher />
+          </HydrateWrapper>
         </nav>
         <ConnectLinks />
       </header>
