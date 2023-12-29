@@ -1,9 +1,9 @@
 import { getAllBlogs } from '@/sanity/sanity-lib/sanity-client-fns';
 import { useServerSideTranslation } from '@/i18n';
-import { Container } from '@/components/container';
 import BlogCard from '@/components/blog-card/BlogCard';
 import BlogCoverSection from '@/components/blog-cover/BlogCover';
 import { SharedPageProps } from '@/app/[lng]/layout';
+import { Container } from '@/components/containers/Container';
 
 export default async function Page({ params }: SharedPageProps) {
   const allBlogs = await getAllBlogs(params.lng);

@@ -14,8 +14,8 @@ const HydrateWrapper = ({
     setHydrated(true);
   }, []);
 
-  if (!hydrated) return loader; // Returns null on first render, so the client and server match to prevent hydration error caused by ui updates.
-  return <>{children}</>;
+  if (!hydrated) return <>{loader}</>; // Returns loader on first render, so the client and server match to prevent hydration error caused by ui updates.
+  return <div>{children}</div>;
 };
 
 export default HydrateWrapper;

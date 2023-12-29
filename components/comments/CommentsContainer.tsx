@@ -5,7 +5,7 @@ import React from 'react';
 import { useTranslation } from '@/i18n/client';
 
 import CommentList from './CommentsList';
-import CommentsSkeleton from '../loading-skeletons/CommentsList';
+import CommentsSkeleton from '../loading-skeletons/CommentsSkeleton';
 
 type CommentsContainerProps = {
   relatedSlugs: Array<string>;

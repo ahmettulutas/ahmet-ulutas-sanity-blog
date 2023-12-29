@@ -7,6 +7,8 @@ import Link from 'next/link';
 import CodeBlock from '../code-blocks/CodeBlocks';
 import SanityImage from '../sanity-image/SanityImage';
 import { LinkArrowIcon } from '../icons/Icons';
+import HydrateWrapper from '../hydrate-wrapper/HydrateWrapper';
+import CodeBlockSkeleton from '../loading-skeletons/CodeBlockSkeleton';
 
 const myPortableTextComponents = {
   types: {
@@ -16,7 +18,11 @@ const myPortableTextComponents = {
         {value?.caption && <figcaption className='text-xs text-right'>{value.caption}</figcaption>}
       </figure>
     ),
-    code: ({ value }: any) => <CodeBlock {...{ ...value }} />,
+    code: ({ value }: any) => (
+      <HydrateWrapper loader={<CodeBlockSkeleton />}>
+        <CodeBlock {...{ ...value }} />
+      </HydrateWrapper>
+    ),
   },
   block: (props: any) => {
     const { node, children } = props;
@@ -39,7 +45,7 @@ const myPortableTextComponents = {
       );
     }
     if (style === 'blockquote') return <blockquote>{children}</blockquote>;
-    if (style === 'normal') return <p className='my-2 text-lg leading-8 prose-big'>{children}</p>;
+    if (style === 'normal') return <p className='my-2 text-lg leading-8'>{children}</p>;
   },
   marks: {
     em: ({ children }: any) => <em className='font-semibold'>{children}</em>,

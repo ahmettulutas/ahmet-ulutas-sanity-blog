@@ -1,5 +1,5 @@
-import { Container } from '@/components/container';
-import Header from '@/components/header/Header';
+import { Container } from '@/components/containers/Container';
+import Header from '@/components/layout/header/Header';
 import { fallbackLng } from '@/i18n/settings';
 import React from 'react';
 

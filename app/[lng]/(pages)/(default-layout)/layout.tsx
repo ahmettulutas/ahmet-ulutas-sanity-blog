@@ -1,11 +1,12 @@
-import Header from '@/components/header/Header';
+import Header from '@/components/layout/header/Header';
+import { LocaleTypes } from '@/i18n/settings';
 
 export default function PageLayout({
   children,
   params: { lng },
 }: {
   children: React.ReactNode;
-  params: { lng: string };
+  params: { lng: LocaleTypes };
 }) {
   return (
     <>

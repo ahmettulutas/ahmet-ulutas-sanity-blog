@@ -3,7 +3,7 @@ import { getAllBlogsSlugs } from '@/sanity/sanity-lib/sanity-client-fns';
 import { MetadataRoute } from 'next';
 /* return type must be Sitemap
 Reference link : https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap */
-export const staticMapItems: MetadataRoute.Sitemap = [
+const staticMapItems: MetadataRoute.Sitemap = [
   {
     url: `${baseUrl}/en`,
     lastModified: new Date(),
@@ -45,7 +45,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const allBlogsSlugs = await getAllBlogsSlugs();
   const dynamicMapItems: MetadataRoute.Sitemap = allBlogsSlugs.map(
     ({ language, _updatedAt, slug }) => ({
-      url: `${baseUrl}/${language}/${slug}`,
+      url: `${baseUrl}/${language}/blogs/${slug}`,
       lastModified: _updatedAt,
       changeFrequency: 'weekly',
       priority: 0.7,

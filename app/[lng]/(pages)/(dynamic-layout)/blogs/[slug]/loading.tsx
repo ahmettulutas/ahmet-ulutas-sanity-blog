@@ -1,7 +1,7 @@
-import { Container } from '@/components/container';
-import Header from '@/components/header/Header';
+import Header from '@/components/layout/header/Header';
 import { fallbackLng } from '@/i18n/settings';
 import React from 'react';
+import { Container } from '@/components/containers/Container';
 
 const Loading = () => {
   return (

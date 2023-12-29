@@ -5,12 +5,14 @@ import { useTranslation } from '@/i18n/client';
 import { DynamicLink } from '@/app/[lng]/(pages)/(dynamic-layout)/blogs/[slug]/page';
 import { useState } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { LanguageSelector } from '@/components/layout/header/LanguageSelector';
+import { Container } from '@/components/containers/Container';
 
-import { LanguageSelector } from '../language-selector';
-import ThemeSwitcher from '../providers/themes/ThemeSwitcher';
+import ThemeSwitcher from './ThemeSwitcher';
 import Logo from './Logo';
-import { Container } from '../container';
-import ConnectLinks from '../connect-links/ConnectLinks';
+import ConnectLinks from '../../connect-links/ConnectLinks';
+import HydrateWrapper from '../../hydrate-wrapper/HydrateWrapper';
+import ThemeSkeleton from '../../loading-skeletons/ThemeSkeleton';
 
 export type HeaderProps = {
   currentLocale: string;
@@ -72,7 +74,9 @@ export default function Header({ currentLocale, dynamicLinks }: HeaderProps) {
           <Link href={`/${currentLocale}/about`}>
             <p>{t('aboutMe')}</p>
           </Link>
-          <ThemeSwitcher />
+          <HydrateWrapper loader={<ThemeSkeleton />}>
+            <ThemeSwitcher />
+          </HydrateWrapper>
           <LanguageSelector dynamicLinks={dynamicLinks} currentLocale={currentLocale} />
         </nav>
         <nav className='w-max py-3 px-8 border border-solid border-dark-bg dark:border-light-bg rounded-full font-medium capitalize items-center hidden md:flex transition-all ease duration-300 fixed top-6 right-1/2 translate-x-1/2 bg-light/80 dark:bg-dark-bg bg-white z-50 gap-2'>

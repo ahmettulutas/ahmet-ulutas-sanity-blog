@@ -5,24 +5,25 @@ import {
 } from '@/sanity/sanity-lib/sanity-client-fns';
 import { notFound, redirect } from 'next/navigation';
 import RichTextContent from '@/components/rich-text-content/RichTextContent';
-import { Container } from '@/components/container';
 import type { Metadata, ResolvingMetadata } from 'next';
 import MoreBlogs from '@/components/more-blogs/MoreBlogs';
 import { generateMetaImages, getDefaultMetaData } from '@/lib/helpers';
 import { ogImageSizes, twitterImageSizes } from '@/lib/constants';
 import AuthorAvatar from '@/components/author-avatar/AuthorAvatar';
 import CoverImage from '@/components/sanity-image/CoverImage';
-import Header from '@/components/header/Header';
+import Header from '@/components/layout/header/Header';
 import CommentsContainer from '@/components/comments/CommentsContainer';
 import { Suspense } from 'react';
 import { SharedPageProps } from '@/app/[lng]/layout';
 import Tag from '@/components/tags/Tags';
-import CommentsSkeleton from '@/components/loading-skeletons/CommentsList';
+import CommentsSkeleton from '@/components/loading-skeletons/CommentsSkeleton';
 import TableOfContents from '@/components/table-of-content/TableOfContent';
 import { useServerSideTranslation } from '@/i18n';
 import PostDate from '@/components/post-date/PostDate';
+import { LocaleTypes } from '@/i18n/settings';
+import { Container } from '@/components/containers/Container';
 
-async function getPageData(slug: string, language: string) {
+async function getPageData(slug: string, language: LocaleTypes) {
   try {
     const { blog, moreBlogs } = await getBlogsAndMoreStories(slug, language);
     if (!blog) return notFound();
@@ -50,7 +51,7 @@ type PageProps = SharedPageProps & {
   };
 };
 export type DynamicLink = {
-  language: string;
+  language: LocaleTypes;
   slug: string;
 };
 

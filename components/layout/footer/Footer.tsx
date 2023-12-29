@@ -2,9 +2,9 @@
 import React, { FormEvent } from 'react';
 import Link from 'next/link';
 import { useTranslation } from '@/i18n/client';
+import { Container } from '@/components/containers/Container';
 
-import ConnectLinks from '../connect-links/ConnectLinks';
-import { Container } from '../container';
+import ConnectLinks from '../../connect-links/ConnectLinks';
 
 const Footer = ({ language }: { language: string }) => {
   const handleSubmit = (e: FormEvent) => {

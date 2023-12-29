@@ -1,10 +1,11 @@
 import { useServerSideTranslation } from '@/i18n';
-import { Container } from '@/components/container';
 import { SharedPageProps } from '@/app/[lng]/layout';
 import Experiences from '@/components/experiences/Experiences';
 import profileImg from '@/public/images/profile2.png';
 import Image from 'next/image';
 import { aboutPageData, staticAboutData } from '@/lib/constants';
+import { Container } from '@/components/containers/Container';
+
 export default async function Page({ params }: SharedPageProps) {
   const { t } = await useServerSideTranslation(params.lng, 'translation');
   const translatedData = { ...aboutPageData[params.lng], ...staticAboutData };

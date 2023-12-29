@@ -1,8 +1,8 @@
 export const fallbackLng = 'en';
 export const languages = [fallbackLng, 'tr', 'de'];
 export const defaultNS = 'translation';
-export const cookieName = 'i18next';
-
+export type LocaleTypes = (typeof languages)[number];
+export const cookieName = 'language';
 export function getOptions(lng = fallbackLng, ns = defaultNS) {
   return {
     // debug: true,
