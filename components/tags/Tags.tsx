@@ -8,7 +8,7 @@ const Tag = (props: TagProps) => {
   return (
     <div
       className={twMerge(
-        'inline-block py-2 sm:py-3 px-6 sm:px-10 bg-dark-bg rounded-full capitalize font-semibold border-2 border-solid border-light text-sm sm:text-base',
+        'inline-block py-2 sm:py-3 px-6 sm:px-10 bg-dark-bg text-dark-text rounded-full capitalize font-semibold border-2 border-solid border-light text-sm sm:text-base',
         className
       )}
     >
