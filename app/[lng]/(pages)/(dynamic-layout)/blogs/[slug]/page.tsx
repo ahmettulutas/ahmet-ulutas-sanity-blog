@@ -3,7 +3,7 @@ import {
   getBlogBySlug,
   getBlogsAndMoreStories,
 } from '@/sanity/sanity-lib/sanity-client-fns';
-import { notFound, redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import RichTextContent from '@/components/rich-text-content/RichTextContent';
 import type { Metadata, ResolvingMetadata } from 'next';
 import MoreBlogs from '@/components/more-blogs/MoreBlogs';
@@ -41,7 +41,7 @@ async function getPageData(slug: string, language: LocaleTypes) {
       moreBlogs,
     };
   } catch (error) {
-    return redirect('/error');
+    return notFound();
   }
 }
 

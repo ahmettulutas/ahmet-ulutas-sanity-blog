@@ -40,9 +40,9 @@ export const GET = async (req: Request) => {
     const comments = await Comment.collection
       .find({ relatedSlugs: { $in: [currentSlug] } }) // $in brings all documents that has current slug inside its realtedSlugs array
       .toArray();
-    return NextResponse.json(comments, { status: 200 });
-  } catch (err) {
-    return NextResponse.json({ error: err }, { status: 500 });
+    return NextResponse.json({ data: comments, error: null }, { status: 200 });
+  } catch (error) {
+    return NextResponse.json({ data: null, error }, { status: 500 });
   }
 };
 

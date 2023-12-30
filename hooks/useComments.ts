@@ -17,9 +17,14 @@ export default function useComments({
     data: comments,
     mutate,
     isLoading,
-  } = useSWR<Comment[]>(`/api/comments?currentSlug=${currentSlug}`, fetcher, {
-    fallbackData: [],
-  });
+    error,
+  } = useSWR<{ data: Comment[]; error: null | any }>(
+    `/api/comments?currentSlug=${currentSlug}`,
+    fetcher,
+    {
+      fallbackData: { data: [], error: null },
+    }
+  );
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,5 +52,5 @@ export default function useComments({
     }
   };
 
-  return { message, setMessage, comments, handleSubmit, handleDelete, isLoading };
+  return { message, setMessage, comments, handleSubmit, handleDelete, isLoading, error };
 }

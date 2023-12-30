@@ -11,9 +11,10 @@ type CommentListProps = {
 
 export default function CommentList({ comments, onDelete }: CommentListProps) {
   const { data: session } = useSession();
+  if (comments?.length) return <></>;
   return (
     <div className='space-y-6 mt-10 max-h-40 overflow-auto'>
-      {(comments || [])?.map((comment) => {
+      {comments?.map((comment) => {
         const isAuthor = session?.user?.name === comment.name;
         const isAdmin = session?.user?.email === process.env.NEXT_PUBLIC_SITE_ADMIN_EMAIL;
         return (
