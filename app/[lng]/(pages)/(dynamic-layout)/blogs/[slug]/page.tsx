@@ -41,7 +41,8 @@ async function getPageData(slug: string, language: LocaleTypes) {
       moreBlogs,
     };
   } catch (error) {
-    return notFound();
+    if (error instanceof Error) throw new Error(error.message);
+    else throw new Error(JSON.stringify(error));
   }
 }
 
