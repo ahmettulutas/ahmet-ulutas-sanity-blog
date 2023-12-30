@@ -12,19 +12,17 @@ const Error = ({ error, reset }: { error: Error & { digest?: string }; reset: ()
   return (
     <Container>
       <Header currentLocale={fallbackLng} />
-      <div className='h-screen w-full grid place-items-center'>
-        <div className='flex flex-col gap-2 max-w-40'>
-          <Image
-            src={errorImage}
-            className='m-auto'
-            alt='not-found-error'
-            width={200}
-            height={200}
-          />
-          <h1 className='text-xl md:text-2xl  text-center'>
+      <div className='my-10 w-full grid place-items-center'>
+        <div className='flex flex-col gap-2 max-w-[400px]'>
+          <Image src={errorImage} className='m-auto' alt='error-icon' width={200} height={200} />
+          <h1 className='text-xl md:text-2xl text-center'>
             Looks like some things are not correct.
           </h1>
-          {error?.message && <p className='text-center'>Error : {error?.message}</p>}
+          {error?.message && (
+            <p className='text-center'>
+              <p className='font-semibold'>Error:</p> {error?.message}
+            </p>
+          )}
           <Link href='/' className='btn-primary m-auto'>
             Go Back
           </Link>

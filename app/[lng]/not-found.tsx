@@ -11,11 +11,10 @@ import error from '../../public/images/error.svg';
 const NotFound = async () => {
   const cookieStore = cookies();
   const lang = cookieStore.get(cookieName);
-
   return (
     <Container>
       <Header currentLocale={lang?.value ? lang.value : fallbackLng} />
-      <div className='h-screen w-full grid place-items-center'>
+      <div className='my-10 w-full grid place-items-center'>
         <div className='flex flex-col gap-2 max-w-40'>
           <Image className='m-auto' src={error} alt='not-found-error' width={200} height={200} />
           <h1 className='text-xl md:text-2xl text-center'>
