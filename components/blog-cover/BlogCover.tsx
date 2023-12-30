@@ -4,11 +4,13 @@ import React from 'react';
 
 import CoverImage from '../sanity-image/CoverImage';
 import Tag from '../tags/Tags';
-type BlogCoverSection = {
+
+type BlogCoverSectionProps = {
   blog: BlogPost;
   locale: string;
 };
-const BlogCoverSection = ({ blog, locale }: BlogCoverSection) => {
+
+export default function BlogCoverSection({ blog, locale }: BlogCoverSectionProps) {
   return (
     <div className='w-full inline-block text-white'>
       <article className='flex flex-col items-start justify-end relative h-[50vh] md:h-[85vh]'>
@@ -36,13 +38,8 @@ const BlogCoverSection = ({ blog, locale }: BlogCoverSection) => {
               </span>
             </h1>
           </Link>
-          <p className='hidden sm:inline-block mt-4 md:text-lg lg:text-xl font-in'>
-            {blog.excerpt}
-          </p>
         </div>
       </article>
     </div>
   );
-};
-
-export default BlogCoverSection;
+}

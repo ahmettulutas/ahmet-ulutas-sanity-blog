@@ -50,6 +50,7 @@ type PageProps = SharedPageProps & {
     slug: string;
   };
 };
+
 export type DynamicLink = {
   language: LocaleTypes;
   slug: string;

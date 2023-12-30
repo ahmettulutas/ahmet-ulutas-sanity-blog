@@ -27,6 +27,7 @@
   "submit": "Gönder",
   "thoughtsAboutPost": "Bu gönderi hakkında düşünceleriniz nelerdir?",
   "signInToShareThoughts": "Düşüncelerinizi paylaşmak için lütfen giriş yapın",
+  "incorrectURL": "Yanlış bir URL'ye yönlendirildiniz",
   "metaData": {
     "pageTitle": "Ahmet Ulutaş'ın Blog Sayfası",
     "pageDescription": "Ahmet Ulutaş'ın frontend blogu.",
