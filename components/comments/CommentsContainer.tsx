@@ -6,6 +6,7 @@ import { useTranslation } from '@/i18n/client';
 
 import CommentList from './CommentsList';
 import CommentsSkeleton from '../loading-skeletons/CommentsSkeleton';
+import { GmailIcon } from '../icons/Icons';
 
 type CommentsContainerProps = {
   relatedSlugs: Array<string>;
@@ -55,7 +56,11 @@ const CommentsContainer = ({
               {t('signOut')}
             </button>
           ) : (
-            <button onClick={() => signIn('google')} className='btn-primary px-2 py-0'>
+            <button
+              onClick={() => signIn('google')}
+              className='btn-primary px-2 py-0 flex gap-2 items-center'
+            >
+              <GmailIcon className='hover:scale-125 transition-all ease duration-200 w-4 h-4' />
               {t('signIn')}
             </button>
           )}

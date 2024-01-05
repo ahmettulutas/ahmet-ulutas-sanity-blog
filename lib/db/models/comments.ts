@@ -10,6 +10,7 @@ export type Comment = {
   relatedSlugs: Array<string>;
   email: string;
 };
+
 const { Schema } = mongoose;
 const comments = new Schema<Comment>(
   {

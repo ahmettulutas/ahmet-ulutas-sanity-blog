@@ -11,6 +11,7 @@ const Footer = ({ language }: { language: string }) => {
     e.preventDefault();
   };
   const { t } = useTranslation(language, 'translation');
+
   return (
     <Container>
       <footer className='mt-16 rounded-2xl bg-dark-bg dark:bg-brandDark/90 flex flex-col items-center text-dark-text dark:text-light-text mb-2'>
