@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { languages } from '@/i18n/settings';
+import { availableLocales } from '@/i18n/settings';
 import { usePathname, useRouter } from 'next/navigation';
 import { omitLocaleFromPath } from '@/lib/helpers';
 
@@ -10,7 +10,7 @@ export const LanguageSelector = ({ currentLocale, dynamicLinks }: HeaderProps) =
   const pathname = usePathname();
   const router = useRouter();
 
-  const defaultLocaleRoutes = languages.map((lang) => (
+  const defaultLocaleRoutes = availableLocales.map((lang) => (
     <option key={lang} value={lang}>
       {lang}
     </option>
@@ -35,7 +35,7 @@ export const LanguageSelector = ({ currentLocale, dynamicLinks }: HeaderProps) =
   return (
     <select
       aria-label='select-language'
-      className='cursor-pointer px-2 bg-transparent'
+      className='cursor-pointer px-2 dark:bg-dark-bg'
       defaultValue={currentLocale}
       onChange={({ target }) => {
         dynamicLocaleRoutes

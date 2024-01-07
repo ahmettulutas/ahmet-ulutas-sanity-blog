@@ -1,10 +1,10 @@
 import { Container } from '@/components/containers/Container';
-import Header from '@/components/layout/header/Header';
-import { cookieName, fallbackLng } from '@/i18n/settings';
+import { cookieName, defaultLanguage } from '@/i18n/settings';
 import Link from 'next/link';
 import React from 'react';
 import { cookies } from 'next/headers';
 import Image from 'next/image';
+import Header from '@/components/layout/header/Header';
 
 import error from '../../public/images/error.svg';
 
@@ -13,7 +13,7 @@ const NotFound = async () => {
   const lang = cookieStore.get(cookieName);
   return (
     <Container>
-      <Header currentLocale={lang?.value ? lang.value : fallbackLng} />
+      <Header currentLocale={lang?.value ? lang.value : defaultLanguage} />
       <div className='my-10 w-full grid place-items-center'>
         <div className='flex flex-col gap-2 max-w-40'>
           <Image className='m-auto' src={error} alt='not-found-error' width={200} height={200} />

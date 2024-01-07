@@ -2,30 +2,32 @@ import { createInstance } from 'i18next';
 import resourcesToBackend from 'i18next-resources-to-backend';
 import { initReactI18next } from 'react-i18next/initReactI18next';
 
-import { LocaleTypes, getOptions } from './settings';
+import { getOptions, LocaleType } from './settings';
 
-const initI18next = async (lng: LocaleTypes, ns: string) => {
-  // on server side we create a new instance for each render, because during compilation everything seems to be executed in parallel
+// Initialize the i18n instance
+const initI18next = async (lang: LocaleType, ns: string) => {
   const i18nInstance = createInstance();
   await i18nInstance
     .use(initReactI18next)
     .use(
       resourcesToBackend(
-        (lang: LocaleTypes, namespace: string) => import(`./dictionaries/${lang}/${namespace}.json`)
+        (language: string, namespace: typeof ns) =>
+          // load the translation file depending on the language and namespace
+          import(`./dictionaries/${language}/${namespace}.json`)
       )
     )
-    .init(getOptions(lng, ns));
+    .init(getOptions(lang, ns));
+
   return i18nInstance;
 };
 
-export async function useServerSideTranslation(
-  lang: LocaleTypes,
-  ns: string,
-  options: { keyPrefix?: string } = {}
-) {
+// It will accept the locale and namespace for i18next to know what file to load
+export async function createTranslation(lang: LocaleType, ns: string) {
   const i18nextInstance = await initI18next(lang, ns);
+
   return {
-    t: i18nextInstance.getFixedT(lang, Array.isArray(ns) ? ns[0] : ns, options.keyPrefix),
-    i18n: i18nextInstance,
+    // This is the translation function we'll use in our components
+    // e.g. t('greeting')
+    t: i18nextInstance.getFixedT(lang, Array.isArray(ns) ? ns[0] : ns),
   };
 }

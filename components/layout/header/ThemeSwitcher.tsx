@@ -5,16 +5,17 @@ import { twMerge } from 'tailwind-merge';
 
 const ThemeSwitcher = () => {
   const { theme, setTheme } = useTheme();
+  const isThemeLight = theme === 'light';
   return (
     <button
-      onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+      onClick={() => setTheme(isThemeLight ? 'dark' : 'light')}
       className={twMerge(
         'w-6 h-6 ease flex items-center justify-center rounded-full p-1',
-        theme === 'light' ? 'bg-dark-bg text-dark-text' : 'bg-light-bg text-light-text'
+        isThemeLight ? 'bg-dark-bg text-dark-text' : 'bg-light-bg text-light-text'
       )}
       aria-label='theme-switcher'
     >
-      {theme === 'light' ? (
+      {isThemeLight ? (
         <MoonIcon className={'fill-dark-bg'} />
       ) : (
         <SunIcon className={'fill-dark-bg'} />

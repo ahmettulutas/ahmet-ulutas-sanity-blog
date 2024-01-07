@@ -2,12 +2,13 @@
 import { BlogPost } from '@/sanity/sanity-lib/queries';
 import React from 'react';
 import { useTranslation } from '@/i18n/client';
+import { LocaleType } from '@/i18n/settings';
 
 import BlogCard from '../blog-card/BlogCard';
 
 type MoreBlogsProps = {
   moreBlogs: Array<BlogPost>;
-  locale: string;
+  locale: LocaleType;
 };
 export default function MoreBlogs({ moreBlogs, locale }: MoreBlogsProps) {
   const { t } = useTranslation(locale, 'translation');

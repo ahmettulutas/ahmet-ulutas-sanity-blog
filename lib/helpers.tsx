@@ -1,5 +1,5 @@
-import { useServerSideTranslation } from '@/i18n';
-import { languages } from '@/i18n/settings';
+import { createTranslation } from '@/i18n';
+import { LocaleType, availableLocales } from '@/i18n/settings';
 import { Metadata, ResolvingMetadata } from 'next';
 import { urlForImage } from '@/sanity/sanity-lib/sanity-image-fns';
 import { SanityAsset } from '@sanity/image-url/lib/types/types';
@@ -45,11 +45,11 @@ export const generateLocalesForMetaData = (languages: Array<string>) => {
   }
  */
 export const getDefaultMetaData = async (
-  currntLocale: string,
+  currntLocale: LocaleType,
   parent: ResolvingMetadata
 ): Promise<Metadata> => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t } = await useServerSideTranslation(currntLocale, 'translation'); // This is not actually a hook, so I intentionally ignored it here.
+  const { t } = await createTranslation(currntLocale, 'translation'); // This is not actually a hook, so I intentionally ignored it here.
   const previousImages = (await parent).openGraph?.images || [];
 
   return {
@@ -103,7 +103,7 @@ export const getDefaultMetaData = async (
     },
     alternates: {
       canonical: new URL(process.env.NEXT_PUBLIC_BASE_URL as string),
-      languages: generateLocalesForMetaData(languages),
+      languages: generateLocalesForMetaData(availableLocales),
     },
   };
 };

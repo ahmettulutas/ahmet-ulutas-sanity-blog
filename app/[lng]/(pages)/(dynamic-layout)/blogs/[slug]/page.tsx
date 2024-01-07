@@ -11,19 +11,19 @@ import { generateMetaImages, getDefaultMetaData } from '@/lib/helpers';
 import { ogImageSizes, twitterImageSizes } from '@/lib/constants';
 import AuthorAvatar from '@/components/author-avatar/AuthorAvatar';
 import CoverImage from '@/components/sanity-image/CoverImage';
-import Header from '@/components/layout/header/Header';
 import CommentsContainer from '@/components/comments/CommentsContainer';
 import { Suspense } from 'react';
 import { SharedPageProps } from '@/app/[lng]/layout';
 import Tag from '@/components/tags/Tags';
 import CommentsSkeleton from '@/components/loading-skeletons/CommentsSkeleton';
 import TableOfContents from '@/components/table-of-content/TableOfContent';
-import { useServerSideTranslation } from '@/i18n';
+import { createTranslation } from '@/i18n';
 import PostDate from '@/components/post-date/PostDate';
-import { LocaleTypes } from '@/i18n/settings';
+import { LocaleType } from '@/i18n/settings';
 import { Container } from '@/components/containers/Container';
+import Header from '@/components/layout/header/Header';
 
-async function getPageData(slug: string, language: LocaleTypes) {
+async function getPageData(slug: string, language: LocaleType) {
   try {
     const { blog, moreBlogs } = await getBlogsAndMoreStories(slug, language);
     if (!blog) return notFound();
@@ -52,14 +52,14 @@ type PageProps = SharedPageProps & {
 };
 
 export type DynamicLink = {
-  language: LocaleTypes;
+  language: LocaleType;
   slug: string;
 };
 
 export default async function Page({ params }: PageProps & SharedPageProps) {
   const { slug, lng } = params;
   const { blog, moreBlogs, relatedSlugs } = await getPageData(slug, lng);
-  const { t } = await useServerSideTranslation(lng, 'translation');
+  const { t } = await createTranslation(lng, 'translation');
 
   return (
     <main>
@@ -92,7 +92,7 @@ export default async function Page({ params }: PageProps & SharedPageProps) {
             <RichTextContent content={blog?.content} />
             <Suspense fallback={<CommentsSkeleton />}>
               <CommentsContainer
-                currentLocale={lng}
+                currentLocale={params.lng}
                 currentSlug={blog.slug}
                 relatedSlugs={relatedSlugs.map((item) => item?.slug)}
               />

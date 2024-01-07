@@ -2,7 +2,7 @@ import { dir } from 'i18next';
 import type { ResolvingMetadata } from 'next';
 import { Manrope } from 'next/font/google';
 import NextThemeProvider from '@/components/providers/themes/ThemeProvider';
-import { LocaleTypes, languages } from '@/i18n/settings';
+import { LocaleType, availableLocales } from '@/i18n/settings';
 import { getDefaultMetaData } from '@/lib/helpers';
 import AuthProvider from '@/components/providers/auth/AuthProvider';
 import Footer from '@/components/layout/footer/Footer';
@@ -13,13 +13,13 @@ const manrope = Manrope({
 });
 
 export type SharedPageProps = {
-  params: { lng: LocaleTypes };
+  params: { lng: LocaleType };
 };
 type LocaleRouteLayout = SharedPageProps & {
   children: React.ReactNode;
 };
 
-export default function Layout({ children, params: { lng } }: LocaleRouteLayout) {
+export default async function Layout({ children, params: { lng } }: LocaleRouteLayout) {
   return (
     <html lang={lng} dir={dir(lng)} suppressHydrationWarning className='scroll-smooth'>
       <body
@@ -28,7 +28,7 @@ export default function Layout({ children, params: { lng } }: LocaleRouteLayout)
         <AuthProvider>
           <NextThemeProvider>
             {children}
-            <Footer language={lng} />
+            <Footer />
           </NextThemeProvider>
         </AuthProvider>
       </body>
@@ -42,5 +42,5 @@ export async function generateMetadata({ params }: SharedPageProps, parent: Reso
 
 export async function generateStaticParams() {
   // generates default paths for each locale domain/locale1, domain/locale2, etc.
-  return languages.map((lng) => ({ lng }));
+  return availableLocales.map((lng) => ({ lng }));
 }

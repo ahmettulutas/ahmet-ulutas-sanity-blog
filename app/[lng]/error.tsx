@@ -3,7 +3,7 @@ import { Container } from '@/components/containers/Container';
 import Image from 'next/image';
 import Link from 'next/link';
 import Header from '@/components/layout/header/Header';
-import { fallbackLng } from '@/i18n/settings';
+import { defaultLanguage } from '@/i18n/settings';
 
 import errorImage from '../../public/images/error.svg';
 
@@ -11,7 +11,7 @@ import errorImage from '../../public/images/error.svg';
 const Error = ({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) => {
   return (
     <Container>
-      <Header currentLocale={fallbackLng} />
+      <Header currentLocale={defaultLanguage} />
       <div className='my-10 w-full grid place-items-center'>
         <div className='flex flex-col gap-2 max-w-[400px]'>
           <Image src={errorImage} className='m-auto' alt='error-icon' width={200} height={200} />

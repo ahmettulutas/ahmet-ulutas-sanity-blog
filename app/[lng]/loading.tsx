@@ -1,15 +1,15 @@
 import { Container } from '@/components/containers/Container';
-import Header from '@/components/layout/header/Header';
-import { cookieName, fallbackLng } from '@/i18n/settings';
+import { cookieName, defaultLanguage } from '@/i18n/settings';
 import React from 'react';
 import { cookies } from 'next/headers';
+import Header from '@/components/layout/header/Header';
 
 const Loading = () => {
   const cookieStore = cookies();
   const lang = cookieStore.get(cookieName);
   return (
     <Container>
-      <Header currentLocale={lang?.value ? lang.value : fallbackLng} />
+      <Header currentLocale={lang?.value ? lang.value : defaultLanguage} />
       <div role='status' className='grid gap-4 animate-pulse'>
         <div className='h-10 bg-gray-200 rounded-md dark:bg-gray-700 max-w-[95%]' />
         <div className='h-10 bg-gray-200 rounded-md dark:bg-gray-700 max-w-[88%]' />

@@ -1,12 +1,13 @@
 import { BlogPost } from '@/sanity/sanity-lib/queries';
 import Link from 'next/link';
+import { LocaleType } from '@/i18n/settings';
 
 import PostDate from '../post-date/PostDate';
 import CoverImage from '../sanity-image/CoverImage';
 
 type BlogCardProps = {
   blog: BlogPost;
-  locale: string;
+  locale: LocaleType;
 };
 
 export default function BlogCard({ blog, locale }: BlogCardProps) {

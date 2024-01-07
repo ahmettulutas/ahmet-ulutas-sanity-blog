@@ -1,13 +1,14 @@
 import { BlogPost } from '@/sanity/sanity-lib/queries';
 import Link from 'next/link';
 import React from 'react';
+import { LocaleType } from '@/i18n/settings';
 
 import CoverImage from '../sanity-image/CoverImage';
 import Tag from '../tags/Tags';
 
 type BlogCoverSectionProps = {
   blog: BlogPost;
-  locale: string;
+  locale: LocaleType;
 };
 
 export default function BlogCoverSection({ blog, locale }: BlogCoverSectionProps) {
