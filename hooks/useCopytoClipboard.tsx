@@ -5,7 +5,11 @@ type CopiedValue = string | null;
 // eslint-disable-next-line no-unused-vars
 type CopyFn = (text: string) => Promise<boolean>; // Return success
 
-export function useCopyToClipboard(): { isCopied: boolean; copiedText: CopiedValue; copy: CopyFn } {
+export default function useCopyToClipboard(): {
+  isCopied: boolean;
+  copiedText: CopiedValue;
+  copy: CopyFn;
+} {
   const [copiedText, setCopiedText] = useState<CopiedValue>(null);
   const [isCopied, setIsCopied] = useState(false);
 

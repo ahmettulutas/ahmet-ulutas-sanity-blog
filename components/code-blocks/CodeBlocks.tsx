@@ -1,8 +1,8 @@
 'use client';
-import { useCopyToClipboard } from '@/hooks';
 import { Highlight, themes } from 'prism-react-renderer';
 import { useTheme } from 'next-themes';
 import { LocaleType } from '@/i18n/settings';
+import useCopyToClipboard from '@/hooks/useCopytoClipboard';
 
 import { CopiedIcon, CopyIcon, JavaScriptIcon, TypeScriptIcon } from '../icons/Icons';
 
