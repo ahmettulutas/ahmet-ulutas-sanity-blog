@@ -8,10 +8,10 @@ import { Container } from '@/components/containers/Container';
 export default async function Page({ params }: SharedPageProps) {
   const allBlogs = await getAllBlogs(params.lng);
   const { t } = await createTranslation(params.lng, 'translation');
-
+  const featuredBlog = allBlogs.find((item) => item.featured);
   return (
     <Container className='py-10 flex flex-col items-center gap-2'>
-      <BlogCoverSection blog={allBlogs[0]} locale={params.lng} />
+      <BlogCoverSection blog={featuredBlog || allBlogs[0]} locale={params.lng} />
       <h1 className='mb-4 text-4xl font-bold text-center mt-10'>{t('blogPosts')}</h1>
       <section className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'>
         {allBlogs?.map((item) => (

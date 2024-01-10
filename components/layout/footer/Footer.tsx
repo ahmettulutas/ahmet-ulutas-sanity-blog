@@ -3,14 +3,11 @@ import React from 'react';
 import Link from 'next/link';
 import { useTranslation } from '@/i18n/client';
 import { Container } from '@/components/containers/Container';
-import { useParams } from 'next/navigation';
-import { LocaleType } from '@/i18n/settings';
 
 import ConnectLinks from '../../connect-links/ConnectLinks';
 import SubscribeForm from './SubscribeForm';
 
-export default function Footer() {
-  const locale = useParams()?.locale as LocaleType;
+export default function Footer({ locale }: { locale: string }) {
   const { t } = useTranslation(locale, 'translation');
 
   return (

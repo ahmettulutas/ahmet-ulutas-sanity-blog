@@ -12,6 +12,7 @@ const blogPostFields = groq`
   metaFields,
   coverImage,
   category,
+  featured,
   "headings": content[length(style) == 2 && string::startsWith(style, "h")],
   "slug": slug.current,
   "author": author->{name, picture},
@@ -40,6 +41,7 @@ export type BlogPost = {
   content?: any;
   category: string;
   language: string;
+  featured: boolean;
   metaFields?: {
     shareImage: any /* todo. change any here */;
     description: string;

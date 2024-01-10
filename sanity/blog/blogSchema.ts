@@ -33,10 +33,21 @@ export default defineType({
       name: 'category',
       type: 'array',
       of: [{ type: 'string' }],
-      validation: (Rule) => Rule.max(1),
+      validation: (rule) => rule.required().min(1).max(1),
       options: {
         list: blogCategories,
       },
+    }),
+    defineField({
+      name: 'featured',
+      title: 'Featured',
+      type: 'boolean',
+      description: 'Check to mark as featured',
+      options: {
+        layout: 'checkbox',
+      },
+      validation: (Rule) => Rule.required(),
+      initialValue: false,
     }),
     defineField({
       name: 'content',
@@ -123,7 +134,7 @@ export default defineType({
         { name: 'description', title: 'Meta Description', type: 'string' },
         {
           name: 'shareImage',
-          title: '   Image',
+          title: 'Share Image',
           type: 'image',
           validation: (rule) => rule.required(),
           options: {

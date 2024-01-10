@@ -28,7 +28,7 @@ export default async function Layout({ children, params: { lng } }: LocaleRouteL
         <AuthProvider>
           <NextThemeProvider>
             {children}
-            <Footer />
+            <Footer locale={lng} />
           </NextThemeProvider>
         </AuthProvider>
       </body>
