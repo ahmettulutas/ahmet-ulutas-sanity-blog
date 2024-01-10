@@ -1,8 +1,8 @@
 'use client';
-import { useCopyToClipboard } from '@/hooks';
 import { Highlight, themes } from 'prism-react-renderer';
 import { useTheme } from 'next-themes';
 import { LocaleType } from '@/i18n/settings';
+import { useCopyToClipboard } from '@/hooks/useCopytoClipboard';
 
 import { CopiedIcon, CopyIcon, JavaScriptIcon, TypeScriptIcon } from '../icons/Icons';
 
@@ -36,7 +36,7 @@ export default function RenderCodeBlock({ code, filename, language: codeLanguage
         </span>
         <p className='opacity-70 leading-4'>{filename}</p>
         <button aria-label='copy-to-clipboard' className='text-xl ml-2' onClick={() => copy(code)}>
-          {isCopied ? <CopiedIcon className={''} /> : <CopyIcon className={''} />}
+          {isCopied ? <CopiedIcon className='' /> : <CopyIcon className='' />}
         </button>
       </div>
 

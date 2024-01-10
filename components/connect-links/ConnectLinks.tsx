@@ -1,11 +1,8 @@
 import React from 'react';
+import { personalLinks } from '@/lib/constants';
 
 import { GithubIcon, GmailIcon, LinkedinIcon } from '../icons/Icons';
-const personalLinks = {
-  linkedin: 'https://www.linkedin.com/in/ahmet-ulutas/',
-  gmail: 'mailto:ahmetulutas93@gmail.com',
-  github: 'https://github.com/ahmettulutas/',
-};
+
 export default function ConnectLinks() {
   return (
     <div className=' hidden sm:flex items-center'>

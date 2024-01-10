@@ -207,3 +207,9 @@ export const aboutPageData: Record<string, AboutPageData> = {
       'Herzlich willkommen auf meinem persönlichen Blog. Derzeit arbeite ich als Softwareentwickler in einem Fintech-Unternehmen. Zusätzlich absolviere ich ein Bachelorstudium in Informatik. Zurzeit lerne ich den T3 Stack und nehme an einem Algorithmenkurs teil. Aktiv entwickle ich Webanwendungen, hauptsächlich mit Next.js. Um anderen zu helfen und mein Wissen zu vertiefen, teile ich hier meine Erfahrungen und Erkenntnisse in der Softwareentwicklung. Ich kann Ihnen helfen, benutzerfreundliche Web-Lösungen zu entwickeln, indem ich Design und Programmierung kombiniere.',
   },
 };
+
+export const personalLinks = {
+  linkedin: 'https://www.linkedin.com/in/ahmet-ulutas/',
+  gmail: 'mailto:ahmetulutas93@gmail.com',
+  github: 'https://github.com/ahmettulutas/',
+};
