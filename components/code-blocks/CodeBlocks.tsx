@@ -19,9 +19,9 @@ const codeTheme = {
 };
 
 const LanguageIcons: Record<string, React.ReactNode> = {
-  typescript: <TypeScriptIcon className={'text-xl'} />,
-  javascript: <JavaScriptIcon className={'text-xl'} />,
-  css: <CssIcon className={'text-xl'} />,
+  typescript: <TypeScriptIcon className={'text-xl opacity-75'} />,
+  javascript: <JavaScriptIcon className={'text-xl opacity-75'} />,
+  css: <CssIcon className={'text-xl opacity-75'} />,
 };
 
 export default function RenderCodeBlock({ code, filename, language: codeLanguage }: CodeProps) {
@@ -30,13 +30,11 @@ export default function RenderCodeBlock({ code, filename, language: codeLanguage
   if (!code) return <></>;
   return (
     <div className='rounded-2xl p-2 md:p-4 dark:bg-gray-700 bg-gray-100 my-4 relative'>
-      <div className='w-full grid gap-1 grid-cols-twoIcons my-1 items-center text-sm md:text-lg'>
-        <span className='opacity-70'>
-          {codeLanguage ? LanguageIcons[codeLanguage] : LanguageIcons[defaultCodeLanguage]}
-        </span>
-        <p className='opacity-70 leading-4'>{filename}</p>
+      <div className='w-full grid gap-1 grid-cols-twoIcons my-1 items-center md:text-lg'>
+        {codeLanguage ? LanguageIcons[codeLanguage] : LanguageIcons[defaultCodeLanguage]}
+        <p className='opacity-70 leading-4 text-sm'>{filename}</p>
         <button aria-label='copy-to-clipboard' className='text-xl ml-2' onClick={() => copy(code)}>
-          {isCopied ? <CopiedIcon className='' /> : <CopyIcon className='' />}
+          {isCopied ? <CopiedIcon className='opacity-75' /> : <CopyIcon className='opacity-75' />}
         </button>
       </div>
 
