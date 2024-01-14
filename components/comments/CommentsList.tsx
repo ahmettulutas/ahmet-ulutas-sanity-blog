@@ -24,7 +24,7 @@ export default function CommentList({ comments, onDelete, isLoading, error }: Co
   if (isLoading) return <CommentsSkeleton />;
   if (!comments?.length || error)
     return (
-      <div className=''>
+      <div className='grid place-items-center'>
         <Image src={noContent} alt='no-content' width={150} height={100} />
         <p className='text-gray-600 dark:text-dark-text/50'>{t('noComments')}</p>
       </div>
