@@ -7,6 +7,7 @@ import { authOptions } from '../auth/[...nextauth]/options';
 
 export async function POST(req: Request) {
   const body = await req.json();
+
   const { message, relatedSlugs } = body;
   if (!message || !relatedSlugs)
     return NextResponse.json(
@@ -34,7 +35,7 @@ export async function POST(req: Request) {
 
 export const GET = async (req: Request) => {
   const url = new URL(req.url);
-  const currentSlug = url.searchParams.get('currentSlug');
+  const currentSlug = url.searchParams.get('current-slug');
   try {
     await connectToMongo();
     const comments = await Comment.collection

@@ -14,8 +14,8 @@
   "light": "Aydınlık",
   "system": "Sistem",
   "submitComment": "Gönder",
-  "signOut": "Çıkış Yap",
-  "signIn": "Giriş Yap",
+  "signOut": "Çıkış yap",
+  "signIn": "Giriş yap",
   "comments": "Yorumlar",
   "aboutMe": "Hakkımda",
   "experiences": "Deneyimler",
@@ -29,6 +29,7 @@
   "signInToShareThoughts": "Düşüncelerinizi paylaşmak için lütfen giriş yapın",
   "incorrectURL": "Yanlış bir URL'ye yönlendirildiniz",
   "resume": "Özgeçmiş",
+  "noComments": "Gösterilecek yorum yok. İlk yorumu siz yapın.",
   "metaData": {
     "pageTitle": "Ahmet Ulutaş'ın Blog Sayfası",
     "pageDescription": "Ahmet Ulutaş'ın frontend blogu.",

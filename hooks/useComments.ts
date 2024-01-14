@@ -19,11 +19,9 @@ export default function useComments({
     isLoading,
     error,
   } = useSWR<{ data: Comment[]; error: null | any }>(
-    `/api/comments?currentSlug=${currentSlug}`,
+    `/api/comments?current-slug=${currentSlug}`,
     fetcher,
-    {
-      fallbackData: { data: [], error: null },
-    }
+    { fallbackData: { data: [], error: null } }
   );
 
   const handleSubmit = async (e: React.FormEvent) => {

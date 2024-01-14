@@ -1,20 +1,37 @@
+'use client';
 import { Comment } from '@/lib/db/models/comments';
 import { agoFromNow } from '@/lib/helpers';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
+import { useParams } from 'next/navigation';
+import { useTranslation } from '@/i18n/client';
+
+import CommentsSkeleton from '../loading-skeletons/CommentsSkeleton';
+import noContent from '../../public/images/no-content.svg';
 
 type CommentListProps = {
   comments?: Comment[];
   // eslint-disable-next-line no-unused-vars
   onDelete: (comment: Comment) => Promise<void>;
+  isLoading: boolean;
+  error: any;
 };
 
-export default function CommentList({ comments, onDelete }: CommentListProps) {
+export default function CommentList({ comments, onDelete, isLoading, error }: CommentListProps) {
+  const params = useParams();
+  const { t } = useTranslation(params.lng as string, 'translation');
   const { data: session } = useSession();
-  if (comments?.length) return <></>;
+  if (isLoading) return <CommentsSkeleton />;
+  if (!comments?.length || error)
+    return (
+      <div className=''>
+        <Image src={noContent} alt='no-content' width={150} height={100} />
+        <p className='text-gray-600 dark:text-dark-text/50'>{t('noComments')}</p>
+      </div>
+    );
   return (
-    <div className='space-y-6 mt-10 max-h-40 overflow-auto'>
-      {comments?.map((comment) => {
+    <div className='space-y-6 mt-4 max-h-40 overflow-auto'>
+      {(comments || []).map((comment) => {
         const isAuthor = session?.user?.name === comment.name;
         const isAdmin = session?.user?.email === process.env.NEXT_PUBLIC_SITE_ADMIN_EMAIL;
         return (

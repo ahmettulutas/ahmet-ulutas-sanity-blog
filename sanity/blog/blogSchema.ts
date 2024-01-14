@@ -86,6 +86,7 @@ export default defineType({
               { title: 'Javascript', value: 'javascript' },
               { title: 'TypeScript', value: 'typescript' },
               { title: 'tsx', value: 'tsx' },
+              { title: 'css', value: 'css' },
             ],
             withFilename: true, // optional
             highlightedLines: true, // optional

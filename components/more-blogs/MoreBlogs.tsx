@@ -15,7 +15,7 @@ export default function MoreBlogs({ moreBlogs, locale }: MoreBlogsProps) {
   return (
     <section className='my-6 grid'>
       <h2 className='text-3xl font-bold my-6'>{t('moreBlogs')}</h2>
-      <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
+      <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4'>
         {moreBlogs.map((blog) => (
           <BlogCard locale={locale} key={blog._id} blog={blog} />
         ))}

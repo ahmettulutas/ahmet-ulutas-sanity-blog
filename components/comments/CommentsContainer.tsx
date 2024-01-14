@@ -5,7 +5,6 @@ import React from 'react';
 import { useTranslation } from '@/i18n/client';
 
 import CommentList from './CommentsList';
-import CommentsSkeleton from '../loading-skeletons/CommentsSkeleton';
 import { GmailIcon } from '../icons/Icons';
 
 type CommentsContainerProps = {
@@ -21,16 +20,24 @@ const CommentsContainer = ({
 }: CommentsContainerProps) => {
   const { status } = useSession();
   const isAuthenticated = status === 'authenticated';
-  const { message, setMessage, comments, handleSubmit, handleDelete, isLoading } = useComments({
-    relatedSlugs,
-    currentSlug,
-  });
+  const { message, setMessage, comments, handleSubmit, handleDelete, isLoading, error } =
+    useComments({
+      relatedSlugs,
+      currentSlug,
+    });
   const { t } = useTranslation(currentLocale, 'translation');
   return (
     <section className='max-w-xl'>
       <p className='text-3xl font-bold my-6'>{t('comments')}</p>
-      <form onSubmit={handleSubmit} className='grid gap-2'>
+      <CommentList
+        onDelete={handleDelete}
+        comments={comments?.data}
+        isLoading={isLoading}
+        error={error}
+      />
+      <form onSubmit={handleSubmit} className='grid gap-2 mt-4'>
         <textarea
+          required
           aria-label='comment'
           className='border-2 disabled:cursor-not-allowed focus-within:border-2 focus:border-2 resize-y px-4 py-2 rounded-md disabled:bg-gray-200 dark:bg-gray-600 placeholder-600 dark:placeholder-dark-text'
           disabled={!isAuthenticated}
@@ -66,12 +73,6 @@ const CommentsContainer = ({
           )}
         </section>
       </form>
-
-      {isLoading ? (
-        <CommentsSkeleton />
-      ) : (
-        <CommentList onDelete={handleDelete} comments={comments?.data} />
-      )}
     </section>
   );
 };

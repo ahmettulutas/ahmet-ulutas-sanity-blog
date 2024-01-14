@@ -4,7 +4,7 @@ import { useTheme } from 'next-themes';
 import { LocaleType } from '@/i18n/settings';
 import { useCopyToClipboard } from '@/hooks/useCopytoClipboard';
 
-import { CopiedIcon, CopyIcon, JavaScriptIcon, TypeScriptIcon } from '../icons/Icons';
+import { CopiedIcon, CopyIcon, CssIcon, JavaScriptIcon, TypeScriptIcon } from '../icons/Icons';
 
 type CodeProps = {
   code: string;
@@ -21,13 +21,13 @@ const codeTheme = {
 const LanguageIcons: Record<string, React.ReactNode> = {
   typescript: <TypeScriptIcon className={'text-2xl'} />,
   javascript: <JavaScriptIcon className={'text-2xl'} />,
+  css: <CssIcon className={'text-2xl'} />,
 };
 
 export default function RenderCodeBlock({ code, filename, language: codeLanguage }: CodeProps) {
   const { isCopied, copy } = useCopyToClipboard();
   const { theme } = useTheme();
   if (!code) return <></>;
-
   return (
     <div className='rounded-2xl p-2 md:p-4 dark:bg-gray-700 bg-gray-100 my-4 relative'>
       <div className='w-full grid gap-1 grid-cols-twoIcons my-1 items-center text-sm md:text-lg'>
