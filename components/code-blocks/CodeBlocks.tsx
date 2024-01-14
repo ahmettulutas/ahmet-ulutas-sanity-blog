@@ -19,9 +19,9 @@ const codeTheme = {
 };
 
 const LanguageIcons: Record<string, React.ReactNode> = {
-  typescript: <TypeScriptIcon className={'text-2xl'} />,
-  javascript: <JavaScriptIcon className={'text-2xl'} />,
-  css: <CssIcon className={'text-2xl'} />,
+  typescript: <TypeScriptIcon className={'text-xl'} />,
+  javascript: <JavaScriptIcon className={'text-xl'} />,
+  css: <CssIcon className={'text-xl'} />,
 };
 
 export default function RenderCodeBlock({ code, filename, language: codeLanguage }: CodeProps) {
