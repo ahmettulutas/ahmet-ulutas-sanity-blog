@@ -52,7 +52,7 @@ const CommentsContainer = ({
             <button
               disabled={!isAuthenticated}
               aria-label='submit-comment'
-              className='btn-primary px-2 py-0 disabled:cursor-not-allowed border-2'
+              className='btn-primary px-2 py-0 disabled:cursor-not-allowed'
             >
               {t('submitComment')}
             </button>

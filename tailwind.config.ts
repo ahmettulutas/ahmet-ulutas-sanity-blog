@@ -1,5 +1,5 @@
 import type { Config } from 'tailwindcss';
-
+// #ff9800
 const config: Config = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -16,13 +16,11 @@ const config: Config = {
           bg: '#1f2937',
           text: '#FFFFFF',
           primary: '#27B5E2',
-          secondary: '#1A97BF',
         },
         light: {
           bg: '#E6E6E6',
           text: '#000000',
           primary: '#D56C6C',
-          secondary: '#EE1B1B',
         },
       },
       gridTemplateColumns: {
