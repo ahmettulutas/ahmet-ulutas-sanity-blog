@@ -7,7 +7,7 @@ import { useParams } from 'next/navigation';
 import { useTranslation } from '@/i18n/client';
 
 import CommentsSkeleton from '../loading-skeletons/CommentsSkeleton';
-import noContent from '../../public/images/no-content.svg';
+import noContent from '../../../../public/images/no-content.svg';
 
 type CommentListProps = {
   comments?: Comment[];

@@ -6,7 +6,7 @@ import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Header from '@/app/[lng]/components/layout/header/Header';
 
-import error from '../../public/images/error.svg';
+import error from '../../../../public/images/error.svg';
 
 const NotFound = async () => {
   const cookieStore = cookies();

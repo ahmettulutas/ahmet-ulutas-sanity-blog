@@ -55,7 +55,7 @@ const myPortableTextComponents = {
         <a
           href={value?.href}
           target={target}
-          className=' text-blue-700 dark:text-blue-600'
+          className=' text-blue-600 dark:text-blue-500'
           rel={target === '_blank' ? 'noindex nofollow' : ''}
         >
           <span className='inline-flex items-center'>
