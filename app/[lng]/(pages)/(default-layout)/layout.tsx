@@ -1,4 +1,4 @@
-import Header from '@/components/layout/header/Header';
+import Header from '@/app/[lng]/components/layout/header/Header';
 import { LocaleType } from '@/i18n/settings';
 
 export default function PageLayout({

@@ -34,7 +34,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "next-i18next.config.js",
-    "components/icons/Icons.js"
+    "app/[lng]/components/icons/Icons.js"
   ],
   "exclude": [
     "node_modules"

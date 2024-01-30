@@ -4,24 +4,24 @@ import {
   getBlogsAndMoreStories,
 } from '@/sanity/sanity-lib/sanity-client-fns';
 import { notFound } from 'next/navigation';
-import RichTextContent from '@/components/rich-text-content/RichTextContent';
+import RichTextContent from '@/app/[lng]/components/rich-text-content/RichTextContent';
 import type { Metadata, ResolvingMetadata } from 'next';
-import MoreBlogs from '@/components/more-blogs/MoreBlogs';
+import MoreBlogs from '@/app/[lng]/components/more-blogs/MoreBlogs';
 import { generateMetaImages, getDefaultMetaData } from '@/lib/helpers';
 import { ogImageSizes, twitterImageSizes } from '@/lib/constants';
-import AuthorAvatar from '@/components/author-avatar/AuthorAvatar';
-import CoverImage from '@/components/sanity-image/CoverImage';
-import CommentsContainer from '@/components/comments/CommentsContainer';
+import AuthorAvatar from '@/app/[lng]/components/author-avatar/AuthorAvatar';
+import CoverImage from '@/app/[lng]/components/sanity-image/CoverImage';
+import CommentsContainer from '@/app/[lng]/components/comments/CommentsContainer';
 import { Suspense } from 'react';
 import { SharedPageProps } from '@/app/[lng]/layout';
-import Tag from '@/components/tags/Tags';
-import CommentsSkeleton from '@/components/loading-skeletons/CommentsSkeleton';
-import TableOfContents from '@/components/table-of-content/TableOfContent';
+import Tag from '@/app/[lng]/components/tags/Tags';
+import CommentsSkeleton from '@/app/[lng]/components/loading-skeletons/CommentsSkeleton';
+import TableOfContents from '@/app/[lng]/components/table-of-content/TableOfContent';
 import { createTranslation } from '@/i18n';
-import PostDate from '@/components/post-date/PostDate';
+import PostDate from '@/app/[lng]/components/post-date/PostDate';
 import { LocaleType } from '@/i18n/settings';
-import { Container } from '@/components/containers/Container';
-import Header from '@/components/layout/header/Header';
+import { Container } from '@/app/[lng]/components/containers/Container';
+import Header from '@/app/[lng]/components/layout/header/Header';
 
 async function getPageData(slug: string, language: LocaleType) {
   try {

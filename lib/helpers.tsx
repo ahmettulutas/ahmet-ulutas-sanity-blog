@@ -1,5 +1,5 @@
 import { createTranslation } from '@/i18n';
-import { LocaleType, availableLocales } from '@/i18n/settings';
+import { LocaleType, availableLocales, defaultLanguage } from '@/i18n/settings';
 import { Metadata, ResolvingMetadata } from 'next';
 import { urlForImage } from '@/sanity/sanity-lib/sanity-image-fns';
 import { SanityAsset } from '@sanity/image-url/lib/types/types';
@@ -9,15 +9,20 @@ import opengraphImage from '../public/images/opengraph-image.webp';
 import { ogImageSizes, twitterImageSizes } from './constants';
 
 /**
- * Regenerates the current path name with new locale
+ * Omits locale from the path
  * @param pathname
  * @returns string
  */
 export const omitLocaleFromPath = (path: string): string => {
   if (!path) return '';
   const splittedPath = path.split('/').filter((item) => !!item);
-  if (splittedPath.length === 1) return '';
-  return splittedPath.slice(1, splittedPath.length).join('/');
+  const isFirstSegmentLocale = availableLocales.includes(splittedPath[0]);
+  if (splittedPath.length === 1 && (isFirstSegmentLocale || defaultLanguage === splittedPath[0])) {
+    return '';
+  }
+  const startIdx = isFirstSegmentLocale ? 1 : 0;
+
+  return splittedPath.slice(startIdx).join('/');
 };
 
 /**

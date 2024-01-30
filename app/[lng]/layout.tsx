@@ -1,11 +1,11 @@
 import { dir } from 'i18next';
 import type { ResolvingMetadata } from 'next';
 import { Manrope } from 'next/font/google';
-import NextThemeProvider from '@/components/providers/themes/ThemeProvider';
+import NextThemeProvider from '@/app/[lng]/components/providers/themes/ThemeProvider';
 import { LocaleType, availableLocales } from '@/i18n/settings';
 import { getDefaultMetaData } from '@/lib/helpers';
-import AuthProvider from '@/components/providers/auth/AuthProvider';
-import Footer from '@/components/layout/footer/Footer';
+import AuthProvider from '@/app/[lng]/components/providers/auth/AuthProvider';
+import Footer from '@/app/[lng]/components/layout/footer/Footer';
 
 const manrope = Manrope({
   subsets: ['latin'],
@@ -28,7 +28,7 @@ export default async function Layout({ children, params: { lng } }: LocaleRouteL
         <AuthProvider>
           <NextThemeProvider>
             {children}
-            <Footer locale={lng} />
+            <Footer />
           </NextThemeProvider>
         </AuthProvider>
       </body>

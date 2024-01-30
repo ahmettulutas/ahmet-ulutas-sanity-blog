@@ -1,8 +1,8 @@
 'use client';
-import { Container } from '@/components/containers/Container';
+import { Container } from '@/app/[lng]/components/containers/Container';
 import Image from 'next/image';
 import Link from 'next/link';
-import Header from '@/components/layout/header/Header';
+import Header from '@/app/[lng]/components/layout/header/Header';
 import { defaultLanguage } from '@/i18n/settings';
 
 import errorImage from '../../public/images/error.svg';

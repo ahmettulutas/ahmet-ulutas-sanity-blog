@@ -2,12 +2,15 @@
 import React from 'react';
 import Link from 'next/link';
 import { useTranslation } from '@/i18n/client';
-import { Container } from '@/components/containers/Container';
+import { Container } from '@/app/[lng]/components/containers/Container';
+import { useParams } from 'next/navigation';
+import { LocaleType } from '@/i18n/settings';
 
 import ConnectLinks from '../../connect-links/ConnectLinks';
 import SubscribeForm from './SubscribeForm';
 
-export default function Footer({ locale }: { locale: string }) {
+export default function Footer(/* { locale }: { locale: string } */) {
+  const locale = useParams()?.locale as LocaleType;
   const { t } = useTranslation(locale, 'translation');
 
   return (

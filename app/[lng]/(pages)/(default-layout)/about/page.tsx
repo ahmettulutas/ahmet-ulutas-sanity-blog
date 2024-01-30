@@ -1,12 +1,12 @@
 import { createTranslation } from '@/i18n';
 import { SharedPageProps } from '@/app/[lng]/layout';
-import Experiences from '@/components/experiences/Experiences';
+import Experiences from '@/app/[lng]/components/experiences/Experiences';
 import profileImg from '@/public/images/profile2.png';
 import Image from 'next/image';
 import { aboutPageData, staticAboutData } from '@/lib/constants';
-import { Container } from '@/components/containers/Container';
+import { Container } from '@/app/[lng]/components/containers/Container';
 import Link from 'next/link';
-import { ResumeIcon } from '@/components/icons/Icons';
+import { ResumeIcon } from '@/app/[lng]/components/icons/Icons';
 
 export default async function Page({ params }: SharedPageProps) {
   const { t } = await createTranslation(params.lng, 'translation');

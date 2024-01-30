@@ -1,10 +1,10 @@
-import { Container } from '@/components/containers/Container';
+import { Container } from '@/app/[lng]/components/containers/Container';
 import { cookieName, defaultLanguage } from '@/i18n/settings';
 import Link from 'next/link';
 import React from 'react';
 import { cookies } from 'next/headers';
 import Image from 'next/image';
-import Header from '@/components/layout/header/Header';
+import Header from '@/app/[lng]/components/layout/header/Header';
 
 import error from '../../public/images/error.svg';
 

@@ -5,8 +5,8 @@ import { useTranslation } from '@/i18n/client';
 import { DynamicLink } from '@/app/[lng]/(pages)/(dynamic-layout)/blogs/[slug]/page';
 import { useState } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { LanguageSelector } from '@/components/layout/header/LanguageSelector';
-import { Container } from '@/components/containers/Container';
+import { LanguageSelector } from '@/app/[lng]/components/layout/header/LanguageSelector';
+import { Container } from '@/app/[lng]/components/containers/Container';
 
 import ThemeSwitcher from './ThemeSwitcher';
 import Logo from './Logo';

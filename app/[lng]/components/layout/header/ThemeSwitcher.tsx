@@ -1,6 +1,6 @@
 'use client';
 import { useTheme } from 'next-themes';
-import { MoonIcon, SunIcon } from '@/components/icons/Icons.js';
+import { MoonIcon, SunIcon } from '@/app/[lng]/components/icons/Icons.js';
 import { twMerge } from 'tailwind-merge';
 
 const ThemeSwitcher = () => {
