@@ -9,6 +9,7 @@ export default async function Page({ params }: SharedPageProps) {
   const allBlogs = await getAllBlogs(params.lng);
   const { t } = await createTranslation(params.lng, 'translation');
   const featuredBlog = allBlogs.find((item) => item.featured);
+
   return (
     <Container className='py-10 flex flex-col items-center gap-2'>
       <BlogCoverSection blog={featuredBlog || allBlogs[0]} locale={params.lng} />

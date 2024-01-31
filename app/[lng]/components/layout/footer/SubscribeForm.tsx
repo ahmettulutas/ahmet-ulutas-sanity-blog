@@ -5,7 +5,7 @@ import { useParams } from 'next/navigation';
 import React, { FormEvent } from 'react';
 
 const SubscribeForm = () => {
-  const locale = useParams()?.locale as LocaleType;
+  const locale = useParams()?.lng as LocaleType;
   const { t } = useTranslation(locale, 'translation');
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
