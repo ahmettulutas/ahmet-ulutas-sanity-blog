@@ -20,7 +20,7 @@ export const CopiedIcon = ({ className, ...rest }) => (
 );
 
 export const LinkArrowIcon = ({ className,...rest }) => {
-  return (<svg className={className} {...rest} fill="currentColor" width="20" height="20" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" ><path d="M7 17L17 7" /><path d="M7 7h10v10" /></svg>);
+  return (<svg className={className} {...rest} fill="currentColor" width="20" height="20" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" ><path d="M7 17L17 7" /><path  fill="none" d="M7 7h10v10" /></svg>);
 };
 
 export const ResumeIcon = ({ className,...rest }) => {

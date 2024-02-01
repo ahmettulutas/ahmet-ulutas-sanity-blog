@@ -17,175 +17,157 @@ export const blogCategories = [
   { title: 'Css', value: 'css' },
   { title: 'Web Development', value: 'web-development' },
 ];
+
 export const experiences = [
   {
-    tr: {
-      companyName: 'Paramtech',
-      title: 'Frontend Developer',
-      date: '2022-05 - Bugün',
-      responsibilities: [
+    companyName: 'Paramtech',
+    title: 'Frontend Developer',
+    date: '2022-05 - Bugün',
+    responsibilities: {
+      tr: [
         {
           id: 0,
-          tag: "Akbank ile işbirliği yaparak bankanın platformlarından kullanıcıların şirketin Kredim hizmeti ile ödemesine olanak sağlayan 'Kredim ile Öde' uygulaması geliştirdim.",
+          tag: "'Kredim ile Öde': Akbank ile iş birliği yaparak, kullanıcıların kendi ürünümüz olan Kredim'i Akbank platformları aracılığıyla kullanarak ödeme yapmalarını sağlayan üçüncü parti ödeme uygulamasının geliştirilmesinde tam sorumluluk aldım.",
         },
         {
           id: 1,
-          tag: "Şirketimize başvuran adaylara gönderdiğimiz frontend case'i için tüketebilecekleri bir api geliştirdim. Uygulama cross-origin çalışabilen nextjs apiları içeriyor ve adaylar girip kendileri apiları swagger gibi bir önyüzden test edip kendi case projelerinde tüketebiliyor.",
+          tag: 'BNPL, KYC, Posrapor, Netekstre: Kredim, Param ve Finrota gibi öncü uygulamalarımızdaki müşteri ihtiyaçlarını belirleme ve ele alma konusunda kilit rol oynadım.',
         },
         {
           id: 2,
-          tag: "Şirketin yüksek trafikli uygulamaları olan Kredim, Param ve Finrota'da müşteri ihtiyaçlarına uygun geliştirmeler yaptım.",
+          tag: 'Back-Office: Şirketin back office projesinin geliştirilmesinde etkin rol aldım.',
         },
         {
           id: 3,
-          tag: 'Şirketin back office projesinin geliştirilmesinde etkin rol aldım.',
+          tag: "Finrota Uygulamasındaki 'Ödeme Modülü'ün TypeScript Yeniden Yapılandırılması: Başlangıçta JavaScript'te yazılan ödeme modülünün eski kodlarını TypeScript'e dönüştürme sürecinde önemli bir rol oynadım.",
         },
         {
           id: 4,
-          tag: 'Şirketin inhouse kullanabileceği bir e-fatura uygulamasının geliştirilmesini tamamladım ve şirket muhasebecilerinin faturaları etkili bir şekilde yönetmelerine, izlemelerine ve raporlamalarına olanak tanıdım.',
+          tag: 'E-Fatura: React.js ve Redux kullanarak bir e-fatura uygulamasının geliştirilmesini öncülük ettim. Bu uygulama, şirket muhasebecilerinin faturaları etkili bir şekilde yönetmelerine, izlemelerine ve raporlamalarına olanak tanıdı.',
         },
         {
           id: 5,
-          tag: 'Next.js ve Contentful CMS ile şirketin yeni web sitesini geliştirdim. https://www.paramtech.com.tr/ ',
+          tag: "Case API: Şirketimizde başvuran adaylara gönderdiğimiz frontend case'lerinde kullanmaları için bir Next.js 13++ ile bir api geliştirdim. Bu uygulama, adayların kendi case projelerinde API'ları test etmelerini sağlayan swagger benzeri bir arayüze ve cross-origin çalışan endpointlere sahip.",
         },
         {
           id: 6,
-          tag: 'Bankacılık web uygulamalarından birinin (İşube) mobil-responsive dönüşümünü gerçekleştirdim.',
+          tag: 'Çeşitli CMS Platformları ile Web Sitesi Geliştirme: Şirketin ve yan kuruluşlarının landing sayfalarına çeşitli CMS sistemlerini (ContentfulCMS, Strapi CMS) entegre ettim ve ayrıca bu siteleri Next.js 13++ kullanarak geliştirdim. Şirketin yeni web sitesinin geliştirilmesinde liderlik rolü üstlendim.',
+          url: 'https://www.paramtech.com.tr/',
         },
         {
           id: 7,
-          tag: 'Next.js ve Typescript kullanarak çeşitli şirket web sitelerini geliştirdim. Örnek https://param.eu/ .',
+          tag: 'Mobil Uyum Dönüşümü: Bankacılık web uygulamalarından birinin tamamen mobil uyumlu bir platforma dönüştürülmesini başarıyla gerçekleştirdim.',
+          url: 'https://isube.param.com.tr/',
+        },
+        {
+          id: 8,
+          tag: 'Next.js ve TypeScript Web Sitesi Geliştirme: Şirketin çeşitli web sitelerini Next.js ve TypeScript kullanarak tasarladım ve geliştirdim, modern ve verimli bir web varlığı sağladım.',
+          url: 'https://param.eu',
+        },
+        {
+          id: 9,
+          tag: 'Gatsby.js Blog: Gatsby.js ve Netlify CMS kullanarak ssg yöntemiyle kişisel bir blog oluşturdum.',
+          url: 'https://psikologmeltemulutas.com',
         },
       ],
-    },
-    en: {
-      companyName: 'Paramtech',
-      title: 'Frontend Developer',
-      date: '2022-05 - Present',
-      responsibilities: [
-        {
-          id: 0,
-          tag: "Developed the 'Pay with Kredim' application in collaboration with Akbank, enabling users to make payments using my company's own product, Kredim, through Akbank platforms.",
-        },
-        {
-          id: 1,
-          tag: 'Created an API for the frontend case we send to applicants at our company. The application contains Next.js APIs that can work across origins, allowing candidates to test and consume the APIs in their case projects through a frontend interface similar to Swagger.',
-        },
-        {
-          id: 2,
-          tag: 'Played a pivotal role in identifying and addressing customer needs within our flagship apps, including Kredim, Param, and Finrota.',
-        },
-        {
-          id: 3,
-          tag: "Played an active role in the development of the company's back-office project.",
-        },
-        {
-          id: 4,
-          tag: 'Spearheaded the development of an e-billing application (RTQ) using React.js and Redux, empowering company accountants to efficiently manage, track, and report bills.',
-        },
-        {
-          id: 5,
-          tag: "Took the lead in crafting our company's brand-new website using Next.js in conjunction with Contentful CMS. Explore the result at https://www.paramtech.com.tr/.",
-        },
-        {
-          id: 6,
-          tag: 'Successfully transformed one of our banking web applications into a fully mobile-responsive platform. Experience the mobile-friendly interface at Isube Banking.',
-        },
-        {
-          id: 7,
-          tag: 'Designed and developed various company websites using Next.js and Typescript, ensuring a modern and efficient web presence. Examples include https://param.eu/ .',
-        },
-      ],
-    },
-    de: {
-      companyName: 'Paramtech',
-      title: 'Frontend Developer',
-      date: '2022-05 - Present',
-      responsibilities: [
-        {
-          id: 0,
-          tag: "In Zusammenarbeit mit Akbank habe ich die Anwendung 'Mit meinem Kredit bezahlen' entwickelt, die es Benutzern ermöglicht, Zahlungen über die Akbank-Plattformen mit meinem eigenen Produkt, Kredim, vorzunehmen.",
-        },
-        {
-          id: 1,
-          tag: 'Ich habe eine API für den Frontend-Case erstellt, den wir an Bewerber in unserem Unternehmen senden. Die Anwendung enthält Next.js-APIs, die über Ursprünge hinweg arbeiten können, sodass Kandidaten die APIs über eine Benutzeroberfläche ähnlich wie Swagger testen und in ihren Case-Projekten verbrauchen können.',
-        },
 
+      en: [
+        {
+          id: 0,
+          tag: "Developed the 'Kredim ile Ode' application in collaboration with Akbank, enabling users to make payments using my company's own product, Kredim, through Akbank platforms.",
+        },
+        {
+          id: 1,
+          tag: 'BNPL, KYC, Posrapor, Netekstre: Played a pivotal role in identifying and addressing customer needs within our flagship apps, including Kredim, Param, and Finrota.',
+        },
         {
           id: 2,
-          tag: 'Spielte eine entscheidende Rolle bei der Identifizierung und Ansprache von Kundenbedürfnissen in unseren Flaggschiff-Apps, einschließlich Kredim, Param und Finrota.',
+          tag: "Back-Office: Played an active role in the development of the company's back-office project.",
         },
         {
           id: 3,
-          tag: 'Ich habe eine aktive Rolle in der Entwicklung des Backoffice-Projekts des Unternehmens gespielt.',
+          tag: "Typescript Refactor of 'Payment Module' in Finrota App: Played a key role in transforming the legacy code of payment module which was initially written in JavaScript into TypeScript.",
         },
         {
           id: 4,
-          tag: 'Leitete die Entwicklung einer E-Rechnungsanwendung (RTQ) mit React.js und Redux, um den Unternehmensbuchhaltern die effiziente Verwaltung, Verfolgung und Berichterstattung von Rechnungen zu ermöglichen.',
+          tag: 'E-Fatura: Spearheaded the development of an e-billing application using React.js and Redux. This app empowered company accountants to efficiently manage, track, and report bills.',
         },
         {
           id: 5,
-          tag: 'Führte die Entwicklung unserer brandneuen Website des Unternehmens mit Next.js in Verbindung mit Contentful CMS an. Erkunden Sie das Ergebnis unter https://www.paramtech.com.tr/.',
+          tag: 'Case Api: Developed a full stack Next.js App which provides both an cross-origin-api and ui to test the api endpoints for the frontend case we send to applicants at our company. The application contains Next.js APIs that can work across origins, allowing candidates to test and consume the APIs in their case projects through a frontend interface similar to Swagger.',
         },
         {
           id: 6,
-          tag: 'Verwandelte erfolgreich eine unserer Banken-Webanwendungen in eine vollständig mobil reaktionsfähige Plattform. Erleben Sie die mobile Benutzeroberfläche unter Isube Banking.',
+          tag: "Website Development with various CMS Platforms: Integrated various CMS systems (ContentfulCMS, Strapi CMS) into company's and also it's sub-companies' landing pages while also developing them using Next.js 13++. Took the lead in crafting our company's brand-new website using Next.js in conjunction with Contentful CMS.",
+          url: 'https://www.paramtech.com.tr/',
         },
         {
           id: 7,
-          tag: 'Entwickelte verschiedene Unternehmenswebsites mit Next.js und Typescript, um eine moderne und effiziente Webpräsenz sicherzustellen. Beispiele sind https://param.eu/ .',
+          tag: 'Mobile Responsiveness Transformation: Successfully transformed one of our banking web applications into a fully mobile-responsive platform.',
+          url: 'platform. https://isube.param.com.tr',
+        },
+        {
+          id: 8,
+          tag: 'Designed and developed various company websites using Next.js and Typescript, ensuring a modern and efficient web presence.',
+          url: 'https://param.eu',
+        },
+        {
+          id: 9,
+          tag: 'Gatsby.js Blog & Landing Page: Created an engaging blog and captivating landing page using Gatsby.js and Netlify CMS.',
+          url: 'https://psikologmeltemulutas.com',
         },
       ],
-    },
-  },
-  {
-    tr: {
-      companyName: 'Vektora Software',
-      date: '2021-06 - 2022-05',
-      title: 'İş Analisti',
-      responsibilities: [
+
+      de: [
         {
           id: 0,
-          tag: 'PM (Üretim Bakım) modülünde projelere destek oldum.',
+          tag: "Entwicklung der Anwendung 'Kredim ile Öde': Übernahm die volle Verantwortung für die Entwicklung einer Drittanbieter-Kassenanwendung in Zusammenarbeit mit Akbank. Diese ermöglicht es Benutzern, Zahlungen über die Akbank-Plattformen mit unserem eigenen Produkt, Kredim, durchzuführen",
         },
         {
           id: 1,
-          tag: "Türkiye'nin en büyük SAP projelerinden biri olan Sanko'da etkin bir rol aldım.",
-        },
-      ],
-    },
-    en: {
-      companyName: 'Vektora Software',
-      date: '2021-06 - 2022-05',
-      title: 'Business Analyst',
-      responsibilities: [
-        {
-          id: 0,
-          tag: 'Responsible for PM (Plant Maintenance) module.',
+          tag: 'BNPL, KYC, Posrapor, Netekstre: Spielte eine entscheidende Rolle bei der Identifizierung und Ansprache von Kundenbedürfnissen innerhalb unserer Flaggschiff-Apps, einschließlich Kredim, Param und Finrota.',
         },
         {
-          id: 1,
-          tag: "Taken an active role in Turkey's one of the biggest SAP projects (Sanko).",
-        },
-      ],
-    },
-    de: {
-      companyName: 'Vektora Software',
-      date: '2021-06 - 2022-05',
-      title: 'Business-Analyst',
-      responsibilities: [
-        {
-          id: 0,
-          tag: 'Verantwortlich für das PM (Anlagenwartung) Modul.',
+          id: 2,
+          tag: 'Back-Office: Spielte eine aktive Rolle in der Entwicklung des Backoffice-Projekts des Unternehmens.',
         },
         {
-          id: 1,
-          tag: 'Habe eine aktive Rolle in einem der größten SAP-Projekte der Türkei (Sanko) übernommen.',
+          id: 3,
+          tag: "Typescript-Refaktorisierung des 'Zahlungsmoduls' in der Finrota-App: Spielte eine Schlüsselrolle bei der Transformation des Legacy-Codes des Zahlungsmoduls, der ursprünglich in JavaScript geschrieben wurde, in TypeScript.",
+        },
+        {
+          id: 4,
+          tag: 'E-Fatura: Leitete die Entwicklung einer E-Rechnungsanwendung mit React.js und Redux. Diese Anwendung ermöglichte es den Unternehmensbuchhaltern, Rechnungen effizient zu verwalten, zu verfolgen und zu berichten.',
+        },
+        {
+          id: 5,
+          tag: 'Case API: Entwickelte eine Full-Stack-Next.js-Anwendung, die sowohl eine cross-origin-API als auch eine Benutzeroberfläche bietet, um die API-Endpunkte für den Frontend-Fall, den wir Bewerbern in unserem Unternehmen senden, zu testen.',
+        },
+        {
+          id: 6,
+          tag: 'Website-Entwicklung mit verschiedenen CMS-Plattformen: Integrierte verschiedene CMS-Systeme (ContentfulCMS, Strapi CMS) in die Landing Pages des Unternehmens und seiner Tochterunternehmen und entwickelte sie auch mit Next.js 13++. Übernahm die Führung bei der Entwicklung der brandneuen Website des Unternehmens mit Next.js in Verbindung mit Contentful CMS.',
+          url: 'https://www.paramtech.com.tr/',
+        },
+        {
+          id: 7,
+          tag: 'Mobile Responsiveness Transformation: Transformierte erfolgreich eine unserer Banken-Webanwendungen in eine vollständig mobil reaktionsfähige Plattform.',
+          url: 'https://isube.param.com.tr/',
+        },
+        {
+          id: 8,
+          tag: 'Next.js und Typescript Website-Entwicklung: Entwickelte und gestaltete verschiedene Unternehmenswebsites mit Next.js und Typescript, um eine moderne und effiziente Webpräsenz sicherzustellen.',
+          url: 'https://param.eu/',
+        },
+        {
+          id: 9,
+          tag: 'Gatsby.js Blog & Landing Page: Erstellte einen ansprechenden Blog und eine überzeugende Landing Page mit Gatsby.js und Netlify CMS.',
+          url: 'https://psikologmeltemulutas.com',
         },
       ],
     },
   },
 ];
+
 type AboutPageData = {
   aboutMe: string;
 };
