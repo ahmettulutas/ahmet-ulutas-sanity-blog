@@ -1,5 +1,7 @@
 /* eslint-disable quotes */
 
+import { format } from 'date-fns';
+
 export const SANITY_URL = '/en/studio';
 export const baseUrl = process.env.NEXT_PUBLIC_BASE_URL as string;
 export const staticPageUrls = ['/about', '']; // empty string is for index page.
@@ -17,12 +19,12 @@ export const blogCategories = [
   { title: 'Css', value: 'css' },
   { title: 'Web Development', value: 'web-development' },
 ];
-
+const thisMonth = new Date();
 export const experiences = [
   {
     companyName: 'Paramtech',
     title: 'Frontend Developer',
-    date: '2022-05 - Bugün',
+    date: `2022-05 - ${format(thisMonth, 'yyyy-MM')}`,
     responsibilities: {
       tr: [
         {
