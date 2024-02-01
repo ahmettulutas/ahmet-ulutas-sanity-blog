@@ -19,12 +19,13 @@ export const blogCategories = [
   { title: 'Css', value: 'css' },
   { title: 'Web Development', value: 'web-development' },
 ];
-const thisMonth = new Date();
+const today = new Date();
+const thisMonth = format(today, 'yyyy-MM');
 export const experiences = [
   {
     companyName: 'Paramtech',
     title: 'Frontend Developer',
-    date: `2022-05 - ${format(thisMonth, 'yyyy-MM')}`,
+    date: `2022-05 - ${thisMonth}`,
     responsibilities: {
       tr: [
         {
