@@ -107,7 +107,7 @@ export const experiences = [
         {
           id: 7,
           tag: 'Mobile Responsiveness Transformation: Successfully transformed one of our banking web applications into a fully mobile-responsive platform.',
-          url: 'platform. https://isube.param.com.tr',
+          url: 'https://isube.param.com.tr',
         },
         {
           id: 8,
