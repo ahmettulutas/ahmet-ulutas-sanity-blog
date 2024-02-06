@@ -197,4 +197,5 @@ export const personalLinks = {
   linkedin: 'https://www.linkedin.com/in/ahmet-ulutas/',
   gmail: 'mailto:ahmetulutas93@gmail.com',
   github: 'https://github.com/ahmettulutas/',
+  youtube: 'https://youtube.com/@learncodingwithahmet?si=pgKM4ms9fVCP-k51',
 };

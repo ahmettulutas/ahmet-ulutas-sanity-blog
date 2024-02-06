@@ -1,11 +1,19 @@
 import React from 'react';
 import { personalLinks } from '@/lib/constants';
 
-import { GithubIcon, GmailIcon, LinkedinIcon } from '../icons/Icons';
+import { GithubIcon, GmailIcon, LinkedinIcon, YoutubeIcon } from '../icons/Icons';
 
 export default function ConnectLinks() {
   return (
     <div className=' hidden sm:flex items-center'>
+      <a
+        href={personalLinks.youtube}
+        className='inline-block w-6 h-6 mr-4'
+        aria-label='Check my profile on Github'
+        target='_blank'
+      >
+        <YoutubeIcon className='animate-bounce hover:scale-125 transition-all ease duration-200 dark:fill-dark-text w-full h-auto' />
+      </a>
       <a
         href={personalLinks.github}
         className='inline-block w-6 h-6 mr-4'
