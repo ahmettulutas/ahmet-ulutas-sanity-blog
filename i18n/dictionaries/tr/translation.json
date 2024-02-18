@@ -42,6 +42,7 @@
   "experiences.paramtech.responsibility7": "Mobil Uyum Dönüşümü: Bankacılık web uygulamalarından birinin tamamen mobil uyumlu bir platforma dönüştürülmesini başarıyla gerçekleştirdim.",
   "experiences.paramtech.responsibility8": "Next.js ve TypeScript Web Sitesi Geliştirme: Şirketin çeşitli web sitelerini Next.js ve TypeScript kullanarak tasarladım ve geliştirdim, modern ve verimli bir web varlığı sağladım.",
   "experiences.paramtech.responsibility9": "Gatsby.js Blog: Gatsby.js ve Netlify CMS kullanarak bir kişisel blog oluşturdum.",
+  "openNavigationButton": "Navigasyon Menüsünü Aç",
   "metaData": {
     "pageTitle": "Ahmet Ulutaş'ın Blog Sayfası",
     "pageDescription": "Ahmet Ulutaş'ın frontend blogu.",

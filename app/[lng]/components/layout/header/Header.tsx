@@ -21,11 +21,11 @@ export type HeaderProps = {
 
 export default function Header({ currentLocale, dynamicLinks }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useTranslation(currentLocale, 'translation');
   const toggle = () => {
     setIsOpen(!isOpen);
   };
 
-  const { t } = useTranslation(currentLocale, 'translation');
   return (
     <header>
       <Container className='w-full flex items-center justify-between py-4'>
@@ -33,7 +33,7 @@ export default function Header({ currentLocale, dynamicLinks }: HeaderProps) {
         <button
           className='inline-block sm:hidden'
           onClick={() => toggle()}
-          aria-label='Hamburger Menu'
+          aria-label={t('openNavigationButton')}
         >
           <div className='w-6 cursor-pointer transition-all ease duration-300'>
             <div className='relative'>

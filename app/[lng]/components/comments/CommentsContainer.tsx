@@ -49,23 +49,22 @@ const CommentsContainer = ({
         />
         <section className='flex'>
           {isAuthenticated ? (
-            <button
-              disabled={!isAuthenticated}
-              aria-label='submit-comment'
-              className='btn-primary px-2 py-0 disabled:cursor-not-allowed'
-            >
-              {t('submitComment')}
-            </button>
-          ) : null}
-
-          {isAuthenticated ? (
-            <button onClick={() => signOut()} className='btn-primary px-2 py-0'>
-              {t('signOut')}
-            </button>
+            <>
+              <button
+                disabled={!isAuthenticated}
+                aria-label='submit-comment'
+                className='btn-primary px-2 py-0 disabled:cursor-not-allowed'
+              >
+                {t('submitComment')}
+              </button>
+              <button onClick={() => signOut()} className='btn-primary px-2 py-0'>
+                {t('signOut')}
+              </button>
+            </>
           ) : (
             <button
               onClick={() => signIn('google')}
-              className='btn-primary px-2 py-0 flex gap-2 items-center'
+              className='btn-primary px-2 py-0 flex items-center gap-2'
             >
               <GmailIcon className='hover:scale-125 transition-all ease duration-200 w-4 h-4' />
               {t('signIn')}

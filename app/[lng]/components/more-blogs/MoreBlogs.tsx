@@ -10,6 +10,7 @@ type MoreBlogsProps = {
   moreBlogs: Array<BlogPost>;
   locale: LocaleType;
 };
+
 export default function MoreBlogs({ moreBlogs, locale }: MoreBlogsProps) {
   const { t } = useTranslation(locale, 'translation');
   return (

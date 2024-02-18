@@ -27,7 +27,7 @@ async function getPageData(slug: string, language: LocaleType) {
   try {
     const { blog, moreBlogs } = await getBlogsAndMoreStories(slug, language);
     if (!blog) return notFound();
-    const availableBlogLanguages = blog?._translations?.map((item) => {
+    const availableBlogLanguages = blog?._translations?.filter(Boolean).map((item) => {
       return {
         language: item?.language,
         slug: item?.slug,
