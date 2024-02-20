@@ -72,7 +72,7 @@ export const blogAndMoreBlogsQuery = groq`
   "blog": *[_type == "blogs" && slug.current == $slug && language == $language] | order(_updatedAt desc) [0] {
     ${blogPostFields}
   },
-  "moreBlogs": *[_type == "blogs" && slug.current != $slug && language == $language] | order(date desc, _updatedAt desc) [0...2] {
+  "moreBlogs": *[_type == "blogs" && slug.current != $slug && language == $language] | order(date desc, _updatedAt desc) {
     ${blogPostFields}
   }
 }`;

@@ -91,7 +91,9 @@ export default function Header({ currentLocale, dynamicLinks }: HeaderProps) {
             <ThemeSwitcher />
           </HydrateWrapper>
         </nav>
-        <ConnectLinks />
+        <div className='hidden sm:flex items-center gap-3'>
+          <ConnectLinks size='lg' />
+        </div>
       </Container>
     </header>
   );

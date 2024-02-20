@@ -41,7 +41,7 @@ export default function RenderCodeBlock({ code, filename, language: codeLanguage
       <Highlight
         theme={codeTheme[theme as keyof typeof codeTheme]}
         code={code}
-        language={codeLanguage ?? defaultCodeLanguage}
+        language={codeLanguage || defaultCodeLanguage}
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <pre

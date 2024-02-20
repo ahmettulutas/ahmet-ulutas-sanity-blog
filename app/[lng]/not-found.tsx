@@ -16,7 +16,7 @@ const NotFound = () => {
 
   return (
     <Container>
-      <Header currentLocale={lang ?? defaultLanguage} />
+      <Header currentLocale={lang || defaultLanguage} />
       <div className='my-10 w-full grid place-items-center'>
         <div className='flex flex-col gap-2 max-w-40'>
           <Image

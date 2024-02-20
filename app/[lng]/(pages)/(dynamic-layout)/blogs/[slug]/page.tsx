@@ -37,7 +37,7 @@ async function getPageData(slug: string, language: LocaleType) {
       blog,
       relatedSlugs: availableBlogLanguages.length
         ? availableBlogLanguages
-        : [{ language: blog.language, slug: blog.slug }],
+        : [{ language: blog.language, slug: blog.slug }], // return the locale of the current blogpost if no alternative locale exist.
       moreBlogs,
     };
   } catch (error) {

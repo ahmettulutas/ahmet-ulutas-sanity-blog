@@ -16,7 +16,7 @@ export default async function Page({ params }: SharedPageProps) {
       <h1 className='mb-4 text-4xl font-bold text-center mt-10'>{t('blogPosts')}</h1>
       <section className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4'>
         {allBlogs?.map((item) => (
-          <BlogCard locale={params.lng} key={item._id} blog={item} />
+          <BlogCard vertical={true} locale={params.lng} key={item._id} blog={item} />
         ))}
       </section>
     </Container>

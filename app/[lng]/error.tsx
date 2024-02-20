@@ -15,13 +15,13 @@ const Error = ({ error, reset }: { error: Error & { digest?: string }; reset: ()
   const { t } = useTranslation(lang, 'translation');
   return (
     <Container>
-      <Header currentLocale={defaultLanguage} />
+      <Header currentLocale={lang || defaultLanguage} />
       <div className='my-10 w-full grid place-items-center'>
         <div className='flex flex-col gap-2 max-w-[400px]'>
           <Image src={errorImage} className='m-auto' alt='error-icon' width={200} height={200} />
           <h1 className='text-xl md:text-xl text-center'>{t('errorOccured')}</h1>
           {error?.message && <p className='text-center'>{error?.message}</p>}
-          <Link href='/' className='btn-primary m-auto'>
+          <Link href='/' className='m-auto'>
             <button className='btn-primary m-auto px-4 py-1'>{t('goBack')}</button>
           </Link>
         </div>

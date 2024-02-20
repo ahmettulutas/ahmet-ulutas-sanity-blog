@@ -9,7 +9,7 @@
 
 @layer components {
   .btn-primary {
-    @apply inline-block p-1 md:p-2 m-1 rounded-full border border-black dark:border-white hover:scale-105 transition-all ease-in duration-200 bg-transparent text-black dark:text-white;
+    @apply inline-block p-1 md:p-2 rounded-md border border-black dark:border-white hover:scale-105 transition-all ease-in duration-200 bg-transparent text-black dark:text-white;
   }
 }
 .list-disc-reset {

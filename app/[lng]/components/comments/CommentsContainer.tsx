@@ -28,7 +28,7 @@ const CommentsContainer = ({
   const { t } = useTranslation(currentLocale, 'translation');
   return (
     <section className='max-w-xl'>
-      <p className='text-3xl font-bold my-6'>{t('comments')}</p>
+      <h4 className='text-lg md:text-2xl font-bold my-6'>{t('comments')}</h4>
       <CommentList
         onDelete={handleDelete}
         comments={comments?.data}
@@ -39,7 +39,7 @@ const CommentsContainer = ({
         <textarea
           required
           aria-label='comment'
-          className='border-2 disabled:cursor-not-allowed focus-within:border-2 focus:border-2 resize-y px-4 py-2 rounded-md disabled:bg-gray-200 dark:bg-gray-600 placeholder-600 dark:placeholder-dark-text'
+          className='border disabled:cursor-not-allowed focus-within:border-2 focus:border-2 resize-y px-4 py-2 rounded-md bg-transparent placeholder-600'
           disabled={!isAuthenticated}
           placeholder={isAuthenticated ? t('thoughtsAboutPost') : t('signInToShareThoughts')}
           value={message}
@@ -64,7 +64,7 @@ const CommentsContainer = ({
           ) : (
             <button
               onClick={() => signIn('google')}
-              className='btn-primary px-2 py-0 flex items-center gap-2'
+              className='btn-primary px-2 py-1 flex items-center gap-2'
             >
               <GmailIcon className='hover:scale-125 transition-all ease duration-200 w-4 h-4' />
               {t('signIn')}

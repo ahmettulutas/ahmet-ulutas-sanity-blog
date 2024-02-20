@@ -23,14 +23,14 @@ export default function CoverImage(props: CoverImageProps) {
       )}
     >
       <Image
+        src={urlForImage(source.asset).height(height).width(width).url()}
         className={twMerge('h-auto w-full rounded-[3px]', imageStyles)}
         width={fill ? undefined : width}
         height={fill ? undefined : height}
-        fill={fill}
         alt={`Image for ${source.alt}`}
-        src={urlForImage(source.asset).height(height).width(width).url()}
-        sizes='100vw'
         priority={priority}
+        sizes='100vw'
+        fill={fill}
       />
     </div>
   ) : (
