@@ -27,7 +27,12 @@ export default async function Page({ params }: SharedPageProps) {
           <h3 className='text-gray-600 dark:text-dark-text/50'>{t('softwareDev')}</h3>
           <p className='text-gray-600 dark:text-dark-text/50'>{translatedData.currentCompany}</p>
 
-          <Link href='/cv.pdf' target='_blank' className='btn-primary flex gap-2 items-center mt-2'>
+          <Link
+            href='/cv.pdf'
+            target='_blank'
+            className='btn-primary flex gap-2 items-center mt-2'
+            role='link'
+          >
             <ResumeIcon className='inline-block' />
             {t('resume')}
           </Link>

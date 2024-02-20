@@ -39,7 +39,7 @@ const CommentsContainer = ({
         <textarea
           required
           aria-label='comment'
-          className='border disabled:cursor-not-allowed focus-within:border-2 focus:border-2 resize-y px-4 py-2 rounded-md bg-transparent placeholder-600'
+          className='border border-black dark:border-white disabled:cursor-not-allowed focus-within:border-2 focus:border-2 resize-y px-4 py-2 rounded-md bg-transparent placeholder-600'
           disabled={!isAuthenticated}
           placeholder={isAuthenticated ? t('thoughtsAboutPost') : t('signInToShareThoughts')}
           value={message}
