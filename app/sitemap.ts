@@ -7,21 +7,12 @@ Reference link : https://nextjs.org/docs/app/api-reference/file-conventions/meta
 
 const staticSiteMapItems: MetadataRoute.Sitemap = staticPageUrls.flatMap((item) => {
   return availableLocales.map((locale) => {
-    if (locale === defaultLanguage) {
-      return {
-        url: `${baseUrl}${item}`,
-        lastModified: new Date(),
-        changeFrequency: 'daily',
-        priority: 1,
-      };
-    } else {
-      return {
-        url: `${baseUrl}${item}/${locale}`,
-        lastModified: new Date(),
-        changeFrequency: 'daily',
-        priority: 1,
-      };
-    }
+    return {
+      url: `${baseUrl}/${locale}${item}`,
+      lastModified: new Date(),
+      changeFrequency: 'daily',
+      priority: 1,
+    };
   });
 });
 
