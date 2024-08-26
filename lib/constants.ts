@@ -23,9 +23,59 @@ const today = new Date();
 const thisMonth = format(today, 'yyyy-MM');
 export const experiences = [
   {
+    companyName: 'Hangikredi',
+    title: 'Frontend Developer',
+    date: `2024-05 - ${thisMonth}`,
+    responsibilities: {
+      tr: [
+        {
+          id: 0,
+          tag: "'Finansal Rapor': Kullanıcıların findeks raporu almalarını sağlayan modülün geliştirilmesinde rol oynadım.",
+        },
+        {
+          id: 1,
+          tag: "'Hangibilgi': Şirketin mvc altyapısındaki blog uygulamasının nextjs dönüşümünde önemli bir rol oynadım.",
+        },
+        {
+          id: 2,
+          tag: 'Digital Onboarding: Kullanıcıların digital onboarding sürecini yöneten modülde performans ve seo metriklerini arttırmaya yönelik ar-ge ve geliştirmeler yaptım.',
+        },
+      ],
+
+      en: [
+        {
+          id: 0,
+          tag: 'Financial Report: I played a role in the development of the module that allows users to obtain their Findeks report.',
+        },
+        {
+          id: 1,
+          tag: "Hangibilgi: I played a significant role in the Next.js transformation of the company's blog application, which was originally based on an MVC infrastructure.",
+        },
+        {
+          id: 2,
+          tag: 'Digital Onboarding: I conducted R&D and made improvements aimed at increasing performance and SEO metrics in the module that manages the digital onboarding process for users.',
+        },
+      ],
+      de: [
+        {
+          id: 0,
+          tag: 'Finanzbericht: Ich spielte eine Rolle bei der Entwicklung des Moduls, das es den Benutzern ermöglicht, ihren Findeks-Bericht zu erhalten.',
+        },
+        {
+          id: 1,
+          tag: 'Hangibilgi: Ich spielte eine bedeutende Rolle bei der Next.js-Transformation der Blog-Anwendung des Unternehmens, die ursprünglich auf einer MVC-Infrastruktur basierte.',
+        },
+        {
+          id: 2,
+          tag: 'Digitales Onboarding: Ich führte Forschung und Entwicklung durch und verbesserte die Leistungs- und SEO-Metriken im Modul, das den digitalen Onboarding-Prozess für Benutzer verwaltet.',
+        },
+      ],
+    },
+  },
+  {
     companyName: 'Paramtech',
     title: 'Frontend Developer',
-    date: `2022-05 - ${thisMonth}`,
+    date: '2022-05 - 2024-05',
     responsibilities: {
       tr: [
         {
