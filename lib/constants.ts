@@ -17,8 +17,7 @@ export const blogCategories = [
   { title: 'Css', value: 'css' },
   { title: 'Web Development', value: 'web-development' },
 ];
-// const today = new Date();
-// const thisMonth = format(today, 'yyyy-MM');
+
 export const experiences = [
   {
     companyName: 'Hangikredi',
