@@ -24,7 +24,7 @@ export default function BlogCard({ blog, locale, vertical }: BlogCardProps) {
           width={1000}
           image={blog.coverImage}
           wrapperStyles={twMerge(
-            'rounded-xl overflow-hidden relative',
+            'rounded-xl overflow-hidden relative shrink-0',
             vertical ? '' : 'w-20 h-20'
           )}
           imageStyles='group-hover:scale-105 object-cover object-center transition-all ease duration-300'

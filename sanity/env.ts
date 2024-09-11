@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 
 const currentDate = new Date();
-export const apiVersion = format(currentDate, 'yyyy-MM-dd') || '2023-12-30';
+export const apiVersion = format(currentDate, 'yyyy-MM-dd');
 
 export const dataset = assertValue(
   process.env.NEXT_PUBLIC_SANITY_DATASET,
