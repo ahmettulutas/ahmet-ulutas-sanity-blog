@@ -4,11 +4,13 @@ import BlogCard from '@/app/[lng]/components/blog-card/BlogCard';
 import BlogCoverSection from '@/app/[lng]/components/blog-cover/BlogCover';
 import { SharedPageProps } from '@/app/[lng]/layout';
 import { Container } from '@/app/[lng]/components/containers/Container';
+import { generateCategories } from '@/lib/helpers';
 
 export default async function Page({ params }: Readonly<SharedPageProps>) {
   const allBlogs = await getAllBlogs(params.lng);
   const { t } = await createTranslation(params.lng, 'translation');
   const featuredBlog = allBlogs?.find((item) => item.featured);
+  const categories = await generateCategories(10, 4000);
   return (
     <Container className='py-10 flex flex-col items-center gap-2'>
       <BlogCoverSection blog={featuredBlog || allBlogs?.[0]} locale={params.lng} />

@@ -7,6 +7,8 @@ import { useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { LanguageSelector } from '@/app/[lng]/components/layout/header/LanguageSelector';
 import { Container } from '@/app/[lng]/components/containers/Container';
+import { LocaleType } from '@/i18n/settings';
+import { useParams } from 'next/navigation';
 
 import ThemeSwitcher from './ThemeSwitcher';
 import Logo from './Logo';
@@ -20,8 +22,10 @@ export type HeaderProps = {
 };
 
 export default function Header({ currentLocale, dynamicLinks }: HeaderProps) {
+  const lang = useParams().lng as LocaleType;
+  const { t } = useTranslation(lang, 'translation');
   const [isOpen, setIsOpen] = useState(false);
-  const { t } = useTranslation(currentLocale, 'translation');
+
   const toggle = () => {
     setIsOpen(!isOpen);
   };

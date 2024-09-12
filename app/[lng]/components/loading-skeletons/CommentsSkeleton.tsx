@@ -8,14 +8,14 @@ const CommentsSkeleton = () => {
           <div className='bg-gray-200 dark:bg-gray-700 w-9 h-9 rounded-full' />
           <div className='rounded-md grid gap-2 w-[75%]'>
             <div className=' bg-gray-200 rounded-md dark:bg-gray-700 flex gap-2'>
-              <div className='bg-gray-200 rounded-md dark:bg-gray-700 text-gray-400 h-4' />
-              <div className='bg-gray-200 rounded-md dark:bg-gray-700 text-gray-400 h-4' />
+              <div className='bg-gray-200 rounded-md dark:bg-gray-700  h-4' />
+              <div className='bg-gray-200 rounded-md dark:bg-gray-700  h-4' />
             </div>
-            <div className='rounded-md bg-gray-200 dark:bg-gray-700 max-w-[95%] text-gray-400 h-4' />
+            <div className='rounded-md bg-gray-200 dark:bg-gray-700 max-w-[95%]  h-4' />
           </div>
-          <span className='sr-only'>Loading...</span>
         </div>
       ))}
+      <span className='sr-only'>Loading...</span>
     </div>
   );
 };
