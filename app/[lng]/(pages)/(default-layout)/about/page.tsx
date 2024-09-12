@@ -5,7 +5,6 @@ import profileImg from '@/public/images/profile2.png';
 import Image from 'next/image';
 import { aboutPageData, staticAboutData } from '@/lib/constants';
 import { Container } from '@/app/[lng]/components/containers/Container';
-import Link from 'next/link';
 import { ResumeIcon } from '@/app/[lng]/components/icons/Icons';
 
 export default async function Page({ params }: SharedPageProps) {
@@ -27,15 +26,10 @@ export default async function Page({ params }: SharedPageProps) {
           <h3 className='text-gray-600 dark:text-dark-text/50'>{t('softwareDev')}</h3>
           <p className='text-gray-600 dark:text-dark-text/50'>{translatedData.currentCompany}</p>
 
-          <Link
-            href='/cv.pdf'
-            target='_blank'
-            className='btn-primary flex gap-2 items-center mt-2'
-            role='link'
-          >
+          <a href='/cv.pdf' target='_blank' className='btn-primary flex gap-2 items-center mt-2'>
             <ResumeIcon className='inline-block' />
             {t('resume')}
-          </Link>
+          </a>
         </div>
 
         <section className='col-span-3 pt-4'>

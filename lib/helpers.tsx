@@ -4,10 +4,10 @@ import { Metadata, ResolvingMetadata } from 'next';
 import { urlForImage } from '@/sanity/sanity-lib/sanity-image-fns';
 import { SanityAsset } from '@sanity/image-url/lib/types/types';
 import { formatDistanceToNowStrict, parseISO } from 'date-fns';
+import { faker } from '@faker-js/faker';
 
 import opengraphImage from '../public/images/opengraph-image.webp';
 import { ogImageSizes, twitterImageSizes } from './constants';
-
 /**
  * Omits locale from the path
  * @param pathname
@@ -159,5 +159,51 @@ export const agoFromNow = (dateTime: number | Date | string) => {
   const date = typeof dateTime === 'string' ? parseISO(dateTime) : dateTime;
   return formatDistanceToNowStrict(date, {
     addSuffix: true,
+  });
+};
+
+export type Category = {
+  id: number;
+  name: string;
+  shortDescription: string;
+  iconPath: string;
+  detailUrl: string;
+  isSpecialUrlPath: boolean;
+  specialUrlPath?: null | string;
+  parentCategory: null | Category;
+};
+
+const availableCategories = [
+  'Kredi',
+  'Kredi Kartı',
+  'Yatırım',
+  'Tasarruf',
+  'Teknoloji',
+  'Bankacılık',
+  'Emeklilik',
+  'Muhasebe/Hukuk',
+  'Mevduat',
+  'Borsa',
+];
+
+export const generateCategories = (count: number, timeOut: number): Promise<Array<Category>> => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const categories: Array<Category> = [];
+      for (let i = 0; i < count; i++) {
+        const category: Category = {
+          id: faker.number.int({ min: 1, max: 3000 }),
+          name: faker.helpers.arrayElement(availableCategories),
+          shortDescription: faker.commerce.productDescription(),
+          iconPath: faker.image.url(),
+          detailUrl: faker.internet.url(),
+          isSpecialUrlPath: faker.datatype.boolean(),
+          specialUrlPath: faker.datatype.boolean() ? faker.internet.url() : null,
+          parentCategory: null,
+        };
+        categories.push(category);
+      }
+      resolve(categories);
+    }, timeOut);
   });
 };

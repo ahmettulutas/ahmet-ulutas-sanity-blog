@@ -22,10 +22,11 @@ import PostDate from '@/app/[lng]/components/post-date/PostDate';
 import { LocaleType } from '@/i18n/settings';
 import { Container } from '@/app/[lng]/components/containers/Container';
 import Header from '@/app/[lng]/components/layout/header/Header';
+import MoreBlogsSkeleton from '@/app/[lng]/components/loading-skeletons/MoreBlogSkeleton';
 
 async function getPageData(slug: string, language: LocaleType) {
   try {
-    const { blog, moreBlogs } = await getBlogsAndMoreStories(slug, language);
+    const { blog } = await getBlogsAndMoreStories(slug, language);
     if (!blog) return notFound();
     const availableBlogLanguages = blog?._translations?.filter(Boolean).map((item) => {
       return {
@@ -38,7 +39,6 @@ async function getPageData(slug: string, language: LocaleType) {
       relatedSlugs: availableBlogLanguages.length
         ? availableBlogLanguages
         : [{ language: blog.language, slug: blog.slug }], // return the locale of the current blogpost if no alternative locale exist.
-      moreBlogs,
     };
   } catch (error) {
     return notFound();
@@ -58,7 +58,7 @@ export type DynamicLink = {
 
 export default async function Page({ params }: PageProps & SharedPageProps) {
   const { slug, lng } = params;
-  const { blog, moreBlogs, relatedSlugs } = await getPageData(slug, lng);
+  const { blog, relatedSlugs } = await getPageData(slug, lng);
   const { t } = await createTranslation(lng, 'translation');
 
   return (
@@ -110,7 +110,9 @@ export default async function Page({ params }: PageProps & SharedPageProps) {
             </details>
           </div>
         </div>
-        <MoreBlogs moreBlogs={moreBlogs} locale={lng} />
+        <Suspense fallback={<MoreBlogsSkeleton />}>
+          <MoreBlogs locale={lng} slug={slug} />
+        </Suspense>
       </Container>
     </main>
   );

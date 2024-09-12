@@ -76,3 +76,8 @@ export const blogAndMoreBlogsQuery = groq`
     ${blogPostFields}
   }
 }`;
+
+export const moreBlogs = groq`
+*[_type == "blogs" && slug.current != $slug && language == $language] | order(date desc, _updatedAt desc) {
+  ${blogPostFields}
+}`;

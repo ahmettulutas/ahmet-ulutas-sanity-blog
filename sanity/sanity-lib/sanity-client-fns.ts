@@ -6,6 +6,7 @@ import {
   blogAndMoreBlogsQuery,
   blogBySlugQuery,
   blogSlugsQuery,
+  moreBlogs,
 } from './queries';
 
 const client = getClient();
@@ -33,7 +34,15 @@ export async function getBlogsAndMoreStories(
   slug: string,
   language: string
 ): Promise<{ blog: BlogPost; moreBlogs: BlogPost[] }> {
-  return await client.fetch(blogAndMoreBlogsQuery, { slug, language });
+  return await client.fetch(
+    blogAndMoreBlogsQuery,
+    { slug, language },
+    { next: { revalidate: 60 } }
+  );
+}
+
+export async function getMoreBlogs(slug: string, language: string): Promise<BlogPost[]> {
+  return await client.fetch(moreBlogs, { slug, language }, { next: { revalidate: 60 } });
 }
 
 // export const extractLocaleFieldsFromBlog = (
