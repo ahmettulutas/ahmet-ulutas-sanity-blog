@@ -9,7 +9,7 @@ export default function Experiences({ language }: { language: string }) {
   const { t } = useTranslation(language, 'translation');
   return (
     <div>
-      <h3 className='my-4 text-2xl md:text-4xl font-bold'>Ahmet</h3>
+      <h3 className='my-4 text-2xl md:text-4xl font-bold'>{t('experiences')}</h3>
       <article>
         {experiences.map((item) => {
           const translated = item.responsibilities[language as keyof typeof item.responsibilities];
