@@ -21,7 +21,7 @@ import { createTranslation } from '@/i18n';
 import PostDate from '@/app/[lng]/components/post-date/PostDate';
 import { LocaleType } from '@/i18n/settings';
 import { Container } from '@/app/[lng]/components/containers/Container';
-import Header from '@/app/[lng]/components/layout/header/Header';
+import Header from '@/app/[lng]/components/layout/header';
 import MoreBlogsSkeleton from '@/app/[lng]/components/loading-skeletons/MoreBlogSkeleton';
 
 async function getPageData(slug: string, language: LocaleType) {

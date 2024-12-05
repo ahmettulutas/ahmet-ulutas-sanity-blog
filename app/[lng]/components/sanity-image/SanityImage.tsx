@@ -1,6 +1,6 @@
 import { urlForImage } from '@/sanity/sanity-lib/sanity-image-fns';
 import Image from 'next/image';
-import { twMerge } from 'tailwind-merge';
+import { cn } from '@/lib/helpers';
 
 type SanityImageProps = {
   image?: { asset?: any };
@@ -29,14 +29,14 @@ export default function SanityImage({
 
   return (
     <div
-      className={twMerge(
+      className={cn(
         'w-full overflow-hidden rounded-[3px] bg-gray-50 dark:bg-dark-bg relative h-full',
         wrapperStyles
       )}
     >
       {imageUrl && (
         <Image
-          className={twMerge('h-auto w-full rounded-[3px]', imageClasses)}
+          className={cn('h-auto w-full rounded-[3px]', imageClasses)}
           alt={alt}
           width={width}
           height={height}

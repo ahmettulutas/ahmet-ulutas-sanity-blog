@@ -1,7 +1,7 @@
 import { BlogPost } from '@/sanity/sanity-lib/queries';
 import Link from 'next/link';
 import { LocaleType } from '@/i18n/settings';
-import { twMerge } from 'tailwind-merge';
+import { cn } from '@/lib/helpers';
 
 import PostDate from '../post-date/PostDate';
 import CoverImage from '../sanity-image/CoverImage';
@@ -12,18 +12,19 @@ type BlogCardProps = {
   vertical: boolean;
 };
 
-export default function BlogCard({ blog, locale, vertical }: BlogCardProps) {
+export default function BlogCard({ blog, locale, vertical }: Readonly<BlogCardProps>) {
   return (
     <article className='h-full'>
       <Link
+        title={blog.title}
         href={`/${locale}/blogs/${blog.slug}`} /* I needed to add current locale to prevent previous locale page caching */
-        className={twMerge('group flex gap-2 rounded-xl', vertical ? 'flex-col' : '')}
+        className={cn('group flex gap-2 rounded-xl', vertical ? 'flex-col' : '')}
       >
         <CoverImage
           height={1000}
           width={1000}
           image={blog.coverImage}
-          wrapperStyles={twMerge(
+          wrapperStyles={cn(
             'rounded-xl overflow-hidden relative shrink-0',
             vertical ? '' : 'w-20 h-20'
           )}

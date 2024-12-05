@@ -2,7 +2,7 @@ import { Container } from '@/app/[lng]/components/containers/Container';
 import { cookieName, defaultLanguage } from '@/i18n/settings';
 import React from 'react';
 import { cookies } from 'next/headers';
-import Header from '@/app/[lng]/components/layout/header/Header';
+import Header from '@/app/[lng]/components/layout/header';
 
 const Loading = () => {
   const cookieStore = cookies();

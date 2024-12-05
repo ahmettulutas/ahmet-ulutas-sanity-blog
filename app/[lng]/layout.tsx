@@ -5,19 +5,15 @@ import NextThemeProvider from '@/app/[lng]/components/providers/themes/ThemeProv
 import { LocaleType, availableLocales } from '@/i18n/settings';
 import { getDefaultMetaData } from '@/lib/helpers';
 import AuthProvider from '@/app/[lng]/components/providers/auth/AuthProvider';
-import Footer from '@/app/[lng]/components/layout/footer/Footer';
+import Footer from '@/app/[lng]/components/layout/footer';
 
 const manrope = Manrope({
   subsets: ['latin'],
   display: 'swap',
 });
 
-export type SharedPageProps = {
-  params: { lng: LocaleType };
-};
-type LocaleRouteLayout = SharedPageProps & {
-  children: React.ReactNode;
-};
+export type SharedPageProps = { params: { lng: LocaleType } };
+export type LocaleRouteLayout = SharedPageProps & { children: React.ReactNode };
 
 export default async function Layout({ children, params: { lng } }: LocaleRouteLayout) {
   return (

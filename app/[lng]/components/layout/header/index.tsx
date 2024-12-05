@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useTranslation } from '@/i18n/client';
 import { DynamicLink } from '@/app/[lng]/(pages)/(dynamic-layout)/blogs/[slug]/page';
 import { useState } from 'react';
-import { twMerge } from 'tailwind-merge';
+import { cn } from '@/lib/helpers';
 import { LanguageSelector } from '@/app/[lng]/components/layout/header/LanguageSelector';
 import { Container } from '@/app/[lng]/components/containers/Container';
 import { LocaleType } from '@/i18n/settings';
@@ -67,16 +67,16 @@ export default function Header({ currentLocale, dynamicLinks }: HeaderProps) {
           </div>
         </button>
         <nav
-          className={twMerge(
+          className={cn(
             'w-max py-3 px-8 border border-solid border-dark-bg dark:border-light-bg rounded-full font-medium capitalize items-center flex sm:hidden transition-all ease duration-300 fixed top-6 right-1/2 translate-x-1/2 bg-light/80 dark:bg-dark-bg bg-white z-40 gap-2',
             isOpen ? 'top-6' : 'top-[-5rem]'
           )}
         >
-          <Link href={`/${currentLocale}`}>
+          <Link href={`/${currentLocale}`} title={t('home')}>
             <p>{t('home')}</p>
           </Link>
-          <Link href={`/${currentLocale}/about`}>
-            <p>{t('aboutMe')}</p>
+          <Link href={`/${currentLocale}/blogs`} title={t('blogs')}>
+            <p>{t('blogs')}</p>
           </Link>
           <HydrateWrapper loader={<ThemeSkeleton />}>
             <ThemeSwitcher />
@@ -87,8 +87,8 @@ export default function Header({ currentLocale, dynamicLinks }: HeaderProps) {
           <Link href={`/${currentLocale}`}>
             <p>{t('home')}</p>
           </Link>
-          <Link href={`/${currentLocale}/about`}>
-            <p>{t('aboutMe')}</p>
+          <Link href={`/${currentLocale}/blogs`}>
+            <p>{t('blogs')}</p>
           </Link>
           <LanguageSelector dynamicLinks={dynamicLinks} currentLocale={currentLocale} />
           <HydrateWrapper loader={<ThemeSkeleton />}>

@@ -28,7 +28,11 @@ export default function Footer(/* { locale }: { locale: string } */) {
             <ConnectLinks size='lg' />
           </div>
           <div className='w-full mt-16 md:mt-24 relative font-medium border-t border-solid border-light py-6 px-8 flex  flex-col md:flex-row items-center justify-center'>
-            <Link href='/sitemap.xml' className='text-center underline my-4 md:my-0'>
+            <Link
+              href='/sitemap.xml'
+              className='text-center underline my-4 md:my-0'
+              title={'sitemap'}
+            >
               sitemap.xml
             </Link>
           </div>

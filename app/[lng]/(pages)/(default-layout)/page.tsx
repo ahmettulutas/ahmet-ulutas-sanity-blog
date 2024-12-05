@@ -1,25 +1,43 @@
-import { getAllBlogs } from '@/sanity/sanity-lib/sanity-client-fns';
 import { createTranslation } from '@/i18n';
-import BlogCard from '@/app/[lng]/components/blog-card/BlogCard';
-import BlogCoverSection from '@/app/[lng]/components/blog-cover/BlogCover';
 import { SharedPageProps } from '@/app/[lng]/layout';
+import Experiences from '@/app/[lng]/components/experiences/Experiences';
+import profileImg from '@/public/images/profile2.png';
+import Image from 'next/image';
+import { aboutPageData, staticAboutData } from '@/lib/constants';
 import { Container } from '@/app/[lng]/components/containers/Container';
-import { generateCategories } from '@/lib/helpers';
+import { ResumeIcon } from '@/app/[lng]/components/icons/Icons';
 
 export default async function Page({ params }: Readonly<SharedPageProps>) {
-  const allBlogs = await getAllBlogs(params.lng);
   const { t } = await createTranslation(params.lng, 'translation');
-  const featuredBlog = allBlogs?.find((item) => item.featured);
-  const categories = await generateCategories(10, 4000);
+  const translatedData = { ...aboutPageData[params.lng], ...staticAboutData };
+
   return (
-    <Container className='py-10 flex flex-col items-center gap-2'>
-      <BlogCoverSection blog={featuredBlog || allBlogs?.[0]} locale={params.lng} />
-      <h1 className='mb-4 text-4xl font-bold text-center mt-10'>{t('blogPosts')}</h1>
-      <section className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4'>
-        {allBlogs?.map((item) => (
-          <BlogCard vertical={true} locale={params.lng} key={item._id} blog={item} />
-        ))}
-      </section>
+    <Container className='py-10'>
+      <h1 className='mb-4 text-3xl md:text-6xl font-bold'>{t('aboutMe')}</h1>
+      <article className='grid grid-cols-1 md:grid-cols-4 gap-2 md:gap-4'>
+        <div className='pt-4 h-min lg:sticky xl:top-0 col-span-1 flex flex-col items-center mx-auto md:ml-0'>
+          <Image
+            alt='ahmet ulutaş profile image'
+            width={500}
+            height={500}
+            src={profileImg}
+            className='w-full h-auto rounded-full'
+          />
+          <h3 className='text-2xl pt-4 pb-2'>{translatedData.name}</h3>
+          <h3 className='text-gray-600 dark:text-dark-text/50'>{t('softwareDev')}</h3>
+          <p className='text-gray-600 dark:text-dark-text/50'>{translatedData.currentCompany}</p>
+
+          <a href='/cv.pdf' target='_blank' className='btn-primary flex gap-2 items-center mt-2'>
+            <ResumeIcon className='inline-block' />
+            {t('resume')}
+          </a>
+        </div>
+
+        <section className='col-span-3 pt-4'>
+          <p className='text-lg leading-8'>{translatedData.aboutMe}</p>
+          <Experiences language={params.lng} />
+        </section>
+      </article>
     </Container>
   );
 }

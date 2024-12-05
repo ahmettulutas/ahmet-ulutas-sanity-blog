@@ -2,7 +2,7 @@
 import { Container } from '@/app/[lng]/components/containers/Container';
 import Image from 'next/image';
 import Link from 'next/link';
-import Header from '@/app/[lng]/components/layout/header/Header';
+import Header from '@/app/[lng]/components/layout/header';
 import { LocaleType, defaultLanguage } from '@/i18n/settings';
 import { useParams } from 'next/navigation';
 import { useTranslation } from '@/i18n/client';

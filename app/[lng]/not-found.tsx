@@ -4,7 +4,7 @@ import { LocaleType, defaultLanguage } from '@/i18n/settings';
 import Link from 'next/link';
 import React from 'react';
 import Image from 'next/image';
-import Header from '@/app/[lng]/components/layout/header/Header';
+import Header from '@/app/[lng]/components/layout/header';
 import { useParams } from 'next/navigation';
 import { useTranslation } from '@/i18n/client';
 

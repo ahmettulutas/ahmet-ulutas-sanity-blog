@@ -11,7 +11,7 @@ type BlogCoverSectionProps = {
   locale: LocaleType;
 };
 
-export default function BlogCoverSection({ blog, locale }: BlogCoverSectionProps) {
+export default function BlogCoverSection({ blog, locale }: Readonly<BlogCoverSectionProps>) {
   return (
     <div className='w-full inline-block text-white'>
       <article className='flex flex-col items-start justify-end relative h-[50vh] md:h-[85vh]'>
@@ -28,7 +28,7 @@ export default function BlogCoverSection({ blog, locale }: BlogCoverSectionProps
 
         <div className='w-full lg:w-3/4 p-6 sm:p-8 md:p-12 lg:p-16 flex flex-col items-start justify-center z-0 text-light overflow-hidden'>
           <Tag name={blog.category} className='px-6 text-sm py-2' />
-          <Link className='mt-6' href={`/${locale}/blogs/${blog.slug}`}>
+          <Link title={blog.title} className='mt-6' href={`/${locale}/blogs/${blog.slug}`}>
             <h1 className='font-bold text-lg sm:text-xl md:text-3xl lg:text-4xl'>
               <span
                 className='bg-gradient-to-r from-brand to-brand dark:from-brandDark/90 

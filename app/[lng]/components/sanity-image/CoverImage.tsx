@@ -1,7 +1,7 @@
 import { ImageType } from '@/lib/helpers';
 import { urlForImage } from '@/sanity/sanity-lib/sanity-image-fns';
 import Image from 'next/image';
-import { twMerge } from 'tailwind-merge';
+import { cn } from '@/lib/helpers';
 
 type CoverImageProps = {
   image: ImageType;
@@ -17,14 +17,14 @@ export default function CoverImage(props: CoverImageProps) {
   const { image: source, priority, wrapperStyles, height, width, imageStyles, fill } = props;
   const image = source?.asset?._ref ? (
     <div
-      className={twMerge(
+      className={cn(
         'shadow-small transition-shadow duration-200 hover:shadow-medium relative w-full h-full',
         wrapperStyles
       )}
     >
       <Image
         src={urlForImage(source.asset).height(height).width(width).url()}
-        className={twMerge('h-auto w-full rounded-[3px]', imageStyles)}
+        className={cn('h-auto w-full rounded-[3px]', imageStyles)}
         width={fill ? undefined : width}
         height={fill ? undefined : height}
         alt={`Image for ${source.alt}`}

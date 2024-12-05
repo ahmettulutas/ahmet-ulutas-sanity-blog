@@ -4,7 +4,7 @@ import { availableLocales } from '@/i18n/settings';
 import { usePathname, useRouter } from 'next/navigation';
 import { omitLocaleFromPath } from '@/lib/helpers';
 
-import { HeaderProps } from './Header';
+import { HeaderProps } from '.';
 
 export const LanguageSelector = ({ currentLocale, dynamicLinks }: HeaderProps) => {
   const pathname = usePathname();

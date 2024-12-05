@@ -1,7 +1,7 @@
 'use client';
 import { useTheme } from 'next-themes';
 import { MoonIcon, SunIcon } from '@/app/[lng]/components/icons/Icons.js';
-import { twMerge } from 'tailwind-merge';
+import { cn } from '@/lib/helpers';
 
 const ThemeSwitcher = () => {
   const { theme, setTheme } = useTheme();
@@ -9,7 +9,7 @@ const ThemeSwitcher = () => {
   return (
     <button
       onClick={() => setTheme(isThemeLight ? 'dark' : 'light')}
-      className={twMerge(
+      className={cn(
         'w-6 h-6 ease flex items-center justify-center rounded-full p-1',
         isThemeLight ? 'bg-dark-bg text-dark-text' : 'bg-light-bg text-light-text'
       )}

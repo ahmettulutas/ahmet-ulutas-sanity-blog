@@ -2,7 +2,7 @@
 
 export const SANITY_URL = '/en/studio';
 export const baseUrl = process.env.NEXT_PUBLIC_BASE_URL as string;
-export const staticPageUrls = ['/about', '']; // empty string is for index page.
+export const staticPageUrls = ['/blogs', '']; // empty string is for index page.
 export const ogImageSizes = [
   { width: 800, height: 600 },
   { width: 1800, height: 1600 },

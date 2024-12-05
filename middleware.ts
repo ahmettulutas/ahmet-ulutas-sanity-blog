@@ -14,8 +14,8 @@ export function middleware(request: NextRequest) {
     // We are on the default locale
     // Rewrite so Next.js understands
 
-    // e.g. incoming request is /about
-    // Tell Next.js it should pretend it's /en/about
+    // e.g. incoming request is /blogs
+    // Tell Next.js it should pretend it's /en/blogs
     return NextResponse.rewrite(new URL(`/${defaultLanguage}${pathname}`, request.url));
   }
 }

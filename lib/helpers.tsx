@@ -4,7 +4,8 @@ import { Metadata, ResolvingMetadata } from 'next';
 import { urlForImage } from '@/sanity/sanity-lib/sanity-image-fns';
 import { SanityAsset } from '@sanity/image-url/lib/types/types';
 import { formatDistanceToNowStrict, parseISO } from 'date-fns';
-import { faker } from '@faker-js/faker';
+import { type ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 import opengraphImage from '../public/images/opengraph-image.webp';
 import { ogImageSizes, twitterImageSizes } from './constants';
@@ -186,24 +187,6 @@ const availableCategories = [
   'Borsa',
 ];
 
-export const generateCategories = (count: number, timeOut: number): Promise<Array<Category>> => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const categories: Array<Category> = [];
-      for (let i = 0; i < count; i++) {
-        const category: Category = {
-          id: faker.number.int({ min: 1, max: 3000 }),
-          name: faker.helpers.arrayElement(availableCategories),
-          shortDescription: faker.commerce.productDescription(),
-          iconPath: faker.image.url(),
-          detailUrl: faker.internet.url(),
-          isSpecialUrlPath: faker.datatype.boolean(),
-          specialUrlPath: faker.datatype.boolean() ? faker.internet.url() : null,
-          parentCategory: null,
-        };
-        categories.push(category);
-      }
-      resolve(categories);
-    }, timeOut);
-  });
-};
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
