@@ -136,6 +136,7 @@ export default defineType({
           name: 'shareImage',
           title: 'Share Image',
           type: 'image',
+          // @ts-ignore
           validation: (rule) => rule.required(),
           options: {
             hotspot: true,

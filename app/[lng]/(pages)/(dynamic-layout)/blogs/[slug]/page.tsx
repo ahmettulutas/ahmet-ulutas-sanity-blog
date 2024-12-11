@@ -1,7 +1,7 @@
 import {
   getAllBlogsSlugs,
   getBlogBySlug,
-  getBlogsAndMoreStories,
+  getBlogById,
 } from '@/sanity/sanity-lib/sanity-client-fns';
 import { notFound } from 'next/navigation';
 import RichTextContent from '@/app/[lng]/components/rich-text-content/RichTextContent';
@@ -26,7 +26,7 @@ import MoreBlogsSkeleton from '@/app/[lng]/components/loading-skeletons/MoreBlog
 
 async function getPageData(slug: string, language: LocaleType) {
   try {
-    const { blog } = await getBlogsAndMoreStories(slug, language);
+    const { blog } = await getBlogById(slug, language);
     if (!blog) return notFound();
     const availableBlogLanguages = blog?._translations?.filter(Boolean).map((item) => {
       return {
@@ -56,7 +56,7 @@ export type DynamicLink = {
   slug: string;
 };
 
-export default async function Page({ params }: PageProps & SharedPageProps) {
+export default async function Page({ params }: PageProps) {
   const { slug, lng } = params;
   const { blog, relatedSlugs } = await getPageData(slug, lng);
   const { t } = await createTranslation(lng, 'translation');

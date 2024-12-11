@@ -67,14 +67,11 @@ export const blogSlugsQuery = groq`
   _updatedAt,
 }`;
 
-export const blogAndMoreBlogsQuery = groq`
+export const blogByIdQuery = groq`
 {
   "blog": *[_type == "blogs" && slug.current == $slug && language == $language] | order(_updatedAt desc) [0] {
     ${blogPostFields}
   },
-  "moreBlogs": *[_type == "blogs" && slug.current != $slug && language == $language] | order(date desc, _updatedAt desc) {
-    ${blogPostFields}
-  }
 }`;
 
 export const moreBlogs = groq`
