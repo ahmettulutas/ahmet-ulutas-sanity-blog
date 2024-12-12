@@ -3,7 +3,7 @@ import { getClient } from '@/sanity/sanity-lib/client';
 import {
   BlogPost,
   allBlogsQuery,
-  blogByIdQuery,
+  // blogByIdQuery,
   blogBySlugQuery,
   blogSlugsQuery,
   moreBlogs,
@@ -30,12 +30,12 @@ export async function getBlogBySlug(slug: string, language: string): Promise<Blo
   return await client.fetch<BlogPost>(blogBySlugQuery, { slug, language });
 }
 
-export async function getBlogById(
-  slug: string,
-  language: string
-): Promise<{ blog: BlogPost; moreBlogs: BlogPost[] }> {
-  return await client.fetch(blogByIdQuery, { slug, language }, { next: { revalidate: 60 } });
-}
+// export async function getBlogById(
+//   slug: string,
+//   language: string
+// ): Promise<{ blog: BlogPost; moreBlogs: BlogPost[] }> {
+//   return await client.fetch(blogByIdQuery, { slug, language }, { next: { revalidate: 60 } });
+// }
 
 export async function getMoreBlogs(slug: string, language: string): Promise<BlogPost[]> {
   return await client.fetch(moreBlogs, { slug, language }, { next: { revalidate: 60 } });

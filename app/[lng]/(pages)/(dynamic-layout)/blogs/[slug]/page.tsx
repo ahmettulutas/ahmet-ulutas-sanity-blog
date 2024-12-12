@@ -1,8 +1,4 @@
-import {
-  getAllBlogsSlugs,
-  getBlogBySlug,
-  getBlogById,
-} from '@/sanity/sanity-lib/sanity-client-fns';
+import { getAllBlogsSlugs, getBlogBySlug } from '@/sanity/sanity-lib/sanity-client-fns';
 import { notFound } from 'next/navigation';
 import RichTextContent from '@/app/[lng]/components/rich-text-content/RichTextContent';
 import type { Metadata, ResolvingMetadata } from 'next';
@@ -26,7 +22,7 @@ import MoreBlogsSkeleton from '@/app/[lng]/components/loading-skeletons/MoreBlog
 
 async function getPageData(slug: string, language: LocaleType) {
   try {
-    const { blog } = await getBlogById(slug, language);
+    const blog = await getBlogBySlug(slug, language);
     if (!blog) return notFound();
     const availableBlogLanguages = blog?._translations?.filter(Boolean).map((item) => {
       return {
