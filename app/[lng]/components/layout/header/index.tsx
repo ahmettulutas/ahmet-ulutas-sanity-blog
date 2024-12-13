@@ -31,7 +31,7 @@ export default function Header({ currentLocale, dynamicLinks }: HeaderProps) {
   };
 
   return (
-    <header>
+    <nav>
       <Container className='w-full flex items-center justify-between py-4'>
         <Logo currentLocale={currentLocale} />
         <button
@@ -72,8 +72,8 @@ export default function Header({ currentLocale, dynamicLinks }: HeaderProps) {
             isOpen ? 'top-6' : 'top-[-5rem]'
           )}
         >
-          <Link href={`/${currentLocale}`} title={t('home')}>
-            <p>{t('home')}</p>
+          <Link href={`/${currentLocale}`} title={t('aboutMe')}>
+            <p>{t('aboutMe')}</p>
           </Link>
           <Link href={`/${currentLocale}/blogs`} title={t('blogs')}>
             <p>{t('blogs')}</p>
@@ -85,7 +85,7 @@ export default function Header({ currentLocale, dynamicLinks }: HeaderProps) {
         </nav>
         <nav className='w-max py-3 px-8 border border-solid border-dark-bg dark:border-light-bg rounded-full font-medium capitalize items-center hidden sm:flex transition-all ease duration-300 fixed top-6 right-1/2 translate-x-1/2 bg-light/80 dark:bg-dark-bg bg-white z-50 gap-2'>
           <Link href={`/${currentLocale}`}>
-            <p>{t('home')}</p>
+            <p>{t('aboutMe')}</p>
           </Link>
           <Link href={`/${currentLocale}/blogs`}>
             <p>{t('blogs')}</p>
@@ -99,6 +99,6 @@ export default function Header({ currentLocale, dynamicLinks }: HeaderProps) {
           <ConnectLinks size='lg' />
         </div>
       </Container>
-    </header>
+    </nav>
   );
 }

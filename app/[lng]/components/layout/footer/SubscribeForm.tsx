@@ -9,6 +9,7 @@ const SubscribeForm = () => {
   const { t } = useTranslation(locale, 'translation');
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    window.alert(t('noSubscription'));
   };
   return (
     <div>
