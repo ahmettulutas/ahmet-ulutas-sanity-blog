@@ -11,7 +11,7 @@
   "blogPosts": "Blogeinträge",
   "pageTitle": "Deutsch Page Title",
   "gotoStudio": "Geh ins Studio",
-  "moreBlogs": "Weitere Blogs",
+  "moreBlogs": "Mehr Blog-Beiträge",
   "submitComment": "Senden",
   "signOut": "Abmelden",
   "signIn": "Anmelden",
@@ -42,7 +42,7 @@
   "goBack": "Zurückgehen",
   "noComments": "Keine Kommentare vorhanden. Seien Sie der Erste, der kommentiert.",
   "openNavigationButton": "Navigationsmenü öffnen",
-  "blogs": "Blogs",
+  "blog": "Blog",
   "metaData": {
     "pageTitle": "Ahmet Ulutaş Blog-Seite",
     "pageDescription": "Dies ist Ahmet Ulutaş' Blog für Frontend-Entwicklung.",
