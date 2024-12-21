@@ -57,7 +57,7 @@ export const getDefaultMetaData = async (
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { t } = await createTranslation(currntLocale, 'translation'); // This is not actually a hook, so I intentionally ignored it here.
   const previousImages = (await parent).openGraph?.images || [];
-
+  const baseUrl = new URL(process.env.NEXT_PUBLIC_BASE_URL as string);
   return {
     title: t('metaData.pageTitle'),
     description: t('metaData.pageDescription'),
@@ -86,6 +86,8 @@ export const getDefaultMetaData = async (
       ],
       locale: currntLocale,
       type: 'website',
+      url: baseUrl,
+      siteName: 'Ahmet Ulutaş Blog',
     },
     twitter: {
       card: 'summary_large_image',
@@ -108,7 +110,7 @@ export const getDefaultMetaData = async (
       telephone: false,
     },
     alternates: {
-      canonical: new URL(process.env.NEXT_PUBLIC_BASE_URL as string),
+      canonical: baseUrl,
       languages: generateLocalesForMetaData(availableLocales),
     },
   };
@@ -144,14 +146,14 @@ export const generateMetaImages = ({
   }
 
   if (staticImage?.url) {
-    for (let { width, height } of sizes) {
+    sizes.forEach(({ width, height }) => {
       metaImages.push({
         width,
         height,
         alt: staticImage?.alt || '',
         url: staticImage.url,
       });
-    }
+    });
   }
   return metaImages;
 };
@@ -173,19 +175,6 @@ export type Category = {
   specialUrlPath?: null | string;
   parentCategory: null | Category;
 };
-
-const availableCategories = [
-  'Kredi',
-  'Kredi Kartı',
-  'Yatırım',
-  'Tasarruf',
-  'Teknoloji',
-  'Bankacılık',
-  'Emeklilik',
-  'Muhasebe/Hukuk',
-  'Mevduat',
-  'Borsa',
-];
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));

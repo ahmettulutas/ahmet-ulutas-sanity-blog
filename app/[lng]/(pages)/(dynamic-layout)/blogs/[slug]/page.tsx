@@ -128,11 +128,25 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const { slug, lng } = params;
-  const blogPost = await getBlogBySlug(slug, lng);
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { t } = await createTranslation(params.lng, 'translation');
+  if (!slug || !lng) {
+    return getDefaultMetaData(lng, parent);
+  }
+
+  let blogPost = null;
+  try {
+    blogPost = await getBlogBySlug(slug, lng);
+  } catch (error) {
+    return getDefaultMetaData(lng, parent);
+  }
+
   if (!blogPost) return getDefaultMetaData(lng, parent);
 
-  const blogMetaTitle = blogPost.metaFields?.title || blogPost.title;
-  const blogMetaDescription = blogPost.metaFields?.description || blogPost.excerpt;
+  const blogMetaTitle = blogPost.metaFields?.title || blogPost.title || t('metaData.pageTitle');
+  const blogMetaDescription =
+    blogPost.metaFields?.description || blogPost.excerpt || t('metaData.pageDescription');
+
   const generatedOGImages = generateMetaImages({
     sanityImage: blogPost.metaFields?.shareImage,
     sizes: ogImageSizes,
@@ -142,21 +156,29 @@ export async function generateMetadata(
     sizes: twitterImageSizes,
   });
 
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
   return {
     title: blogMetaTitle,
     description: blogMetaDescription,
 
     openGraph: {
-      images: generatedOGImages.length > 0 ? [...generatedOGImages] : [],
+      type: 'article',
+      title: blogMetaTitle,
+      description: blogMetaDescription,
+      url: `${baseUrl}/${lng}/blogs/${slug}`,
+      siteName: 'Ahmet Ulutaş Blog',
+      locale: lng,
+      ...(generatedOGImages.length > 0 && { images: [...generatedOGImages] }),
     },
     twitter: {
       card: 'summary_large_image',
       title: blogMetaTitle,
       description: blogMetaDescription,
-      images: generatedTwitterImages.length > 0 ? [...generatedTwitterImages] : [],
+      ...(generatedTwitterImages.length > 0 && { images: [...generatedTwitterImages] }),
     },
     alternates: {
-      canonical: `${new URL(process.env.NEXT_PUBLIC_BASE_URL as string)}/${lng}/blogs/${slug}`,
+      canonical: `${baseUrl}/${lng}/blogs/${slug}`,
     },
   };
 }
