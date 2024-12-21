@@ -91,6 +91,11 @@ export default defineType({
             highlightedLines: true, // optional
           },
         },
+        {
+          name: 'table',
+          title: 'Table',
+          type: 'table',
+        },
       ],
     }),
     defineField({

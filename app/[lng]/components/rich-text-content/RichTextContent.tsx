@@ -23,6 +23,26 @@ const myPortableTextComponents = {
         <CodeBlock {...{ ...value }} />
       </HydrateWrapper>
     ),
+    table: ({ value }: any) => (
+      <div className='overflow-auto my-4'>
+        <table className='table-auto border-collapse border border-gray-200 dark:border-gray-700 w-full'>
+          <tbody>
+            {value.rows.map((row: any, rowIndex: number) => (
+              <tr key={rowIndex} className='border border-gray-200 dark:border-gray-700'>
+                {row.cells.map((cell: string, cellIndex: number) => (
+                  <td
+                    key={cellIndex}
+                    className='border border-gray-200 dark:border-gray-700 px-4 py-2 text-left'
+                  >
+                    {cell}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    ),
   },
   block: (props: any) => {
     const { node, children } = props;
