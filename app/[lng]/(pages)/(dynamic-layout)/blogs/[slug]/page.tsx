@@ -96,7 +96,7 @@ export default async function Page({ params }: PageProps) {
           </div>
           <div className='col-span-1 order-1 lg:order-2'>
             <details
-              className='border-[1px] border-solid border-dark-bg dark:border-light-bg text-dark dark:text-light rounded-lg p-4 sticky top-6 max-h-[80vh] overflow-hidden overflow-y-auto'
+              className='border-[1px] border-solid border-dark-bg dark:border-light-bg text-dark dark:text-light rounded-2xl p-4 sticky top-6 max-h-[80vh] overflow-hidden overflow-y-auto'
               open
             >
               <summary className='text-lg font-semibold cursor-pointer'>

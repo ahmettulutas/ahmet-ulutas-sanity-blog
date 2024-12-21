@@ -68,7 +68,7 @@ export default function Header({ currentLocale, dynamicLinks }: HeaderProps) {
         </button>
         <nav
           className={cn(
-            'w-max py-3 px-8 border border-solid border-dark-bg dark:border-light-bg rounded-full font-medium capitalize items-center flex sm:hidden transition-all ease duration-300 fixed top-6 right-1/2 translate-x-1/2 bg-light/80 dark:bg-dark-bg bg-white z-40 gap-2',
+            'w-max py-3 px-8 border border-solid border-dark-bg dark:border-light-bg rounded-full font-medium items-center flex sm:hidden transition-all ease duration-300 fixed top-6 right-1/2 translate-x-1/2 bg-light/80 dark:bg-dark-bg bg-white z-40 gap-2',
             isOpen ? 'top-6' : 'top-[-5rem]'
           )}
         >
@@ -83,7 +83,7 @@ export default function Header({ currentLocale, dynamicLinks }: HeaderProps) {
           </HydrateWrapper>
           <LanguageSelector dynamicLinks={dynamicLinks} currentLocale={currentLocale} />
         </nav>
-        <nav className='w-max py-3 px-8 border border-solid border-dark-bg dark:border-light-bg rounded-full font-medium capitalize items-center hidden sm:flex transition-all ease duration-300 fixed top-6 right-1/2 translate-x-1/2 bg-light/80 dark:bg-dark-bg bg-white z-50 gap-2'>
+        <nav className='w-max py-3 px-8 border border-solid border-dark-bg dark:border-light-bg rounded-full font-medium items-center hidden sm:flex transition-all ease duration-300 fixed top-6 right-1/2 translate-x-1/2 bg-light/80 dark:bg-dark-bg bg-white z-50 gap-2'>
           <Link href={`/${currentLocale}`}>
             <p>{t('aboutMe')}</p>
           </Link>

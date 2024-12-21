@@ -18,14 +18,14 @@ export default function BlogCard({ blog, locale, vertical }: Readonly<BlogCardPr
       <Link
         title={blog.title}
         href={`/${locale}/blogs/${blog.slug}`} /* I needed to add current locale to prevent previous locale page caching */
-        className={cn('group flex gap-2 rounded-xl', vertical ? 'flex-col' : '')}
+        className={cn('group flex gap-2 rounded-2xl', vertical ? 'flex-col' : '')}
       >
         <CoverImage
           height={1000}
           width={1000}
           image={blog.coverImage}
           wrapperStyles={cn(
-            'rounded-xl overflow-hidden relative shrink-0',
+            'rounded-2xl overflow-hidden relative shrink-0',
             vertical ? '' : 'w-20 h-20'
           )}
           imageStyles='group-hover:scale-105 object-cover object-center transition-all ease duration-300'

@@ -86,7 +86,9 @@ const myPortableTextComponents = {
       );
     },
     code: ({ children }: any) => (
-      <code className='bg-gray-100 dark:bg-gray-600 rounded-md px-1 m-1 leading-2'>{children}</code>
+      <code className='bg-gray-100 dark:bg-gray-600 rounded-2xl px-1 m-1 leading-2'>
+        {children}
+      </code>
     ),
   },
   list: {

@@ -15,13 +15,13 @@ export default function BlogCoverSection({ blog, locale }: Readonly<BlogCoverSec
   return (
     <div className='w-full inline-block text-white'>
       <article className='flex flex-col items-start justify-end relative h-[50vh] md:h-[85vh]'>
-        <div className='absolute top-0 left-0 bottom-0 right-0 h-full bg-gradient-to-b from-transparent from-0% to-overlaydark rounded-3xl z-0' />
+        <div className='absolute top-0 left-0 bottom-0 right-0 h-full bg-gradient-to-b from-transparent from-0% to-overlaydark rounded-2xl z-0' />
         <CoverImage
           fill
           height={500}
           width={1000}
           priority
-          imageStyles='object-center object-cover rounded-3xl -z-10'
+          imageStyles='object-center object-cover rounded-2xl -z-10'
           wrapperStyles='-z-10 absolute w-full h-full'
           image={blog.coverImage}
         />
