@@ -15,7 +15,7 @@ import CommentsSkeleton from '@/app/[lng]/components/loading-skeletons/CommentsS
 import TableOfContents from '@/app/[lng]/components/table-of-content/TableOfContent';
 import { createTranslation } from '@/i18n';
 import PostDate from '@/app/[lng]/components/post-date/PostDate';
-import { LocaleType } from '@/i18n/settings';
+import { defaultLanguage, LocaleType } from '@/i18n/settings';
 import { Container } from '@/app/[lng]/components/containers/Container';
 import Header from '@/app/[lng]/components/layout/header';
 import MoreBlogsSkeleton from '@/app/[lng]/components/loading-skeletons/MoreBlogSkeleton';
@@ -173,12 +173,31 @@ export async function generateMetadata(
     },
     twitter: {
       card: 'summary_large_image',
+      creator: 'Ahmet Ulutaş',
       title: blogMetaTitle,
       description: blogMetaDescription,
       ...(generatedTwitterImages.length > 0 && { images: [...generatedTwitterImages] }),
     },
     alternates: {
       canonical: `${baseUrl}/${lng}/blogs/${slug}`,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      noarchive: false,
+      nosnippet: true,
+
+      'max-image-preview': 'large',
+      'max-snippet': 200,
+      googleBot: {
+        index: true,
+        follow: true,
+        noarchive: false,
+        nosnippet: true,
+
+        'max-image-preview': 'large',
+        'max-snippet': 200,
+      },
     },
   };
 }

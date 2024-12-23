@@ -113,6 +113,24 @@ export const getDefaultMetaData = async (
       canonical: baseUrl,
       languages: generateLocalesForMetaData(availableLocales),
     },
+    robots: {
+      index: true,
+      follow: true,
+      noarchive: false,
+      nosnippet: true,
+
+      'max-image-preview': 'large',
+      'max-snippet': 200,
+      googleBot: {
+        index: true,
+        follow: true,
+        noarchive: false,
+        nosnippet: true,
+
+        'max-image-preview': 'large',
+        'max-snippet': 200,
+      },
+    },
   };
 };
 export type ImageType = {
@@ -141,6 +159,7 @@ export const generateMetaImages = ({
         height,
         alt: sanityImage?.alt || '',
         url: urlForImage(sanityImage)?.height(height).width(width).fit('crop').url(),
+        secureUrl: urlForImage(sanityImage)?.height(height).width(width).fit('crop').url(),
       });
     }
   }
@@ -152,6 +171,7 @@ export const generateMetaImages = ({
         height,
         alt: staticImage?.alt || '',
         url: staticImage.url,
+        secureUrl: staticImage.url,
       });
     });
   }

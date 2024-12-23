@@ -31,7 +31,6 @@
     "mongoose": "^8.0.3",
     "next": "^14.0.4",
     "next-auth": "^4.24.5",
-    "next-i18next": "^14.0.3",
     "next-sanity": "^7.0.7",
     "next-sanity-image": "^6.1.1",
     "next-themes": "^0.2.1",

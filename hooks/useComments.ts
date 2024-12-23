@@ -33,7 +33,7 @@ export default function useComments({
       });
       setMessage('');
       await mutate();
-    } catch (err: any) {
+    } catch (err) {
       throw new Error(JSON.stringify(err));
     }
   };
