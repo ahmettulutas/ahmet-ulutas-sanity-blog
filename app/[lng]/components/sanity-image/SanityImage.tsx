@@ -30,13 +30,13 @@ export default function SanityImage({
   return (
     <div
       className={cn(
-        'w-full overflow-hidden rounded-[3px] bg-gray-50 dark:bg-dark-bg relative h-full',
+        'w-full overflow-hidden rounded-2xl bg-gray-50 dark:bg-dark-bg relative h-full',
         wrapperStyles
       )}
     >
       {imageUrl && (
         <Image
-          className={cn('h-auto w-full rounded-[3px]', imageClasses)}
+          className={cn('h-auto w-full rounded-2xl', imageClasses)}
           alt={alt}
           width={width}
           height={height}

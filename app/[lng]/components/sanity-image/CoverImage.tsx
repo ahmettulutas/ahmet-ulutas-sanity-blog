@@ -24,7 +24,7 @@ export default function CoverImage(props: CoverImageProps) {
     >
       <Image
         src={urlForImage(source.asset).height(height).width(width).url()}
-        className={cn('h-auto w-full rounded-[3px]', imageStyles)}
+        className={cn('h-auto w-full rounded-2xl', imageStyles)}
         width={fill ? undefined : width}
         height={fill ? undefined : height}
         alt={`Image for ${source.alt}`}

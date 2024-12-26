@@ -15,7 +15,7 @@ import CommentsSkeleton from '@/app/[lng]/components/loading-skeletons/CommentsS
 import TableOfContents from '@/app/[lng]/components/table-of-content/TableOfContent';
 import { createTranslation } from '@/i18n';
 import PostDate from '@/app/[lng]/components/post-date/PostDate';
-import { defaultLanguage, LocaleType } from '@/i18n/settings';
+import { LocaleType } from '@/i18n/settings';
 import { Container } from '@/app/[lng]/components/containers/Container';
 import Header from '@/app/[lng]/components/layout/header';
 import MoreBlogsSkeleton from '@/app/[lng]/components/loading-skeletons/MoreBlogSkeleton';
