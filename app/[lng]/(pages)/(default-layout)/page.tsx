@@ -1,9 +1,8 @@
 import { createTranslation } from '@/i18n';
 import { SharedPageProps } from '@/app/[lng]/layout';
 import Experiences from '@/app/[lng]/components/experiences/Experiences';
-import profileImg from '@/public/images/profile2.png';
 import Image from 'next/image';
-import { aboutPageData, staticAboutData } from '@/lib/constants';
+import { aboutPageData, PROFILE_PHOTO, staticAboutData } from '@/lib/constants';
 import { Container } from '@/app/[lng]/components/containers/Container';
 import { ResumeIcon } from '@/app/[lng]/components/icons/Icons';
 
@@ -20,7 +19,7 @@ export default async function Page({ params }: Readonly<SharedPageProps>) {
             alt='ahmet ulutaş profile image'
             width={500}
             height={500}
-            src={profileImg}
+            src={PROFILE_PHOTO}
             className='w-full h-auto rounded-full'
           />
           <h3 className='text-2xl pt-4 pb-2'>{translatedData.name}</h3>

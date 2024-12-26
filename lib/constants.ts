@@ -1,5 +1,5 @@
 /* eslint-disable quotes */
-
+import profileImg from '@/public/images/profile3.jpg';
 export const SANITY_URL = '/en/studio';
 export const baseUrl = process.env.NEXT_PUBLIC_BASE_URL as string;
 export const staticPageUrls = ['/blogs', '']; // empty string is for index page.
@@ -246,3 +246,5 @@ export const personalLinks = {
   github: 'https://github.com/ahmettulutas/',
   youtube: 'https://youtube.com/@learncodingwithahmet?si=pgKM4ms9fVCP-k51',
 };
+
+export const PROFILE_PHOTO = profileImg;
