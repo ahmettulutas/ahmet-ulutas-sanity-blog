@@ -1,27 +1,29 @@
 'use client';
 
-type Heading = {
+type HeadingLink = {
   _key: string;
-  children?: Heading[];
-  subheadings?: Heading[];
+  children?: HeadingLink[];
+  subheadings?: HeadingLink[];
   text?: string;
 };
 
 type TableOfContentsProps = {
-  headings: Heading[];
+  headings?: HeadingLink[];
   language?: string;
 };
 
-const getChildrenText = (props: { children: (string | { text?: string })[] }) =>
+const getChildrenText = (props: HeadingLink) =>
   props?.children?.map((node) => (typeof node === 'string' ? node : node.text || '')).join('');
 
-export default function TableOfContents({ headings }: TableOfContentsProps) {
+export default function TableOfContent({ headings }: TableOfContentsProps) {
   return (
     <ul className='ml-6'>
-      {headings?.map((heading: any) => (
+      {headings?.map((heading) => (
         <li className='list-disc-reset' key={heading._key}>
           <a href={'#' + heading._key}>{getChildrenText(heading)}</a>
-          {heading?.children?.length > 0 && <TableOfContents headings={heading.subheadings} />}
+          {heading?.children && heading?.children?.length > 0 && (
+            <TableOfContent headings={heading.subheadings} />
+          )}
         </li>
       ))}
     </ul>
