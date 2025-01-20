@@ -117,7 +117,7 @@ export const getDefaultMetaData = async (
       index: true,
       follow: true,
       noarchive: false,
-      nosnippet: true,
+      nosnippet: false,
 
       'max-image-preview': 'large',
       'max-snippet': 200,
@@ -125,7 +125,7 @@ export const getDefaultMetaData = async (
         index: true,
         follow: true,
         noarchive: false,
-        nosnippet: true,
+        nosnippet: false,
 
         'max-image-preview': 'large',
         'max-snippet': 200,
