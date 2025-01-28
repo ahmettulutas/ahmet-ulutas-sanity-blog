@@ -76,7 +76,7 @@ export default function Header({ currentLocale, dynamicLinks }: HeaderProps) {
             <p>{t('aboutMe')}</p>
           </Link>
           <Link href={`/${currentLocale}/blogs`} title={t('blogs')}>
-            <p>{t('blogs')}</p>
+            {t('blog')}
           </Link>
           <HydrateWrapper loader={<ThemeSkeleton />}>
             <ThemeSwitcher />
@@ -87,9 +87,7 @@ export default function Header({ currentLocale, dynamicLinks }: HeaderProps) {
           <Link href={`/${currentLocale}`}>
             <p>{t('aboutMe')}</p>
           </Link>
-          <Link href={`/${currentLocale}/blogs`}>
-            <p>{t('blogs')}</p>
-          </Link>
+          <Link href={`/${currentLocale}/blogs`}>{t('blog')}</Link>
           <LanguageSelector dynamicLinks={dynamicLinks} currentLocale={currentLocale} />
           <HydrateWrapper loader={<ThemeSkeleton />}>
             <ThemeSwitcher />
