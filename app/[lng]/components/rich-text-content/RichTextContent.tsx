@@ -3,21 +3,29 @@ import { PortableText } from '@portabletext/react';
 import React from 'react';
 import { TypedObject } from 'sanity';
 import Link from 'next/link';
+import { urlForImage } from '@/sanity/sanity-lib/sanity-image-fns';
+import Image from 'next/image';
 
 import CodeBlock from '../code-blocks/CodeBlocks';
-import SanityImage from '../sanity-image/SanityImage';
 import { LinkArrowIcon } from '../icons/Icons';
 import HydrateWrapper from '../hydrate-wrapper/HydrateWrapper';
 import CodeBlockSkeleton from '../loading-skeletons/CodeBlockSkeleton';
 
 const myPortableTextComponents = {
   types: {
-    image: ({ value }: any) => (
-      <figure className='my-4 p-2 shadow-md dark:shadow-none'>
-        <SanityImage image={value} alt={value.alt} wrapperStyles='relative h-auto' />
-        {value?.caption && <figcaption className='text-xs text-right'>{value.caption}</figcaption>}
-      </figure>
-    ),
+    image: ({ value }: any) => {
+      const imageUrl = value?.asset && urlForImage(value?.asset).height(1000).width(2000).url();
+      return (
+        <figure className='shadow-md dark:shadow-none rounded-2xl flex flex-col gap-1 overflow-hidden'>
+          <div className='relative h-[400px]'>
+            <Image src={imageUrl} alt={value.alt} fill />
+          </div>
+          {value?.caption && (
+            <figcaption className='text-xs text-right p-1 pr-4'>{value.caption}</figcaption>
+          )}
+        </figure>
+      );
+    },
     code: ({ value }: any) => (
       <HydrateWrapper loader={<CodeBlockSkeleton />}>
         <CodeBlock {...{ ...value }} />
