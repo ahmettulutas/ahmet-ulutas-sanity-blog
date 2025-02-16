@@ -126,7 +126,7 @@ export const getDefaultMetaData = async (
         follow: true,
         noarchive: false,
         nosnippet: false,
-
+        noimageindex: false,
         'max-image-preview': 'large',
         'max-snippet': 200,
       },
@@ -153,13 +153,19 @@ export const generateMetaImages = ({
   if (!sanityImage && !staticImage?.url) return [];
   const metaImages = [];
   if (sanityImage) {
-    for (let { width, height } of sizes) {
+    for (const { width, height } of sizes) {
+      const imgUrl = urlForImage(sanityImage)
+        ?.height(height)
+        .width(width)
+        .fit('crop')
+        .auto('format')
+        .url();
       metaImages.push({
         width,
         height,
-        alt: sanityImage?.alt || '',
-        url: urlForImage(sanityImage)?.height(height).width(width).fit('crop').url(),
-        secureUrl: urlForImage(sanityImage)?.height(height).width(width).fit('crop').url(),
+        alt: sanityImage?.alt,
+        url: imgUrl,
+        secureUrl: imgUrl,
       });
     }
   }

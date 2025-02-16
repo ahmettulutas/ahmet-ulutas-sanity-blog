@@ -134,70 +134,69 @@ export async function generateMetadata(
     return getDefaultMetaData(lng, parent);
   }
 
-  let blogPost = null;
   try {
-    blogPost = await getBlogBySlug(slug, lng);
-  } catch (error) {
-    return getDefaultMetaData(lng, parent);
-  }
+    const blogPost = await getBlogBySlug(slug, lng);
 
-  if (!blogPost) return getDefaultMetaData(lng, parent);
+    if (!blogPost) return getDefaultMetaData(lng, parent);
+    const blogMetaTitle = blogPost.metaFields?.title || blogPost.title || t('metaData.pageTitle');
+    const blogMetaDescription =
+      blogPost.metaFields?.description || blogPost.excerpt || t('metaData.pageDescription');
 
-  const blogMetaTitle = blogPost.metaFields?.title || blogPost.title || t('metaData.pageTitle');
-  const blogMetaDescription =
-    blogPost.metaFields?.description || blogPost.excerpt || t('metaData.pageDescription');
+    const generatedOGImages = generateMetaImages({
+      sanityImage: blogPost.metaFields?.shareImage,
+      sizes: ogImageSizes,
+    });
+    const generatedTwitterImages = generateMetaImages({
+      sanityImage: blogPost.metaFields?.shareImage,
+      sizes: twitterImageSizes,
+    });
 
-  const generatedOGImages = generateMetaImages({
-    sanityImage: blogPost.metaFields?.shareImage,
-    sizes: ogImageSizes,
-  });
-  const generatedTwitterImages = generateMetaImages({
-    sanityImage: blogPost.metaFields?.shareImage,
-    sizes: twitterImageSizes,
-  });
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-
-  return {
-    title: blogMetaTitle,
-    description: blogMetaDescription,
-
-    openGraph: {
-      type: 'article',
+    return {
       title: blogMetaTitle,
       description: blogMetaDescription,
-      url: `${baseUrl}/${lng}/blogs/${slug}`,
-      siteName: 'Ahmet Ulutaş Blog',
-      locale: lng,
-      ...(generatedOGImages.length > 0 && { images: [...generatedOGImages] }),
-    },
-    twitter: {
-      card: 'summary_large_image',
-      creator: 'Ahmet Ulutaş',
-      title: blogMetaTitle,
-      description: blogMetaDescription,
-      ...(generatedTwitterImages.length > 0 && { images: [...generatedTwitterImages] }),
-    },
-    alternates: {
-      canonical: `${baseUrl}/${lng}/blogs/${slug}`,
-    },
-    robots: {
-      index: true,
-      follow: true,
-      noarchive: false,
-      nosnippet: false,
 
-      'max-image-preview': 'large',
-      'max-snippet': 200,
-      googleBot: {
+      openGraph: {
+        type: 'article',
+        title: blogMetaTitle,
+        description: blogMetaDescription,
+        url: `${baseUrl}/${lng}/blogs/${slug}`,
+        siteName: 'Ahmet Ulutaş Blog',
+        locale: lng,
+        ...(generatedOGImages.length > 0 && { images: [...generatedOGImages] }),
+      },
+      twitter: {
+        card: 'summary_large_image',
+        creator: 'Ahmet Ulutaş',
+        title: blogMetaTitle,
+        description: blogMetaDescription,
+        ...(generatedTwitterImages.length > 0 && { images: [...generatedTwitterImages] }),
+      },
+      alternates: {
+        canonical: `${baseUrl}/${lng}/blogs/${slug}`,
+      },
+      robots: {
         index: true,
         follow: true,
         noarchive: false,
         nosnippet: false,
+        noimageindex: false,
 
         'max-image-preview': 'large',
         'max-snippet': 200,
+        googleBot: {
+          index: true,
+          follow: true,
+          noarchive: false,
+          nosnippet: false,
+
+          'max-image-preview': 'large',
+          'max-snippet': 200,
+        },
       },
-    },
-  };
+    };
+  } catch (err) {
+    return getDefaultMetaData(lng, parent);
+  }
 }
