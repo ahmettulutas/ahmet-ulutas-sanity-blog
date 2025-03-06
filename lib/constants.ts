@@ -228,15 +228,15 @@ export const staticAboutData = {
 export const aboutPageData: Record<string, AboutPageData> = {
   en: {
     aboutMe:
-      "Welcome to my personal blog. I am currently working as a Software Developer at a fintech company. Additionally, I am pursuing a bachelor's degree in Computer Programming. Currently, I am learning the T3 Stack and taking an algorithms course. I am actively developing web applications, mostly using Next.js. To assist others and deepen my knowledge, I share what I have learned and my experiences in software here. I can help you in delivering user-friendly web solutions by combining design and programming.",
+      'Welcome to my personal blog! I am a Software Developer at a fintech company, primarily focused on developing web applications with Next.js. I enjoy sharing my knowledge and experiences in software development to help others and continuously improve myself. By combining design and programming, I strive to create user-friendly web solutions and assist in building seamless digital experiences.',
   },
   tr: {
     aboutMe:
-      'Kişisel bloguma hoş geldiniz. Şu anda bir fintech şirketinde Software Developer olarak çalışıyorum. Aynı zamanda Bilgisayar Programcılığı ön lisan okuyorum. Şu sıralar T3 Stack öğreniyorum ve algoritma kursu alıyorum. Aynı zamanda çoğunlukla Next.js kullanarak web uygulamaları geliştiriyorum. Yardımcı olmak ve bilgimi derinleştirmek amacıyla burada yazılımda öğrendiklerimi ve deneyimlerimi paylaşıyorum. Tasarımı ve programlamayı birleştirerek kullanıcı dostu web çözümleri sunma konusunda size yardımcı olabilirim. ',
+      'Kişisel bloguma hoş geldiniz! Bir fintech şirketinde Software Developer olarak çalışıyorum ve ağırlıklı olarak Next.js ile web uygulamaları geliştiriyorum. Yazılım geliştirme konusundaki bilgi ve deneyimlerimi paylaşarak hem başkalarına yardımcı olmayı hem de kendimi geliştirmeyi hedefliyorum. Tasarım ve programlamayı birleştirerek kullanıcı dostu web çözümleri üretmeye ve sezgisel dijital deneyimler oluşturmaya yardımcı olabilirim.',
   },
   de: {
     aboutMe:
-      'Herzlich willkommen auf meinem persönlichen Blog. Derzeit arbeite ich als Softwareentwickler in einem Fintech-Unternehmen. Zusätzlich absolviere ich ein Bachelorstudium in Informatik. Zurzeit lerne ich den T3 Stack und nehme an einem Algorithmenkurs teil. Aktiv entwickle ich Webanwendungen, hauptsächlich mit Next.js. Um anderen zu helfen und mein Wissen zu vertiefen, teile ich hier meine Erfahrungen und Erkenntnisse in der Softwareentwicklung. Ich kann Ihnen helfen, benutzerfreundliche Web-Lösungen zu entwickeln, indem ich Design und Programmierung kombiniere.',
+      'Herzlich willkommen auf meinem persönlichen Blog! Ich arbeite als Softwareentwickler in einem Fintech-Unternehmen und konzentriere mich hauptsächlich auf die Entwicklung von Webanwendungen mit Next.js. Ich teile mein Wissen und meine Erfahrungen in der Softwareentwicklung, um anderen zu helfen und mich kontinuierlich weiterzuentwickeln. Durch die Kombination von Design und Programmierung erstelle ich benutzerfreundliche Weblösungen und unterstütze bei der Umsetzung intuitiver digitaler Erlebnisse.',
   },
 };
 
