@@ -1,7 +1,7 @@
 'use client';
 import { PortableText } from '@portabletext/react';
 import React from 'react';
-import { TypedObject } from 'sanity';
+import { TypedObject } from '@portabletext/types';
 import Link from 'next/link';
 import { urlForImage } from '@/sanity/sanity-lib/sanity-image-fns';
 import Image from 'next/image';

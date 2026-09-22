@@ -5,6 +5,9 @@ import BlogCoverSection from '@/app/[lng]/components/blog-cover/BlogCover';
 import { SharedPageProps } from '@/app/[lng]/layout';
 import { Container } from '@/app/[lng]/components/containers/Container';
 import Header from '@/app/[lng]/components/layout/header';
+import JsonLd from '@/app/[lng]/components/json-ld/JsonLd';
+import { baseUrl } from '@/lib/constants';
+import { getBlogListSchema, getBreadcrumbSchema } from '@/lib/structured-data';
 
 export default async function Page({ params }: Readonly<SharedPageProps>) {
   const allBlogs = await getAllBlogs(params.lng);
@@ -13,6 +16,15 @@ export default async function Page({ params }: Readonly<SharedPageProps>) {
 
   return (
     <main>
+      <JsonLd
+        data={[
+          getBlogListSchema({ locale: params.lng, blogs: allBlogs || [] }),
+          getBreadcrumbSchema([
+            { name: t('aboutMe'), url: `${baseUrl}/${params.lng}` },
+            { name: t('blogPosts'), url: `${baseUrl}/${params.lng}/blogs` },
+          ]),
+        ]}
+      />
       <Header currentLocale={params?.lng} />
       <Container className='py-10 flex flex-col items-center gap-2'>
         <BlogCoverSection blog={featuredBlog || allBlogs?.[0]} locale={params.lng} />

@@ -19,6 +19,9 @@ import { LocaleType } from '@/i18n/settings';
 import { Container } from '@/app/[lng]/components/containers/Container';
 import Header from '@/app/[lng]/components/layout/header';
 import MoreBlogsSkeleton from '@/app/[lng]/components/loading-skeletons/MoreBlogSkeleton';
+import JsonLd from '@/app/[lng]/components/json-ld/JsonLd';
+import { baseUrl } from '@/lib/constants';
+import { getBlogPostingSchema, getBreadcrumbSchema } from '@/lib/structured-data';
 
 async function getPageData(slug: string, language: LocaleType) {
   try {
@@ -59,6 +62,16 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <main>
+      <JsonLd
+        data={[
+          getBlogPostingSchema({ blog, locale: lng }),
+          getBreadcrumbSchema([
+            { name: t('aboutMe'), url: `${baseUrl}/${lng}` },
+            { name: t('blogPosts'), url: `${baseUrl}/${lng}/blogs` },
+            { name: blog.title, url: `${baseUrl}/${lng}/blogs/${blog.slug}` },
+          ]),
+        ]}
+      />
       <Header currentLocale={lng} dynamicLinks={relatedSlugs} />
       <div className='mb-8 text-center relative w-full h-[85vh]'>
         <div className='w-full z-20 flex flex-col items-center justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
