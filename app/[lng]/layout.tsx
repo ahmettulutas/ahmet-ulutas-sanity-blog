@@ -4,8 +4,10 @@ import { Manrope } from 'next/font/google';
 import NextThemeProvider from '@/app/[lng]/components/providers/themes/ThemeProvider';
 import { LocaleType, availableLocales } from '@/i18n/settings';
 import { getDefaultMetaData } from '@/lib/helpers';
+import { getPersonSchema, getWebsiteSchema } from '@/lib/structured-data';
 import AuthProvider from '@/app/[lng]/components/providers/auth/AuthProvider';
 import Footer from '@/app/[lng]/components/layout/footer';
+import JsonLd from '@/app/[lng]/components/json-ld/JsonLd';
 
 const manrope = Manrope({
   subsets: ['latin'],
@@ -21,6 +23,7 @@ export default async function Layout({ children, params: { lng } }: LocaleRouteL
       <body
         className={`${manrope.className} dark:bg-dark-bg dark:text-dark-text text-light-text transition-all duration-150 ease-in`}
       >
+        <JsonLd data={[getWebsiteSchema(lng), getPersonSchema()]} />
         <AuthProvider>
           <NextThemeProvider>
             {children}
