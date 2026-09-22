@@ -1,14 +1,14 @@
-import { BookIcon } from '@sanity/icons';
+import { BookOpen } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
 import { defineField, defineType } from 'sanity';
-import { blogCategories } from '@/lib/constants';
+import { blogCategories } from '../constants';
 
 import authorSchema from '../author/authorSchema';
 
 export default defineType({
   name: 'blogs',
   title: 'blogs',
-  icon: BookIcon,
+  icon: BookOpen,
   type: 'document',
   fields: [
     defineField({
