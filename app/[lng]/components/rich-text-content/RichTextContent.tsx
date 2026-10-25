@@ -21,27 +21,27 @@ const myPortableTextComponents = {
   const width = dimensions?.width ?? 1200;
   const height = dimensions?.height ?? 800;
       return (
- <figure className="my-6 overflow-hidden rounded-2xl shadow-md dark:shadow-none">
-      <Image
-        src={urlForImage(value)
-          .width(2000)
-          .fit('max')
-          .auto('format')
-          .url()}
-        alt={value.alt ?? ''}
-        width={width}
-        height={height}
-        sizes="(max-width: 760px) 100vw, 1100px"
-        className="block h-auto w-full"
-        loading="lazy"
-      />
+      <figure className="my-6 overflow-hidden rounded-2xl shadow-md dark:shadow-none">
+        <Image
+          src={urlForImage(value)
+            .width(2000)
+            .fit('max')
+            .auto('format')
+            .url()}
+          alt={value.alt ?? ''}
+          width={width}
+          height={height}
+          sizes="(max-width: 760px) 100vw, 1100px"
+          className="block h-auto w-full"
+          loading="lazy"
+        />
 
-      {value.caption && (
-        <figcaption className="px-4 py-2 text-right text-xs text-gray-500 dark:text-gray-400">
-          {value.caption}
-        </figcaption>
-      )}
-    </figure>
+        {value.caption && (
+          <figcaption className="px-4 py-2 text-right text-xs text-gray-500 dark:text-gray-400">
+            {value.caption}
+          </figcaption>
+        )}
+      </figure>
       );
     },
     code: ({ value }: any) => (
@@ -97,7 +97,9 @@ const myPortableTextComponents = {
       </HeadingTag>
       );
     }
-    if (style === 'blockquote') return <blockquote>{children}</blockquote>;
+    if (style === 'blockquote') return <blockquote className="my-4 border-l-4 border-border pl-4 italic">
+        {children}
+      </blockquote>;
     if (style === 'normal') return <p className='my-2 text-lg leading-8'>{children}</p>;
   },
   marks: {
