@@ -27,7 +27,7 @@ export default function CoverImage(props: CoverImageProps) {
         className={cn('h-auto w-full rounded-2xl', imageStyles)}
         width={fill ? undefined : width}
         height={fill ? undefined : height}
-        alt={`Image for ${source.alt}`}
+        alt={source.alt ?? ''}
         priority={priority}
         sizes='100vw'
         fill={fill}

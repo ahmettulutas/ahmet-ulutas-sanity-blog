@@ -6,7 +6,6 @@ import MoreBlogs from '@/app/[lng]/components/more-blogs/MoreBlogs';
 import { generateMetaImages, getDefaultMetaData } from '@/lib/helpers';
 import { ogImageSizes, twitterImageSizes } from '@/lib/constants';
 import AuthorAvatar from '@/app/[lng]/components/author-avatar/AuthorAvatar';
-import CoverImage from '@/app/[lng]/components/sanity-image/CoverImage';
 import CommentsContainer from '@/app/[lng]/components/comments/CommentsContainer';
 import { Suspense } from 'react';
 import { SharedPageProps } from '@/app/[lng]/layout';
@@ -22,6 +21,8 @@ import MoreBlogsSkeleton from '@/app/[lng]/components/loading-skeletons/MoreBlog
 import JsonLd from '@/app/[lng]/components/json-ld/JsonLd';
 import { baseUrl } from '@/lib/constants';
 import { getBlogPostingSchema, getBreadcrumbSchema } from '@/lib/structured-data';
+import { urlForImage } from '@/sanity/sanity-lib/sanity-image-fns';
+import Image from 'next/image';
 
 async function getPageData(slug: string, language: LocaleType) {
   try {
@@ -81,14 +82,13 @@ export default async function Page({ params }: PageProps) {
           </h1>
         </div>
         <div className='absolute top-0 left-0 right-0 bottom-0 h-full bg-dark-bg/60 dark:bg-dark-bg/40 z-10' />
-        <CoverImage
+        <Image
+          src={urlForImage(blog.coverImage).width(1400).height(700).fit('crop').url()}
+          alt={blog.coverImage?.alt ?? blog.title}
           fill
-          height={1000}
-          width={1000}
           priority
-          imageStyles='object-center object-cover w-full'
-          wrapperStyles='-z-10'
-          image={blog.coverImage}
+          sizes="(max-width: 760px) 100vw, 1100px"
+          className="object-cover"
         />
       </div>
       <Container>
