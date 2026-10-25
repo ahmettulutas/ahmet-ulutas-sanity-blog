@@ -5,6 +5,7 @@ import { TypedObject } from '@portabletext/types';
 import Link from 'next/link';
 import { urlForImage } from '@/sanity/sanity-lib/sanity-image-fns';
 import Image from 'next/image';
+import { cn } from '@/lib/helpers';
 
 import CodeBlock from '../code-blocks/CodeBlocks';
 import { LinkArrowIcon } from '../icons/Icons';
@@ -14,16 +15,33 @@ import CodeBlockSkeleton from '../loading-skeletons/CodeBlockSkeleton';
 const myPortableTextComponents = {
   types: {
     image: ({ value }: any) => {
-      const imageUrl = value?.asset && urlForImage(value?.asset).height(1000).width(2000).url();
+        if (!value?.asset) return null;
+
+  const dimensions = value.asset?.metadata?.dimensions;
+  const width = dimensions?.width ?? 1200;
+  const height = dimensions?.height ?? 800;
       return (
-        <figure className='shadow-md dark:shadow-none rounded-2xl flex flex-col gap-1 overflow-hidden'>
-          <div className='relative h-[400px]'>
-            <Image src={imageUrl} alt={value.alt} fill />
-          </div>
-          {value?.caption && (
-            <figcaption className='text-xs text-right p-1 pr-4'>{value.caption}</figcaption>
-          )}
-        </figure>
+ <figure className="my-6 overflow-hidden rounded-2xl shadow-md dark:shadow-none">
+      <Image
+        src={urlForImage(value)
+          .width(2000)
+          .fit('max')
+          .auto('format')
+          .url()}
+        alt={value.alt ?? ''}
+        width={width}
+        height={height}
+        sizes="(max-width: 760px) 100vw, 1100px"
+        className="block h-auto w-full"
+        loading="lazy"
+      />
+
+      {value.caption && (
+        <figcaption className="px-4 py-2 text-right text-xs text-gray-500 dark:text-gray-400">
+          {value.caption}
+        </figcaption>
+      )}
+    </figure>
       );
     },
     code: ({ value }: any) => (
@@ -64,12 +82,19 @@ const myPortableTextComponents = {
         // use the node key as the id, it's guaranteed unique
         // one can also slugify the children spans if one want
         // nicer URLs
-        <HeadingTag id={node._key} className='text-2xl lg:text-3xl font-bold my-4 md:my-6'>
-          {children}{' '}
-          <Link className='text-sm leading-8' href={`#${node._key}`}>
-            #
-          </Link>
-        </HeadingTag>
+        <HeadingTag id={node._key} className="text-2xl lg:text-3xl font-bold my-2 md:my-4 group relative">
+        {children}
+        {/* The "#" is generated content, not a text node: as text it became
+            part of every heading's text ("Horary Nedir?#") for anything that
+            reads the outline — search engines included. `aria-label` still
+            names the link. */}
+        <Link
+          href={`#${node._key}`}
+          className="ml-2 text-sm text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:text-primary after:content-['#']"
+          title={typeof children?.[0] === 'string' ? children[0] : undefined}
+          aria-label="Bölüme bağlantı"
+        />
+      </HeadingTag>
       );
     }
     if (style === 'blockquote') return <blockquote>{children}</blockquote>;

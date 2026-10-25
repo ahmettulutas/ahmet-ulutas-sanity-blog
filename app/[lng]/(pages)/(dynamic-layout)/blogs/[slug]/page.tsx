@@ -60,6 +60,14 @@ export default async function Page({ params }: PageProps) {
   const { slug, lng } = params;
   const { blog, relatedSlugs } = await getPageData(slug, lng);
   const { t } = await createTranslation(lng, 'translation');
+  const imageUrl = blog.coverImage
+    ? urlForImage(blog.coverImage)
+        ?.width(1800)
+        .height(1012)
+        .auto('format')
+        .quality(75)
+        .url() || '/placeholder.svg'
+    : '/placeholder.svg';
 
   return (
     <main>
@@ -74,7 +82,7 @@ export default async function Page({ params }: PageProps) {
         ]}
       />
       <Header currentLocale={lng} dynamicLinks={relatedSlugs} />
-      <div className='mb-8 text-center relative w-full h-[85vh]'>
+      <div className='mb-8 text-center relative w-full'>
         <div className='w-full z-20 flex flex-col items-center justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
           <Tag name={blog.category} className='px-6 text-sm py-2' />
           <h1 className='inline-block mt-6 font-semibold text-dark-text text-2xl md:text-3xl lg:text-5xl !leading-normal relative w-5/6'>
@@ -82,14 +90,18 @@ export default async function Page({ params }: PageProps) {
           </h1>
         </div>
         <div className='absolute top-0 left-0 right-0 bottom-0 h-full bg-dark-bg/60 dark:bg-dark-bg/40 z-10' />
-        <Image
-          src={urlForImage(blog.coverImage).width(1400).height(700).fit('crop').url()}
-          alt={blog.coverImage?.alt ?? blog.title}
-          fill
-          priority
-          sizes="(max-width: 760px) 100vw, 1100px"
-          className="object-cover"
-        />
+       <div className="relative aspect-video mb-4 md:mb-8 rounded-lg overflow-hidden shadow-md">
+              <Image
+                src={imageUrl || '/placeholder.svg'}
+                alt={blog.title}
+                fill
+                className="object-cover"
+                priority
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 800px"
+                fetchPriority="high"
+                loading="eager"
+              />
+            </div>
       </div>
       <Container>
         <section className='grid mb-2'>
